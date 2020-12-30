@@ -33,12 +33,14 @@ Plug 'jdonaldson/vaxe' " Haxe support
 Plug 'hylang/vim-hy' " Hy support
 Plug 'vim-airline/vim-airline' " Status line
 Plug 'preservim/nerdtree' " Nerd tree
+Plug 'euclio/vim-markdown-composer' " Markdown Composer
 " Vim-plug plug-ins above
 
 call plug#end() " End Vim-plug
 
 
-
+let g:mkdp_auto_close = 0
+nnoremap <M-m> :MarkdownPreview<CR>
 
 
 """ Vundle plugins configuration
