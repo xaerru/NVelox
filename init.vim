@@ -66,7 +66,10 @@ let g:coc_snippet_next = '<tab>'
 let g:indent_guides_enable_on_vim_startup = 1 " Start indentation guides on startup
 let g:indent_guides_guide_size = 1 " The guide size is 1
 
-"" rainbow
+"" vim-airline
+let g:airline_powerline_fonts = 1
+
+" rainbow
 autocmd VimEnter,BufNewFile *.clj RainbowToggleOn " Toggle the parentheses on a Clojure file
 autocmd VimEnter,BufNewFile *.java RainbowToggleOn " Toggle the parentheses on a Java file
 autocmd VimEnter,BufNewFile *.lisp RainbowToggleOn " Toggle the parentheses on a Lisp file
@@ -233,7 +236,7 @@ function! s:CompileAndRun()
         \'go'        : 'go run ' . l:file,
         \'fortran'   : 'f95 ' . l:file . ' -o ' . l:name . ' && ' . l:noext . ' && rm ' . l:noext,
         \'pascal'    : 'fpc ' . l:file . ' && ' . l:noext . ' && rm ' . l:noext . '.o && rm ' . l:noext,
-        \'haskell'   : 'ghc ' . l:file . ' && ' . l:noext . ' && rm ' . l:noext . '.hi && rm ' . l:noext . '.o && rm ' . l:noext,
+        \'haskell'   : 'ghc -dynamic ' . l:file . ' && ' . l:noext . ' && rm ' . l:noext . '.hi && rm ' . l:noext . '.o && rm ' . l:noext,
         \'ocaml'     : 'ocaml ' . l:file,
         \'lua'       : 'lua ' . l:file,
         \'sh'        : 'bash ' . l:file,
@@ -320,7 +323,7 @@ endfunction
 syntax enable
 set termguicolors
 set background=dark
-color onedark
+color nord
 
 "" Keybinds
 nnoremap <F3> :%y+ <CR>
