@@ -19,9 +19,9 @@ Plug 'arcticicestudio/nord-vim' " Nord theme
 Plug 'vim-airline/vim-airline' " Status line
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' | " Git for nerdtree
-            \ Plug 'ryanoasis/vim-devicons'        " Integrate vim-devicons
+            \ Plug 'ryanoasis/vim-devicons' " Icons
+Plug 'ryanoasis/vim-devicons' " Icons
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file finder
-Plug 'mhinz/vim-startify' " Start screen
 Plug 'tpope/vim-fugitive' " Airline Extra Features
 Plug 'airblade/vim-gitgutter' " Git for files
 Plug 'pangloss/vim-javascript' " JavaScript Highlight
@@ -29,5 +29,9 @@ Plug 'leafgarland/typescript-vim' " TypeScript Highlight
 Plug 'peitalin/vim-jsx-typescript' " JSX and TSX Highlight
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' } " Styled Components CSS highlight
 Plug 'jparise/vim-graphql' " graphql Highlight
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'
+Plug 'glepnir/dashboard-nvim'
 
 call plug#end()
