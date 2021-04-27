@@ -45,10 +45,6 @@ au VimLeave * set guicursor=a:ver100 " Set cursor to Beam after leaving vim
 
 autocmd VimEnter,BufNewFile *.xml set shiftwidth=2 " Set the indentation to two spaces for XML files
 autocmd VimEnter,BufNewFile *.hs set shiftwidth=2 " Set the indentation to two spaces for Haskell files
-autocmd VimEnter,BufNewFile *.js set shiftwidth=2 " Set the indentation to two spaces for Haskell files
-autocmd VimEnter,BufNewFile *.ts set shiftwidth=2 " Set the indentation to two spaces for Haskell files
-autocmd VimEnter,BufNewFile *.jsx set shiftwidth=2 " Set the indentation to two spaces for Haskell files
-autocmd VimEnter,BufNewFile *.tsx set shiftwidth=2 " Set the indentation to two spaces for Haskell files
 
 let g:tex_flavor = 'latex'
 let g:highlightedyank_highlight_duration = 300
