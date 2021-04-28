@@ -23,7 +23,10 @@ Plug 'preservim/nerdtree' |
 Plug 'ryanoasis/vim-devicons' " Icons
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file finder
 Plug 'tpope/vim-fugitive' " Airline Extra Features
-Plug 'airblade/vim-gitgutter' " Git for files
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'junegunn/gv.vim'
 Plug 'pangloss/vim-javascript' " JavaScript Highlight
 Plug 'leafgarland/typescript-vim' " TypeScript Highlight
 Plug 'peitalin/vim-jsx-typescript' " JSX and TSX Highlight
@@ -33,5 +36,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 Plug 'glepnir/dashboard-nvim'
+Plug 'liuchengxu/vim-which-key'
+Plug 'voldikss/vim-floaterm'
+Plug 'metakirby5/codi.vim'
 
 call plug#end()
