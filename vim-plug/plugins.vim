@@ -39,5 +39,7 @@ Plug 'glepnir/dashboard-nvim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'voldikss/vim-floaterm'
 Plug 'metakirby5/codi.vim'
+Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
+Plug 'justinmk/vim-sneak'
 
 call plug#end()
