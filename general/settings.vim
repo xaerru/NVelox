@@ -11,6 +11,7 @@ set ruler                               " Show the cursor position all the time
 set iskeyword+=-                        " treat dash separated words as a word text object"
 set mouse=a                             " Enable your mouse
 set splitbelow                          " Horizontal splits will automatically be below
+set splitright
 set cmdheight=2                         " More space for displaying messageset splitright                          " Vertical splits will automatically be to the right
 set t_Co=256                            " Support 256 colors
 set conceallevel=0                      " So that I can see `` in markdown files
