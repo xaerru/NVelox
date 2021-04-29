@@ -1,5 +1,5 @@
 "" CoC settings
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-marketplace', 'coc-toml']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-marketplace', 'coc-toml', 'coc-html', 'coc-css', 'coc-tailwindcss', 'coc-emmet', 'coc-react-refactor']
 set nobackup
 set nowritebackup
 set updatetime=300
