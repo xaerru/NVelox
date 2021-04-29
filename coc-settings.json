@@ -1,13 +1,24 @@
 {
-    "eslint.autoFixOnSave": true,
-    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-    "prettier.disableSuccessMessage": true,
-    "coc.preferences.formatOnSaveFiletypes": [
+  "prettier.disableSuccessMessage": true,
+  "prettier.tabWidth": 2,
+  "prettier.statusItemText": "",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json"
+  ],
+  "tsserver.formatOnType": true,
+  "coc.preferences.formatOnType": true,
+  "html.filetypes": [
+    "html",
+    "handlebars",
+    "htmldjango",
+    "blade",
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact"
-  ],
-  "tsserver.formatOnType": true,
-  "coc.preferences.formatOnType": true
+  ]
 }
