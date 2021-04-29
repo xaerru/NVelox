@@ -40,9 +40,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nnoremap <Leader>o o<Esc>^Da
-nnoremap <Leader>O O<Esc>^Da
-
 " Copy full code of the current file
 nmap <F3> :%y+ <CR>
 
@@ -51,3 +48,10 @@ nmap <C-n> :NERDTreeToggle <CR>
 
 " bind F to grep word under cursor
 nmap F :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" Leader binds
+nmap <leader>r :RnvimrToggle <CR>
+nmap <leader>f :Files <CR>
+
+" close single buffer
+nmap <silent><leader>q :w \| :bd <CR>
