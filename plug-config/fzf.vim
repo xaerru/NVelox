@@ -13,8 +13,6 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 map <C-f> :Files<CR>
 map <leader>b :Buffers<CR>
 nnoremap <leader>g :RG<CR>
-nnoremap <leader>m :Marks<CR>
-
 
 " Border color
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
