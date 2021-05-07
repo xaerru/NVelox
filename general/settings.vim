@@ -46,7 +46,8 @@ au VimLeave * set guicursor=a:ver100 " Set cursor to Beam after leaving vim
 
 autocmd VimEnter,BufNewFile *.xml set shiftwidth=2 " Set the indentation to two spaces for XML files
 autocmd VimEnter,BufNewFile *.hs set shiftwidth=2 " Set the indentation to two spaces for Haskell files
-
+" Make it work with alacritty
+autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
 let g:tex_flavor = 'latex'
 let g:highlightedyank_highlight_duration = 300
 
