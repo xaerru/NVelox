@@ -58,3 +58,6 @@ nmap <silent><leader>q :w \| :bd <CR>
 
 " Highlight toggle
 nmap <silent><leader>l :noh <CR>
+
+" Delete evertything
+nmap <leader>d :%d <CR>
