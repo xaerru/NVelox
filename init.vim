@@ -19,3 +19,4 @@ source ~/.config/nvim/plug-config/floaterm.vim
 source ~/.config/nvim/plug-config/dashboard.vim
 source ~/.config/nvim/plug-config/rnvimr.vim
 source ~/.config/nvim/plug-config/sneak.vim
+source ~/.config/nvim/plug-config/neoformat.vim
