@@ -43,7 +43,7 @@ function! s:CompileAndRun()
         \'cpp'       : 'g++ -std=c++17 ' . l:file . ' && ' . './a.out',
         \'cs'        : 'mcs ' . l:file . ' && mono ' . l:noext . '.exe && rm ' . l:noext . '.exe',
         \'d'         : 'dmd ' . l:file . ' && ' . l:noext . ' && rm ' . l:noext . '.o && rm ' . l:noext,
-        \'rust'      : 'rustc ' . l:file . ' && ' . l:noext . ' && rm ' . l:noext,
+        \'rust'      : 'cargo run',
         \'go'        : 'go run ' . l:file,
         \'fortran'   : 'f95 ' . l:file . ' -o ' . l:name . ' && ' . l:noext . ' && rm ' . l:noext,
         \'pascal'    : 'fpc ' . l:file . ' && ' . l:noext . ' && rm ' . l:noext . '.o && rm ' . l:noext,
