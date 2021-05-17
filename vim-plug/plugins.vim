@@ -41,5 +41,6 @@ Plug 'voldikss/vim-floaterm'
 Plug 'metakirby5/codi.vim'
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 Plug 'justinmk/vim-sneak'
+Plug 'sbdchd/neoformat'
 
 call plug#end()
