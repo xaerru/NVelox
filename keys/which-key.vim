@@ -5,17 +5,14 @@ vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 let g:which_key_map = {}
 let g:which_key_map.t = {
       \ 'name' : '+terminal' ,
-      \ ';' : [':FloatermNew --wintype=popup --height=6'        , 'terminal'],
-      \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
-      \ 'g' : [':FloatermNew lazygit'                           , 'git'],
-      \ 'd' : [':FloatermNew lazydocker'                        , 'docker'],
-      \ 'n' : [':FloatermNew node'                              , 'node'],
-      \ 'N' : [':FloatermNew nnn'                               , 'nnn'],
-      \ 'p' : [':FloatermNew python'                            , 'python'],
-      \ 'r' : [':RnvimrToggle'                                  , 'ranger'],
-      \ 't' : [':FloatermToggle'                                , 'toggle'],
-      \ 'y' : [':FloatermNew ytop'                              , 'ytop'],
-      \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
+      \ 'f' : [':FloatermNew fzf'                                                    , 'fzf'],
+      \ 'g' : [':FloatermNew --height=0.8 --width=0.8 --position=center lazygit'     , 'git'],
+      \ 'd' : [':FloatermNew --height=0.8 --width=0.8 --position=center lazydocker'  ,'docker'],
+      \ 'n' : [':FloatermNew node'                                                   , 'node'],
+      \ 'p' : [':FloatermNew python'                                                 , 'python'],
+      \ 'r' : [':FloatermNew rg'                                                     , 'ranger'],
+      \ 't' : [':FloatermToggle'                                                     , 'toggle'],
+      \ 'y' : [':FloatermNew ytop'                                                   , 'ytop'],
       \ }
 " Define a separator
 let g:which_key_sep = '→'
