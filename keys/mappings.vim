@@ -61,3 +61,6 @@ nmap <silent><leader>l :noh <CR>
 
 " Delete evertything
 nmap <leader>d :%d <CR>
+
+" Move forward in insert mode
+imap jj <ESC>la
