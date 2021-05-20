@@ -10,10 +10,17 @@ let g:which_key_map.t = {
       \ 'd' : [':FloatermNew --height=0.8 --width=0.8 --position=center lazydocker'  ,'docker'],
       \ 'n' : [':FloatermNew node'                                                   , 'node'],
       \ 'p' : [':FloatermNew python'                                                 , 'python'],
-      \ 'r' : [':FloatermNew rg'                                                     , 'ranger'],
+      \ 'r' : [':RnvimrToggle'                                                       , 'ranger'],
       \ 't' : [':FloatermToggle'                                                     , 'toggle'],
       \ 'y' : [':FloatermNew ytop'                                                   , 'ytop'],
       \ }
+
+let g:which_key_map.r = {
+      \ 'name' : '+run' ,
+      \ 'r' : [':call CompileAndRun()<CR>'                                      , 'run'],
+      \ 'i' : [':call StartREPL()<CR>'                                          , 'repl'],
+      \ }
+
 " Define a separator
 let g:which_key_sep = '→'
 " set timeoutlen=100
