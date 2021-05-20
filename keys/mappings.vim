@@ -50,7 +50,6 @@ nmap <C-n> :NERDTreeToggle <CR>
 nmap F :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Leader binds
-nmap <leader>r :RnvimrToggle <CR>
 nmap <leader>f :Files <CR>
 
 " close single buffer
