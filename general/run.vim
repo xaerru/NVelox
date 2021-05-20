@@ -6,20 +6,28 @@ function! s:StartTerminal(command)
     if a:command != ''
         " Save the file
         exec 'w'
-        " Create a new buffer
-        exec 'vnew'
-        " Start a terminal with the command
-        exec 'term ' . a:command
         " Be able to insert text
         exec 'startinsert'
+        " New floaterm
+        exec 'FloatermNew ' . a:command
     endif
 endfunction
 
-" Call the function CompileAndRun (<F9>)
-map <F6> :call <SID>CompileAndRun()<CR>
-imap <F6> <ESC>:call <SID>CompileAndRun()<CR>
+"" Start a terminal in a new buffer with a command and hold
+function! s:StartTerminalHold(command)
+    " If the command isn't empty
+    if a:command != ''
+        " Save the file
+        exec 'w'
+        " Be able to insert text
+        exec 'startinsert'
+        " New floaterm
+        exec 'FloatermNew --autoclose=0 ' . a:command
+    endif
+endfunction
+
 "" Runs the code in the file using the filetype
-function! s:CompileAndRun()
+function! g:CompileAndRun()
     let l:file = expand('%:p') " The absolute path to the file
     let l:noext = expand('%:p:r') " The path to the file without the extension
     let l:path = expand('%:p:h') " The absolute path to the file without the name
@@ -66,14 +74,11 @@ function! s:CompileAndRun()
     " Get the command
     let l:command = get(l:commandMap, &filetype, '')
     " Start a terminal
-    call s:StartTerminal(l:command)
+    call s:StartTerminalHold(l:command)
 endfunction
 
-" Call the function StartREPL (<F10>)
-map <F5> :call <SID>StartREPL()<CR>
-imap <F5> <ESC>:call <SID>StartREPL()<CR>
 "" Runs a REPL using the filetype
-function! s:StartREPL()
+function! g:StartREPL()
     " The possible commands
      let l:file = expand('%:p') " The absolute path to the file
      let l:noext = expand('%:p:r') " The path to the file without the extension
