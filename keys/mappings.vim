@@ -56,7 +56,7 @@ nmap <leader>f :Files <CR>
 nmap <silent><leader><Space>q :bd <CR>
 
 " Highlight toggle
-nmap <silent><leader><Space>d :noh <CR>
+nmap <silent><leader><Space>l :noh <CR>
 
 " Delete evertything
 nmap <leader><Space>d :%d <CR>
