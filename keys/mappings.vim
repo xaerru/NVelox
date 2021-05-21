@@ -53,13 +53,13 @@ nmap F :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 nmap <leader>f :Files <CR>
 
 " close single buffer
-nmap <silent><leader>q :w \| :bd <CR>
+nmap <silent><leader><Space>q :bd <CR>
 
 " Highlight toggle
-nmap <silent><leader>l :noh <CR>
+nmap <silent><leader><Space>d :noh <CR>
 
 " Delete evertything
-nmap <leader>d :%d <CR>
+nmap <leader><Space>d :%d <CR>
 
 " Move forward in insert mode
 imap jj <ESC>la
