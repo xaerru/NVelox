@@ -41,7 +41,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Copy full code of the current file
-nmap <F3> :%y+ <CR>
+nmap <leader><Space>y :%y+ <CR>
 
 " Toggle NerdTree
 nmap <C-n> :NERDTreeToggle <CR>
