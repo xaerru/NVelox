@@ -42,7 +42,6 @@ Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 Plug 'justinmk/vim-sneak'
 Plug 'sbdchd/neoformat'
 Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
-Plug 'Yggdroot/indentLine' 
 Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 Plug 'mhinz/vim-startify'
 Plug 'puremourning/vimspector'
