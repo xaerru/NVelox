@@ -35,7 +35,6 @@ Plug 'jparise/vim-graphql' " graphql Highlight
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
-Plug 'glepnir/dashboard-nvim'
 Plug 'liuchengxu/vim-which-key'
 Plug 'voldikss/vim-floaterm'
 Plug 'metakirby5/codi.vim'
@@ -45,4 +44,5 @@ Plug 'sbdchd/neoformat'
 Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
 Plug 'Yggdroot/indentLine' 
 Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
+Plug 'mhinz/vim-startify'
 call plug#end()

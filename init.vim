@@ -16,8 +16,8 @@ source ~/.config/nvim/plug-config/colorizer.vim
 source ~/.config/nvim/plug-config/fzf.vim
 source ~/.config/nvim/plug-config/signify.vim
 source ~/.config/nvim/plug-config/floaterm.vim
-source ~/.config/nvim/plug-config/dashboard.vim
 source ~/.config/nvim/plug-config/rnvimr.vim
 source ~/.config/nvim/plug-config/sneak.vim
 source ~/.config/nvim/plug-config/neoformat.vim
 source ~/.config/nvim/plug-config/indentline.vim
+source ~/.config/nvim/plug-config/startifyConf.vim
