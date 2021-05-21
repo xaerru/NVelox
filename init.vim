@@ -21,3 +21,4 @@ source ~/.config/nvim/plug-config/sneak.vim
 source ~/.config/nvim/plug-config/neoformat.vim
 source ~/.config/nvim/plug-config/indentline.vim
 source ~/.config/nvim/plug-config/startifyConf.vim
+source ~/.config/nvim/plug-config/vimspector.vim
