@@ -13,7 +13,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of completion, plugin 
 Plug 'norcalli/nvim-colorizer.lua' " Colors
 Plug 'vim-syntastic/syntastic' " Syntax linting
 Plug 'preservim/nerdcommenter' " Commenter
-Plug 'jiangmiao/auto-pairs' " Brackets closer
 Plug 'neovimhaskell/haskell-vim' " Syntax highlighting for Haskell
 Plug 'arcticicestudio/nord-vim' " Nord theme
 Plug 'vim-airline/vim-airline' " Status line
