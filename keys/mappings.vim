@@ -47,7 +47,7 @@ nmap <leader><Space>y :%y+ <CR>
 nmap <C-n> :NERDTreeToggle <CR>
 
 " bind F to grep word under cursor
-nmap F :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nmap <silent>F :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Leader binds
 nmap <leader>f :Files <CR>
