@@ -21,7 +21,6 @@ Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' | " Git for nerdtree
             \ Plug 'ryanoasis/vim-devicons' " Icons
 Plug 'ryanoasis/vim-devicons' " Icons
-Plug 'ctrlpvim/ctrlp.vim' " Fuzzy file finder
 Plug 'tpope/vim-fugitive' " Airline Extra Features
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
