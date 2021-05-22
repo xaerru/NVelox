@@ -1,5 +1,16 @@
 "" CoC settings
-let g:coc_global_extensions = ['coc-pairs', 'coc-json', 'coc-tsserver', 'coc-marketplace', 'coc-toml', 'coc-html', 'coc-css', 'coc-tailwindcss', 'coc-emmet', 'coc-react-refactor', 'coc-rust-analyzer']
+let g:coc_global_extensions = [
+            \ 'coc-pairs', 
+            \ 'coc-json', 
+            \ 'coc-tsserver', 
+            \ 'coc-marketplace', 
+            \ 'coc-toml', 
+            \ 'coc-html', 
+            \ 'coc-css', 
+            \ 'coc-tailwindcss', 
+            \ 'coc-emmet', 
+            \ 'coc-react-refactor', 
+            \ 'coc-rust-analyzer']
 set nobackup
 set nowritebackup
 set updatetime=300
