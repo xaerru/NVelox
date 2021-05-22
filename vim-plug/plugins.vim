@@ -43,4 +43,5 @@ Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
 Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 Plug 'mhinz/vim-startify'
 Plug 'puremourning/vimspector'
+Plug 'tpope/vim-surround'
 call plug#end()
