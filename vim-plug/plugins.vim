@@ -6,42 +6,46 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 """ Vim-plug plug-ins
-call plug#begin('~/.vim/bundle') " Initialize Vim-plug
+call plug#begin('~/.vim/bundle')
 
-" Vim-plug plug-ins below
+"" General
+Plug 'mhinz/vim-startify' " Startup Page
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of completion, plugin manager
-Plug 'norcalli/nvim-colorizer.lua' " Colors
-Plug 'vim-syntastic/syntastic' " Syntax linting
-Plug 'preservim/nerdcommenter' " Commenter
-Plug 'neovimhaskell/haskell-vim' " Syntax highlighting for Haskell
+Plug 'tpope/vim-surround' " Operate on brackets
+Plug 'airblade/vim-rooter' " Change directory to root repo
+Plug 'puremourning/vimspector' " Debug
+Plug 'liuchengxu/vim-which-key' " Show leader binds
+Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'} " Indents
+Plug 'justinmk/vim-sneak' " Navigate faster
 Plug 'arcticicestudio/nord-vim' " Nord theme
 Plug 'vim-airline/vim-airline' " Status line
+Plug 'vim-syntastic/syntastic' " Syntax linting
+Plug 'ryanoasis/vim-devicons' " Icons
+Plug 'preservim/nerdcommenter' " Commenter
+Plug 'sbdchd/neoformat' " Code formatting
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' | " Git for nerdtree
             \ Plug 'ryanoasis/vim-devicons' " Icons
-Plug 'ryanoasis/vim-devicons' " Icons
-Plug 'tpope/vim-fugitive' " Airline Extra Features
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'junegunn/gv.vim'
+
+"" Git
+Plug 'tpope/vim-fugitive' " Git support
+Plug 'mhinz/vim-signify' " Git Signs
+Plug 'tpope/vim-rhubarb' " Github support
+Plug 'junegunn/gv.vim' " Git commit browser
+
+"" Web dev
 Plug 'pangloss/vim-javascript' " JavaScript Highlight
 Plug 'leafgarland/typescript-vim' " TypeScript Highlight
 Plug 'peitalin/vim-jsx-typescript' " JSX and TSX Highlight
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' } " Styled Components CSS highlight
-Plug 'jparise/vim-graphql' " graphql Highlight
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter'
-Plug 'liuchengxu/vim-which-key'
-Plug 'voldikss/vim-floaterm'
-Plug 'metakirby5/codi.vim'
-Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
-Plug 'justinmk/vim-sneak'
-Plug 'sbdchd/neoformat'
-Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' }
-Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
-Plug 'mhinz/vim-startify'
-Plug 'puremourning/vimspector'
-Plug 'tpope/vim-surround'
+Plug 'norcalli/nvim-colorizer.lua' " Colors
+
+"" Floaterm
+Plug 'voldikss/vim-floaterm' " Floating terminal windows
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy finder
+Plug 'junegunn/fzf.vim' " Fuzzy finder in vim
+Plug 'kevinhwang91/rnvimr', {'do': 'make sync'} " Ranger in vim
+
+"" Haskell
+Plug 'neovimhaskell/haskell-vim' " Syntax highlighting for Haskell
+Plug 'enomsg/vim-haskellConcealPlus', { 'for': 'haskell' } " Haskell conceal
 call plug#end()
