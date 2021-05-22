@@ -32,6 +32,7 @@
     "typescript",
     "typescriptreact"
   ],
+  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
   "json.format.enable": false,
   "html.format.enable": false
 }
