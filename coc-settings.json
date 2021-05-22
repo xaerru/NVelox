@@ -13,15 +13,6 @@
       "filetypes": ["haskell", "lhaskell"]
     }
   },
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "json"
-  ],
-  "tsserver.formatOnType": true,
-  "coc.preferences.formatOnType": true,
   "html.filetypes": [
     "html",
     "handlebars",
