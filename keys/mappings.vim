@@ -20,6 +20,7 @@ nnoremap <c-u> viwU<Esc>
 nnoremap <TAB> :bnext<CR>
 " SHIFT-TAB will go back
 nnoremap <S-TAB> :bprevious<CR>
+nnoremap <leader><TAB> :bprevious<CR>
 
 " Alternate way to save
 nnoremap <C-s> :w<CR>
@@ -34,15 +35,6 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 vnoremap < <gv
 vnoremap > >gv
 
-" Better window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" Copy full code of the current file
-nmap <leader><Space>y :%y+ <CR>
-
 " Toggle NerdTree
 nmap <C-n> :NERDTreeToggle <CR>
 
@@ -51,15 +43,6 @@ nmap <silent>F :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Leader binds
 nmap <leader>f :Files <CR>
-
-" close single buffer
-nmap <silent><leader><Space>q :bd <CR>
-
-" Highlight toggle
-nmap <silent><leader><Space>l :noh <CR>
-
-" Delete evertything
-nmap <leader><Space>d :%d <CR>
 
 " Move forward in insert mode
 imap jj <ESC>la
