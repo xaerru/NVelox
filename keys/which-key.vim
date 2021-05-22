@@ -5,11 +5,8 @@ vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 let g:which_key_map = {}
 let g:which_key_map.t = {
       \ 'name' : '+terminal' ,
-      \ 'f' : [':FloatermNew fzf'                                                    , 'fzf'],
       \ 'g' : [':FloatermNew --height=0.8 --width=0.8 --position=center lazygit'     , 'git'],
       \ 'd' : [':FloatermNew --height=0.8 --width=0.8 --position=center lazydocker'  ,'docker'],
-      \ 'n' : [':FloatermNew node'                                                   , 'node'],
-      \ 'p' : [':FloatermNew python'                                                 , 'python'],
       \ 'r' : [':RnvimrToggle'                                                       , 'ranger'],
       \ 't' : [':FloatermToggle'                                                     , 'toggle'],
       \ 'y' : [':FloatermNew ytop'                                                   , 'ytop'],
@@ -35,8 +32,8 @@ highlight default link WhichKeyGroup     Identifier
 highlight default link WhichKeyDesc      Function
 
 " Hide status line
-autocmd! FileType which_key
-autocmd  FileType which_key set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+"autocmd! FileType which_key
+"autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  "\| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")
