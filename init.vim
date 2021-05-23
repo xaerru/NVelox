@@ -20,6 +20,6 @@ source ~/.config/nvim/plug-config/rnvimr.vim
 source ~/.config/nvim/plug-config/sneak.vim
 source ~/.config/nvim/plug-config/neoformat.vim
 source ~/.config/nvim/plug-config/indentline.vim
-source ~/.config/nvim/plug-config/startifyConf.vim
+source ~/.config/nvim/plug-config/startscreen.vim
 source ~/.config/nvim/plug-config/vimspector.vim
 source ~/.config/nvim/plug-config/rooter.vim
