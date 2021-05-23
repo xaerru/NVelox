@@ -23,10 +23,9 @@ let g:which_key_map.u = {
       \ 'y' : [':%y+'                                          , 'Copy All text'],
       \ 'd' : [':%d+'                                          , 'Delete All text'],
       \ 'q' : [':bd'                                           , 'Close buffer'],
-      \ 'l' : [':noh'                                          , 'Toggle Highlight'],
       \ }
 
-let g:which_key_map['w'] = {
+let g:which_key_map.w = {
       \ 'name' : '+windows' ,
       \ 'w' : ['<C-W>w'     , 'other-window']          ,
       \ 'd' : ['<C-W>c'     , 'delete-window']         ,
