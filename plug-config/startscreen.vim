@@ -25,8 +25,8 @@ let g:startify_bookmarks = [
             \ ]
 
 let g:startify_lists = [
-        \ { 'type': 'files',     'header': ['   MRU']            },
         \ { 'type': 'sessions',  'header': ['   Sessions']       },
+        \ { 'type': 'files',     'header': ['   Recent']            },
         \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
         \ { 'type': function('s:gitModified'),  'header': ['   Git Modified']},
         \ { 'type': function('s:gitUntracked'), 'header': ['   Git Untracked']},
