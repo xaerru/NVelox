@@ -23,6 +23,11 @@ let g:which_key_map.u = {
       \ 'y' : [':%y+'                                          , 'Copy All text'],
       \ 'd' : [':%d+'                                          , 'Delete All text'],
       \ 'q' : [':bd'                                           , 'Close buffer'],
+      \ 'r' : [':Ag'                                           , 'Grep'],
+      \ 'f' : [':Files'                                        , 'Files'],
+      \ 'g' : [':GFiles'                                       , 'Git Files'],
+      \ 'h' : [':Files ~'                                      , 'Home Files'],
+      \ 'b' : [':Buffers'                                      , 'Buffers'],
       \ }
 
 let g:which_key_map.w = {
