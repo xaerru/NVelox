@@ -61,6 +61,11 @@ let g:which_key_map.d = {
       \ 'o' : 'Output'    ,
       \ }
 
+let g:which_key_map.g = {
+      \ 'name' : '+git',
+      \ 'j' : 'Next Change'    ,
+      \ 'k' : 'Previous Change'    ,
+      \ }
 " Define a separator
 let g:which_key_sep = '→'
 " set timeoutlen=100
