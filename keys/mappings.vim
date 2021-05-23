@@ -49,3 +49,6 @@ imap jj <ESC>la
 
 " Highlight off on enter
 nnoremap <CR> :noh<CR>
+
+" Exit terminal
+tnoremap <ESC> <C-d>
