@@ -1,15 +1,15 @@
 "" CoC settings
 let g:coc_global_extensions = [
-            \ 'coc-pairs', 
-            \ 'coc-json', 
-            \ 'coc-tsserver', 
-            \ 'coc-marketplace', 
-            \ 'coc-toml', 
-            \ 'coc-html', 
-            \ 'coc-css', 
-            \ 'coc-tailwindcss', 
-            \ 'coc-emmet', 
-            \ 'coc-react-refactor', 
+            \ 'coc-pairs',
+            \ 'coc-json',
+            \ 'coc-tsserver',
+            \ 'coc-marketplace',
+            \ 'coc-toml',
+            \ 'coc-html',
+            \ 'coc-css',
+            \ 'coc-tailwindcss',
+            \ 'coc-emmet',
+            \ 'coc-react-refactor',
             \ 'coc-rust-analyzer']
 set nobackup
 set nowritebackup
@@ -149,7 +149,7 @@ nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+"nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
