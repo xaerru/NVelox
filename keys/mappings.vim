@@ -46,3 +46,6 @@ nmap <leader>f :GFiles <CR>
 
 " Move forward in insert mode
 imap jj <ESC>la
+
+" Highlight off on enter
+nnoremap <CR> :noh<CR>
