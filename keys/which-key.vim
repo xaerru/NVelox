@@ -8,7 +8,7 @@ let g:which_key_map.t = {
       \ 'g' : [':FloatermNew --height=0.8 --width=0.8 --position=center lazygit'     , 'git'],
       \ 'd' : [':FloatermNew --height=0.8 --width=0.8 --position=center lazydocker'  ,'docker'],
       \ 'r' : [':RnvimrToggle'                                                       , 'ranger'],
-      \ 't' : [':FloatermToggle'                                                     , 'toggle'],
+      \ 't' : [':w | FloatermToggle'                                                     , 'toggle'],
       \ 'y' : [':FloatermNew ytop'                                                   , 'ytop'],
       \ }
 
