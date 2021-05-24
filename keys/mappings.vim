@@ -48,7 +48,7 @@ nmap <leader>f :GFiles <CR>
 imap jj <ESC>la
 
 " Highlight off on enter
-nnoremap <CR> :noh<CR>
+nnoremap <silent><CR> :noh<CR>
 
 " Exit terminal
 tnoremap <ESC> <C-d>
