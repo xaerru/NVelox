@@ -4,6 +4,9 @@ let g:floaterm_keymap_next   = '<F2>'
 let g:floaterm_keymap_new    = '<F4>'
 let g:floaterm_shell = "fish"
 let g:floaterm_position="bottom"
+let g:floaterm_rootmarkers =  ['.git', 'Makefile', '*.sln', 'build/env.sh', 'Cargo.toml']
+let g:floaterm_borderchars = '        '
+let g:floaterm_title = ''
 
 " Floaterm
 let g:floaterm_gitcommit='floaterm'
