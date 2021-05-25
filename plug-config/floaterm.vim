@@ -6,7 +6,6 @@ let g:floaterm_shell = "fish"
 let g:floaterm_position="bottom"
 let g:floaterm_rootmarkers =  ['.git', 'Makefile', '*.sln', 'build/env.sh', 'Cargo.toml']
 let g:floaterm_borderchars = '        '
-let g:floaterm_title = ''
 
 " Floaterm
 let g:floaterm_gitcommit='floaterm'
