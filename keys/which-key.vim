@@ -61,12 +61,22 @@ let g:which_key_map.w = {
 
 let g:which_key_map.d = {
       \ 'name' : '+debug',
-      \ 'i' : 'Baloon Eval'    ,
       \ 'd' : 'Launch'    ,
-      \ 'x' : 'Close'    ,
-      \ 'e' : 'Eval'    ,
-      \ 'w' : 'Watch'    ,
+      \ 'c' : 'Code'    ,
+      \ 't' : 'Tagpage'    ,
+      \ 'v' : 'Variables'    ,
+      \ 'w' : 'Watches'    ,
+      \ 's' : 'Stack trace'    ,
       \ 'o' : 'Output'    ,
+      \ 'tcb' : 'CleanLineBreakpoint'    ,
+      \ 'l' : 'StepInto'    ,
+      \ 'j' : 'StepOver'    ,
+      \ 'k' : 'StepOut'    ,
+      \ '_' : 'Restart'    ,
+      \ '<space>' : 'Continue'    ,
+      \ 'rc' : 'RunToCursor'    ,
+      \ 'bp' : 'ToggleBreakPoint'    ,
+      \ 'dcbp' : 'ToggleConditionalBreakpoint'    ,
       \ }
 
 let g:which_key_map.g = {
