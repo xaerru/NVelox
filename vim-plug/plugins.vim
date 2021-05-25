@@ -14,6 +14,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of completion, plugin 
 Plug 'tpope/vim-surround' " Operate on brackets
 Plug 'airblade/vim-rooter' " Change directory to root repo
 Plug 'puremourning/vimspector' " Debug
+Plug 'szw/vim-maximizer' " Maximize 1 window
 Plug 'liuchengxu/vim-which-key' " Show leader binds
 Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'} " Indents
 Plug 'justinmk/vim-sneak' " Navigate faster
