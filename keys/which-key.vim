@@ -7,8 +7,11 @@ let g:which_key_map.t = {
       \ 'name' : '+terminal' ,
       \ 'g' : [':FloatermNew --height=0.8 --width=0.8 --position=center lazygit'     , 'git'],
       \ 'd' : [':FloatermNew --height=0.8 --width=0.8 --position=center lazydocker'  ,'docker'],
+      \ 'v' : [':FloatermNew --height=0.5 --width=0.5 --wintype=vsplit'              ,'Vertical'],
+      \ 'h' : [':FloatermNew --height=0.5 --width=0.5 --wintype=split'               ,'Horizontal'],
+      \ 'f' : [':edit +term | startinsert'                                           ,'Horizontal'],
       \ 'r' : [':RnvimrToggle'                                                       , 'ranger'],
-      \ 't' : [':w | FloatermToggle'                                                     , 'toggle'],
+      \ 't' : [':w | FloatermToggle'                                                 , 'toggle'],
       \ 'y' : [':FloatermNew ytop'                                                   , 'ytop'],
       \ }
 
