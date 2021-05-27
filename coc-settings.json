@@ -27,7 +27,6 @@
   "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
   "json.format.enable": false,
   "html.format.enable": false,
-  "emmet.includeLanguages": { "rust": "javascriptreact" },
   "rust-analyzer.procMacro.enable": true,
   "rust-analyzer.diagnostics.disabled": ["unresolved-macro-call"]
 }
