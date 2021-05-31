@@ -44,7 +44,7 @@ let g:which_key_map.u = {
 let g:which_key_map.w = {
       \ 'name' : '+windows' ,
       \ 'w' : ['<C-W>w'     , 'other-window']          ,
-      \ 'd' : ['<C-W>c'     , 'delete-window']         ,
+      \ 'q' : ['<C-W>c'     , 'delete-window']         ,
       \ '-' : ['<C-W>s'     , 'split-window-below']    ,
       \ '|' : ['<C-W>v'     , 'split-window-right']    ,
       \ '2' : ['<C-W>v'     , 'layout-double-columns'] ,
@@ -84,8 +84,10 @@ let g:which_key_map.d = {
 
 let g:which_key_map.g = {
       \ 'name' : '+git',
-      \ 'j' : 'Next Change'    ,
-      \ 'k' : 'Previous Change'    ,
+      \ 'j' : 'NextChange'    ,
+      \ 'k' : 'PreviousChange'    ,
+      \ 'b' : 'WebBrowse'    ,
+      \ 'c' : 'CommitBrowse'    ,
       \ }
 " Define a separator
 let g:which_key_sep = '→'
