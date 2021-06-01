@@ -86,8 +86,9 @@ let g:which_key_map.g = {
       \ 'name' : '+git',
       \ 'j' : 'NextChange'    ,
       \ 'k' : 'PreviousChange'    ,
-      \ 'b' : 'WebBrowse'    ,
-      \ 'c' : 'CommitBrowse'    ,
+      \ 'b' : [':GBrowse', 'WebBrowse']    ,
+      \ 'c' : [':GV', 'CommitBrowse']    ,
+      \ 'd' : [':Gdiffsplit', 'SplitDiff']    ,
       \ }
 " Define a separator
 let g:which_key_sep = '→'
