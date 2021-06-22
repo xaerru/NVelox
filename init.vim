@@ -23,3 +23,4 @@ source ~/.config/nvim/plug-config/indentline.vim
 source ~/.config/nvim/plug-config/startscreen.vim
 source ~/.config/nvim/plug-config/vimspector.vim
 source ~/.config/nvim/plug-config/rooter.vim
+source ~/.config/nvim/plug-config/markdown.vim
