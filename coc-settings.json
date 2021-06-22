@@ -11,8 +11,14 @@
         "hie.yaml"
       ],
       "filetypes": ["haskell", "lhaskell"]
+    },
+    "elmLS": {
+      "command": "elm-language-server",
+      "filetypes": ["elm"],
+      "rootPatterns": ["elm.json"]
     }
   },
+  "codeLens.enable": true,
   "html.filetypes": [
     "html",
     "rust",
