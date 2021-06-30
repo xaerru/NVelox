@@ -48,6 +48,7 @@ function! g:CompileAndRun()
         \'julia'     : 'julia ' . l:file,
         \'nim'       : 'nim compile -p:' . l:path . ' ' . l:name . '.nim && ' . l:noext . ' && rm ' . l:noext,
         \'c'         : 'gcc ' . l:file . ' -o ' . l:noext . ' && ' . l:noext . ' && rm ' . l:noext,
+        \'asm'       : 'nasm -f elf64 ' . l:file . ' && ' . 'ld -s ' . l:name . '.o && ./a.out && rm ' . l:name . '.o a.out',
         \'cpp'       : 'g++ -std=c++17 ' . l:file . ' && ' . './a.out',
         \'cs'        : 'mcs ' . l:file . ' && mono ' . l:noext . '.exe && rm ' . l:noext . '.exe',
         \'d'         : 'dmd ' . l:file . ' && ' . l:noext . ' && rm ' . l:noext . '.o && rm ' . l:noext,
