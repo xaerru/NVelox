@@ -4,7 +4,7 @@ fun! GotoWindow(id)
 endfun
 
 " Debugger remaps
-nnoremap <leader>m :MaximizerToggle!<CR>
+nnoremap <leader>f :MaximizerToggle!<CR>
 nnoremap <leader>dd :call vimspector#Launch()<CR>
 nnoremap <leader>dc :call GotoWindow(g:vimspector_session_windows.code)<CR>
 nnoremap <leader>dt :call GotoWindow(g:vimspector_session_windows.tagpage)<CR>

@@ -42,7 +42,6 @@ nmap <C-n> :NERDTreeToggle <CR>
 nmap <silent>F :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Leader binds
-nmap <leader>f :GFiles <CR>
 
 " Move forward in insert mode
 imap jj <ESC>la
