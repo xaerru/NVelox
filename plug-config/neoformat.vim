@@ -8,9 +8,10 @@ let g:neoformat_rust_rustfmt = {
         \ 'args': ['--edition 2018'],
         \ 'stdin': 1,
         \}
+
 let g:neoformat_c_clangformat = {
     \ 'exe': 'clang-format',
-    \ 'args': ['--style="{BasedOnStyle: chromium, IndentWidth: 4}"']
+    \ 'stdin': 1
 \}
 let g:neoformat_cpp_clangformat = {
     \ 'exe': 'clang-format',
