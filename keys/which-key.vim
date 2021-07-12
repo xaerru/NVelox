@@ -90,6 +90,16 @@ let g:which_key_map.g = {
       \ 'c' : [':GV', 'CommitBrowse']    ,
       \ 'd' : [':Gdiffsplit', 'SplitDiff']    ,
       \ }
+
+let g:which_key_map.p = {
+      \ 'name' : '+cp',
+      \ 'd' : [':CphDelete', 'Delete testcases']    ,
+      \ 'e' : [':CphEdit', 'Edit/Add testcases']    ,
+      \ 'r' : [':CphReceive', 'Receive problem']    ,
+      \ 't' : [':CphTest', 'Run tests']    ,
+      \ 'i' : [':CphRetest', 'Run tests without recompiling']    ,
+      \ }
+
 " Define a separator
 let g:which_key_sep = '»'
 " set timeoutlen=100
