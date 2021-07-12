@@ -10,6 +10,8 @@ call plug#begin('~/.vim/bundle')
 
 "" General
 Plug 'mhinz/vim-startify' " Startup Page
+Plug 'nvim-lua/plenary.nvim' " Dependency for cphelper.vim
+Plug 'p00f/cphelper.nvim' " Competitive Programming
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Conquer of completion, plugin manager
 Plug 'tpope/vim-surround' " Operate on brackets
 Plug 'airblade/vim-rooter' " Change directory to root repo
