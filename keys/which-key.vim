@@ -21,13 +21,13 @@ let g:which_key_map.r = {
       \ 'i' : [':call StartREPL()<CR>'                                          , 'repl'],
       \ }
 
-let g:which_key_map.s = {
-      \ 'name' : '+sessions' ,
-      \ 'l' : [':SLoad'                                      , 'Load Session'],
-      \ 's' : [':SSave!'                                     , 'Save Session'],
-      \ 'd' : [':SDelete!'                                   , 'Delete Session'],
-      \ 'q' : [':SClose'                                     , 'Close Session'],
-      \ }
+"let g:which_key_map.s = {
+      "\ 'name' : '+sessions' ,
+      "\ 'l' : [':SLoad'                                      , 'Load Session'],
+      "\ 's' : [':SSave!'                                     , 'Save Session'],
+      "\ 'd' : [':SDelete!'                                   , 'Delete Session'],
+      "\ 'q' : [':SClose'                                     , 'Close Session'],
+      "\ }
 
 let g:which_key_map.u = {
       \ 'name' : '+util' ,
