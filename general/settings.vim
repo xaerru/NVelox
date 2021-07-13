@@ -58,6 +58,9 @@ autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
 let g:tex_flavor = 'latex'
 let g:highlightedyank_highlight_duration = 300
 
+" Remove trailing
+command! -range=% RemoveTrailing <line1>,<line2>s/\s\+$//e
+
 " Search Settings
 set hlsearch " Highlight words found using the search
 
