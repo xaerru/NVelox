@@ -55,3 +55,6 @@ tnoremap <ESC> <C-d>:bd
 " Maximizer
 let g:maximizer_set_default_mapping = 1
 let g:maximizer_default_mapping_key = '<F3>'
+
+" Save
+nnoremap <silent><leader>s :write <bar> edit <bar> TSBufEnable highlight<CR>
