@@ -33,19 +33,14 @@ Plug 'sbdchd/neoformat' " Code formatting
 Plug 'tpope/vim-fugitive' " Git support
 Plug 'mhinz/vim-signify' " Git Signs
 Plug 'tpope/vim-rhubarb' " Github support
-Plug 'junegunn/gv.vim' " Git commit browser
 
 "" Web dev
-Plug 'pangloss/vim-javascript' " JavaScript Highlight
-Plug 'leafgarland/typescript-vim' " TypeScript Highlight
-Plug 'peitalin/vim-jsx-typescript' " JSX and TSX Highlight
 Plug 'norcalli/nvim-colorizer.lua' " Colors
 
 "" Floaterm
 Plug 'voldikss/vim-floaterm' " Floating terminal windows
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy finder
 Plug 'junegunn/fzf.vim' " Fuzzy finder in vim
-Plug 'kevinhwang91/rnvimr', {'do': 'make sync'} " Ranger in vim
 
 "" Haskell
 Plug 'neovimhaskell/haskell-vim' " Syntax highlighting for Haskell
