@@ -31,6 +31,7 @@ Plug 'sbdchd/neoformat' " Code formatting
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' | " Git for nerdtree
             \ Plug 'ryanoasis/vim-devicons' " Icons
+Plug 'wakatime/vim-wakatime' " Wakatime
 
 "" Git
 Plug 'tpope/vim-fugitive' " Git support
