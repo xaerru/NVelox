@@ -9,6 +9,7 @@ endif
 call plug#begin('~/.vim/bundle')
 
 "" General
+Plug 'tweekmonster/startuptime.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " TreeSitter
 Plug 'mhinz/vim-startify' " Startup Page
 Plug 'nvim-lua/plenary.nvim' " Dependency for cphelper.vim
