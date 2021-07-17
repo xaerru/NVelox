@@ -23,7 +23,6 @@ Plug 'lukas-reineke/indent-blankline.nvim' " Indents
 Plug 'justinmk/vim-sneak' " Navigate faster
 Plug 'arcticicestudio/nord-vim' " Nord theme
 Plug 'vim-airline/vim-airline' " Status line
-Plug 'vim-syntastic/syntastic' " Syntax linting
 Plug 'ryanoasis/vim-devicons' " Icons
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " Markdowm preview
 Plug 'preservim/nerdcommenter' " Commenter
