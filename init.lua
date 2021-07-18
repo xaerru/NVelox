@@ -12,4 +12,5 @@ end
 
 require("general")
 require("plugins")
+require("plug_config")
 require("colors")
