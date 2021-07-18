@@ -1,25 +1,28 @@
 local M = {}
 
+local function set_true(value, to)
+    vim.opt[value] = true
+end
+
 local function set(value, to)
-    to = to or true
     vim.opt[value] = to
 end
 
-set "hidden"
-set "relativenumber"
-set "ruler"
-set "splitbelow"
-set "splitright"
-set "smarttab"
-set "expandtab"
-set "smartindent"
-set "autoindent"
-set "number"
-set "autoread"
-set "title"
-set "linebreak"
-set "termguicolors"
-set "hlsearch"
+set_true "hidden"
+set_true "relativenumber"
+set_true "ruler"
+set_true "splitbelow"
+set_true "splitright"
+set_true "smarttab"
+set_true "expandtab"
+set_true "smartindent"
+set_true "autoindent"
+set_true "number"
+set_true "autoread"
+set_true "title"
+set_true "linebreak"
+set_true "termguicolors"
+set_true "hlsearch"
 
 set("wrap", false)
 set("showmode", false)
@@ -41,6 +44,5 @@ set("formatoptions", vim.opt.formatoptions - {"cro"})
 set("clipboard", "unnamedplus")
 set("scrolloff", 5)
 set("inccommand", "nosplit")
-set("list")
 
 return M
