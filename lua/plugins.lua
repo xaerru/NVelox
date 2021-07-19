@@ -1,6 +1,8 @@
 return {
   {"tweekmonster/startuptime.vim"},
 
+  {"folke/which-key.nvim"},
+
   {"tpope/vim-surround"},
 
   {"steelsojka/pears.nvim"},
