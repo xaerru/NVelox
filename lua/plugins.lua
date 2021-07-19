@@ -21,5 +21,6 @@ return {
 
   {
     "arcticicestudio/nord-vim",
+    event = 'ColorSchemePre'
   },
 }
