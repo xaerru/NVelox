@@ -20,8 +20,6 @@ return {
     requires = {"kyazdani42/nvim-web-devicons", opt = true}
   },
 
-  {"akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons"},
-
   {
     "arcticicestudio/nord-vim",
     event = "ColorSchemePre"
