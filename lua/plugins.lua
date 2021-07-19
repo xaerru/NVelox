@@ -1,14 +1,9 @@
 return {
+  {"tweekmonster/startuptime.vim"},
+
   {"tpope/vim-surround"},
 
-  {"steelsojka/pears.nvim", opt = true},
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    config = function()
-      require("core.treesitter").setup()
-    end,
-  },
+  {"steelsojka/pears.nvim"},
 
   {
     "airblade/vim-rooter",
@@ -24,7 +19,5 @@ return {
 
   {
     "arcticicestudio/nord-vim",
-    event = "ColorSchemePre"
   },
-  
 }
