@@ -1,6 +1,8 @@
 return {
   {"tpope/vim-surround"},
 
+  {"steelsojka/pears.nvim", opt = true},
+
   {
     "nvim-treesitter/nvim-treesitter",
     config = function()
