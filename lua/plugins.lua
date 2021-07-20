@@ -1,4 +1,6 @@
 return {
+  {"voldikss/vim-floaterm"},
+
   {"tweekmonster/startuptime.vim"},
 
   {"folke/which-key.nvim"},
