@@ -1,1 +1,1 @@
-vim.g.colors_name = 'nord'
+vim.g.colors_name = 'nordbuddy'
