@@ -1,7 +1,11 @@
+local nord = require('lualine.themes.nord')
+
+nord.insert.a.bg = "#A3BE8C"
+
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = 'nord',
+    theme = nord,
     component_separators = {'', ''},
     section_separators = {'', ''},
     disabled_filetypes = {}
