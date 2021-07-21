@@ -5,15 +5,10 @@ return {
 
   {"folke/which-key.nvim"},
 
-  {"tpope/vim-surround"},
-
   {"steelsojka/pears.nvim"},
 
   {
-    "airblade/vim-rooter",
-    config = function()
-      vim.g.rooter_silent_chdir = 1
-    end,
+    "ygm2/rooter.nvim"
   },
 
   {
@@ -22,7 +17,7 @@ return {
   },
 
   {
-    "arcticicestudio/nord-vim",
-    event = 'ColorSchemePre'
+    'kunzaatko/nord.nvim',
+    requires = {'rktjmp/lush.nvim'},
   },
 }

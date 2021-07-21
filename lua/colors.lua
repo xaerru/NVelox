@@ -1,1 +1,1 @@
-vim.cmd "colorscheme nord"
+vim.g.colors_name = 'nord'
