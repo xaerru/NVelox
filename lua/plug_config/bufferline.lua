@@ -31,17 +31,14 @@ require('bufferline').setup {
       guibg = '#3B4252'
     },
     fill = {
-      guibg = '#2E3440'
+      guibg = '#2E3440',
+      guifg = '#2E3440'
     },
     separator = {
-      guibg = '#2E3440',
-      guifg = '#2E3440'
+      guibg = '#3B4252',
+      guifg = '#3B4252'
     },
     separator_selected = {
-      guibg = '#2E3440',
-      guifg = '#2E3440'
-    },
-    separator_visible = {
       guibg = '#2E3440',
       guifg = '#2E3440'
     },
@@ -57,3 +54,4 @@ require('bufferline').setup {
     }
   }
 }
+-- #3B4252
