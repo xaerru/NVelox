@@ -2,7 +2,10 @@ local wk = require("which-key")
 
 wk.register({
   t = {
-    name = "test",
-    f = { "<cmd>echo 'hello'<CR>", "Find File" },
+    name = "terminal",
+    g = { "<CMD>FloatermNew --height=0.8 --width=0.8 --position=center lazygit<CR>", "lazygit" },
+    v = { "<CMD>FloatermNew --height=0.5 --width=0.5 --wintype=vsplit<CR>", "Vertical" },
+    h = { "<CMD>FloatermNew --height=0.5 --width=0.5 --wintype=split<CR>", "Horizontal" },
+    f = { "<CMD>FloatermNew --height=40 --width=0.99<CR>", "Full" },
   },
 }, { prefix = "<leader>" })
