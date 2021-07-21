@@ -1,4 +1,6 @@
 return {
+  {"akinsho/nvim-bufferline.lua"},
+
   {"voldikss/vim-floaterm"},
 
   {"tweekmonster/startuptime.vim"},
