@@ -16,8 +16,5 @@ return {
     requires = {"kyazdani42/nvim-web-devicons", opt = true}
   },
 
-  {
-    'kunzaatko/nord.nvim',
-    requires = {'rktjmp/lush.nvim'},
-  },
+  {"maaslalani/nordbuddy"}
 }
