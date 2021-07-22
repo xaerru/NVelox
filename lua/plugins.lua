@@ -27,5 +27,7 @@ return {
 
   {"preservim/nerdcommenter"},
 
-  {"sbdchd/neoformat"}
+  {"sbdchd/neoformat"},
+
+  {"nvim-treesitter/nvim-treesitter"}
 }
