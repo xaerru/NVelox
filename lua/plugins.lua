@@ -16,9 +16,7 @@ return {
 
   {"steelsojka/pears.nvim"},
 
-  {
-    "ygm2/rooter.nvim"
-  },
+  {"ygm2/rooter.nvim"},
 
   {
     "hoob3rt/lualine.nvim",
