@@ -1,14 +1,14 @@
-require('bufferline').setup {
+require("bufferline").setup {
   options = {
     numbers = "none",
     number_style = "", -- buffer_id at index 1, ordinal at index 2
     mappings = false,
-    indicator_icon = '▎',
-    buffer_close_icon = '',
-    modified_icon = '●',
-    close_icon = '',
-    left_trunc_marker = '',
-    right_trunc_marker = '',
+    indicator_icon = "▎",
+    buffer_close_icon = "",
+    modified_icon = "●",
+    close_icon = "",
+    left_trunc_marker = "",
+    right_trunc_marker = "",
     max_name_length = 18,
     max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
     tab_size = 18,
@@ -24,33 +24,33 @@ require('bufferline').setup {
     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
     enforce_regular_tabs = false,
     always_show_bufferline = true,
-    sort_by = 'id'  
+    sort_by = "id"
   },
   highlights = {
     background = {
-      guibg = '#3B4252'
+      guibg = "#3B4252"
     },
     fill = {
-      guibg = '#2E3440',
-      guifg = '#2E3440'
+      guibg = "#2E3440",
+      guifg = "#2E3440"
     },
     separator = {
-      guibg = '#3B4252',
-      guifg = '#3B4252'
+      guibg = "#3B4252",
+      guifg = "#3B4252"
     },
     separator_selected = {
-      guibg = '#2E3440',
-      guifg = '#2E3440'
+      guibg = "#2E3440",
+      guifg = "#2E3440"
     },
     indicator_selected = {
-      guibg = '#2E3440',
-      guifg = '#2E3440'
+      guibg = "#2E3440",
+      guifg = "#2E3440"
     },
     modified = {
-      guibg = '#3B4252'
+      guibg = "#3B4252"
     },
     buffer_visible = {
-      guifg = '#C9CED7',
+      guifg = "#C9CED7",
     }
   }
 }
