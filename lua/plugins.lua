@@ -1,9 +1,9 @@
 return {
-  {'wbthomason/packer.nvim'},
+  {"wbthomason/packer.nvim"},
 
   {
-    'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    "nvim-telescope/telescope.nvim",
+    requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
   },
 
   {"akinsho/nvim-bufferline.lua"},
@@ -25,5 +25,7 @@ return {
 
   {"maaslalani/nordbuddy"},
 
-  {"preservim/nerdcommenter"}
+  {"preservim/nerdcommenter"},
+
+  {"sbdchd/neoformat"}
 }
