@@ -25,5 +25,7 @@ return {
     requires = {"kyazdani42/nvim-web-devicons", opt = true}
   },
 
-  {"maaslalani/nordbuddy"}
+  {"maaslalani/nordbuddy"},
+
+  {"preservim/nerdcommenter"}
 }
