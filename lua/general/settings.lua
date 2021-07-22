@@ -25,6 +25,7 @@ set_true "termguicolors"
 set_true "hlsearch"
 
 set("wrap", false)
+set("signcolumn", "yes")
 set("showmode", false)
 set("encoding", "utf-8")
 set("fileencoding", "utf-8")

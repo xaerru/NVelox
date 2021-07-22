@@ -29,5 +29,7 @@ return {
 
   {"sbdchd/neoformat"},
 
-  {"nvim-treesitter/nvim-treesitter"}
+  {"nvim-treesitter/nvim-treesitter"},
+
+  {"lewis6991/gitsigns.nvim"}
 }
