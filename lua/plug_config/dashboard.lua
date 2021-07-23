@@ -15,3 +15,9 @@ g.dashboard_custom_header = {
   "                                          ",
   "                                          ",
 }
+
+g.dashboard_custom_section = {
+  a = {description = {"  Find File                 SPC f f"}, command = "Telescope find_files"},
+  c = {description = {"  Find Word                 SPC f w"}, command = "Telescope live_grep"},
+  f = {description = {"  Load Last Session         SPC s l"}, command = "SessionLoad"}
+}
