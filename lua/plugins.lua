@@ -1,9 +1,12 @@
 return {
-  {"wbthomason/packer.nvim"},
+  {
+    "wbthomason/packer.nvim",
+    event = "VimEnter"
+  },
 
   {
     "nvim-telescope/telescope.nvim",
-    requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
+    requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}},
   },
 
   {"akinsho/nvim-bufferline.lua"},
@@ -31,5 +34,7 @@ return {
 
   {"nvim-treesitter/nvim-treesitter"},
 
-  {"lewis6991/gitsigns.nvim"}
+  {"lewis6991/gitsigns.nvim"},
+
+  {"lukas-reineke/indent-blankline.nvim"}
 }
