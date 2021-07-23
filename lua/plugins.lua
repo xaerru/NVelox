@@ -51,7 +51,7 @@ return {
 
     {
       "nvim-lua/plenary.nvim",
-      event="BufRead"
+      event="BufWinEnter"
     },
 
     {
@@ -61,7 +61,7 @@ return {
 
     {
       "nvim-telescope/telescope.nvim",
-      cmd = "Telescope",
+      after = "packer.nvim",
       config = function()
         require("plug_config.telescope")
       end
@@ -72,6 +72,14 @@ return {
       after = "plenary.nvim",
       config = function()
         require("plug_config.gitsigns")
+      end
+    },
+
+    {
+      "glepnir/dashboard-nvim",
+      after = "packer.nvim",
+      setup = function()
+        require("plug_config.dashboard")
       end
     },
 
