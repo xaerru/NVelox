@@ -1,20 +1,20 @@
 local g = vim.g
 
 g.neoformat_rust_rustfmt = {
-	exe = "rustfmt",
-	args = { "--edition 2018" },
-	stdin = true,
+    exe = "rustfmt",
+    args = { "--edition 2018" },
+    stdin = true,
 }
 
 g.neoformat_c_clangformat = {
-	exe = "clang-format",
-	stdin = true,
+    exe = "clang-format",
+    stdin = true,
 }
 
 g.neoformat_cpp_clangformat = {
-	exe = "clang-format",
-	args = { "--style='{BasedOnStyle: chromium, IndentWidth: 4}'" },
-	stdin = true,
+    exe = "clang-format",
+    args = { "--style='{BasedOnStyle: chromium, IndentWidth: 4}'" },
+    stdin = true,
 }
 
 g.neoformat_enabled_rust = { "rustfmt" }

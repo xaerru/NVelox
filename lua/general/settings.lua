@@ -1,11 +1,11 @@
 local M = {}
 
 local function set_true(value, to)
-	vim.opt[value] = true
+    vim.opt[value] = true
 end
 
 local function set(value, to)
-	vim.opt[value] = to
+    vim.opt[value] = to
 end
 
 set_true("hidden")
@@ -46,14 +46,14 @@ set("clipboard", "unnamedplus")
 set("scrolloff", 5)
 set("inccommand", "nosplit")
 set(
-	"listchars",
-	table.concat({
-		"eol:↲",
-		"trail:•",
-		"extends:❯",
-		"precedes:❮",
-		"nbsp:_",
-	}, ",")
+    "listchars",
+    table.concat({
+        "eol:↲",
+        "trail:•",
+        "extends:❯",
+        "precedes:❮",
+        "nbsp:_",
+    }, ",")
 )
 
 -- Persistent undo
