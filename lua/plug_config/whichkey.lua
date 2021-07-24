@@ -1,8 +1,10 @@
 local wk = require("which-key")
 
 wk.register({
-  ["f"] = {"<CMD>Neoformat | write<CR>", "Format"}
-}, { prefix = "<leader>"})
+  ["<leader>f"] = {"<CMD>Neoformat | write<CR>", "Format"},
+  ["]c"] = "Next Git Hunk",
+  ["[c"] = "Previous Git Hunk",
+})
 
 wk.register({
   t = {
