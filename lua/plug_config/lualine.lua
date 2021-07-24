@@ -7,7 +7,7 @@ local function git()
   if g == nil then
     return nil
   else
-    return string.format("+%s ~%s -%s", g.added, g.changed, g.removed)
+    return string.format("+%s ~%s -%s  %s", g.added, g.changed, g.removed, g.head)
   end
 end
 
