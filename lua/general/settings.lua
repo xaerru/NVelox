@@ -45,6 +45,16 @@ set("timeoutlen", 500)
 set("clipboard", "unnamedplus")
 set("scrolloff", 5)
 set("inccommand", "nosplit")
+set(
+	"listchars",
+	table.concat({
+		"eol:↲",
+		"trail:•",
+		"extends:❯",
+		"precedes:❮",
+		"nbsp:_",
+	}, ",")
+)
 
 -- Persistent undo
 -- mkdir $HOME/.vim/undo
@@ -59,13 +69,5 @@ vim.cmd([[autocmd BufWinEnter * :set formatoptions-=c formatoptions-=r formatopt
 
 -- Auto remove trailing space
 vim.cmd([[autocmd BufWritePre * %s/\s\+$//e]])
-
-vim.wo.listchars = table.concat({
-	"eol:↲",
-	"trail:•",
-	"extends:❯",
-	"precedes:❮",
-	"nbsp:_",
-}, ",")
 
 return M
