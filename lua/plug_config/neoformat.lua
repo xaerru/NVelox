@@ -3,7 +3,7 @@ local g = vim.g
 vim.cmd([[
 augroup fmt
   autocmd!
-  au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
+  au BufWritePre * if &modified | try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry | endif
 augroup END
 ]])
 
