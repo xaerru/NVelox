@@ -8,7 +8,6 @@ local function git()
     return nil
   else
     return string.format("+%s ~%s -%s", g.added, g.changed, g.removed)
-      --return tostring(g.added) .. tostring(g.changed) .. tostring(g.removed)
   end
 end
 
