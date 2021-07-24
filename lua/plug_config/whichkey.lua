@@ -1,7 +1,7 @@
 local wk = require("which-key")
 
 wk.register({
-    ["s"] = {"<CMD>Neoformat | write<CR>", "Format"}
+  ["s"] = {"<CMD>Neoformat | write<CR>", "Format"}
 }, { prefix = "<leader>"})
 
 wk.register({
