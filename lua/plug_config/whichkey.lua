@@ -82,7 +82,18 @@ wk.register({
 wk.register({
   b = {
     name = "buffer",
-    d = {"<CMD>bd<CR>", "Delete"},
-    d = {"<CMD>bd<CR>", "Delete"},
+    q = {"<CMD>bd<CR>", "Delete"},
+    l = {"<CMD>BufferLineMoveNext<CR>", "Move Right"},
+    h = {"<CMD>BufferLineMovePrev<CR>", "Move Left"},
+    p = {"<CMD>BufferLinePick<CR>", "Pick buffer"},
+    c = {"<CMD>BufferLinePickClose<CR>", "Close buffer"},
+    d = {"<CMD>%d<CR>", "Delete Buffer Content"},
+    y = {"<CMD>%y<CR>", "Copy Buffer Content"},
+    s = {
+      name = "Sort By",
+      e = {"<CMD>BufferLineSortByExtension<CR>", "Extension"},
+      d = {"<CMD>BufferLineSortByDirectory<CR>", "Directory"},
+      r = {"<CMD>BufferLineSortByRelativeDirectory<CR>", "Relative Directory"},
+    }
   }
-}, {prefix = "<leader>", mode = "v"})
+}, {prefix = "<leader>"})
