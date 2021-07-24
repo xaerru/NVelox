@@ -8,7 +8,7 @@ map("i", "jk", "<ESC>", options)
 map("i", "kj", "<ESC>", options)
 
 -- Move one character ahead in insert mode
-map("i", "jj", "<ESC>la", options)
+map("i", "jj", "<Right>", options)
 
 -- Navigate between buffers
 map("n", "<TAB>", ":bnext<CR>", silent_options)
