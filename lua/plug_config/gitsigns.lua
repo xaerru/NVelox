@@ -53,8 +53,8 @@ require('gitsigns').setup {
     ['n <leader>gb'] = '<cmd>lua require"gitsigns".blame_line(true)<CR>',
 
     -- Text objects
-    ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
-    ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
+    ['o ih'] = {silent = true, ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'},
+    ['x ih'] = {silent = true, ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'},
   },
   use_decoration_api = false,
 }
