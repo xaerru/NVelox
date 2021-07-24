@@ -84,6 +84,11 @@ return {
     },
 
     {
+      "phaazon/hop.nvim",
+      after = "nordbuddy"
+    },
+
+    {
       "steelsojka/pears.nvim",
       config = function()
         require("plug_config.pears")
