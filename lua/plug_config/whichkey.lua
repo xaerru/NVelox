@@ -21,3 +21,23 @@ wk.register({
     o = { "<CMD>Telescope oldfiles<CR>", "Old files" },
   },
 }, { prefix = "<leader>" })
+
+wk.register({
+  g = {
+    name = "git",
+    s = 'Stage Hunk',
+    u = 'Undo Stage Hunk',
+    r = 'Reset Hunk',
+    R = 'Reset Buffer',
+    p = 'Preview Hunk',
+    b = 'Blame Line',
+  }
+}, {prefix = "<leader>"})
+
+wk.register({
+  g = {
+    name = "git",
+    s = 'Stage Hunk',
+    r = 'Reset Hunk',
+  }
+}, {prefix = "<leader>", mode = "v"})
