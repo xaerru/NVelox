@@ -16,6 +16,14 @@ return {
     },
 
     {
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+            require("plug_config.colorizer")
+        end,
+        after = "nvim-treesitter"
+    },
+
+    {
         "Pocco81/AutoSave.nvim",
         config = function()
             require("plug_config.autosave")
