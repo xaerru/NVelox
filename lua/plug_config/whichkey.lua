@@ -18,5 +18,6 @@ wk.register({
     g = { "<CMD>Telescope git_files<CR>", "Git Files" },
     w = { "<CMD>Telescope grep_string<CR>", "Search string under cursor" },
     r = { "<CMD>Telescope live_grep<CR>", "Search string" },
+    o = { "<CMD>Telescope oldfiles<CR>", "Old files" },
   },
 }, { prefix = "<leader>" })
