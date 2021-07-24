@@ -11,8 +11,8 @@ map("i", "kj", "<ESC>", options)
 map("i", "jj", "<Right>", options)
 
 -- Navigate between buffers
-map("n", "<TAB>", ":bnext<CR>", silent_options)
-map("n", "C-<TAB>", ":bprevious<CR>", silent_options)
+map("n", "<TAB>", ":BufferLineCycleNext<CR>", silent_options)
+map("n", "C-<TAB>", ":BufferLineCyclePrev<CR>", silent_options)
 
 -- Better tabs
 map("v", "<", "<gv", options)
