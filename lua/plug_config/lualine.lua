@@ -1,6 +1,8 @@
 local nord = require("lualine.themes.nord")
 
 nord.insert.a.bg = "#A3BE8C"
+nord.normal.b.bg = "#81A1C1"
+nord.normal.b.fg = "#3B4252"
 
 local function git()
   local g = vim.b.gitsigns_status_dict
@@ -23,15 +25,6 @@ require"lualine".setup {
     lualine_x = {"filetype"},
     lualine_y = {},
     lualine_z = {"location"}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {"filename"},
-    lualine_x = {"location"},
-    lualine_y = {},
-
-    lualine_z = {}
   },
   tabline = {},
   extensions = {}
