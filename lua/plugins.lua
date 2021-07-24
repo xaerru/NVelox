@@ -16,6 +16,12 @@ return {
     },
 
     {
+        "p00f/cphelper.nvim",
+        rocks = 'http',
+        after = "nordbuddy"
+    },
+
+    {
         "norcalli/nvim-colorizer.lua",
         config = function()
             require("plug_config.colorizer")
