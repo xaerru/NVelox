@@ -1,141 +1,148 @@
 return {
+  {
+    "wbthomason/packer.nvim",
+    event = "VimEnter"
+  },
 
-    {
-      "wbthomason/packer.nvim",
-      event = "VimEnter"
-    },
-
-    {
-      "maaslalani/nordbuddy",
-      config = function()
-        vim.cmd [[
+  {
+    "maaslalani/nordbuddy",
+    config = function()
+      vim.cmd [[
         colorscheme nordbuddy
         highlight Whitespace guifg=#434C5E
         ]]
-      end,
-      after = "packer.nvim"
-    },
+    end,
+    after = "packer.nvim"
+  },
 
-    {
-      "akinsho/nvim-bufferline.lua",
-      after = "nordbuddy",
-      config = function()
-        require "plug_config.bufferline"
-      end
-    },
+  {
+    "Pocco81/AutoSave.nvim",
+    after = "packer.nvim",
+    config = function()
+      require("plug_config.autosave")
+    end
+  },
 
-    {
-      "hoob3rt/lualine.nvim",
-      after = "nordbuddy",
-      config = function()
-        require("plug_config.lualine")
-      end
-    },
+  {
+    "akinsho/nvim-bufferline.lua",
+    after = "nordbuddy",
+    config = function()
+      require "plug_config.bufferline"
+    end
+  },
 
-    {
-      "nvim-treesitter/nvim-treesitter",
-      event = "BufRead",
-      config = function()
-        require("plug_config.treesitter")
-      end
-    },
+  {
+    "hoob3rt/lualine.nvim",
+    after = "nordbuddy",
+    config = function()
+      require("plug_config.lualine")
+    end
+  },
 
-    {
-      "sbdchd/neoformat",
-      config = function()
-        require("plug_config.neoformat")
-      end,
-    },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    event = "BufRead",
+    config = function()
+      require("plug_config.treesitter")
+    end
+  },
 
-    {
-      "kyazdani42/nvim-web-devicons",
-      after = "nordbuddy"
-    },
+  {
+    "sbdchd/neoformat",
+    config = function()
+      require("plug_config.neoformat")
+    end,
+  },
 
-    {
-      "nvim-lua/plenary.nvim",
-      event="BufWinEnter"
-    },
+  {
+    "kyazdani42/nvim-web-devicons",
+    after = "nordbuddy"
+  },
 
-    {
-      "nvim-lua/popup.nvim",
-      after = "plenary.nvim"
-    },
+  {
+    "nvim-lua/plenary.nvim",
+    event="BufWinEnter"
+  },
 
-    {
-      "nvim-telescope/telescope.nvim",
-      after = "nvim-web-devicons",
-      config = function()
-        require("plug_config.telescope")
-      end
-    },
+  {
+    "nvim-lua/popup.nvim",
+    after = "plenary.nvim"
+  },
 
-    {
-      "lewis6991/gitsigns.nvim",
-      after = "plenary.nvim",
-      config = function()
-        require("plug_config.gitsigns")
-      end
-    },
+  {
+    "nvim-telescope/telescope.nvim",
+    after = "nvim-web-devicons",
+    config = function()
+      require("plug_config.telescope")
+    end
+  },
 
-    {
-      "glepnir/dashboard-nvim",
-      after = "packer.nvim",
-      setup = function()
-        require("plug_config.dashboard")
-      end
-    },
+  {
+    "lewis6991/gitsigns.nvim",
+    after = "plenary.nvim",
+    config = function()
+      require("plug_config.gitsigns")
+    end
+  },
 
-    {
-      "phaazon/hop.nvim",
-      after = "nordbuddy"
-    },
+  {
+    "glepnir/dashboard-nvim",
+    after = "packer.nvim",
+    setup = function()
+      require("plug_config.dashboard")
+    end
+  },
 
-    {
-      "steelsojka/pears.nvim",
-      config = function()
-        require("plug_config.pears")
-      end
-    },
+  {
+    "phaazon/hop.nvim",
+    after = "nordbuddy"
+  },
 
-    {
-      "lukas-reineke/indent-blankline.nvim",
-      event = "BufRead",
-      setup = function()
-        require("plug_config.indentline")
-      end
-    },
+  {
+    "steelsojka/pears.nvim",
+    config = function()
+      require("plug_config.pears")
+    end
+  },
 
-    {
-      "voldikss/vim-floaterm",
-      config = function()
-        require("plug_config.floaterm")
-      end,
-      after = "which-key.nvim"
-    },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "BufRead",
+    setup = function()
+      require("plug_config.indentline")
+    end
+  },
 
-    {
-      "tweekmonster/startuptime.vim",
-      cmd = "StartupTime"
-    },
+  {
+    "voldikss/vim-floaterm",
+    config = function()
+      require("plug_config.floaterm")
+    end,
+    after = "which-key.nvim"
+  },
 
-    {
-      "folke/which-key.nvim",
-      event = "BufWinEnter",
-      config = function()
-        require("plug_config.whichkey")
-      end
-    },
+  {
+    "tweekmonster/startuptime.vim",
+    cmd = "StartupTime"
+  },
 
-    {
-      "ygm2/rooter.nvim",
-      config = function()
-        require("plug_config.rooter")
-      end
-    },
+  {
+    "folke/which-key.nvim",
+    event = "BufWinEnter",
+    config = function()
+      require("plug_config.whichkey")
+    end
+  },
 
-    {
-      "preservim/nerdcommenter",
-      after = "which-key.nvim"
-    },
+  {
+    "ygm2/rooter.nvim",
+    config = function()
+      require("plug_config.rooter")
+    end
+  },
+
+  {
+    "preservim/nerdcommenter",
+    after = "which-key.nvim"
+  },
 }
