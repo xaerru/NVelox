@@ -52,6 +52,7 @@ set_true "undofile"
 set("undodir", "/home/grvxs/.cache/nvim/undo")
 set("undolevels", 1000)
 set("undoreload", 10000)
+set("showbreak", "↪")
 
 -- Stop comments on newline
 vim.cmd [[autocmd BufWinEnter * :set formatoptions-=c formatoptions-=r formatoptions-=o]]
@@ -62,7 +63,7 @@ vim.cmd [[autocmd BufWritePre * %s/\s\+$//e]]
 vim.wo.listchars =
   table.concat(
     {
-      "eol:↴",
+      "eol:↲",
       "trail:•",
       "extends:❯",
       "precedes:❮",
@@ -70,6 +71,5 @@ vim.wo.listchars =
     },
     ","
   )
-vim.cmd[[autocmd ColorSchemePre * highlight Whitespace guifg=#434C5E]]
 
 return M
