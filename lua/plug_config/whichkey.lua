@@ -48,3 +48,14 @@ wk.register({
     h = "Git Hunk"
   },
 }, {mode = "o", prefix = ""})
+
+wk.register({
+  h = {
+    name = "hop",
+    w = {"<cmd>HopWord<cr>", "Word"},
+    l = {"<cmd>HopLine<cr>", "Line"},
+    c = {"<cmd>HopChar1<cr>", "Char1"},
+    v = {"<cmd>HopChar2<cr>", "Char2"},
+    p = {"<cmd>HopPattern<cr>", "Pattern"},
+  }
+}, {prefix = "<leader>"})
