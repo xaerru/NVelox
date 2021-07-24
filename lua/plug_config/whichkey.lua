@@ -21,6 +21,7 @@ wk.register({
     name = "telescope",
     p = { "<CMD>Telescope<CR>", "Telescope" },
     f = { "<CMD>Telescope find_files<CR>", "Find Files" },
+    h = { "<CMD>lua require('telescope.builtin').find_files({search_dirs = {'~/oss', '~/play', '~/learn', '~/cp'}})<CR>", "Find files home" },
     g = { "<CMD>Telescope git_files<CR>", "Git Files" },
     w = { "<CMD>Telescope grep_string<CR>", "Search string under cursor" },
     r = { "<CMD>Telescope live_grep<CR>", "Search string" },
