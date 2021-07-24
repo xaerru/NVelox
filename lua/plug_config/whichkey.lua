@@ -2,6 +2,7 @@ local wk = require("which-key")
 
 wk.register({
   ["<leader>f"] = {"<CMD>Neoformat | write<CR>", "Format"},
+  ["<leader><TAB>"] = {"<CMD>bprevious<CR>", "Previous Buffer"},
   ["]c"] = "Next Git Hunk",
   ["[c"] = "Previous Git Hunk",
 })
