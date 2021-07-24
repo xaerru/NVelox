@@ -8,7 +8,10 @@ return {
     {
       "maaslalani/nordbuddy",
       config = function()
-        vim.cmd "colorscheme nordbuddy"
+        vim.cmd [[
+        colorscheme nordbuddy
+        highlight Whitespace guifg=#434C5E
+        ]]
       end,
       after = "packer.nvim"
     },
