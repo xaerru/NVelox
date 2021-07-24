@@ -41,3 +41,10 @@ wk.register({
     r = 'Reset Hunk',
   }
 }, {prefix = "<leader>", mode = "v"})
+
+wk.register({
+  i = {
+    name = "inside",
+    h = "Git Hunk"
+  },
+}, {mode = "o", prefix = ""})
