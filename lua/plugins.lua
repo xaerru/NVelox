@@ -17,9 +17,11 @@ return {
 
   {
     "Pocco81/AutoSave.nvim",
-    after = "packer.nvim",
     config = function()
       require("plug_config.autosave")
+    end,
+    cond = function()
+      return vim.g.auto_save == true
     end
   },
 
