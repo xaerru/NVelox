@@ -32,7 +32,7 @@ require("bufferline").setup {
     },
     fill = {
       guibg = "#2E3440",
-      guifg = "#2E3440"
+      guifg = "#D8DEE9"
     },
     separator = {
       guibg = "#3B4252",
