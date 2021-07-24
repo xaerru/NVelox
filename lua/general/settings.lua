@@ -23,6 +23,7 @@ set_true "title"
 set_true "linebreak"
 set_true "termguicolors"
 set_true "hlsearch"
+set_true "list"
 
 set("wrap", false)
 set("signcolumn", "yes")
@@ -48,7 +49,7 @@ set("inccommand", "nosplit")
 -- Persistent undo
 -- mkdir $HOME/.vim/undo
 set_true "undofile"
-set("undodir", "$HOME/.config/nvim/undo")
+set("undodir", "/home/grvxs/.cache/nvim/undo")
 set("undolevels", 1000)
 set("undoreload", 10000)
 
@@ -58,5 +59,17 @@ vim.cmd [[autocmd BufWinEnter * :set formatoptions-=c formatoptions-=r formatopt
 -- Auto remove trailing space
 vim.cmd [[autocmd BufWritePre * %s/\s\+$//e]]
 
+vim.wo.listchars =
+  table.concat(
+    {
+      "eol:↴",
+      "trail:•",
+      "extends:❯",
+      "precedes:❮",
+      "nbsp:_",
+    },
+    ","
+  )
+vim.cmd[[autocmd ColorSchemePre * highlight Whitespace guifg=#434C5E]]
 
 return M
