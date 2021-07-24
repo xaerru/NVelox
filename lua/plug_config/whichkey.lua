@@ -59,3 +59,14 @@ wk.register({
     p = {"<cmd>HopPattern<cr>", "Pattern"},
   }
 }, {prefix = "<leader>"})
+
+wk.register({
+  h = {
+    name = "hop",
+    w = {"<cmd>HopWord<cr>", "Word"},
+    l = {"<cmd>HopLine<cr>", "Line"},
+    c = {"<cmd>HopChar1<cr>", "Char1"},
+    v = {"<cmd>HopChar2<cr>", "Char2"},
+    p = {"<cmd>HopPattern<cr>", "Pattern"},
+  }
+}, {prefix = "<leader>", mode = "v"})
