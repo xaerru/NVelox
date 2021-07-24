@@ -41,9 +41,9 @@ set("showtabline", 2)
 set("backspace", {"indent", "eol", "start"})
 set("updatetime", 300)
 set("timeoutlen", 500)
-set("formatoptions", vim.opt.formatoptions - {"cro"})
 set("clipboard", "unnamedplus")
 set("scrolloff", 5)
 set("inccommand", "nosplit")
+vim.cmd [[autocmd BufWinEnter * :set formatoptions-=c formatoptions-=r formatoptions-=o]]
 
 return M
