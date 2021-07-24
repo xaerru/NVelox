@@ -2,7 +2,7 @@ local wk = require("which-key")
 
 wk.register({
   ["<leader>f"] = {"<CMD>Neoformat | write<CR>", "Format"},
-  ["<leader><TAB>"] = {"<CMD>bprevious<CR>", "Previous Buffer"},
+  ["<leader><TAB>"] = {"<CMD>:BufferLineCyclePrev<CR>", "Previous Buffer"},
   ["]c"] = "Next Git Hunk",
   ["[c"] = "Previous Git Hunk",
 })
@@ -76,5 +76,13 @@ wk.register({
     c = {"<cmd>HopChar1<cr>", "Char1"},
     v = {"<cmd>HopChar2<cr>", "Char2"},
     p = {"<cmd>HopPattern<cr>", "Pattern"},
+  }
+}, {prefix = "<leader>", mode = "v"})
+
+wk.register({
+  b = {
+    name = "buffer",
+    d = {"<CMD>bd<CR>", "Delete"},
+    d = {"<CMD>bd<CR>", "Delete"},
   }
 }, {prefix = "<leader>", mode = "v"})
