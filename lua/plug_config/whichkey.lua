@@ -25,8 +25,8 @@ wk.register({
         p = { "<CMD>Telescope<CR>", "Telescope" },
         f = { "<CMD>Telescope find_files<CR>", "Find Files" },
         h = {
-            "<CMD>lua require('telescope.builtin').find_files({search_dirs = {'~/oss', '~/play', '~/learn', '~/cp'}})<CR>",
-            "Find files home",
+            [[<CMD>lua require("telescope.builtin").find_files({search_dirs = {"~/oss", "~/play", "~/learn", "~/cp"}})<CR>]],
+            "Find Files Home",
         },
         g = { "<CMD>Telescope git_files<CR>", "Git Files" },
         w = { "<CMD>Telescope grep_string<CR>", "Search string under cursor" },
@@ -130,12 +130,25 @@ wk.register({
         l = { "<C-W>l", "window-right" },
         k = { "<C-W>k", "window-up" },
         H = { "<C-W>5<", "expand-window-left" },
-        J = { ":resize +5", "expand-window-below" },
+        J = { "<CMD>resize +5<CR>", "expand-window-below" },
         L = { "<C-W>5>", "expand-window-right" },
-        K = { ":resize -5", "expand-window-up" },
+        K = { "<CMD>resize -5<CR>", "expand-window-up" },
         ["="] = { "<C-W>=", "balance-window" },
         s = { "<C-W>s", "split-window-below" },
         v = { "<C-W>v", "split-window-below" },
+    },
+}, {
+    prefix = "<leader>",
+})
+
+wk.register({
+    o = {
+        name = "cphelper",
+        d = { "<CMD>CphDelete<CR>", "Delete testcases" },
+        e = { "<CMD>CphEdit<CR>", "Edit/Add testcases" },
+        r = { "<CMD>CphReceive<CR>", "Receive problem" },
+        t = { "<CMD>CphTest<CR>", "Run tests" },
+        i = { "<CMD>CphRetest<CR>", "Run tests without recompiling" },
     },
 }, {
     prefix = "<leader>",
