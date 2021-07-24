@@ -44,6 +44,19 @@ set("timeoutlen", 500)
 set("clipboard", "unnamedplus")
 set("scrolloff", 5)
 set("inccommand", "nosplit")
+
+-- Persistent undo
+-- mkdir $HOME/.vim/undo
+set_true "undofile"
+set("undodir", "$HOME/.config/nvim/undo")
+set("undolevels", 1000)
+set("undoreload", 10000)
+
+-- Stop comments on newline
 vim.cmd [[autocmd BufWinEnter * :set formatoptions-=c formatoptions-=r formatoptions-=o]]
+
+-- Auto remove trailing space
+vim.cmd [[autocmd BufWritePre * %s/\s\+$//e]]
+
 
 return M
