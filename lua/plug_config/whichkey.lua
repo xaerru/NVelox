@@ -1,6 +1,10 @@
 local wk = require("which-key")
 
 wk.register({
+    ["s"] = {"<CMD>Neoformat | write<CR>", "Format"}
+}, { prefix = "<leader>"})
+
+wk.register({
   t = {
     name = "terminal",
     g = { "<CMD>FloatermNew --height=0.9 --width=0.9 --position=center lazygit<CR>", "lazygit" },
