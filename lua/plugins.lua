@@ -16,8 +16,8 @@ return {
 
     {
         "p00f/cphelper.nvim",
-        rocks = 'http',
-        after = "nordbuddy"
+        rocks = "http",
+        after = "nordbuddy",
     },
 
     {
@@ -25,7 +25,7 @@ return {
         config = function()
             require("plug_config.colorizer")
         end,
-        after = "nvim-treesitter"
+        after = "nvim-treesitter",
     },
 
     {
@@ -60,11 +60,6 @@ return {
         config = function()
             require("plug_config.treesitter")
         end,
-    },
-
-    {
-        "nvim-treesitter/playground",
-        after = "nvim-treesitter"
     },
 
     {
