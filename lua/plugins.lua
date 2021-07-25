@@ -9,7 +9,6 @@ return {
         config = function()
             vim.cmd([[
         colorscheme nordbuddy
-        highlight Whitespace guifg=#434C5E
         ]])
         end,
         after = "packer.nvim",
@@ -61,6 +60,11 @@ return {
         config = function()
             require("plug_config.treesitter")
         end,
+    },
+
+    {
+        "nvim-treesitter/playground",
+        after = "nvim-treesitter"
     },
 
     {
