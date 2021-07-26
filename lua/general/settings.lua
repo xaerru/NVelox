@@ -43,7 +43,8 @@ set("backspace", { "indent", "eol", "start" })
 set("updatetime", 300)
 set("timeoutlen", 500)
 set("clipboard", "unnamedplus")
-set("scrolloff", 5)
+set("scrolloff", 8)
+set("sidescrolloff", 8)
 set("inccommand", "nosplit")
 set(
     "listchars",
