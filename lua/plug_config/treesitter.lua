@@ -2,6 +2,7 @@ require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "c",
         "cpp",
+        "python",
         "rust",
         "python",
         "lua",
@@ -15,9 +16,13 @@ require("nvim-treesitter.configs").setup({
         "typescript",
         "toml",
         "html",
+        "css",
     },
     highlight = {
         enable = true, -- false will disable the whole extension
+    },
+    autopairs = {
+        enable = true,
     },
     indent = { enable = true },
     -- TODO seems to be broken

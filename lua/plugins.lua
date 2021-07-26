@@ -119,9 +119,10 @@ return {
     },
 
     {
-        "steelsojka/pears.nvim",
+        "windwp/nvim-autopairs",
+        after = "nvim-treesitter",
         config = function()
-            require("plug_config.pears")
+            require("plug_config.autopairs")
         end,
     },
 
