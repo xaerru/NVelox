@@ -70,6 +70,13 @@ wk.register({
 }, { mode = "o", prefix = "" })
 
 wk.register({
+    i = {
+        name = "inside",
+        h = "Git Hunk",
+    },
+}, { mode = "x", prefix = "" })
+
+wk.register({
     h = {
         name = "hop",
         w = { "<cmd>HopWord<cr>", "Word" },
