@@ -76,7 +76,7 @@ return {
 
     {
         "kyazdani42/nvim-tree.lua",
-        after = "nvim-web-devicons"
+        after = "nvim-web-devicons",
     },
 
     {
@@ -156,7 +156,10 @@ return {
 
     {
         "mfussenegger/nvim-ts-hint-textobject",
-        after = "nvim-treesitter"
+        config = function()
+            require("tsht").config.hint_keys = { "h", "j", "f", "d", "n", "v", "s", "l", "a" }
+        end,
+        after = "nvim-treesitter",
     },
 
     {

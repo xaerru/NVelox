@@ -23,3 +23,7 @@ map("n", "<CR>", ":noh<CR>", silent_options)
 
 -- Exit the terminal
 map("t", "<ESC>", "<C-d>:bd", options)
+
+-- nvim-ts-hint-textobject
+map("o", "m", ":<C-U>lua require('tsht').nodes()<CR>", silent_options)
+map("v", "m", ":lua require('tsht').nodes()<CR>", silent_options)
