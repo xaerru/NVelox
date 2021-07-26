@@ -164,6 +164,16 @@ return {
     },
 
     {
+        "mizlan/iswap.nvim",
+        config = function()
+            require("iswap").setup({
+                keys = "hjfdnvsla",
+            })
+        end,
+        after = "nvim-treesitter"
+    },
+
+    {
         "ygm2/rooter.nvim",
         config = function()
             require("plug_config.rooter")

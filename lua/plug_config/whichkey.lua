@@ -84,6 +84,7 @@ wk.register({
         c = { "<cmd>HopChar1<cr>", "Char1" },
         v = { "<cmd>HopChar2<cr>", "Char2" },
         p = { "<cmd>HopPattern<cr>", "Pattern" },
+        s = { "<cmd>ISwapWith<cr>", "Swap arguments" },
     },
 }, {
     prefix = "<leader>",
