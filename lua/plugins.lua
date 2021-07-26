@@ -134,9 +134,9 @@ return {
     },
 
     {
-        "voldikss/vim-floaterm",
+        "~/oss/nvim-toggleterm.lua",
         config = function()
-            require("plug_config.floaterm")
+            require("plug_config.terminal")
         end,
         after = "which-key.nvim",
     },
