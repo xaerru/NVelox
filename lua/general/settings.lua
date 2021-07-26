@@ -46,6 +46,7 @@ set("clipboard", "unnamedplus")
 set("scrolloff", 8)
 set("sidescrolloff", 8)
 set("inccommand", "nosplit")
+set("colorcolumn","99999")
 set(
     "listchars",
     table.concat({
