@@ -75,6 +75,11 @@ return {
     },
 
     {
+        "kyazdani42/nvim-tree.lua",
+        after = "nvim-web-devicons"
+    },
+
+    {
         "nvim-lua/plenary.nvim",
         event = "BufWinEnter",
     },
