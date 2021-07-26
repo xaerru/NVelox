@@ -24,6 +24,8 @@ set_true("linebreak")
 set_true("termguicolors")
 set_true("hlsearch")
 set_true("list")
+set_true("smartcase")
+set_true("ignorecase")
 
 set("wrap", false)
 set("signcolumn", "yes")
