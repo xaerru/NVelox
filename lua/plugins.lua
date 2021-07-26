@@ -155,6 +155,11 @@ return {
     },
 
     {
+        "mfussenegger/nvim-ts-hint-textobject",
+        after = "nvim-treesitter"
+    },
+
+    {
         "ygm2/rooter.nvim",
         config = function()
             require("plug_config.rooter")
