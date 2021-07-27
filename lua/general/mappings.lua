@@ -7,6 +7,9 @@ silent_options = { noremap = true, silent = true }
 map("i", "jk", "<ESC>", options)
 map("i", "kj", "<ESC>", options)
 
+-- Rust, C, C++
+map("i", ";;", "<ESC>A;", options)
+
 -- Move one character ahead in insert mode
 map("i", "jj", "<Right>", options)
 
