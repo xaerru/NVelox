@@ -34,10 +34,10 @@ return {
         config = function()
             require("plug_config.compe")
         end,
-        wants = "LuaSnip",
+        wants = "vim-vsnip",
         requires = {
             {
-                "L3MON4D3/LuaSnip",
+                "hrsh7th/vim-vsnip",
                 wants = "friendly-snippets",
                 event = "InsertCharPre",
                 config = function()
