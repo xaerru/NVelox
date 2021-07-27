@@ -29,6 +29,29 @@ return {
     },
 
     {
+        "hrsh7th/nvim-compe",
+        event = "InsertEnter",
+        config = function()
+            require("plug_config.compe")
+        end,
+        wants = "LuaSnip",
+        requires = {
+            {
+                "L3MON4D3/LuaSnip",
+                wants = "friendly-snippets",
+                event = "InsertCharPre",
+                config = function()
+                    --require("plugins.luasnip")
+                end,
+            },
+            {
+                "rafamadriz/friendly-snippets",
+                event = "InsertCharPre",
+            },
+        },
+    },
+
+    {
         "Pocco81/AutoSave.nvim",
         config = function()
             require("plug_config.autosave")
@@ -123,7 +146,7 @@ return {
 
     {
         "windwp/nvim-autopairs",
-        after = "nvim-treesitter",
+        after = "nvim-compe",
         config = function()
             require("plug_config.autopairs")
         end,
