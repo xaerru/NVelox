@@ -24,14 +24,6 @@ map("n", "<CR>", ":noh<CR>", silent_options)
 -- Exit the terminal
 map("t", "<ESC>", "<C-d>:bd", options)
 
--- Don't copy deleted text
-map("n", "dd", [=[ "_dd ]=], options)
-map("v", "dd", [=[ "_dd ]=], options)
-map("v", "x", [=[ "_x ]=], options)
-
--- Don't copy the replaced text after pasting in visual mode
-map("v", "p", '"_dP', opt)
-
 -- nvim-ts-hint-textobject
 map("o", "m", ":<C-U>lua require('tsht').nodes()<CR>", silent_options)
 map("v", "m", ":lua require('tsht').nodes()<CR>", silent_options)
@@ -87,3 +79,4 @@ map("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
 map("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
 map("i", "<CR>", "v:lua.completions()", { expr = true })
+map("i", "<C-Space>", "compe#complete()", { noremap = true, silent = true, expr = true })
