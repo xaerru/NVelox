@@ -113,8 +113,8 @@ wk.register({
         h = { "<CMD>BufferLineMovePrev<CR>", "Move Left" },
         p = { "<CMD>BufferLinePick<CR>", "Pick buffer" },
         c = { "<CMD>BufferLinePickClose<CR>", "Close buffer" },
-        d = { "<CMD>%d<CR>", "Delete Buffer Content" },
-        y = { "<CMD>%y<CR>", "Copy Buffer Content" },
+        d = { "<CMD>silent %d<CR>", "Delete Buffer Content" , silent = true},
+        y = { "<CMD>silent %y<CR>", "Copy Buffer Content" },
         s = {
             name = "Sort By",
             e = { "<CMD>BufferLineSortByExtension<CR>", "Extension" },
