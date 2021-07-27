@@ -138,7 +138,7 @@ return {
     },
 
     {
-        "~/oss/nvim-toggleterm.lua",
+        "akinsho/nvim-toggleterm.lua",
         config = function()
             require("plug_config.terminal")
         end,
