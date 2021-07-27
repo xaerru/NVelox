@@ -17,7 +17,7 @@ require("compe").setup({
         calc = { kind = "   (Calc)" },
         vsnip = { kind = "   (Snippet)" },
         nvim_lsp = { kind = "   (LSP)" },
-        nvim_lua = false,
+        nvim_lua = { menu = "[]" },
         spell = { kind = "   (Spell)" },
         tags = false,
         vim_dadbod_completion = false,
