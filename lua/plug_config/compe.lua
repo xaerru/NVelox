@@ -1,4 +1,4 @@
-require("compe").setup {
+require("compe").setup({
     enabled = true,
     autocomplete = true,
     debug = false,
@@ -12,9 +12,18 @@ require("compe").setup {
     max_menu_width = 100,
     documentation = true,
     source = {
-        buffer = {kind = "﬘", true},
-        luasnip = {kind = "﬌", true},
-        nvim_lsp = true,
-        nvim_lua = true
-    }
-}
+        path = { kind = "   (Path)" },
+        buffer = { kind = "   (Buffer)" },
+        calc = { kind = "   (Calc)" },
+        vsnip = { kind = "   (Snippet)" },
+        nvim_lsp = { kind = "   (LSP)" },
+        nvim_lua = false,
+        spell = { kind = "   (Spell)" },
+        tags = false,
+        vim_dadbod_completion = false,
+        snippets_nvim = false,
+        ultisnips = false,
+        treesitter = false,
+        emoji = { kind = " ﲃ  (Emoji)", filetypes = { "markdown", "text" } },
+    },
+})

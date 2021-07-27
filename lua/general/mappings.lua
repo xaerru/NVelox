@@ -45,6 +45,8 @@ end
 _G.tab_complete = function()
     if vim.fn.pumvisible() == 1 then
         return t("<C-n>")
+    elseif vim.fn.call("vsnip#available", { 1 }) == 1 then
+        return t("<Plug>(vsnip-expand-or-jump)")
     elseif check_back_space() then
         return t("<Tab>")
     else
@@ -62,21 +64,12 @@ _G.s_tab_complete = function()
     end
 end
 
-function _G.completions()
-    local npairs = require("nvim-autopairs")
-
-    if vim.fn.pumvisible() == 1 then
-        if vim.fn.complete_info()["selected"] ~= -1 then
-            return vim.fn["compe#confirm"]("<CR>")
-        end
-    end
-    return npairs.check_break_line_char()
-end
-
---  nvim-compe mappings
 map("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
 map("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
 map("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
-map("i", "<CR>", "v:lua.completions()", { expr = true })
+
 map("i", "<C-Space>", "compe#complete()", { noremap = true, silent = true, expr = true })
+map("i", "<C-e>", "compe#close('<C-e>')", { noremap = true, silent = true, expr = true })
+map("i", "<C-f>", "compe#scroll({ 'delta': +4 })", { noremap = true, silent = true, expr = true })
+map("i", "<C-d>", "compe#scroll({ 'delta': -4 })", { noremap = true, silent = true, expr = true })
