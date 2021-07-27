@@ -48,7 +48,8 @@ set("clipboard", "unnamedplus")
 set("scrolloff", 8)
 set("sidescrolloff", 8)
 set("inccommand", "nosplit")
-set("colorcolumn","99999")
+set("colorcolumn", "99999")
+set("completeopt", "menuone,noselect")
 set(
     "listchars",
     table.concat({
@@ -75,6 +76,9 @@ vim.cmd([[autocmd BufWinEnter * :set formatoptions-=c formatoptions-=r formatopt
 vim.cmd([[autocmd BufWritePre * %s/\s\+$//e]])
 
 -- Disable lualine on Nvim-tree
-vim.cmd [[au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif]]
+vim.cmd([[au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif]])
+
+-- Disable Pattern Not Found nvim-compe
+vim.cmd([[set shortmess+=c]])
 
 return M
