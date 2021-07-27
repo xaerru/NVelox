@@ -1,6 +1,7 @@
 require("toggleterm").setup({
     -- size can be a number or function which is passed the current terminal
     size = 5,
+    open_mapping = [[<F1>]],
     hide_numbers = true, -- hide the number column in toggleterm buffers
     shade_filetypes = {},
     shade_terminals = true,
@@ -17,12 +18,14 @@ require("toggleterm").setup({
         -- see :h nvim_win_open for details on borders however
         -- the 'curved' border is a custom border type
         -- not natively supported but implemented in this plugin.
-        border = "none",
+        border = "single",
         width = 150,
         height = 35,
-        winblend = 3,
+        --row = 0,
+        --col = 0,
+        winblend = 10,
         highlights = {
-            border = "Normal",
+            border = "FloatBorder",
             background = "Normal",
         },
     },
