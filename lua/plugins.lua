@@ -173,7 +173,7 @@ return {
                 keys = "hjfdnvsla",
             })
         end,
-        after = "nvim-treesitter"
+        after = "nvim-treesitter",
     },
 
     {
