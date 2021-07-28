@@ -23,9 +23,18 @@ require("lualine").setup({
         lualine_b = { git },
         lualine_c = { "filename" },
         lualine_x = { "filetype" },
-        lualine_y = {},
+        lualine_y = {
+            {
+                "diagnostics",
+                sources = { "nvim_lsp" },
+                color_error = "#BF616A",
+                color_warn = "#DCBF85",
+                color_info = "#4A5367",
+                color_hint = "#A3BE8C",
+            },
+        },
         lualine_z = { "location" },
     },
     tabline = {},
-    extensions = {"nvim-tree"},
+    extensions = { "nvim-tree" },
 })
