@@ -50,7 +50,8 @@ require("bufferline").setup({
             guibg = "#3B4252",
         },
         diagnostic = {
-            guibg = "#3B4252"
+            guibg = "#3B4252",
+            guifg = "#5E687B"
         },
         warning = {
             guibg = "#3B4252"
