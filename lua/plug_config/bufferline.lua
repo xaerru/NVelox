@@ -12,6 +12,10 @@ require("bufferline").setup({
         max_name_length = 18,
         max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
         tab_size = 18,
+        diagnostics = "nvim_lsp",
+        diagnostics_indicator = function(count, level, diagnostics_dict, context)
+            return "(" .. count .. ")"
+        end,
         offsets = { { filetype = "NvimTree", text = "File Explorer", text_align = "left" } },
         show_buffer_icons = true,
         show_buffer_close_icons = false,
@@ -45,8 +49,22 @@ require("bufferline").setup({
         modified = {
             guibg = "#3B4252",
         },
-        buffer_visible = {
-            guifg = "#C9CED7",
+        diagnostic = {
+            guibg = "#3B4252"
         },
+        warning = {
+            guibg = "#3B4252"
+        },
+        warning_diagnostic = {
+            guibg = "#3B4252",
+            guifg = "#A08C63"
+        },
+        error = {
+            guibg = "#3B4252"
+        },
+        error_diagnostic = {
+            guibg = "#3B4252",
+            guifg = "#87464E"
+        }
     },
 })
