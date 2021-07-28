@@ -57,14 +57,17 @@ require("bufferline").setup({
         },
         warning_diagnostic = {
             guibg = "#3B4252",
-            guifg = "#A08C63"
+            guifg = "#EBCB8B"
+        },
+        warning_diagnostic_selected = {
+            guifg = "#EBCB8B"
         },
         error = {
-            guibg = "#3B4252"
+            guibg = "#3B4252",
         },
         error_diagnostic = {
             guibg = "#3B4252",
-            guifg = "#87464E"
+            guifg = "#BF616A"
         }
     },
 })
