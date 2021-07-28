@@ -23,7 +23,7 @@ require("toggleterm").setup({
         height = 35,
         --row = 0,
         --col = 0,
-        winblend = 10,
+        winblend = 30,
         highlights = {
             border = "FloatBorder",
             background = "Normal",
