@@ -5,6 +5,24 @@ return {
     },
 
     {
+        "neovim/nvim-lspconfig",
+    },
+
+    {
+        "tamago324/nlsp-settings.nvim",
+    },
+
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+    },
+
+    {
+        "kabouzeid/nvim-lspinstall",
+        config = function()
+            require("lsp")
+        end,
+    },
+    {
         "maaslalani/nordbuddy",
         config = function()
             vim.cmd([[
