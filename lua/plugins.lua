@@ -52,21 +52,16 @@ return {
         config = function()
             require("plug_config.compe")
         end,
-        wants = "vim-vsnip",
-        requires = {
-            {
-                "hrsh7th/vim-vsnip",
-                wants = "friendly-snippets",
-                event = "InsertCharPre",
-                config = function()
-                    --require("plugins.luasnip")
-                end,
-            },
-            {
-                "rafamadriz/friendly-snippets",
-                event = "InsertCharPre",
-            },
-        },
+    },
+
+    {
+        "hrsh7th/vim-vsnip",
+        event = "InsertCharPre",
+    },
+
+    {
+        "rafamadriz/friendly-snippets",
+        event = "InsertCharPre",
     },
 
     {
