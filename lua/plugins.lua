@@ -17,6 +17,14 @@ return {
     },
 
     {
+        "jdhao/better-escape.vim",
+        config = function()
+            vim.g.better_escape_interval = 200
+            vim.g.better_escape_shortcut = {"jk", "kj"}
+        end
+    },
+
+    {
         "kabouzeid/nvim-lspinstall",
         config = function()
             require("lsp")
