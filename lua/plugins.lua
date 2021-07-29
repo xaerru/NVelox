@@ -118,6 +118,7 @@ return {
 
     {
         "kyazdani42/nvim-web-devicons",
+        after = "packer.nvim"
     },
 
     {
@@ -125,6 +126,7 @@ return {
         config = function()
             require("plug_config.tree")
         end,
+        after = "nvim-web-devicons"
     },
 
     {
