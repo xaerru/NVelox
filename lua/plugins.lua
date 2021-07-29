@@ -28,7 +28,7 @@ return {
             vim.cmd([[
                 colorscheme nordbuddy
                 highlight TSNodeKey cterm=bold ctermfg=198 gui=bold guifg=#8fbcbb
-                highlight TSNodeKey ctermfg=242 guifg=#4c566a
+                highlight TSNodeUnmatched ctermfg=242 guifg=#4c566a
         ]])
         end,
         after = "packer.nvim",
