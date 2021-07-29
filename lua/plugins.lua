@@ -221,6 +221,5 @@ return {
 
     {
         "preservim/nerdcommenter",
-        after = "which-key.nvim",
     },
 }
