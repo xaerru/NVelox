@@ -76,16 +76,6 @@ return {
     },
 
     {
-        "Pocco81/AutoSave.nvim",
-        config = function()
-            require("plug_config.autosave")
-        end,
-        cond = function()
-            return vim.g.auto_save == true
-        end,
-    },
-
-    {
         "akinsho/nvim-bufferline.lua",
         after = "nordbuddy",
         config = function()
