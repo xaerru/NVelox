@@ -95,7 +95,7 @@ return {
 
     {
         "hoob3rt/lualine.nvim",
-        after = "nordbuddy",
+        after = "nvim-tree.lua",
         config = function()
             require("plug_config.lualine")
         end,
