@@ -116,7 +116,7 @@ return {
         config = function()
             require("plug_config.tree")
         end,
-        after = "nvim-web-devicons"
+        event = "BufWinEnter"
     },
 
     {
