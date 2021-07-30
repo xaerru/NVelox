@@ -21,7 +21,7 @@ return {
     },
 
     {
-        "folke/persistence.nvim",
+        "grvxs/persistence.nvim",
         config = function()
             require("plug_config.persistence")
         end,
