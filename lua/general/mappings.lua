@@ -7,6 +7,20 @@ silent_options = { noremap = true, silent = true }
 map("i", "jk", "<ESC>", options)
 map("i", "kj", "<ESC>", options)
 
+-- Smoother experience
+map("n", "Y", "y$", options)
+map("n", "n", "nzzzv", options)
+map("n", "N", "Nzzzv", options)
+map("n", "J", "mzJ`z", options)
+
+-- Moving text
+map("v", "J", ":m '>+1<CR>gv=gv", options)
+map("v", "K", ":m '<-2<CR>gv=gv", options)
+map("i", "<C-j>", "<ESC>:m .+1<CR>==i", options)
+map("i", "<C-k>", "<ESC>:m .-2<CR>==i", options)
+map("n", "<leader>j", "<ESC>:m .+1<CR>==", options)
+map("n", "<leader>k", "<ESC>:m .-2<CR>==", options)
+
 -- Rust, C, C++
 map("i", ";;", "<ESC>A;", options)
 
