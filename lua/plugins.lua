@@ -25,7 +25,7 @@ return {
         config = function()
             require("plug_config.persistence")
         end,
-        after = "packer.nvim"
+        after = "packer.nvim",
     },
 
     {
@@ -81,7 +81,7 @@ return {
 
     {
         "hoob3rt/lualine.nvim",
-        after = "nvim-tree.lua",
+        after = "packer.nvim",
         config = function()
             require("plug_config.lualine")
         end,
@@ -109,10 +109,10 @@ return {
 
     {
         "kyazdani42/nvim-tree.lua",
+        cmd = "NvimTreeToggle",
         config = function()
             require("plug_config.tree")
         end,
-        after = "nvim-web-devicons",
     },
 
     {
