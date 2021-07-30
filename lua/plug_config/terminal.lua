@@ -45,7 +45,7 @@ end
 
 function M.run()
     local run = Terminal:new({
-        cmd = require("run").run_cmd(),
+        cmd = require("cmd").run_cmd(),
         hidden = true,
         float_opts = {
             width = 80,
