@@ -43,18 +43,20 @@ function M.lazygit()
     lazygit:toggle()
 end
 
---function M.run()
-    --local run = Terminal:new({
-        --cmd = "python3 a.py",
-        --hidden = true,
-        --width = 80,
-        --height = 35,
-        --row = (vim.fn.eval("&lines") - 35) / 2,
-        --col = vim.fn.eval("&columns"),
-        --winblend = 25,
-        --close_on_exit = false
-    --})
-    --run:toggle()
---end
+function M.run()
+    local run = Terminal:new({
+        cmd = require("run").cmd(),
+        hidden = true,
+        float_opts = {
+            width = 80,
+            height = 35,
+            row = (vim.fn.eval("&lines") - 35) / 2,
+            col = vim.fn.eval("&columns"),
+            winblend = 25,
+        },
+        close_on_exit = false,
+    })
+    run:toggle()
+end
 
 return M
