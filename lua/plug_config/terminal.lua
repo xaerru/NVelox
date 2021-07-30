@@ -40,7 +40,6 @@ function M.lazygit()
         cmd = "lazygit",
         hidden = true,
     })
-
     lazygit:toggle()
 end
 
