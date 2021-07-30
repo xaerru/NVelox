@@ -21,6 +21,14 @@ return {
     },
 
     {
+        "folke/persistence.nvim",
+        config = function()
+            require("plug_config.persistence")
+        end,
+        after = "packer.nvim"
+    },
+
+    {
         "kabouzeid/nvim-lspinstall",
         config = function()
             require("lsp")
@@ -96,7 +104,7 @@ return {
 
     {
         "kyazdani42/nvim-web-devicons",
-        after = "packer.nvim"
+        after = "packer.nvim",
     },
 
     {
@@ -104,7 +112,7 @@ return {
         config = function()
             require("plug_config.tree")
         end,
-        after = "nvim-web-devicons"
+        after = "nvim-web-devicons",
     },
 
     {
@@ -119,7 +127,7 @@ return {
 
     {
         "nvim-telescope/telescope.nvim",
-        after = "packer.nvim",
+        after = "nvim-web-devicons",
         config = function()
             require("plug_config.telescope")
         end,
