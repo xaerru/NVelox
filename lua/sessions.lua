@@ -12,10 +12,15 @@ function M.sload()
                 if close then
                     require("telescope.actions").close(prompt_bufnr)
                 end
-                P.load({ last = content.value })
+                vim.cmd(":bufdo w | bd")
+                P.load(content.cwd .. "/" .. content.value)
             end
 
             map("i", "<CR>", function()
+                load(true)
+            end)
+
+            map("n", "<CR>", function()
                 load(true)
             end)
 
