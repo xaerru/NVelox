@@ -59,4 +59,20 @@ function M.run()
     run:toggle()
 end
 
+function M.repl()
+    local run = Terminal:new({
+        cmd = require("cmd").repl_cmd(),
+        hidden = true,
+        float_opts = {
+            width = 80,
+            height = 35,
+            row = (vim.fn.eval("&lines") - 35) / 2,
+            col = vim.fn.eval("&columns"),
+            winblend = 25,
+        },
+        close_on_exit = true,
+    })
+    run:toggle()
+end
+
 return M

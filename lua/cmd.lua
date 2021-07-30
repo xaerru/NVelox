@@ -19,7 +19,7 @@ function M.repl_cmd()
     local path = expand("%:p:h") -- File path without the name
     local name = expand("%:t:r") -- File name without the extension
     local cmd_table = {
-        python = "python " .. file,
+        python = "python3",
     }
     return cmd_table[vim.fn.eval("&filetype")]
 end
