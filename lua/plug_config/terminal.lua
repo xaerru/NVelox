@@ -25,7 +25,7 @@ require("toggleterm").setup({
         height = 35,
         --row = 0,
         --col = 0,
-        winblend = 30,
+        winblend = 25,
         highlights = {
             border = "FloatBorder",
             background = "Normal",
@@ -34,6 +34,7 @@ require("toggleterm").setup({
 })
 
 local Terminal = require("toggleterm.terminal").Terminal
+
 local lazygit = Terminal:new({
     cmd = "lazygit",
     hidden = true,
