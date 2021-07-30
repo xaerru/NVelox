@@ -33,20 +33,12 @@ return {
 
     {
         "maaslalani/nordbuddy",
-        config = function()
-            vim.cmd([[
-                colorscheme nordbuddy
-                highlight TSNodeKey cterm=bold ctermfg=198 gui=bold guifg=#8fbcbb
-                highlight TSNodeUnmatched ctermfg=242 guifg=#4c566a
-        ]])
-        end,
-        after = "packer.nvim",
     },
 
     {
         "p00f/cphelper.nvim",
         rocks = "http",
-        after = "nordbuddy",
+        after = "packer.nvim",
     },
 
     {
@@ -77,7 +69,7 @@ return {
 
     {
         "akinsho/nvim-bufferline.lua",
-        after = "nordbuddy",
+        after = "packer.nvim",
         config = function()
             require("plug_config.bufferline")
         end,
@@ -116,7 +108,7 @@ return {
         config = function()
             require("plug_config.tree")
         end,
-        event = "BufWinEnter"
+        after = "nvim-web-devicons"
     },
 
     {
@@ -155,7 +147,7 @@ return {
 
     {
         "phaazon/hop.nvim",
-        after = "nordbuddy",
+        after = "packer.nvim",
     },
 
     {
