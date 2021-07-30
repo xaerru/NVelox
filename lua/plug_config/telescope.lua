@@ -25,7 +25,7 @@ require("telescope").setup({
         file_sorter = require("telescope.sorters").get_fzy_sorter,
         file_ignore_patterns = {},
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-        winblend = 30,
+        winblend = 25,
         border = {},
         borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
         color_devicons = true,
