@@ -1,3 +1,5 @@
+local M = {}
+
 require("toggleterm").setup({
     -- size can be a number or function which is passed the current terminal
     size = 5,
@@ -37,6 +39,8 @@ local lazygit = Terminal:new({
     hidden = true,
 })
 
-function term_lazygit()
+function M.lazygit()
     lazygit:toggle()
 end
+
+return M
