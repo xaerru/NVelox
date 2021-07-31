@@ -1,6 +1,7 @@
 require("lsp.signs")
 require("lsp.keybinds")
 require("lsp.service")
+require("lsp.handlers").setup()
 
 local function setup_servers()
     require("lspinstall").setup()
