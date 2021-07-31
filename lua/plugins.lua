@@ -23,7 +23,7 @@ return {
     {
         "grvxs/persistence.nvim",
         config = function()
-            require("plug_config.persistence")
+            require("config.plugins.persistence")
         end,
         after = "packer.nvim",
     },
@@ -31,7 +31,7 @@ return {
     {
         "kabouzeid/nvim-lspinstall",
         config = function()
-            require("lsp")
+            require("config.lsp")
         end,
     },
 
@@ -48,7 +48,7 @@ return {
     {
         "norcalli/nvim-colorizer.lua",
         config = function()
-            require("plug_config.colorizer")
+            require("config.plugins.colorizer")
         end,
         after = "nvim-treesitter",
     },
@@ -57,7 +57,7 @@ return {
         "hrsh7th/nvim-compe",
         event = "InsertEnter",
         config = function()
-            require("plug_config.compe")
+            require("config.plugins.compe")
         end,
     },
 
@@ -75,7 +75,7 @@ return {
         "akinsho/nvim-bufferline.lua",
         after = "packer.nvim",
         config = function()
-            require("plug_config.bufferline")
+            require("config.plugins.bufferline")
         end,
     },
 
@@ -83,7 +83,7 @@ return {
         "hoob3rt/lualine.nvim",
         after = "packer.nvim",
         config = function()
-            require("plug_config.lualine")
+            require("config.plugins.lualine")
         end,
     },
 
@@ -91,14 +91,14 @@ return {
         "nvim-treesitter/nvim-treesitter",
         event = "BufRead",
         config = function()
-            require("plug_config.treesitter")
+            require("config.plugins.treesitter")
         end,
     },
 
     {
         "sbdchd/neoformat",
         config = function()
-            require("plug_config.neoformat")
+            require("config.plugins.neoformat")
         end,
     },
 
@@ -111,7 +111,7 @@ return {
         "kyazdani42/nvim-tree.lua",
         cmd = "NvimTreeToggle",
         config = function()
-            require("plug_config.tree")
+            require("config.plugins.tree")
         end,
     },
 
@@ -129,7 +129,7 @@ return {
         "nvim-telescope/telescope.nvim",
         after = "nvim-web-devicons",
         config = function()
-            require("plug_config.telescope")
+            require("config.plugins.telescope")
         end,
     },
 
@@ -137,7 +137,7 @@ return {
         "lewis6991/gitsigns.nvim",
         after = "plenary.nvim",
         config = function()
-            require("plug_config.gitsigns")
+            require("config.plugins.gitsigns")
         end,
     },
 
@@ -145,7 +145,7 @@ return {
         "glepnir/dashboard-nvim",
         after = "packer.nvim",
         setup = function()
-            require("plug_config.dashboard")
+            require("config.plugins.dashboard")
         end,
     },
 
@@ -158,7 +158,7 @@ return {
         "windwp/nvim-autopairs",
         after = "nvim-compe",
         config = function()
-            require("plug_config.autopairs")
+            require("config.plugins.autopairs")
         end,
     },
 
@@ -166,14 +166,14 @@ return {
         "lukas-reineke/indent-blankline.nvim",
         event = "BufRead",
         setup = function()
-            require("plug_config.indentline")
+            require("config.plugins.indentline")
         end,
     },
 
     {
         "akinsho/nvim-toggleterm.lua",
         config = function()
-            require("plug_config.terminal")
+            require("config.plugins.terminal")
         end,
         after = "which-key.nvim",
     },
@@ -187,7 +187,7 @@ return {
         "folke/which-key.nvim",
         event = "BufWinEnter",
         config = function()
-            require("plug_config.whichkey")
+            require("config.plugins.whichkey")
         end,
     },
 
@@ -212,7 +212,7 @@ return {
     {
         "ygm2/rooter.nvim",
         config = function()
-            require("plug_config.rooter")
+            require("config.plugins.rooter")
         end,
     },
 
