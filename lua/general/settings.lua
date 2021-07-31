@@ -1,6 +1,6 @@
 local M = {}
 
-local function set_true(value, to)
+local function set_true(value)
     vim.opt[value] = true
 end
 
