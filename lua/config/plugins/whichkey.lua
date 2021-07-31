@@ -162,3 +162,14 @@ wk.register({
 }, {
     prefix = "<leader>",
 })
+
+wk.register({
+    s = {
+        name = "session",
+        c = { "<CMD>:lua require('persistence').load_current()<CR>", "Restore Current Directory Session" },
+        l = { "<CMD>:lua require('persistence').load_last()<CR>", "Load Last Session" },
+        a = { "<CMD>:lua require('sessions').sload()<CR>", "Session Finder" },
+    },
+}, {
+    prefix = "<leader>",
+})
