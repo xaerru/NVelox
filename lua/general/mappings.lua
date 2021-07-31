@@ -1,7 +1,7 @@
 local map = vim.api.nvim_set_keymap
 
-options = { noremap = true }
-silent_options = { noremap = true, silent = true }
+local options = { noremap = true }
+local silent_options = { noremap = true, silent = true }
 
 -- Use jk instead of ESC
 map("i", "jk", "<ESC>", options)
