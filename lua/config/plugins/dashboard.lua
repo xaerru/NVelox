@@ -17,7 +17,7 @@ g.dashboard_custom_header = {
 }
 
 g.dashboard_custom_section = {
-    a = { description = { "  Find File                 SPC f f" }, command = "Telescope find_files" },
-    c = { description = { "  Find Word                 SPC f w" }, command = "Telescope live_grep" },
-    f = { description = { "  Load Last Session         SPC s l" }, command = "SessionLoad" },
+    a = { description = { "  Sessions                             " }, command = "lua require('sessions').sload()" },
+    b = { description = { "  Restore Session for current directory" }, command = "lua require('persistence').load_current()" },
+    c = { description = { "  Find Files                           " }, command = "Telescope find_files" },
 }
