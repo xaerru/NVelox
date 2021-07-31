@@ -79,7 +79,8 @@ vim.cmd([[autocmd BufWritePre * %s/\s\+$//e]])
 -- Disable Pattern Not Found nvim-compe
 vim.cmd([[set shortmess+=c]])
 
--- Write all the buffers before opening the terminal
+-- Write all the buffers before opening and closing the terminal
 vim.cmd([[autocmd TermEnter * :silent! wa!]])
+vim.cmd([[autocmd TermLeave * :silent! e!]])
 
 return M
