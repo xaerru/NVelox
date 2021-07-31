@@ -1,7 +1,7 @@
-require("lsp.signs")
-require("lsp.keybinds")
-require("lsp.service")
-require("lsp.handlers").setup()
+require("config.lsp.signs")
+require("config.lsp.keybinds")
+require("config.lsp.service")
+require("config.lsp.handlers").setup()
 
 CONFIG_PATH = os.getenv("HOME") .. "/.local/share/lunarvim/lvim"
 DATA_PATH = vim.fn.stdpath("data")
@@ -20,23 +20,16 @@ local function setup_servers()
                     "-E",
                     DATA_PATH .. "/lspinstall/lua/main.lua",
                 },
-                capabilities = common_capabilities,
-                on_attach = common_on_attach,
-                on_init = common_on_init,
                 settings = {
                     Lua = {
                         runtime = {
-                            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                             version = "LuaJIT",
-                            -- Setup your lua path
                             path = vim.split(package.path, ";"),
                         },
                         diagnostics = {
-                            -- Get the language server to recognize the `vim` global
                             globals = { "vim" },
                         },
                         workspace = {
-                            -- Make the server aware of Neovim runtime files
                             library = {
                                 [vim.fn.expand("$VIMRUNTIME/lua")] = true,
                                 [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
