@@ -62,6 +62,7 @@ set(
 )
 
 -- Persistent undo
+
 -- mkdir $HOME/.vim/undo
 set_true("undofile")
 set("undodir", "/home/grvxs/.cache/nvim/undo")
@@ -77,5 +78,8 @@ vim.cmd([[autocmd BufWritePre * %s/\s\+$//e]])
 
 -- Disable Pattern Not Found nvim-compe
 vim.cmd([[set shortmess+=c]])
+
+-- Write all the buffers before opening the terminal
+vim.cmd([[autocmd TermEnter * :silent! wa!]])
 
 return M
