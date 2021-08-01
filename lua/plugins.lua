@@ -218,6 +218,6 @@ return {
 
     {
         "preservim/nerdcommenter",
-        after = "packer.nvim"
+        after = "packer.nvim",
     },
 }
