@@ -37,12 +37,6 @@ return {
 
     {
         "maaslalani/nordbuddy",
-        config = function()
-            require("nordbuddy").colorscheme({
-                -- Italic styled comments
-                italic_comments = true,
-            })
-        end,
     },
 
     {
