@@ -48,7 +48,7 @@ set("clipboard", "unnamedplus")
 set("scrolloff", 8)
 set("sidescrolloff", 8)
 set("inccommand", "nosplit")
-set("colorcolumn", "99999")
+set("colorcolumn", "100")
 set("completeopt", "menuone,noselect")
 set(
     "listchars",
@@ -82,5 +82,12 @@ vim.cmd([[set shortmess+=c]])
 -- Write all the buffers before opening and closing the terminal
 vim.cmd([[autocmd TermEnter * :silent! wa!]])
 vim.cmd([[autocmd TermLeave * :silent! e!]])
+
+-- Highlight yank
+vim.cmd([[
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
+augroup END]])
 
 return M

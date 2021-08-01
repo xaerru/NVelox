@@ -67,7 +67,12 @@ function M.PeekDefinition()
         vim.api.nvim_set_current_win(M.floating_win)
     else
         local params = vim.lsp.util.make_position_params()
-        return vim.lsp.buf_request(0, "textDocument/definition", params, M.preview_location_callback)
+        return vim.lsp.buf_request(
+            0,
+            "textDocument/definition",
+            params,
+            M.preview_location_callback
+        )
     end
 end
 
@@ -76,7 +81,12 @@ function M.PeekTypeDefinition()
         vim.api.nvim_set_current_win(M.floating_win)
     else
         local params = vim.lsp.util.make_position_params()
-        return vim.lsp.buf_request(0, "textDocument/typeDefinition", params, M.preview_location_callback)
+        return vim.lsp.buf_request(
+            0,
+            "textDocument/typeDefinition",
+            params,
+            M.preview_location_callback
+        )
     end
 end
 
@@ -85,7 +95,12 @@ function M.PeekImplementation()
         vim.api.nvim_set_current_win(M.floating_win)
     else
         local params = vim.lsp.util.make_position_params()
-        return vim.lsp.buf_request(0, "textDocument/implementation", params, M.preview_location_callback)
+        return vim.lsp.buf_request(
+            0,
+            "textDocument/implementation",
+            params,
+            M.preview_location_callback
+        )
     end
 end
 
