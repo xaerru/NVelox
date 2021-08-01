@@ -10,7 +10,9 @@ TERMINAL = vim.fn.expand("$TERMINAL")
 USER = vim.fn.expand("$USER")
 
 vim.o.updatetime = 250
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]])
+vim.cmd(
+    [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
+)
 
 local function setup_servers()
     require("lspinstall").setup()

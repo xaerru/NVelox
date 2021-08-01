@@ -40,5 +40,9 @@ vim.fn.sign_define(
 )
 vim.fn.sign_define(
     "LspDiagnosticsSignInformation",
-    { texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation" }
+    {
+        texthl = "LspDiagnosticsSignInformation",
+        text = "",
+        numhl = "LspDiagnosticsSignInformation",
+    }
 )

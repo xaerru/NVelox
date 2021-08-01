@@ -68,14 +68,20 @@ wk.register({
         name = "inside",
         h = "Git Hunk",
     },
-}, { mode = "o", prefix = "" })
+}, {
+    mode = "o",
+    prefix = "",
+})
 
 wk.register({
     i = {
         name = "inside",
         h = "Git Hunk",
     },
-}, { mode = "x", prefix = "" })
+}, {
+    mode = "x",
+    prefix = "",
+})
 
 wk.register({
     h = {
@@ -166,7 +172,10 @@ wk.register({
 wk.register({
     s = {
         name = "session",
-        c = { "<CMD>:lua require('persistence').load_current()<CR>", "Restore Current Directory Session" },
+        c = {
+            "<CMD>:lua require('persistence').load_current()<CR>",
+            "Restore Current Directory Session",
+        },
         l = { "<CMD>:lua require('persistence').load_last()<CR>", "Load Last Session" },
         a = { "<CMD>:lua require('sessions').sload()<CR>", "Session Finder" },
     },
