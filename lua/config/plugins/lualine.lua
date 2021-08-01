@@ -40,5 +40,5 @@ require("lualine").setup({
         lualine_z = { "location" },
     },
     tabline = {},
-    extensions = { "nvim-tree" },
+    extensions = {},
 })
