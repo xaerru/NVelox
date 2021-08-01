@@ -51,24 +51,24 @@ require("bufferline").setup({
         },
         diagnostic = {
             guibg = "#3B4252",
-            guifg = "#5E687B"
+            guifg = "#5E687B",
         },
         warning = {
-            guibg = "#3B4252"
+            guibg = "#3B4252",
         },
         warning_diagnostic = {
             guibg = "#3B4252",
-            guifg = "#EBCB8B"
+            guifg = "#EBCB8B",
         },
         warning_diagnostic_selected = {
-            guifg = "#EBCB8B"
+            guifg = "#EBCB8B",
         },
         error = {
             guibg = "#3B4252",
         },
         error_diagnostic = {
             guibg = "#3B4252",
-            guifg = "#BF616A"
-        }
+            guifg = "#BF616A",
+        },
     },
 })
