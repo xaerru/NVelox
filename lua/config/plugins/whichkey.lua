@@ -182,3 +182,24 @@ wk.register({
 }, {
     prefix = "<leader>",
 })
+
+wk.register({
+    c = {
+        name = "commenter",
+        ["$"] = "To EOL",
+        [" "] = "Toggle",
+        a = "Alt Delims",
+        A = "Append",
+        b = "Align Both",
+        c = "Comment",
+        i = "Invert",
+        l = "Alight Left",
+        m = "Minimal",
+        n = "Nested",
+        s = "Sexy",
+        u = "Uncomment",
+        y = "Yank",
+    },
+}, {
+    prefix = "<leader>",
+})
