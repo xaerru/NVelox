@@ -3,6 +3,8 @@ local wk = require("which-key")
 wk.register({
     ["<leader>f"] = { "<CMD>Neoformat | write<CR>", "Format" },
     ["<leader>n"] = { "<CMD>NvimTreeToggle<CR>", "Format" },
+    ["<leader>j"] = "Move Line Down",
+    ["<leader>k"] = "Move Line Up",
     ["<leader><TAB>"] = { "<CMD>:BufferLineCyclePrev<CR>", "Previous Buffer" },
     ["]c"] = "Next Git Hunk",
     ["[c"] = "Previous Git Hunk",
