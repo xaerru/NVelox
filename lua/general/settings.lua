@@ -54,6 +54,7 @@ set(
     "listchars",
     table.concat({
         "eol:↲",
+        "tab:▶‒",
         "trail:•",
         "extends:❯",
         "precedes:❮",
