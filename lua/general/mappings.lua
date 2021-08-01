@@ -3,6 +3,10 @@ local map = vim.api.nvim_set_keymap
 local options = { noremap = true }
 local silent_options = { noremap = true, silent = true }
 
+-- Typos
+map("c", "W", "w", options)
+map("c", "X", "x", options)
+
 -- Use jk instead of ESC
 map("i", "jk", "<ESC>", options)
 map("i", "kj", "<ESC>", options)
