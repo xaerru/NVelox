@@ -8,6 +8,7 @@ wk.register({
     ["<leader><TAB>"] = { "<CMD>:BufferLineCyclePrev<CR>", "Previous Buffer" },
     ["]c"] = "Next Git Hunk",
     ["[c"] = "Previous Git Hunk",
+    [";;"] = {"which_key_ignore", mode = "i"}
 })
 
 wk.register({
