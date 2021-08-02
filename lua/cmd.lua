@@ -8,6 +8,8 @@ function M.run_cmd()
     local name = expand("%:t:r") -- File name without the extension
     local cmd_table = {
         python = "python3 " .. file,
+        c = "gcc " .. file .. ' && ' .. './a.out' .. ' && /bin/rm ./a.out',
+        cpp = "g++ -std=c++17  " .. file .. ' && ' .. './a.out' .. ' && /bin/rm ./a.out',
     }
     return cmd_table[vim.fn.eval("&filetype")]
 end
