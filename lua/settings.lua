@@ -8,6 +8,8 @@ local function set(value, to)
     vim.opt[value] = to
 end
 
+local setti
+
 set_true("hidden")
 set_true("relativenumber")
 set_true("ruler")
@@ -42,7 +44,7 @@ set("tabstop", 4)
 set("shiftwidth", 4)
 set("showtabline", 2)
 set("backspace", { "indent", "eol", "start" })
-set("shortmess", vim.opt.shortmess + "c")
+set("shortmess", vim.opt.shortmess:append("c"))
 set("updatetime", 300)
 set("timeoutlen", 500)
 set("clipboard", "unnamedplus")
@@ -62,10 +64,6 @@ set(
         "nbsp:_",
     }, ",")
 )
-
--- Persistent undo
-
--- mkdir $HOME/.vim/undo
 set_true("undofile")
 set("undodir", "/home/grvxs/.cache/nvim/undo")
 set("undolevels", 1000)
