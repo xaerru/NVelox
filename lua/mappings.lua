@@ -6,6 +6,7 @@ local silent_options = { noremap = true, silent = true }
 -- Typos
 map("c", "W", "w", options)
 map("c", "X", "x", options)
+map("n", ";", ":", options)
 
 -- Use jk instead of ESC
 map("i", "jk", "<ESC>", options)
