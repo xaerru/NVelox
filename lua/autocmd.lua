@@ -1,5 +1,5 @@
 -- Stop comments on newline
-vim.cmd([[autocmd BufWinEnter * :set formatoptions-=c formatoptions-=r formatoptions-=o]])
+vim.cmd([[autocmd BufWinEnter * :set formatoptions-=cro]])
 
 -- Auto remove trailing space
 vim.cmd([[autocmd BufWritePre * %s/\s\+$//e]])
