@@ -47,6 +47,10 @@ function M.repl_cmd()
     local name = expand("%:t:r") -- File name without the extension
     local cmd_table = {
         python = "python3",
+        haskell = "ghci " .. file,
+        lua = "lua",
+        javascript = "node",
+        ruby = "irb",
     }
     return cmd_table[vim.fn.eval("&filetype")]
 end
