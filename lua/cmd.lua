@@ -6,6 +6,14 @@ local noext = expand("%:p:r") -- File path without extension
 local path = expand("%:p:h") -- File path without the name
 local name = expand("%:t:r") -- File name without the extension
 
+function M.run_project_cmd()
+    local cmd_table = {
+        rust = "cargo run",
+        c = "make",
+    }
+    return cmd_table[vim.fn.eval("&filetype")]
+end
+
 function M.run_file_cmd()
     local cmd_table = {
         python = "python3 " .. file,

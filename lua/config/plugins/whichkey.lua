@@ -210,6 +210,7 @@ wk.register({
     r = {
         name = "run",
         f = {"<CMD>lua require('config.plugins.terminal').run_file()<CR>", "File"},
+        p = {"<CMD>lua require('config.plugins.terminal').run_project()<CR>", "Project"},
     },
 }, {
     prefix = "<leader>",
