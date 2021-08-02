@@ -42,6 +42,7 @@ set("tabstop", 4)
 set("shiftwidth", 4)
 set("showtabline", 2)
 set("backspace", { "indent", "eol", "start" })
+set("shortmess", vim.opt.shortmess + "c")
 set("updatetime", 300)
 set("timeoutlen", 500)
 set("clipboard", "unnamedplus")
@@ -70,25 +71,5 @@ set("undodir", "/home/grvxs/.cache/nvim/undo")
 set("undolevels", 1000)
 set("undoreload", 10000)
 set("showbreak", "↪")
-
--- Stop comments on newline
-vim.cmd([[autocmd BufWinEnter * :set formatoptions-=c formatoptions-=r formatoptions-=o]])
-
--- Auto remove trailing space
-vim.cmd([[autocmd BufWritePre * %s/\s\+$//e]])
-
--- Disable Pattern Not Found nvim-compe
-vim.cmd([[set shortmess+=c]])
-
--- Write all the buffers before opening and closing the terminal
-vim.cmd([[autocmd TermEnter * :silent! wa!]])
-vim.cmd([[autocmd TermLeave * :silent! e!]])
-
--- Highlight yank
-vim.cmd([[
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
-augroup END]])
 
 return M
