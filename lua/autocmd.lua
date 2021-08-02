@@ -1,16 +1,49 @@
--- Stop comments on newline
-vim.cmd([[autocmd BufWinEnter * :set formatoptions-=cro]])
+local M = {}
 
--- Auto remove trailing space
-vim.cmd([[autocmd BufWritePre * %s/\s\+$//e]])
+local cmd = vim.cmd
 
--- Write all the buffers before opening and closing the terminal
-vim.cmd([[autocmd TermEnter * :silent! wa!]])
-vim.cmd([[autocmd TermLeave * :silent! e!]])
+local autocmds = {
+    general = {
+        {
+            "BufWinEnter",
+            "*",
+            ":set formatoptions-=cro",
+        },
+        {
+            "TextYankPost",
+            "*",
+            "silent! lua require'vim.highlight'.on_yank({timeout = 200})",
+        },
+        {
+            "BufWritePre",
+            "*",
+            [[%s/\s\+$//e]],
+        },
+    },
+    terminal = {
+        {
+            "TermEnter",
+            "*",
+            "silent! wa!",
+        },
+        {
+            "TermLeave",
+            "*",
+            "silent! e!",
+        },
+    },
+}
 
--- Highlight yank
-vim.cmd([[
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
-augroup END]])
+function M.load()
+    for name, def in pairs(autocmds) do
+        cmd("augroup " .. name)
+        cmd("autocmd!")
+        for _, autocmd in pairs(def) do
+            local command = table.concat(vim.tbl_flatten({ "autocmd", autocmd }), " ")
+            cmd(command)
+        end
+        cmd("augroup END")
+    end
+end
+
+return M
