@@ -18,8 +18,8 @@ map("n", "N", "Nzzzv", options)
 map("n", "J", "mzJ`z", options)
 
 -- Moving text
-map("v", "J", ":m '>+1<CR>gv=gv", options)
-map("v", "K", ":m '<-2<CR>gv=gv", options)
+map("x", "J", ":m '>+1<CR>gv=gv", options)
+map("x", "K", ":m '<-2<CR>gv=gv", options)
 map("i", "<C-j>", "<ESC>:m .+1<CR>==i", options)
 map("i", "<C-k>", "<ESC>:m .-2<CR>==i", options)
 map("n", "<leader>j", "<ESC>:m .+1<CR>==", options)
