@@ -205,3 +205,12 @@ wk.register({
 }, {
     prefix = "<leader>",
 })
+
+wk.register({
+    r = {
+        name = "run",
+        f = {"<CMD>lua require('config.plugins.terminal').run_file()<CR>", "File"},
+    },
+}, {
+    prefix = "<leader>",
+})
