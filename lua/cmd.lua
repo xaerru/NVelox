@@ -1,6 +1,6 @@
 local M = {}
 
-function M.run_cmd()
+function M.run_file_cmd()
     local expand = vim.fn.expand
     local file = expand("%:p") -- Absolute path to the file
     local noext = expand("%:p:r") -- File path without extension

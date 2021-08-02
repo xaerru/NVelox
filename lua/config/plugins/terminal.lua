@@ -43,9 +43,9 @@ function M.lazygit()
     lazygit:toggle()
 end
 
-function M.run()
+function M.run_file()
     local run = Terminal:new({
-        cmd = require("cmd").run_cmd(),
+        cmd = require("cmd").run_file_cmd(),
         hidden = true,
         float_opts = {
             width = 80,
