@@ -8,7 +8,7 @@ wk.register({
     ["<leader><TAB>"] = { "<CMD>:BufferLineCyclePrev<CR>", "Previous Buffer" },
     ["]c"] = "Next Git Hunk",
     ["[c"] = "Previous Git Hunk",
-    [";;"] = {"which_key_ignore", mode = "i"}
+    [";;"] = { "which_key_ignore", mode = "i" },
 })
 
 wk.register({
@@ -210,8 +210,8 @@ wk.register({
 wk.register({
     r = {
         name = "run",
-        f = {"<CMD>lua require('config.plugins.terminal').run_file()<CR>", "File"},
-        p = {"<CMD>lua require('config.plugins.terminal').run_project()<CR>", "Project"},
+        f = { "<CMD>lua require('config.plugins.terminal').run_file()<CR>", "File" },
+        p = { "<CMD>lua require('config.plugins.terminal').run_project()<CR>", "Project" },
     },
 }, {
     prefix = "<leader>",
