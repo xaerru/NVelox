@@ -19,6 +19,11 @@ local autocmds = {
             "*",
             [[%s/\s\+$//e]],
         },
+        {
+            "VimResized",
+            "*",
+            "wincmd =",
+        },
     },
     terminal = {
         {
