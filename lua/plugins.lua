@@ -34,6 +34,7 @@ return {
         end,
         after = "packer.nvim",
     },
+
     {
         "maaslalani/nordbuddy",
     },
