@@ -1,97 +1,72 @@
+local M = {}
+
 local map = vim.api.nvim_set_keymap
 
-local options = { noremap = true }
-local silent_options = { noremap = true, silent = true }
+local modes = {
+    insert = "i",
+    normal = "n",
+    terminal = "t",
+    visual = "v",
+    visual_block = "x",
+    command = "c",
+    object = "o",
+}
 
--- Typos
-map("c", "W", "w", options)
-map("c", "X", "x", options)
-map("n", ";", ":", options)
+local keybinds = {
+    insert = {
+        --
+        --["jk"] = "<ESC>",
+        --["kj"] = "<ESC>",
+        --
+        ["jj"] = "<Right>",
+        --
+        ["<C-j>"] = "<ESC>:m .+1<CR>==i",
+        ["<C-k>"] = "<ESC>:m .-2<CR>==i",
+        --
+        [";;"] = "<ESC>A;",
+    },
+    normal = {
+        [";"] = ":",
+        ["Y"] = "y$",
+        ["n"] = "nzzzv",
+        ["N"] = "Nzzzv",
+        ["J"] = "mzJ`z",
+        ["<leader>j"] = "<ESC>:m .+1<CR>==",
+        ["<leader>k"] = "<ESC>:m .-2<CR>==",
+        ["<TAB>"] = ":BufferLineCycleNext<CR>",
+        ["C-<TAB>"] = ":BufferLineCyclePrev<CR>",
+        ["<CR>"] = ":noh<CR>",
+    },
+    command = {},
+    visual = {
+        ["<"] = "<gv",
+        [">"] = ">gv",
+        ["im"] = ":lua require('tsht').nodes()<CR>",
+    },
+    object = {
+        ["im"] = ":lua require('tsht').nodes()<CR>",
+    },
+    visual_block = {
+        ["J"] = ":m '>+1<CR>gv=gv",
+        ["K"] = ":m '<-2<CR>gv=gv",
+    },
+}
 
--- Use jk instead of ESC
-map("i", "jk", "<ESC>", options)
-map("i", "kj", "<ESC>", options)
-
--- Smoother experience
-map("n", "Y", "y$", options)
-map("n", "n", "nzzzv", options)
-map("n", "N", "Nzzzv", options)
-map("n", "J", "mzJ`z", options)
-
--- Moving text
-map("x", "J", ":m '>+1<CR>gv=gv", options)
-map("x", "K", ":m '<-2<CR>gv=gv", options)
-map("i", "<C-j>", "<ESC>:m .+1<CR>==i", options)
-map("i", "<C-k>", "<ESC>:m .-2<CR>==i", options)
-map("n", "<leader>j", "<ESC>:m .+1<CR>==", options)
-map("n", "<leader>k", "<ESC>:m .-2<CR>==", options)
-
--- Rust, C, C++
-map("i", ";;", "<ESC>A;", options)
-
--- Move one character ahead in insert mode
-map("i", "jj", "<Right>", options)
-
--- Navigate between buffers
-map("n", "<TAB>", ":BufferLineCycleNext<CR>", silent_options)
-map("n", "C-<TAB>", ":BufferLineCyclePrev<CR>", silent_options)
-
--- Better tabs
-map("v", "<", "<gv", options)
-map("v", ">", ">gv", options)
-
--- Turn highlighting off on enter
-map("n", "<CR>", ":noh<CR>", silent_options)
-
--- Exit the terminal
-map("t", "<ESC>", "<C-d>:bd", options)
-
--- nvim-ts-hint-textobject
-map("o", "m", ":<C-U>lua require('tsht').nodes()<CR>", silent_options)
-map("v", "im", ":lua require('tsht').nodes()<CR>", silent_options)
-
--- nvim-compe
-local t = function(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-
-local check_back_space = function()
-    local col = vim.fn.col(".") - 1
-    if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
-        return true
-    else
-        return false
+function M.load_mode(mode, maps)
+    mode = modes[mode]
+    for key, mapping in pairs(maps) do
+        if type(mapping) == "table" then
+            local opts = mapping[1].opts or { noremap = true, silent = true }
+            map(mode, key, mapping[1], opts)
+        end
+        map(mode, key, mapping, { noremap = true, silent = true })
     end
 end
 
-_G.tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
-        return t("<C-n>")
-    elseif vim.fn.call("vsnip#available", { 1 }) == 1 then
-        return t("<Plug>(vsnip-expand-or-jump)")
-    elseif check_back_space() then
-        return t("<Tab>")
-    else
-        return vim.fn["compe#complete"]()
+function M.load()
+    for mode, maps in pairs(keybinds) do
+        M.load_mode(mode, maps)
     end
 end
 
-_G.s_tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
-        return t("<C-p>")
-    elseif vim.fn.call("vsnip#jumpable", { -1 }) == 1 then
-        return t("<Plug>(vsnip-jump-prev)")
-    else
-        return t("<S-Tab>")
-    end
-end
-
-map("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
-map("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
-map("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
-map("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
-
-map("i", "<C-Space>", "compe#complete()", { noremap = true, silent = true, expr = true })
-map("i", "<C-e>", "compe#close('<C-e>')", { noremap = true, silent = true, expr = true })
-map("i", "<C-f>", "compe#scroll({ 'delta': +4 })", { noremap = true, silent = true, expr = true })
-map("i", "<C-d>", "compe#scroll({ 'delta': -4 })", { noremap = true, silent = true, expr = true })
+return M
