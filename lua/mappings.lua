@@ -15,8 +15,8 @@ local modes = {
 local keybinds = {
     insert = {
         --
-        --["jk"] = "<ESC>",
-        --["kj"] = "<ESC>",
+        ["jk"] = "<ESC>",
+        ["kj"] = "<ESC>",
         --
         ["jj"] = "<Right>",
         --
