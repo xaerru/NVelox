@@ -16,10 +16,8 @@ end
 
 function M.run_file_cmd()
     local cmd_table = {
-        python = "python3 " .. file,
         c = "gcc " .. file .. " && " .. "./a.out" .. " && /bin/rm ./a.out",
         cpp = "g++ -std=c++17  " .. file .. " && " .. "./a.out" .. " && /bin/rm ./a.out",
-        rust = "rustc " .. file .. " && ./" .. name .. "&& /bin/rm " .. name,
         haskell = "ghc -dynamic "
             .. file
             .. " && ./"
@@ -31,11 +29,13 @@ function M.run_file_cmd()
             .. ".hi "
             .. name
             .. ".o",
-        lua = "lua " .. file,
-        sh = "bash " .. file,
-        perl = "perl " .. file,
-        ruby = "ruby " .. file,
         javascript = "node " .. file,
+        lua = "lua " .. file,
+        perl = "perl " .. file,
+        python = "python3 " .. file,
+        ruby = "ruby " .. file,
+        rust = "rustc " .. file .. " && ./" .. name .. "&& /bin/rm " .. name,
+        sh = "bash " .. file,
         typescript = "tsc "
             .. file
             .. "&& node "
@@ -50,10 +50,10 @@ end
 
 function M.repl_cmd()
     local cmd_table = {
-        python = "python3",
         haskell = "ghci " .. file,
-        lua = "lua",
         javascript = "node",
+        lua = "lua",
+        python = "python3",
         ruby = "irb",
     }
     return cmd_table[vim.fn.eval("&filetype")]
