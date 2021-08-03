@@ -9,7 +9,13 @@ local function git()
     if g == nil then
         return nil
     else
-        return string.format("+%s ~%s -%s  %s", g.added or 0, g.changed or 0, g.removed or 0, g.head)
+        return string.format(
+            "+%s ~%s -%s  %s",
+            g.added or 0,
+            g.changed or 0,
+            g.removed or 0,
+            g.head
+        )
     end
 end
 
@@ -31,6 +37,10 @@ require("lualine").setup({
                 color_warn = "#EBCB8B",
                 color_info = "#88C0D0",
                 color_hint = "#3A4151",
+                --color_error = "#3A4151",
+                --color_warn = "#3A4151",
+                --color_info = "#3A4151",
+                --color_hint = "#3A4151",
             },
         },
         lualine_z = { "location" },
