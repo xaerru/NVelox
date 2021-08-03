@@ -9,7 +9,15 @@ return {
     },
 
     {
+        "kabouzeid/nvim-lspinstall",
+        config = function()
+            require("config.lsp")
+        end,
+    },
+
+    {
         "tamago324/nlsp-settings.nvim",
+        after = "nvim-lspconfig",
     },
 
     {
@@ -26,14 +34,6 @@ return {
         end,
         after = "packer.nvim",
     },
-
-    {
-        "kabouzeid/nvim-lspinstall",
-        config = function()
-            require("config.lsp")
-        end,
-    },
-
     {
         "maaslalani/nordbuddy",
     },
