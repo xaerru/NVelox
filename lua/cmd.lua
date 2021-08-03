@@ -8,8 +8,8 @@ local name = expand("%:t:r") -- File name without the extension
 
 function M.run_project_cmd()
     local cmd_table = {
-        rust = "cargo run",
         c = "make",
+        rust = "cargo run",
     }
     return cmd_table[vim.fn.eval("&filetype")]
 end
