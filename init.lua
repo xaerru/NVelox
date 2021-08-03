@@ -1,5 +1,5 @@
 require("globals")
-require("mappings")
+require("mappings").load()
 require("settings").load()
 require("autocmd").load()
 local plugins = require("plugins")
