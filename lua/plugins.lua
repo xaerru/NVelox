@@ -13,6 +13,13 @@ return {
     },
 
     {
+        "Pocco81/AutoSave.nvim",
+        config = function()
+            require("config.plugins.autosave")
+        end,
+    },
+
+    {
         "grvxs/persistence.nvim",
         config = function()
             require("config.plugins.persistence")
