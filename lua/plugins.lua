@@ -13,14 +13,6 @@ return {
     },
 
     {
-        "jdhao/better-escape.vim",
-        config = function()
-            vim.g.better_escape_interval = 200
-            vim.g.better_escape_shortcut = { "jk", "kj" }
-        end,
-    },
-
-    {
         "grvxs/persistence.nvim",
         config = function()
             require("config.plugins.persistence")
