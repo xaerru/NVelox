@@ -15,11 +15,6 @@ local autocmds = {
             "silent! lua require'vim.highlight'.on_yank({timeout = 200})",
         },
         {
-            "BufWritePre",
-            "*",
-            [[%s/\s\+$//e]],
-        },
-        {
             "VimResized",
             "*",
             "wincmd =",
