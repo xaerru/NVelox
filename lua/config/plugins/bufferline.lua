@@ -70,5 +70,12 @@ require("bufferline").setup({
             guibg = "#3B4252",
             guifg = "#BF616A",
         },
+        info = {
+            guibg = "#3B4252",
+        },
+        info_diagnostic = {
+            guibg = "#3B4252",
+            guifg = "#5E687B",
+        },
     },
 })
