@@ -1,4 +1,4 @@
-require("globals")
+require("default")
 require("mappings").load()
 require("settings").load()
 require("autocmd").load()

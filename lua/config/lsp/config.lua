@@ -18,7 +18,10 @@ return {
                     path = vim.split(package.path, ";"),
                 },
                 diagnostics = {
-                    globals = { "vim" },
+                    globals = {
+                        "vim",
+                        "sky",
+                    },
                 },
                 workspace = {
                     library = {
