@@ -16,11 +16,6 @@ return {
     },
 
     {
-        "tamago324/nlsp-settings.nvim",
-        after = "nvim-lspconfig",
-    },
-
-    {
         "Pocco81/AutoSave.nvim",
         config = function()
             require("config.plugins.autosave")
