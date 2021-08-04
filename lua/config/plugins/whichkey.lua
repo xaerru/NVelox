@@ -128,8 +128,8 @@ wk.register({
             d = { "<CMD>BufferLineSortByDirectory<CR>", "Directory" },
             e = { "<CMD>BufferLineSortByExtension<CR>", "Extension" },
             r = { "<CMD>BufferLineSortByRelativeDirectory<CR>", "Relative Directory" },
-            y = { "<CMD>silent %y<CR>", "Copy Buffer Content" },
         },
+        y = { "<CMD>silent %y<CR>", "Copy Buffer Content" },
     },
 }, {
     prefix = "<leader>",
