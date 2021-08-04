@@ -75,7 +75,7 @@ function M.run_project()
     run:toggle()
 end
 
-function M.repl()
+function M.run_repl()
     local run = Terminal:new({
         cmd = require("cmd").repl_cmd(),
         hidden = true,
