@@ -3,43 +3,14 @@ require("config.lsp.keybinds")
 require("config.lsp.service")
 require("config.lsp.handlers").setup()
 
-CONFIG_PATH = os.getenv("HOME") .. "/.local/share/lunarvim/lvim"
-DATA_PATH = vim.fn.stdpath("data")
-CACHE_PATH = vim.fn.stdpath("cache")
-TERMINAL = vim.fn.expand("$TERMINAL")
-USER = vim.fn.expand("$USER")
+local config = require("config.lsp.config")
 
 local function setup_servers()
     require("lspinstall").setup()
     local servers = require("lspinstall").installed_servers()
     for _, server in pairs(servers) do
         if server == "lua" then
-            require("lspconfig")[server].setup({
-                cmd = {
-                    DATA_PATH .. "/lspinstall/lua/sumneko-lua-language-server",
-                    "-E",
-                    DATA_PATH .. "/lspinstall/lua/main.lua",
-                },
-                settings = {
-                    Lua = {
-                        runtime = {
-                            version = "LuaJIT",
-                            path = vim.split(package.path, ";"),
-                        },
-                        diagnostics = {
-                            globals = { "vim" },
-                        },
-                        workspace = {
-                            library = {
-                                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-                            },
-                            maxPreload = 100000,
-                            preloadFileSize = 1000,
-                        },
-                    },
-                },
-            })
+            require("lspconfig")[server].setup(config.lua)
         else
             require("lspconfig")[server].setup({})
         end
