@@ -2,7 +2,6 @@ local colorscheme = nvlx.general.colorscheme
 
 if colorscheme == "nordbuddy" then
     require("nordbuddy").colorscheme({
-        -- Italic styled comments
         italic_comments = true,
     })
     vim.cmd([[
