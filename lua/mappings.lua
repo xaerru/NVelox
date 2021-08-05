@@ -5,16 +5,18 @@ local map = vim.api.nvim_set_keymap
 vim.g.mapleader = nvlx.general.leader
 
 local modes = {
+    command = "c",
     insert = "i",
     normal = "n",
+    object = "o",
     terminal = "t",
     visual = "v",
     visual_block = "x",
-    command = "c",
-    object = "o",
 }
 
 local keybinds = {
+    command = {},
+
     insert = {
         --
         ["jk"] = "<ESC>",
@@ -27,6 +29,7 @@ local keybinds = {
         --
         [";;"] = "<ESC>A;",
     },
+
     normal = {
         [";"] = ":",
         ["Y"] = "y$",
@@ -39,15 +42,17 @@ local keybinds = {
         ["C-<TAB>"] = ":BufferLineCyclePrev<CR>",
         ["<CR>"] = ":noh<CR>",
     },
-    command = {},
+
+    object = {
+        ["im"] = ":lua require('tsht').nodes()<CR>",
+    },
+
     visual = {
         ["<"] = "<gv",
         [">"] = ">gv",
         ["im"] = ":lua require('tsht').nodes()<CR>",
     },
-    object = {
-        ["im"] = ":lua require('tsht').nodes()<CR>",
-    },
+
     visual_block = {
         ["J"] = ":m '>+1<CR>gv=gv",
         ["K"] = ":m '<-2<CR>gv=gv",
@@ -67,6 +72,10 @@ end
 
 function M.load()
     for mode, maps in pairs(keybinds) do
+        M.load_mode(mode, maps)
+    end
+    -- Load user mappings
+    for mode,maps in pairs(nvlx.keybinds) do 
         M.load_mode(mode, maps)
     end
 end
