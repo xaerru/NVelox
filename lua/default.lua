@@ -1,4 +1,4 @@
-sky = {
+nvlx = {
     general = {
         leader = " ",
         colorscheme = "nordbuddy"

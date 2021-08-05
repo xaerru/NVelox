@@ -1,4 +1,4 @@
-local colorscheme = sky.general.colorscheme
+local colorscheme = nvlx.general.colorscheme
 
 if colorscheme == "nordbuddy" then
     require("nordbuddy").colorscheme({

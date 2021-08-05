@@ -2,7 +2,7 @@ local M = {}
 
 local map = vim.api.nvim_set_keymap
 
-vim.g.mapleader = sky.general.leader
+vim.g.mapleader = nvlx.general.leader
 
 local modes = {
     insert = "i",
