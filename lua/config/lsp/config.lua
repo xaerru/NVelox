@@ -20,7 +20,7 @@ return {
                 diagnostics = {
                     globals = {
                         "vim",
-                        "sky",
+                        "nvlx",
                     },
                 },
                 workspace = {
