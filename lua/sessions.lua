@@ -27,6 +27,7 @@ function M.sload()
     local paths = {}
     for _, file in ipairs(files) do
         local f = vim.fn.fnamemodify(file, ":t")
+        local q = f
         f = split(f, "%%")
         f = split(f[#f], ".")
         local t = {}
@@ -35,7 +36,13 @@ function M.sload()
         end
         f = table.concat(t, ".")
         table.insert(paths, file)
-        table.insert(sessions, f)
+        q = q:gsub("%%", "/")
+        q = split(q, ".")
+        table.remove(q, #q)
+        q = table.concat(q, ".")
+        local filetype = vim.fn.system("~/.config/nvim/lua/mostUsed.sh " .. q)
+        local icon = require("nvim-web-devicons").get_icon("a", filetype)
+        table.insert(sessions, icon .. " " .. f)
     end
     local picker = pickers.new({
         prompt_title = "Sessions",
