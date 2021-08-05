@@ -1,7 +1,7 @@
 nvlx = {
     general = {
         leader = " ",
-        colorscheme = "nordbuddy"
+        colorscheme = "nordbuddy",
     },
     keybinds = {
         command = {},
@@ -11,5 +11,6 @@ nvlx = {
         terminal = {},
         visual = {},
         visual_block = {},
-    }
+    },
+    autocmds = {},
 }

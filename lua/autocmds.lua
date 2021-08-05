@@ -42,6 +42,10 @@ function M.load()
             local command = table.concat(vim.tbl_flatten({ "autocmd", autocmd }), " ")
             cmd(command)
         end
+        for _, autocmd in pairs(nvlx.autocmds) do
+            local command = table.concat(vim.tbl_flatten({ "autocmd", autocmd }), " ")
+            cmd(command)
+        end
         cmd("augroup END")
     end
 end
