@@ -3,7 +3,7 @@ local M = {}
 local cmd = vim.cmd
 
 local autocmds = {
-    general = {
+    __general = {
         {
             "BufWinEnter",
             "*",
@@ -20,7 +20,7 @@ local autocmds = {
             "wincmd =",
         },
     },
-    terminal = {
+    __terminal = {
         {
             "TermEnter",
             "*",
