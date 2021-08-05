@@ -3,7 +3,7 @@ local wk = require("which-key")
 wk.register({
     [";;"] = { "which_key_ignore", mode = "i" },
     ["<leader><TAB>"] = { "<CMD>:BufferLineCyclePrev<CR>", "Previous Buffer" },
-    ["<leader>f"] = { [[<CMD>%s/\s\+$//e | Neoformat | write<CR>]], "Format" },
+    ["<leader>f"] = { [[<CMD>%s/\s\+$//e | noh | Neoformat | write<CR>]], "Format" },
     ["<leader>j"] = "Move Line Down",
     ["<leader>k"] = "Move Line Up",
     ["<leader>n"] = { "<CMD>NvimTreeToggle<CR>", "Nvim Tree Toggle" },
