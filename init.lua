@@ -1,7 +1,7 @@
 require("defaults")
 require("mappings").load()
 require("settings").load()
-require("autocmd").load()
+require("autocmds").load()
 local plugins = require("plugins")
 local loader = require("loader").init()
 loader:load({ plugins, loader.user_plugins })
