@@ -75,7 +75,7 @@ function M.load()
         M.load_mode(mode, maps)
     end
     -- Load user mappings
-    for mode,maps in pairs(nvlx.keybinds) do 
+    for mode, maps in pairs(nvlx.keybinds) do
         M.load_mode(mode, maps)
     end
 end
