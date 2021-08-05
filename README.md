@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>SkyVim</h1>
+  <h1>NVelox</h1>
   <p>Light and Fast Neovim Configuration</p>
 </div>
 
