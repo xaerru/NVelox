@@ -2,6 +2,7 @@ nvlx = {
     general = {
         leader = " ",
         colorscheme = "nordbuddy",
+        highlights = {}
     },
     keybinds = {
         command = {},
