@@ -62,5 +62,4 @@ require("gitsigns").setup({
         ["o ih"] = { silent = true, ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>' },
         ["x ih"] = { silent = true, ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>' },
     },
-    use_decoration_api = true,
 })
