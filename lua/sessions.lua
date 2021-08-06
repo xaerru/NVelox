@@ -40,7 +40,7 @@ function M.sload()
         q = split(q, ".")
         table.remove(q, #q)
         q = table.concat(q, ".")
-        local filetype = vim.fn.system("~/.config/nvim/lua/utils/mostUsed.sh " .. q)
+        local filetype = vim.fn.system("~/.config/nvim/utils/mostUsed.sh " .. q)
         local icon = require("nvim-web-devicons").get_icon("a", filetype)
         table.insert(sessions, (icon or "") .. " " .. f)
     end
