@@ -1,3 +1,11 @@
+require("which-key").setup({
+    plugins = {
+        presets = {
+            nav = false,
+        },
+    },
+})
+
 local wk = require("which-key")
 
 wk.register({
@@ -87,7 +95,7 @@ wk.register({
 })
 
 wk.register({
-    h = {
+    H = {
         name = "hop",
         c = { "<cmd>HopChar1<cr>", "Char1" },
         l = { "<cmd>HopLine<cr>", "Line" },
@@ -96,12 +104,10 @@ wk.register({
         v = { "<cmd>HopChar2<cr>", "Char2" },
         w = { "<cmd>HopWord<cr>", "Word" },
     },
-}, {
-    prefix = "<leader>",
 })
 
 wk.register({
-    h = {
+    H = {
         name = "hop",
         c = { "<cmd>HopChar1<cr>", "Char1" },
         l = { "<cmd>HopLine<cr>", "Line" },
@@ -110,7 +116,6 @@ wk.register({
         w = { "<cmd>HopWord<cr>", "Word" },
     },
 }, {
-    prefix = "<leader>",
     mode = "v",
 })
 
