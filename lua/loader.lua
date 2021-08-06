@@ -16,7 +16,6 @@ function plugin_loader:init()
     end
 
     packer.init({
-        -- package_root = require("packer.util").join_paths(vim.fn.stdpath "data", "lvim", "pack"),
         git = { clone_timeout = 300 },
         display = {
             open_fn = function()
