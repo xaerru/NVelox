@@ -1,6 +1,6 @@
 local M = {}
 
-local settings = {
+local default_settings = {
     hidden = true,
     relativenumber = true,
     ruler = true,
@@ -57,13 +57,15 @@ local settings = {
     }, ","),
 }
 
-function M.load()
+function M.load_settings(settings)
     for option, value in pairs(settings) do
         vim.opt[option] = value
     end
-    for option, value in pairs(nvlx.settings) do
-        vim.opt[option] = value
-    end
+end
+
+function M.load()
+    M.load_settings(default_settings)
+    M.load_settings(nvlx.settings)
 end
 
 return M
