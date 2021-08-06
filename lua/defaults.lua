@@ -4,6 +4,7 @@ nvlx = {
         colorscheme = "nordbuddy",
         highlights = {}
     },
+    settings = {},
     keybinds = {
         command = {},
         insert = {},

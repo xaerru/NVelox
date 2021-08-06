@@ -61,6 +61,9 @@ function M.load()
     for option, value in pairs(settings) do
         vim.opt[option] = value
     end
+    for option, value in pairs(nvlx.settings) do
+        vim.opt[option] = value
+    end
 end
 
 return M
