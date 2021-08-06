@@ -5,10 +5,11 @@ if not ok then
     print("Please check your " .. nvlx_config_file .. " for correction.")
     print(error)
 end
-require("mappings").load()
 require("settings").load()
-require("autocmds").load()
+require("mappings").load()
 local plugins = require("plugins")
 local loader = require("loader").init()
 loader:load({ plugins, loader.user_plugins })
+loader:load({ plugins, nvlx.plugins })
+require("autocmds").load()
 require("colors")
