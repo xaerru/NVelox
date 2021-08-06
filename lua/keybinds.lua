@@ -70,15 +70,15 @@ function M.load_mode(mode, maps)
     end
 end
 
-function M.load_keybinds(keybinds)
+function M.load_default(keybinds)
     for mode, maps in pairs(keybinds) do
         M.load_mode(mode, maps)
     end
 end
 
 function M.load()
-    M.load_keybinds(default_keybinds)
-    M.load_keybinds(nvlx.keybinds)
+    M.load_default(default_keybinds)
+    M.load_default(nvlx.keybinds)
 end
 
 return M
