@@ -28,8 +28,9 @@ local autocmds = {
         },
         {
             "TermLeave",
+
             "*",
-            "silent! e!",
+            "silent! bufdo e!",
         },
     },
 }
