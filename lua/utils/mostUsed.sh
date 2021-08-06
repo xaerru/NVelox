@@ -1,6 +1,9 @@
 #!/bin/bash
 # Find the most used file extension in a directory
 DIR=$1
+if [[ $DIR == $HOME ]]; then
+    exit 0
+fi
 git -C $DIR rev-parse 2>/dev/null
 if [ $(echo $?) -ne 0 ]; then
     # Not a git repo
