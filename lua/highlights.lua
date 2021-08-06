@@ -1,6 +1,6 @@
 local M = {}
 
-local highlights = {
+local default_highlights = {
     TSNodeKey = {
         cterm = "bold",
         ctermfg = 198,
@@ -16,7 +16,7 @@ local highlights = {
     },
 }
 
-function M.load()
+function M.load_default(highlights)
     for group, highlight in pairs(highlights) do
         local cmd = string.format("highlight %s ", group)
         for key, value in pairs(highlight) do
@@ -31,6 +31,11 @@ function M.load()
         end
         vim.cmd(cmd:sub(1, -2))
     end
+end
+
+function M.load()
+    M.load_default(default_highlights)
+    M.load_default(nvlx.general.highlights)
 end
 
 return M
