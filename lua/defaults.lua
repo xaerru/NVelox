@@ -13,5 +13,5 @@ nvlx = {
         visual_block = {},
     },
     autocmds = {},
-    plugins = {}
+    plugins = {},
 }

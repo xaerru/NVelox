@@ -9,10 +9,10 @@ local highlights = {
     },
     TSNodeUnmatched = {
         ctermfg = 242,
-        guifg = "#4c566a"
+        guifg = "#4c566a",
     },
     Visual = {
-        gui = "reverse"
+        gui = "reverse",
     },
 }
 
@@ -22,7 +22,7 @@ function M.load()
         for key, value in pairs(highlight) do
             cmd = cmd .. string.format("%s=%s ", key, value)
         end
-        vim.cmd(cmd:sub(1,-2))
+        vim.cmd(cmd:sub(1, -2))
     end
 end
 
