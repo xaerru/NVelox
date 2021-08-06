@@ -14,7 +14,7 @@ local modes = {
     visual_block = "x",
 }
 
-local keybinds = {
+local default_keybinds = {
     command = {},
 
     insert = {
@@ -70,14 +70,15 @@ function M.load_mode(mode, maps)
     end
 end
 
-function M.load()
+function M.load_keybinds(keybinds)
     for mode, maps in pairs(keybinds) do
         M.load_mode(mode, maps)
     end
-    -- Load user mappings
-    for mode, maps in pairs(nvlx.keybinds) do
-        M.load_mode(mode, maps)
-    end
+end
+
+function M.load()
+    M.load_keybinds(default_keybinds)
+    M.load_keybinds(nvlx.keybinds)
 end
 
 return M

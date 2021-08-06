@@ -6,7 +6,7 @@ if not ok then
     print(error)
 end
 require("settings").load()
-require("mappings").load()
+require("keybinds").load()
 local plugins = require("plugins")
 local loader = require("loader").init()
 loader:load({ plugins, loader.user_plugins })
