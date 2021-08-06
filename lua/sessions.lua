@@ -42,7 +42,7 @@ function M.sload()
         q = table.concat(q, ".")
         local filetype = vim.fn.system("~/.config/nvim/lua/utils/mostUsed.sh " .. q)
         local icon = require("nvim-web-devicons").get_icon("a", filetype)
-        table.insert(sessions, icon .. " " .. f)
+        table.insert(sessions, (icon or "") .. " " .. f)
     end
     local picker = pickers.new({
         prompt_title = "Sessions",
