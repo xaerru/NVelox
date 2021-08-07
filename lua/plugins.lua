@@ -38,7 +38,9 @@ return {
     {
         "maaslalani/nordbuddy",
         config = function()
-            require("colors")
+            if require("colors") == false then
+                vim.cmd("colorscheme " .. nvlx.general.colorscheme)
+            end
         end,
         after = "packer.nvim",
     },
