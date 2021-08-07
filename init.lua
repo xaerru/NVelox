@@ -3,12 +3,16 @@ require("defaults")
 
 -- Load user config
 local default_package_path = package.path
+local default_nvlx = require("utils").copy(nvlx)
+
 package.path = os.getenv("HOME") .. "/.config/?/init.lua;" .. package.path
-require("nvlx")
 local ok, error = pcall(require, "nvlx")
 if not ok then
     print(error)
 end
+
+nvlx = vim.tbl_deep_extend("force", default_nvlx, nvlx)
+
 package.path = default_package_path
 
 -- Load plugins
