@@ -18,26 +18,15 @@ local default_keybinds = {
     command = {},
 
     insert = {
-        --
         ["jk"] = "<ESC>",
         ["kj"] = "<ESC>",
-        --
-        ["jj"] = "<Right>",
-        --
-        ["<C-j>"] = "<ESC>:m .+1<CR>==i",
-        ["<C-k>"] = "<ESC>:m .-2<CR>==i",
-        --
-        [";;"] = "<ESC>A;",
     },
 
     normal = {
-        [";"] = ":",
         ["Y"] = "y$",
         ["n"] = "nzzzv",
         ["N"] = "Nzzzv",
         ["J"] = "mzJ`z",
-        ["<leader>j"] = "<ESC>:m .+1<CR>==",
-        ["<leader>k"] = "<ESC>:m .-2<CR>==",
         ["<TAB>"] = ":BufferLineCycleNext<CR>",
         ["C-<TAB>"] = ":BufferLineCyclePrev<CR>",
         ["<CR>"] = ":noh<CR>",
@@ -48,11 +37,6 @@ local default_keybinds = {
     visual = {
         ["<"] = "<gv",
         [">"] = ">gv",
-    },
-
-    visual_block = {
-        ["J"] = ":m '>+1<CR>gv=gv",
-        ["K"] = ":m '<-2<CR>gv=gv",
     },
 }
 
