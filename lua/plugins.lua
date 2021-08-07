@@ -122,7 +122,7 @@ return {
 
     {
         "nvim-telescope/telescope.nvim",
-        after = "nvim-web-devicons",
+        after = "popup.nvim",
         config = function()
             require("config.plugins.telescope")
         end,
