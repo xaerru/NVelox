@@ -1,6 +1,7 @@
 nvlx = {
     general = {
         leader = " ",
+        autosave = false,
         colorscheme = "nordbuddy",
         highlights = {}
     },
