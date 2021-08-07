@@ -167,10 +167,10 @@ return {
 
     {
         "folke/which-key.nvim",
-        event = "BufWinEnter",
         config = function()
             require("config.plugins.whichkey")
         end,
+        after = "packer.nvim",
     },
 
     {
