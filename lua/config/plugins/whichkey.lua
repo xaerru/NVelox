@@ -213,6 +213,28 @@ wk.register({
 })
 
 wk.register({
+    c = {
+        name = "commenter",
+        A = "Append",
+        [" "] = "Toggle",
+        ["$"] = "To EOL",
+        a = "Alt Delims",
+        b = "Align Both",
+        c = "Comment",
+        i = "Invert",
+        l = "Alight Left",
+        m = "Minimal",
+        n = "Nested",
+        s = "Sexy",
+        u = "Uncomment",
+        y = "Yank",
+    },
+}, {
+    prefix = "<leader>",
+    mode = "v",
+})
+
+wk.register({
     r = {
         name = "run",
         f = { "<CMD>lua require('config.plugins.terminal').run_file()<CR>", "File" },
