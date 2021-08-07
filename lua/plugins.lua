@@ -102,7 +102,7 @@ return {
 
     {
         "kyazdani42/nvim-web-devicons",
-        after = "packer.nvim",
+        after = "plenary.nvim",
     },
 
     {
