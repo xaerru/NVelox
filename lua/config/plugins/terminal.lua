@@ -40,7 +40,7 @@ function M.lazygit()
         cmd = "lazygit",
         hidden = true,
     })
-    vim.cmd('silent! wa!')
+    vim.cmd("silent! wa!")
     lazygit:toggle()
 end
 

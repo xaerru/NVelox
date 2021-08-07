@@ -3,7 +3,7 @@ nvlx = {
         leader = " ",
         autosave = false,
         colorscheme = "nordbuddy",
-        highlights = {}
+        highlights = {},
     },
     settings = {},
     keybinds = {
