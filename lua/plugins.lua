@@ -6,13 +6,15 @@ return {
 
     {
         "neovim/nvim-lspconfig",
+        after = "nvim-lspinstall",
+        config = function()
+            require("config.lsp")
+        end,
     },
 
     {
         "kabouzeid/nvim-lspinstall",
-        config = function()
-            require("config.lsp")
-        end,
+        event = "BufRead",
     },
 
     {
@@ -35,14 +37,18 @@ return {
 
     {
         "maaslalani/nordbuddy",
+        config = function()
+            require("colors")
+        end,
+        after = "packer.nvim",
     },
 
     {
         "norcalli/nvim-colorizer.lua",
+        event = "BufRead",
         config = function()
             require("config.plugins.colorizer")
         end,
-        after = "nvim-treesitter",
     },
 
     {
@@ -68,7 +74,7 @@ return {
         config = function()
             require("config.plugins.bufferline")
         end,
-        after = "packer.nvim",
+        after = "nordbuddy",
     },
 
     {
@@ -76,7 +82,7 @@ return {
         config = function()
             require("config.plugins.lualine")
         end,
-        after = "packer.nvim",
+        after = "nordbuddy",
     },
 
     {
@@ -89,6 +95,7 @@ return {
 
     {
         "sbdchd/neoformat",
+        cmd = "Neoformat",
         config = function()
             require("config.plugins.neoformat")
         end,
@@ -96,7 +103,7 @@ return {
 
     {
         "kyazdani42/nvim-web-devicons",
-        after = "plenary.nvim",
+        after = "nordbuddy",
     },
 
     {
@@ -109,7 +116,7 @@ return {
 
     {
         "nvim-lua/plenary.nvim",
-        event = "BufWinEnter",
+        event = "BufRead",
     },
 
     {
@@ -119,10 +126,10 @@ return {
 
     {
         "nvim-telescope/telescope.nvim",
+        cmd = "Telescope",
         config = function()
             require("config.plugins.telescope")
         end,
-        after = "nvim-web-devicons",
     },
 
     {
