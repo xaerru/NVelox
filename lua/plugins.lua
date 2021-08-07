@@ -20,6 +20,9 @@ return {
         config = function()
             require("config.plugins.autosave")
         end,
+        cond = function()
+            return nvlx.general.autosave == true
+        end
     },
 
     {
