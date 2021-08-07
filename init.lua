@@ -1,9 +1,12 @@
+-- Load utils
+local utils = require("utils")
+
 -- Load global nvlx
 require("defaults")
 
 -- Load user config
 local default_package_path = package.path
-local default_nvlx = require("utils").copy(nvlx)
+local default_nvlx = utils.copy(nvlx)
 
 package.path = os.getenv("HOME") .. "/.config/?/init.lua;" .. package.path
 local ok, error = pcall(require, "nvlx")
@@ -18,7 +21,8 @@ package.path = default_package_path
 -- Load plugins
 local plugins = require("plugins")
 local loader = require("loader").init()
-loader:load({ plugins, nvlx.plugins })
+plugins = utils.tbl_add(plugins, nvlx.plugins)
+loader:load({ plugins })
 
 -- Load default config
 require("settings").load()
