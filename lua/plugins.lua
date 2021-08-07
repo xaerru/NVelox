@@ -38,12 +38,6 @@ return {
     },
 
     {
-        "p00f/cphelper.nvim",
-        rocks = "http",
-        after = "packer.nvim",
-    },
-
-    {
         "norcalli/nvim-colorizer.lua",
         config = function()
             require("config.plugins.colorizer")
@@ -148,11 +142,6 @@ return {
     },
 
     {
-        "phaazon/hop.nvim",
-        after = "packer.nvim",
-    },
-
-    {
         "windwp/nvim-autopairs",
         config = function()
             require("config.plugins.autopairs")
@@ -177,34 +166,11 @@ return {
     },
 
     {
-        "tweekmonster/startuptime.vim",
-        cmd = "StartupTime",
-    },
-
-    {
         "folke/which-key.nvim",
         event = "BufWinEnter",
         config = function()
             require("config.plugins.whichkey")
         end,
-    },
-
-    {
-        "mfussenegger/nvim-ts-hint-textobject",
-        config = function()
-            require("tsht").config.hint_keys = { "h", "j", "f", "d", "n", "v", "s", "l", "a" }
-        end,
-        after = "nvim-treesitter",
-    },
-
-    {
-        "mizlan/iswap.nvim",
-        config = function()
-            require("iswap").setup({
-                keys = "hjfdnvsla",
-            })
-        end,
-        after = "nvim-treesitter",
     },
 
     {
