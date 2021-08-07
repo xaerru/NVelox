@@ -16,7 +16,6 @@ local default_settings = {
     linebreak = true,
     termguicolors = true,
     hlsearch = true,
-    list = true,
     smartcase = true,
     ignorecase = true,
     wrap = false,
@@ -43,18 +42,9 @@ local default_settings = {
     inccommand = "nosplit",
     colorcolumn = "100",
     completeopt = "menuone,noselect",
-    undodir = "/home/grvxs/.cache/nvim/undo",
+    undodir = os.getenv("HOME") .. "/.cache/nvim/undo",
     undolevels = 1000,
     undoreload = 10000,
-    showbreak = "↪",
-    listchars = table.concat({
-        "eol:↲",
-        "tab:▶‒",
-        "trail:•",
-        "extends:❯",
-        "precedes:❮",
-        "nbsp:_",
-    }, ","),
 }
 
 function M.load_settings(settings)
