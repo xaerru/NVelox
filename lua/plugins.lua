@@ -22,7 +22,7 @@ return {
         end,
         cond = function()
             return nvlx.general.autosave == true
-        end
+        end,
     },
 
     {
