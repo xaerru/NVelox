@@ -71,18 +71,18 @@ return {
 
     {
         "akinsho/nvim-bufferline.lua",
-        after = "packer.nvim",
         config = function()
             require("config.plugins.bufferline")
         end,
+        after = "packer.nvim",
     },
 
     {
         "hoob3rt/lualine.nvim",
-        after = "packer.nvim",
         config = function()
             require("config.plugins.lualine")
         end,
+        after = "packer.nvim",
     },
 
     {
@@ -125,26 +125,26 @@ return {
 
     {
         "nvim-telescope/telescope.nvim",
-        after = "popup.nvim",
         config = function()
             require("config.plugins.telescope")
         end,
+        after = "popup.nvim",
     },
 
     {
         "lewis6991/gitsigns.nvim",
-        after = "plenary.nvim",
         config = function()
             require("config.plugins.gitsigns")
         end,
+        after = "plenary.nvim",
     },
 
     {
         "glepnir/dashboard-nvim",
-        after = "packer.nvim",
         setup = function()
             require("config.plugins.dashboard")
         end,
+        after = "packer.nvim",
     },
 
     {
@@ -154,10 +154,10 @@ return {
 
     {
         "windwp/nvim-autopairs",
-        after = "nvim-compe",
         config = function()
             require("config.plugins.autopairs")
         end,
+        after = "nvim-compe",
     },
 
     {
