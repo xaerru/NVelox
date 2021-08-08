@@ -27,6 +27,10 @@ g.dashboard_custom_section = {
         command = "lua require('persistence').load_current()",
     },
     c = {
+        description = { "  Config                               " },
+        command = ":e ~/.config/nvlx/init.lua",
+    },
+    d = {
         description = { "  Find Files                           " },
         command = "Telescope find_files",
     },
