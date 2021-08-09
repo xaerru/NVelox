@@ -36,7 +36,7 @@ g.dashboard_custom_section = {
     },
 }
 
-require("autocmds").loader({
+require("autocmds").define({
     __dashboard = {
         {
             "FileType",
