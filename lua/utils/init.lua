@@ -28,11 +28,13 @@ function M.hot_reload()
     package.loaded["settings"] = nil
     package.loaded["highlights"] = nil
     package.loaded["keybinds"] = nil
+    package.loaded["nvlx"] = nil
     vim.cmd([[
         source ~/.config/nvim/lua/plugins.lua
         source ~/.config/nvim/lua/settings.lua
         source ~/.config/nvim/lua/highlights.lua
         source ~/.config/nvim/lua/keybinds.lua
+        source ~/.config/nvlx/init.lua
     ]])
     require("settings").load()
     require("highlights").load()
