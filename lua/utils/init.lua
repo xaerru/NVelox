@@ -25,14 +25,23 @@ end
 
 function M.hot_reload()
     package.loaded["plugins"] = nil
+    package.loaded["settings"] = nil
+    package.loaded["highlights"] = nil
+    package.loaded["keybinds"] = nil
     vim.cmd([[
         source ~/.config/nvim/lua/plugins.lua
+        source ~/.config/nvim/lua/settings.lua
+        source ~/.config/nvim/lua/highlights.lua
+        source ~/.config/nvim/lua/keybinds.lua
     ]])
+    require("settings").load()
+    require("highlights").load()
+    require("keybinds").load()
     local plugins = require("plugins")
     local loader = require("loader").init()
     loader:load({ plugins, nvlx.plugins })
     vim.cmd(":PackerInstall")
-    require("keybinds").load()
+    vim.cmd(":PackerCompile")
 end
 
 return M
