@@ -47,15 +47,15 @@ local default_settings = {
     undoreload = 10000,
 }
 
-function M.load_settings(settings)
+function M.define(settings)
     for option, value in pairs(settings) do
         vim.opt[option] = value
     end
 end
 
 function M.load()
-    M.load_settings(default_settings)
-    M.load_settings(nvlx.settings)
+    M.define(default_settings)
+    M.define(nvlx.settings)
 end
 
 return M

@@ -6,7 +6,7 @@ local default_highlights = {
     },
 }
 
-function M.loader(highlights)
+function M.define(highlights)
     for group, highlight in pairs(highlights) do
         local cmd = string.format("highlight %s ", group)
         for key, value in pairs(highlight) do
@@ -17,8 +17,8 @@ function M.loader(highlights)
 end
 
 function M.load()
-    M.loader(default_highlights)
-    M.loader(nvlx.general.highlights)
+    M.define(default_highlights)
+    M.define(nvlx.general.highlights)
 end
 
 return M

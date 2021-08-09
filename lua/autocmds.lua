@@ -29,7 +29,7 @@ local default_autocmds = {
     },
 }
 
-function M.loader(autocmds)
+function M.define(autocmds)
     for name, def in pairs(autocmds) do
         cmd("augroup " .. name)
         cmd("autocmd!")
@@ -42,8 +42,8 @@ function M.loader(autocmds)
 end
 
 function M.load()
-    M.loader(default_autocmds)
-    M.loader(nvlx.autocmds)
+    M.define(default_autocmds)
+    M.define(nvlx.autocmds)
 end
 
 return M
