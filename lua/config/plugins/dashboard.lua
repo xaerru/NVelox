@@ -41,7 +41,13 @@ require("autocmds").loader({
         {
             "FileType",
             "dashboard",
-            [[setlocal fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾]]
+            [[setlocal fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾]],
+        },
+
+        {
+            "FileType",
+            "dashboard",
+            [[nnoremap <silent> <buffer> q :q<CR>]],
         },
     },
 })
