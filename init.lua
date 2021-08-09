@@ -21,8 +21,7 @@ package.path = default_package_path
 -- Load plugins
 local plugins = require("plugins")
 local loader = require("loader").init()
-plugins = utils.tbl_add(plugins, nvlx.plugins)
-loader:load({ plugins })
+loader:load({ plugins, nvlx.plugins })
 
 -- Load default config
 require("settings").load()
