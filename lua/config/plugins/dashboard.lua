@@ -36,6 +36,16 @@ g.dashboard_custom_section = {
     },
 }
 
+require("autocmds").loader({
+    __dashboard = {
+        {
+            "FileType",
+            "dashboard",
+            [[setlocal fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾]]
+        },
+    },
+})
+
 g.dashboard_custom_footer = {
     "   ",
     plugins_count .. " plugins loaded",
