@@ -15,11 +15,15 @@ function plugin_loader:init()
         return
     end
 
+    local util = require("packer.util")
+
     packer.init({
+        package_root = util.join_paths(fn.stdpath("data") .. "/site/pack/"),
+        compile_path = util.join_paths("~/.config/nvim", "plugin", "packer_compiled.lua"),
         git = { clone_timeout = 300 },
         display = {
             open_fn = function()
-                return require("packer.util").float({ border = "single" })
+                return util.float({ border = "single" })
             end,
         },
     })

@@ -23,4 +23,16 @@ function M.tbl_add(t1, t2)
     return t1
 end
 
+function M.hot_reload()
+    package.loaded["plugins"] = nil
+    vim.cmd([[
+        source ~/.config/nvim/lua/plugins.lua
+    ]])
+    local plugins = require("plugins")
+    local loader = require("loader").init()
+    loader:load({ plugins, nvlx.plugins })
+    vim.cmd(":PackerInstall")
+    require("keybinds").load()
+end
+
 return M
