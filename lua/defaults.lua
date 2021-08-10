@@ -17,4 +17,9 @@ nvlx = {
     },
     autocmds = {},
     plugins = {},
+    config = {
+        plugins = {
+            whichkey = {}
+        }
+    }
 }
