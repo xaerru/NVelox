@@ -42,8 +42,8 @@ function M.hot_reload()
     local plugins = require("plugins")
     local loader = require("loader").init()
     loader:load({ plugins, nvlx.plugins })
-    vim.cmd(":PackerInstall")
     vim.cmd(":PackerCompile")
+    vim.cmd(":PackerInstall")
 end
 
 return M
