@@ -209,11 +209,7 @@ local default_wk = {
         },
     },
     {
-        [";;"] = { "which_key_ignore", mode = "i" },
         ["<leader><TAB>"] = { "<CMD>:BufferLineCyclePrev<CR>", "Previous Buffer" },
-        ["<leader>f"] = { [[<CMD>%s/\s\+$//e | noh | Neoformat | write<CR>]], "Format" },
-        ["<leader>j"] = "Move Line Down",
-        ["<leader>k"] = "Move Line Up",
         ["<leader>n"] = { "<CMD>NvimTreeToggle<CR>", "Nvim Tree Toggle" },
         ["[c"] = "Previous Git Hunk",
         ["]c"] = "Next Git Hunk",
@@ -224,13 +220,12 @@ local wk = require("which-key")
 
 function M.register(binds, opts)
     for key, bind in pairs(binds) do
-        print(vim.inspect(bind[2]))
         wk.register({ [key] = bind[1] }, bind[2] or opts)
     end
 end
 
-function M.loader()
-    for mode, binds in pairs(default_wk) do
+function M.loader(keybinds)
+    for mode, binds in pairs(keybinds) do
         if mode == "normal" then
             local opts = { prefix = "<leader>" }
             M.register(binds, opts)
@@ -251,6 +246,11 @@ function M.loader()
             wk.register(binds, opts)
         end
     end
+end
+
+function M.load()
+    M.loader(default_wk)
+    M.loader(nvlx.config.plugins.whichkey)
 end
 
 return M
