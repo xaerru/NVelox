@@ -48,19 +48,6 @@ local default_wk = {
             },
         },
 
-        H = {
-            {
-                name = "hop",
-                c = { "<cmd>HopChar1<cr>", "Char1" },
-                l = { "<cmd>HopLine<cr>", "Line" },
-                p = { "<cmd>HopPattern<cr>", "Pattern" },
-                s = { "<cmd>ISwapWith<cr>", "Swap arguments" },
-                v = { "<cmd>HopChar2<cr>", "Char2" },
-                w = { "<cmd>HopWord<cr>", "Word" },
-            },
-            { prefix = "" },
-        },
-
         b = {
             {
                 name = "buffer",
@@ -99,17 +86,6 @@ local default_wk = {
                 s = { "<C-W>s", "split-window-below" },
                 v = { "<C-W>v", "split-window-below" },
                 w = { "<C-W>w", "other-window" },
-            },
-        },
-
-        o = {
-            {
-                name = "cphelper",
-                d = { "<CMD>CphDelete<CR>", "Delete testcases" },
-                e = { "<CMD>CphEdit<CR>", "Edit/Add testcases" },
-                i = { "<CMD>CphRetest<CR>", "Run tests without recompiling" },
-                r = { "<CMD>CphReceive<CR>", "Receive problem" },
-                t = { "<CMD>CphTest<CR>", "Run tests" },
             },
         },
 
@@ -159,16 +135,6 @@ local default_wk = {
                 name = "git",
                 r = "Reset Hunk",
                 s = "Stage Hunk",
-            },
-        },
-        H = {
-            {
-                name = "hop",
-                c = { "<cmd>HopChar1<cr>", "Char1" },
-                l = { "<cmd>HopLine<cr>", "Line" },
-                p = { "<cmd>HopPattern<cr>", "Pattern" },
-                v = { "<cmd>HopChar2<cr>", "Char2" },
-                w = { "<cmd>HopWord<cr>", "Word" },
             },
         },
         c = {
