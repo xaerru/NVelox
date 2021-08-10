@@ -104,7 +104,7 @@ local default_wk = {
 
         o = {
             {
-                name = "cpregister",
+                name = "cphelper",
                 d = { "<CMD>CphDelete<CR>", "Delete testcases" },
                 e = { "<CMD>CphEdit<CR>", "Edit/Add testcases" },
                 i = { "<CMD>CphRetest<CR>", "Run tests without recompiling" },
