@@ -32,12 +32,6 @@ function install(){
     fi
 }
 
-
-#function install(){
-#    echo -e "\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} Installing\n"
-#    mkdir $HOME/.config/nvim && tar -xvf $CURRENTDIR/NVelox-v1.0.tar.xz -C $DEST
-#}
-
 backup(){
     echo -e "\n\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} backing up"
     echo -e "\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} info"
@@ -48,7 +42,7 @@ backup(){
         eval mv -v $HOME/.config/nvim $DESTBAK
     elif [ "$RESPONSE" == "n" ]; then
         echo -e "\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} info"
-        echo "backing up to a defualt directory (~/.config/nvim.bak)"
+        echo "backing up to a default directory (~/.config/nvim.bak)"
         mv -v $HOME/.config/nvim $HOME/.config/nvim.bak && mkdir $HOME/.config/nvim
         install
     else
