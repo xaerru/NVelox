@@ -1,79 +1,92 @@
-# A script to install NVelox nvim distro
+#!/usr/bin/env bash
 
-welcome_msg () {
-    printf "\033[1;34m _   ___     __   _\n"
-    printf "| \\ | \\ \\   / /__| | _____  __\n"
-    printf "|  \\| |\\ \\ / / _ \\ |/ _ \\ \\/ /\n"
-    printf "| |\\  | \\ V /  __/ | (_) >  <\n"
-    printf "|_| \\_|  \\_/ \\___|_|\\___/_/\\_\\ \n\033[0m"
-    echo
+BOLD='\033[1m'
+NORD='\033[1;34m'
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+END='\033[0m'
+DEST="$HOME/.config/nvim"
+URL="https://github.com/grvxs/NVelox"
+set -e
+
+clear
+echo -e "${BOLD}${NORD}        _   ___    __     __          \n       / | / / |  / /__  / /___  _  __\n      /  |/ /| | / / _ \/ / __ \| |/_/\n     / /|  / | |/ /  __/ / /_/ />  <  \n    /_/ |_/  |___/\___/_/\____/_/|_| ${END}\n\n\n"
+
+checknvim(){
+    if command -v nvim >/dev/null; then
+        echo -e "${BOLD}${RED} neovim is not installed please install it according to your distribution${END}"
+        exit 1
+    fi
 }
 
-info () {
-    printf "\033[1;32m%s\033[0m\n" "$1"
+function install(){
+    if command -v git >/dev/null; then
+        echo -e "\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} Installing\n"
+        git clone $URL $DEST
+        if [ ! -d "$HOME/.config/nvlx" ]; then
+            mkdir ~/.config/nvlx && touch .config/nvlx/init.lua
+        fi
+    else
+        echo -e "${BOLD}${RED}Command git not found${END}\n${RED}exiting!...${END}"
+        exit 1
+    fi
 }
 
-error () {
-    printf "\033[1;31m%s\033[0m\n" "$1"
-}
 
-msg () {
-    printf "\033[1m%s\033[0m\n" "$1"
-}
+#function install(){
+#    echo -e "\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} Installing\n"
+#    mkdir $HOME/.config/nvim && tar -xvf $CURRENTDIR/NVelox-v1.0.tar.xz -C $DEST
+#}
 
-install_nvim () {
-    info "Installing Neovim..."
-
-    if [[ -f /bin/nvim ]]; then
-        msg "Neovim already installed."
-        return 0
+backup(){
+    echo -e "\n\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} backing up"
+    echo -e "\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} info"
+    read -p "do you want to backup to a custom directory?[y/n]: " RESPONSE
+    if [ "$RESPONSE" == "y" ]; then
+        echo -e "\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} info"
+        read -p "enter a valid path: " DESTBAK
+        eval mv -v $HOME/.config/nvim $DESTBAK
+    elif [ "$RESPONSE" == "n" ]; then
+        echo -e "\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} info"
+        echo "backing up to a defualt directory (~/.config/nvim.bak)"
+        mv -v $HOME/.config/nvim $HOME/.config/nvim.bak && mkdir $HOME/.config/nvim
+        install
+    else
+        echo "invalid argument specified! "
     fi
 
-    if  [[ -f /etc/os-release ]]; then
-        source /etc/os-release
+}
+
+
+function checks(){
+     if [ -d "$HOME/.config/nvim" ]
+    then
+        echo -e "\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} info\n"
+        read -p "a previous neovim configuration was detected, do you want to backup your previous neovim configuration?[y/n]: " yn
+        if [ "$yn" == "y" ]; then
+            backup
+        elif [ "$yn" == "n" ]; then
+            exit 0
+        else
+            echo "invalid argument specified!"
+        fi
+    else
+        install
     fi
-    
-    case "$NAME" in 
-        "Arch Linux" | "Artix Linux")
-            pacman -S neovim
-            ;;
-        "Ubuntu" | "Debian GNU/Linux")
-            apt install neovim
-            ;;
-        "Fedora")
-            dnf install neovim
-            ;;
+}
+
+function wrapper(){
+    checknvim
+    checks
+    install
+}
+
+while true; do
+    read -p "Do you want to install NVelox[y/n]: " yn
+    case $yn in
+        [y]* ) wrapper; break;;
+        [n]* ) echo "OK! exiting..." && exit 0;;
+        * ) echo "Invalid argument specified!" && exit 1;;
     esac
-    
-    info "Neovim installed!"
-}
-
-backup () {
-    info "Backing up your config files..."
-    if [[ -d "$HOME"/.config/nvim ]]; then
-        mv "$HOME"/.config/nvim "$HOME"/.config/nvim-pre
-        info "Existing configuration moved to ~/.config/nvim-pre"
-        return 0
-    fi
-}
-
-
-welcome_msg
-install_nvim
-
-if [[ -d "$HOME"/.config/nvlx ]]; then
-    msg "NVelox already installed!"
-    exit 0
-fi
-
-backup
-
-info "Downloading files..."
-
-mkdir ~/.config/nvlx
-touch ~/.config/nvlx/init.lua
-
-git clone https://github.com/grvxs/NVelox ~/.config/nvim
-
-info "NVelox installed succesfully!"
+done
 
