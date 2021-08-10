@@ -190,6 +190,7 @@ function M.register(binds, opts)
     end
 end
 
+-- TODO refactor this
 function M.loader(keybinds)
     for mode, binds in pairs(keybinds) do
         if mode == "normal" then
