@@ -177,7 +177,7 @@ return {
     {
         "folke/which-key.nvim",
         config = function()
-            require("config.plugins.whichkey")
+            require("config.plugins.whichkey").load()
         end,
         after = "packer.nvim",
     },
