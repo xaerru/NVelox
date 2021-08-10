@@ -89,7 +89,7 @@ return {
 
     {
         "nvim-treesitter/nvim-treesitter",
-        event = "BufRead,BufNewFile",
+        event = "BufRead,BufNewFile,InsertEnter",
         config = function()
             require("config.plugins.treesitter")
         end,
@@ -105,7 +105,7 @@ return {
 
     {
         "kyazdani42/nvim-web-devicons",
-        after = "nordbuddy",
+        after = "plenary.nvim",
     },
 
     {
@@ -118,7 +118,7 @@ return {
 
     {
         "nvim-lua/plenary.nvim",
-        event = "BufRead",
+        event = "BufEnter",
     },
 
     {
