@@ -124,7 +124,7 @@ local default_wk = {
             {
                 name = "run",
                 f = { "<CMD>lua require('config.plugins.terminal').run_file()<CR>", "File" },
-                r = { "<CMD>lua require('config.plugins.terminal').run_repl()<CR>", "File" },
+                r = { "<CMD>lua require('config.plugins.terminal').run_repl()<CR>", "REPL" },
                 p = { "<CMD>lua require('config.plugins.terminal').run_project()<CR>", "Project" },
             },
         },
