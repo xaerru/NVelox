@@ -18,6 +18,7 @@ g.neoformat_cpp_clangformat = {
 }
 
 g.neoformat_enabled_rust = { "rustfmt" }
+g.neoformat_enabled_haskell = { "brittany" }
 g.neoformat_enabled_html = { "prettier" }
 g.neoformat_enabled_css = { "prettier" }
 g.neoformat_enabled_java = { "prettier" }
