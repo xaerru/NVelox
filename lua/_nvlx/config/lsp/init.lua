@@ -1,9 +1,9 @@
-require("config.lsp.signs")
-require("config.lsp.keybinds")
-require("config.lsp.service")
-require("config.lsp.handlers").setup()
+require("_nvlx.config.lsp.signs")
+require("_nvlx.config.lsp.keybinds")
+require("_nvlx.config.lsp.service")
+require("_nvlx.config.lsp.handlers").setup()
 
-local config = require("config.lsp.config")
+local config = require("_nvlx.config.lsp.config")
 
 local function setup_servers()
     require("lspinstall").setup()
@@ -18,6 +18,7 @@ local function setup_servers()
 end
 
 setup_servers()
+vim.cmd("e")
 
 -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
 require("lspinstall").post_install_hook = function()

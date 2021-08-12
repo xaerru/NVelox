@@ -1,4 +1,3 @@
-CONFIG_PATH = os.getenv("HOME") .. "/.local/share/lunarvim/lvim"
 DATA_PATH = vim.fn.stdpath("data")
 CACHE_PATH = vim.fn.stdpath("cache")
 TERMINAL = vim.fn.expand("$TERMINAL")

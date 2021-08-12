@@ -36,7 +36,7 @@ g.dashboard_custom_section = {
     },
 }
 
-require("autocmds").define({
+require("_nvlx.autocmds").define({
     __dashboard = {
         {
             "FileType",
