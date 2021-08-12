@@ -3,6 +3,7 @@ nvlx = {
         leader = " ",
         autosave = false,
         colorscheme = "nordbuddy",
+        transparent = false,
         highlights = {},
     },
     settings = {},
