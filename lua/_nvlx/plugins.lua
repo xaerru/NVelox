@@ -191,6 +191,6 @@ return {
 
     {
         "preservim/nerdcommenter",
-        after = "packer.nvim",
+        event = "CursorHold",
     },
 }
