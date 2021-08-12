@@ -1,7 +1,6 @@
 return {
     {
         "wbthomason/packer.nvim",
-        event = "VimEnter",
     },
 
     {
@@ -32,17 +31,17 @@ return {
         config = function()
             require("_nvlx.config.plugins.persistence")
         end,
-        after = "packer.nvim",
+        after = "nordbuddy",
     },
 
     {
         "maaslalani/nordbuddy",
+        event = "VimEnter",
         config = function()
             if require("_nvlx.colors") == false then
                 vim.cmd("colorscheme " .. nvlx.general.colorscheme)
             end
         end,
-        after = "packer.nvim",
     },
 
     {
@@ -147,7 +146,7 @@ return {
         setup = function()
             require("_nvlx.config.plugins.dashboard")
         end,
-        after = "packer.nvim",
+        after = "nordbuddy",
     },
 
     {
@@ -179,7 +178,7 @@ return {
         config = function()
             require("_nvlx.config.plugins.whichkey").load()
         end,
-        after = "packer.nvim",
+        after = "nordbuddy",
     },
 
     {

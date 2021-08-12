@@ -9,6 +9,8 @@ local default_package_path = package.path
 local default_nvlx = utils.copy(nvlx)
 
 package.path = os.getenv("HOME") .. "/.config/?/init.lua;" .. package.path
+package.path = os.getenv("HOME") .. "/.config/nvlx/?.lua;" .. package.path
+package.path = os.getenv("HOME") .. "/.config/nvlx/?/init.lua;" .. package.path
 local ok, error = pcall(require, "nvlx")
 if not ok then
     print(error)
