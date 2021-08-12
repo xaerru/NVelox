@@ -20,6 +20,7 @@ local default_settings = {
     mouse = "a",
     number = true,
     pumheight = 10,
+    relativenumber = true,
     ruler = true,
     scrolloff = 8,
     shiftwidth = 4,
