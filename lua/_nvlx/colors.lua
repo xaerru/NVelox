@@ -6,7 +6,7 @@ if present and nvlx.general.colorscheme == "nordbuddy" then
     nordbuddy.colorscheme({
         italic_comments = true,
     })
-    require("highlights").load()
+    require("_nvlx.highlights").load()
     if nvlx.general.transparent then
         cmd("hi Normal ctermbg=none guibg=none")
         cmd("hi SignColumn ctermbg=none guibg=none")

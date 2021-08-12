@@ -1,8 +1,8 @@
 -- Load utils
-local utils = require("utils")
+local utils = require("_nvlx.utils")
 
 -- Load global nvlx
-require("defaults")
+require("_nvlx.defaults")
 
 -- Load user config
 local default_package_path = package.path
@@ -19,11 +19,11 @@ nvlx = vim.tbl_deep_extend("force", default_nvlx, nvlx)
 package.path = default_package_path
 
 -- Load plugins
-local plugins = require("plugins")
-local loader = require("loader").init()
+local plugins = require("_nvlx.plugins")
+local loader = require("_nvlx.loader").init()
 loader:load({ plugins, nvlx.plugins })
 
 -- Load default config
-require("settings").load()
-require("keybinds").load()
-require("autocmds").load()
+require("_nvlx.settings").load()
+require("_nvlx.keybinds").load()
+require("_nvlx.autocmds").load()
