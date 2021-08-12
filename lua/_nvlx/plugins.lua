@@ -1,3 +1,10 @@
+local function load(plugin)
+    if plugin == "lsp" then
+        string.format([[require("_nvlx.config.lsp")]])
+    end
+    string.format([[require("_nvlx.config.plugins.%s")]], plugin)
+end
+
 return {
     {
         "wbthomason/packer.nvim",
@@ -7,9 +14,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         after = "nvim-lspinstall",
-        config = function()
-            require("_nvlx.config.lsp")
-        end,
+        config = load("lsp"),
     },
 
     {
@@ -20,7 +25,7 @@ return {
     {
         "Pocco81/AutoSave.nvim",
         config = function()
-            require("_nvlx.config.plugins.autosave")
+            load("autosave")
         end,
         cond = function()
             return nvlx.general.autosave == true
@@ -30,7 +35,7 @@ return {
     {
         "grvxs/persistence.nvim",
         config = function()
-            require("_nvlx.config.plugins.persistence")
+            load("persistence")
         end,
         after = "packer.nvim",
     },
@@ -49,7 +54,7 @@ return {
         "norcalli/nvim-colorizer.lua",
         event = "BufRead",
         config = function()
-            require("_nvlx.config.plugins.colorizer")
+            load("colorizer")
         end,
     },
 
@@ -57,7 +62,7 @@ return {
         "hrsh7th/nvim-compe",
         event = "InsertEnter",
         config = function()
-            require("_nvlx.config.plugins.compe")
+            load("compe")
         end,
     },
 
@@ -74,7 +79,7 @@ return {
     {
         "akinsho/nvim-bufferline.lua",
         config = function()
-            require("_nvlx.config.plugins.bufferline")
+            load("bufferline")
         end,
         after = "nordbuddy",
     },
@@ -82,7 +87,7 @@ return {
     {
         "hoob3rt/lualine.nvim",
         config = function()
-            require("_nvlx.config.plugins.lualine")
+            load("lualine")
         end,
         after = "nordbuddy",
     },
@@ -91,7 +96,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         event = "BufRead,BufNewFile,InsertEnter",
         config = function()
-            require("_nvlx.config.plugins.treesitter")
+            load("treesitter")
         end,
     },
 
@@ -99,7 +104,7 @@ return {
         "sbdchd/neoformat",
         cmd = "Neoformat",
         config = function()
-            require("_nvlx.config.plugins.neoformat")
+            load("neoformat")
         end,
     },
 
@@ -112,7 +117,7 @@ return {
         "kyazdani42/nvim-tree.lua",
         cmd = "NvimTreeToggle",
         config = function()
-            require("_nvlx.config.plugins.tree")
+            load("tree")
         end,
     },
 
@@ -130,14 +135,14 @@ return {
         "nvim-telescope/telescope.nvim",
         cmd = "Telescope",
         config = function()
-            require("_nvlx.config.plugins.telescope")
+            load("telescope")
         end,
     },
 
     {
         "lewis6991/gitsigns.nvim",
         config = function()
-            require("_nvlx.config.plugins.gitsigns")
+            load("gitsigns")
         end,
         after = "plenary.nvim",
     },
@@ -145,7 +150,7 @@ return {
     {
         "glepnir/dashboard-nvim",
         setup = function()
-            require("_nvlx.config.plugins.dashboard")
+            load("dashboard")
         end,
         after = "packer.nvim",
     },
@@ -153,7 +158,7 @@ return {
     {
         "windwp/nvim-autopairs",
         config = function()
-            require("_nvlx.config.plugins.autopairs")
+            load("autopairs")
         end,
         after = "nvim-compe",
     },
@@ -162,14 +167,14 @@ return {
         "lukas-reineke/indent-blankline.nvim",
         event = "BufRead",
         setup = function()
-            require("_nvlx.config.plugins.indentline")
+            load("indentline")
         end,
     },
 
     {
         "akinsho/nvim-toggleterm.lua",
         config = function()
-            require("_nvlx.config.plugins.terminal")
+            load("terminal")
         end,
         after = "which-key.nvim",
     },
@@ -177,7 +182,7 @@ return {
     {
         "folke/which-key.nvim",
         config = function()
-            require("_nvlx.config.plugins.whichkey").load()
+            load("whichkey").load()
         end,
         after = "packer.nvim",
     },
@@ -185,7 +190,7 @@ return {
     {
         "ygm2/rooter.nvim",
         config = function()
-            require("_nvlx.config.plugins.rooter")
+            load("rooter")
         end,
     },
 
