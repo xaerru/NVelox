@@ -13,7 +13,7 @@ local default_wk = {
         t = {
             {
                 name = "terminal",
-                g = { "<CMD>lua require('config.plugins.terminal').lazygit()<CR>", "lazygit" },
+                g = { "<CMD>lua require('_nvlx.config.plugins.terminal').lazygit()<CR>", "lazygit" },
                 --v = { "<CMD>FloatermNew --height=40 --width=0.5 --position=right<CR>", "Vertical" },
                 --h = { "<CMD>FloatermNew --height=0.5 --width=0.99 --position=top<CR>", "Horizontal" },
                 --f = { "<CMD>FloatermNew --height=40 --width=0.99<CR>", "Full" },
