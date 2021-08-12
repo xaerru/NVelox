@@ -45,6 +45,7 @@ local default_settings = {
     undoreload = 10000,
     updatetime = 300,
     wrap = false,
+    lazyredraw = true,
 }
 
 function M.define(settings)
@@ -54,6 +55,9 @@ function M.define(settings)
 end
 
 function M.load()
+    for _, plugin in pairs(nvlx.disabled.builtin_plugins) do
+        vim.g["loaded_" .. plugin] = 1
+    end
     M.define(default_settings)
     M.define(nvlx.settings)
 end

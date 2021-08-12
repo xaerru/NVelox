@@ -6,6 +6,9 @@ nvlx = {
         transparent = false,
         highlights = {},
     },
+    disabled = {
+        builtin_plugins = {}
+    },
     settings = {},
     keybinds = {
         command = {},
