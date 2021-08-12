@@ -6,7 +6,6 @@ local default_settings = {
     backspace = { "indent", "eol", "start" },
     clipboard = "unnamedplus",
     cmdheight = 2,
-    colorcolumn = "100",
     completeopt = "menuone,noselect",
     conceallevel = 0,
     encoding = "utf-8",
