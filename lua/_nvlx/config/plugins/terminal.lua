@@ -46,7 +46,7 @@ end
 
 function M.run_file()
     local run = Terminal:new({
-        cmd = require("cmd").run_file_cmd(),
+        cmd = require("_nvlx.cmd").run_file_cmd(),
         hidden = true,
         float_opts = {
             width = 80,
@@ -62,7 +62,7 @@ end
 
 function M.run_project()
     local run = Terminal:new({
-        cmd = require("cmd").run_project_cmd(),
+        cmd = require("_nvlx.cmd").run_project_cmd(),
         hidden = true,
         float_opts = {
             width = 80,
@@ -78,7 +78,7 @@ end
 
 function M.run_repl()
     local run = Terminal:new({
-        cmd = require("cmd").repl_cmd(),
+        cmd = require("_nvlx.cmd").repl_cmd(),
         hidden = true,
         float_opts = {
             width = 80,
