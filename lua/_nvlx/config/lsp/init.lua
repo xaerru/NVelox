@@ -18,7 +18,7 @@ local function setup_servers()
 end
 
 setup_servers()
-vim.cmd("e!")
+vim.cmd("silent! e!")
 
 -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
 require("lspinstall").post_install_hook = function()
