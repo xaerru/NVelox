@@ -92,7 +92,7 @@ local default_wk = {
         s = {
             {
                 name = "session",
-                a = { "<CMD>:lua require('sessions').sload()<CR>", "Session Finder" },
+                a = { "<CMD>:lua require('_nvlx.sessions').sload()<CR>", "Session Finder" },
                 c = {
                     "<CMD>:lua require('persistence').load_current()<CR>",
                     "Restore Current Directory Session",
@@ -123,9 +123,9 @@ local default_wk = {
         r = {
             {
                 name = "run",
-                f = { "<CMD>lua require('config.plugins.terminal').run_file()<CR>", "File" },
-                r = { "<CMD>lua require('config.plugins.terminal').run_repl()<CR>", "REPL" },
-                p = { "<CMD>lua require('config.plugins.terminal').run_project()<CR>", "Project" },
+                f = { "<CMD>lua require('_nvlx.config.plugins.terminal').run_file()<CR>", "File" },
+                r = { "<CMD>lua require('_nvlx.config.plugins.terminal').run_repl()<CR>", "REPL" },
+                p = { "<CMD>lua require('_nvlx.config.plugins.terminal').run_project()<CR>", "Project" },
             },
         },
     },
