@@ -80,12 +80,12 @@ require("feline").setup({
                     end,
                 },
                 { provider = "file_info" },
-                { provider = "  ", hl = { fg = "bg", bg = "black" } },
+                { provider = "  ", hl = { fg = "bg" } },
             },
         },
         right = {
             active = {
-                { provider = "  ", hl = { fg = "black", bg = "bg" } },
+                { provider = "  ", hl = { fg = "bg", bg = "bg" } },
                 { provider = "file_encoding" },
                 { provider = "position", left_sep = " ", right_sep = " " },
                 {
