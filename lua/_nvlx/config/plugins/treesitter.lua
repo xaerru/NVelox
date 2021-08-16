@@ -1,23 +1,7 @@
 require("nvim-treesitter.configs").setup({
-    ensure_installed = {
-        "bash",
-        "c",
-        "cpp",
-        "css",
-        "fish",
-        "haskell",
-        "html",
-        "javascript",
-        "json",
-        "lua",
-        "python",
-        "python",
-        "rust",
-        "toml",
-        "tsx",
-        "typescript",
-        "yaml",
-    },
+    ensure_installed = "maintained",
+    -- Haskell is too slow
+    ignore_installed = { "haskell" },
     highlight = {
         enable = true, -- false will disable the whole extension
     },
