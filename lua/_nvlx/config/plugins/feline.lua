@@ -1,6 +1,6 @@
 local function percentage_provider()
     local cursor = require("feline.providers.cursor")
-    return " " .. cursor.line_percentage() .. " "
+    return cursor.line_percentage() .. " "
 end
 
 local function vi_mode_provider()
@@ -87,7 +87,9 @@ require("feline").setup({
             active = {
                 { provider = "  ", hl = { fg = "bg", bg = "bg" } },
                 { provider = "file_encoding" },
-                { provider = "position", left_sep = " ", right_sep = " " },
+                { provider = "  ", hl = { fg = "skyblue", bg = "bg" } },
+                { provider = "position", hl = {bg = "skyblue", fg = "bg"} },
+                { provider = "  ", hl = { fg = "fg", bg = "skyblue" } },
                 {
                     provider = percentage_provider,
                     hl = vi_mode_hl,
