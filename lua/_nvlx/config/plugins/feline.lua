@@ -21,7 +21,7 @@ local function vi_mode_provider()
         [""] = "SELECT",
         t = "TERMINAL",
     }
-    return " " .. mode_alias[vim.fn.mode()] .. "  "
+    return " " .. mode_alias[vim.fn.mode()]
 end
 
 local function vi_mode_hl()
@@ -70,16 +70,38 @@ require("feline").setup({
     components = {
         left = {
             active = {
-                { provider = vi_mode_provider, hl = vi_mode_hl, right_sep = " " },
+                { provider = vi_mode_provider, hl = vi_mode_hl },
+
+                {
+                    provider = "  ",
+                    hl = function()
+                        local t = {}
+                        t.fg = "cyan"
+                        if vim.b.gitsigns_status_dict ~= nil then
+                            t.bg = "skyblue"
+                        else
+                            t.bg = "bg"
+                        end
+                        return t
+                    end,
+                },
+
                 {
                     provider = "git_branch",
                     icon = " ",
-                    right_sep = "  ",
+                    hl = { fg = "bg", bg = "skyblue" },
+                },
+
+                {
+                    provider = "  ",
+                    hl = { fg = "skyblue", bg = "bg" },
                     enabled = function()
                         return vim.b.gitsigns_status_dict ~= nil
                     end,
                 },
+
                 { provider = "file_info" },
+
                 { provider = "  ", hl = { fg = "bg" } },
             },
         },
@@ -88,7 +110,7 @@ require("feline").setup({
                 { provider = "  ", hl = { fg = "bg", bg = "bg" } },
                 { provider = "file_encoding" },
                 { provider = "  ", hl = { fg = "skyblue", bg = "bg" } },
-                { provider = "position", hl = {bg = "skyblue", fg = "bg"} },
+                { provider = "position", hl = { bg = "skyblue", fg = "bg" } },
                 { provider = "  ", hl = { fg = "fg", bg = "skyblue" } },
                 {
                     provider = percentage_provider,
