@@ -46,7 +46,7 @@ return {
 
     {
         "norcalli/nvim-colorizer.lua",
-        event = "BufRead",
+        event = "BufReadPost",
         config = function()
             require("_nvlx.config.plugins.colorizer")
         end,
@@ -104,7 +104,7 @@ return {
 
     {
         "kyazdani42/nvim-web-devicons",
-        after = "plenary.nvim",
+        after = "nordbuddy",
     },
 
     {
@@ -159,10 +159,10 @@ return {
 
     {
         "lukas-reineke/indent-blankline.nvim",
-        event = "BufRead",
         setup = function()
             require("_nvlx.config.plugins.indentline")
         end,
+        after = "nordbuddy"
     },
 
     {
