@@ -3,7 +3,7 @@ local function percentage_provider()
     return " " .. cursor.line_percentage() .. " "
 end
 
-local  function vi_mode_provider()
+local function vi_mode_provider()
     local mode_alias = {
         n = "NORMAL",
         no = "NORMAL",
@@ -24,6 +24,16 @@ local  function vi_mode_provider()
     return " " .. mode_alias[vim.fn.mode()] .. "  "
 end
 
+local function vi_mode_hl()
+    local vi_mode = require("feline.providers.vi_mode")
+    return {
+        name = vi_mode.get_mode_highlight_name(),
+        fg = "bg",
+        bg = vi_mode.get_mode_color(),
+        style = "bold",
+    }
+end
+
 require("feline").setup({
     preset = "noicon",
     default_fg = "#8FBCBB",
@@ -32,21 +42,21 @@ require("feline").setup({
         black = "#434C5E",
         skyblue = "#81A1C1",
         cyan = "#88C0D0",
-        green = "#8FBCBB",
+        green = "#A3BE8C",
         oceanblue = "#5E81AC",
         magenta = "#B48EAD",
         orange = "#D08770",
-        red = "#EC5F67",
+        red = "#BF616A",
         violet = "#B48EAD",
-        white = "#ECEFF4",
+        white = "#D8DEE9",
         yellow = "#EBCB8B",
     },
     vi_mode_colors = {
         NORMAL = "cyan",
         OP = "cyan",
         INSERT = "green",
-        VISUAL = "blue",
-        BLOCK = "green",
+        VISUAL = "skyblue",
+        BLOCK = "skyblue",
         REPLACE = "yellow",
         ["V-REPLACE"] = "yellow",
         ENTER = "cyan",
@@ -60,27 +70,27 @@ require("feline").setup({
     components = {
         left = {
             active = {
-                { provider = vi_mode_provider, hl = { fg = "bg", bg = "cyan" }, right_sep = " " },
+                { provider = vi_mode_provider, hl = vi_mode_hl, right_sep = " " },
                 {
                     provider = "git_branch",
-                    icon = "  ",
+                    icon = " ",
                     right_sep = "  ",
                     enabled = function()
                         return vim.b.gitsigns_status_dict ~= nil
                     end,
                 },
                 { provider = "file_info" },
-                { provider = "", hl = { fg = "bg", bg = "black" } },
+                { provider = "  ", hl = { fg = "bg", bg = "black" } },
             },
         },
         right = {
             active = {
-                { provider = "  " , hl = { fg = "bg", bg = "black" } },
+                { provider = "  ", hl = { fg = "black", bg = "bg" } },
                 { provider = "file_encoding" },
                 { provider = "position", left_sep = " ", right_sep = " " },
                 {
                     provider = percentage_provider,
-                    hl = { fg = "bg", bg = "cyan" },
+                    hl = vi_mode_hl,
                     style = "bold",
                 },
             },
