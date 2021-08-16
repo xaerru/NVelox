@@ -22,7 +22,7 @@ return {
             require("_nvlx.config.plugins.autosave")
         end,
         disable = not nvlx.general.autosave,
-        after = "nordbuddy"
+        after = "nordbuddy",
     },
 
     {
@@ -161,7 +161,7 @@ return {
         setup = function()
             require("_nvlx.config.plugins.indentline")
         end,
-        after = "nordbuddy"
+        after = "nordbuddy",
     },
 
     {
@@ -185,7 +185,7 @@ return {
         config = function()
             require("_nvlx.config.plugins.rooter")
         end,
-        after = "nordbuddy"
+        after = "nordbuddy",
     },
 
     {

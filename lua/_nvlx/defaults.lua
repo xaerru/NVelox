@@ -7,7 +7,7 @@ nvlx = {
         highlights = {},
     },
     disabled = {
-        builtin_plugins = {}
+        builtin_plugins = {},
     },
     settings = {},
     keybinds = {
@@ -23,7 +23,7 @@ nvlx = {
     plugins = {},
     config = {
         plugins = {
-            whichkey = {}
-        }
-    }
+            whichkey = {},
+        },
+    },
 }

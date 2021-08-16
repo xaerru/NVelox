@@ -10,7 +10,12 @@ require("_nvlx.defaults")
 local default_package_path = package.path
 local default_nvlx = utils.copy(nvlx)
 
-package.path = string.format("%s/.config/?/init.lua;%s/.config/nvlx/?.lua;%s/.config/nvlx/?/init.lua", HOME, HOME, HOME)
+package.path = string.format(
+    "%s/.config/?/init.lua;%s/.config/nvlx/?.lua;%s/.config/nvlx/?/init.lua",
+    HOME,
+    HOME,
+    HOME
+)
 
 local ok, error = pcall(require, "nvlx")
 if not ok then

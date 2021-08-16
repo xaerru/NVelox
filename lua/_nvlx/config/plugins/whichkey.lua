@@ -125,7 +125,10 @@ local default_wk = {
                 name = "run",
                 f = { "<CMD>lua require('_nvlx.config.plugins.terminal').run_file()<CR>", "File" },
                 r = { "<CMD>lua require('_nvlx.config.plugins.terminal').run_repl()<CR>", "REPL" },
-                p = { "<CMD>lua require('_nvlx.config.plugins.terminal').run_project()<CR>", "Project" },
+                p = {
+                    "<CMD>lua require('_nvlx.config.plugins.terminal').run_project()<CR>",
+                    "Project",
+                },
             },
         },
     },
