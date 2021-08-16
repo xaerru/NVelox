@@ -21,9 +21,8 @@ return {
         config = function()
             require("_nvlx.config.plugins.autosave")
         end,
-        cond = function()
-            return nvlx.general.autosave == true
-        end,
+        disable = not nvlx.general.autosave,
+        after = "nordbuddy"
     },
 
     {
@@ -186,6 +185,7 @@ return {
         config = function()
             require("_nvlx.config.plugins.rooter")
         end,
+        after = "nordbuddy"
     },
 
     {
