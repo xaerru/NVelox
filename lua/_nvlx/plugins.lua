@@ -78,9 +78,9 @@ return {
     },
 
     {
-        "hoob3rt/lualine.nvim",
+        "famiu/feline.nvim",
         config = function()
-            require("_nvlx.config.plugins.lualine")
+            require("_nvlx.config.plugins.feline")
         end,
         after = "nordbuddy",
     },
