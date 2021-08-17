@@ -75,11 +75,13 @@ require("feline").setup({
                 {
                     provider = "  ",
                     hl = function()
+                        local vi_mode = require("feline.providers.vi_mode")
                         local t = {}
-                        t.fg = "cyan"
                         if vim.b.gitsigns_status_dict ~= nil then
                             t.bg = "skyblue"
+                            t.fg = vi_mode.get_mode_color()
                         else
+                            t.fg = vi_mode.get_mode_color()
                             t.bg = "bg"
                         end
                         return t
@@ -88,7 +90,7 @@ require("feline").setup({
 
                 {
                     provider = "git_branch",
-                    icon = " ",
+                    icon = " ",
                     hl = { fg = "bg", bg = "skyblue" },
                 },
 
@@ -111,7 +113,16 @@ require("feline").setup({
                 { provider = "file_encoding" },
                 { provider = "  ", hl = { fg = "skyblue", bg = "bg" } },
                 { provider = "position", hl = { bg = "skyblue", fg = "bg" } },
-                { provider = "  ", hl = { fg = "fg", bg = "skyblue" } },
+                {
+                    provider = "  ",
+                    hl = function()
+                        local vi_mode = require("feline.providers.vi_mode")
+                        local t = {}
+                        t.bg = "skyblue"
+                        t.fg = vi_mode.get_mode_color()
+                        return t
+                    end,
+                },
                 {
                     provider = percentage_provider,
                     hl = vi_mode_hl,
