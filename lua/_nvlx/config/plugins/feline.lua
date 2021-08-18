@@ -1,8 +1,3 @@
-local function percentage_provider()
-    local cursor = require("feline.providers.cursor")
-    return cursor.line_percentage() .. " "
-end
-
 local function vi_mode_provider()
     local mode_alias = {
         n = "NORMAL",
@@ -124,7 +119,7 @@ require("feline").setup({
                     end,
                 },
                 {
-                    provider = percentage_provider,
+                    provider = require("feline.providers.cursor").line_percentage() .. " ",
                     hl = vi_mode_hl,
                     style = "bold",
                 },
