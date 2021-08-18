@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-dependencies=(git nvim node npm)
+core_dependencies=(git nvim node npm pip3 rg)
+DISTRO=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
 
 yes_or_no() {
     while true; do
@@ -22,16 +23,76 @@ yes_or_no() {
     done
 }
 
+install_core_dependencies() {
+    COMMAND="$1 "
+    uninstalled=()
+    echo "Core dependencies:"
+    for dependency in "${core_dependencies[@]}"; do
+        command -v $dependency >/dev/null
+        if [[ $? -eq 0 ]]; then
+            echo -e "\t$dependency\tinstalled"
+        else
+            echo -e "\t$dependency\tnot installed"
+            case $dependency in
+            nvim)
+                dependency="neovim"
+                ;;
+            node)
+                dependency="nodejs"
+                ;;
+            pip3)
+                case $DISTRO in
+                ubuntu)
+                    dependency="python3-pip"
+                    ;;
+                arch | artix)
+                    dependency="python-pip"
+                    ;;
+                *)
+                    echo -n "TODO"
+                    exit 1
+                    ;;
+                esac
+                ;;
+            rg)
+                dependency="ripgrep"
+                ;;
+            *)
+                dependency=($dependency)
+                ;;
+            esac
+            uninstalled+=($dependency)
+        fi
+    done
+    if [[ ${#uninstalled[@]} -ne 0 ]]; then
+        COMMAND+="${uninstalled[@]}"
+        echo
+        echo -e "\tThe following command is going to be executed as root:"
+        echo -e "\t$ $COMMAND"
+        yes_or_no "Continue with install?"
+        if [ $? -eq 1 ]; then
+            exit 1
+        fi
+        echo -e "\tEnter root password:"
+        su -c "$COMMAND"
+    fi
+}
+
+install_extra_dependencies() {
+    echo "Extra dependencies:"
+    (pip3 list | grep neovim >/dev/null && echo -e "\tpynvim installed") || (echo "Installing pynvim" && pip3 install pynvim)
+    (npm list --depth 1 --global neovim > /dev/null && echo -e "\tnode-client installed") || (echo "Installing node-client" && su -c "npm install --global neovim")
+}
+
 # TODO: Support more distributions
-install_package() {
-    DISTRO=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
+install_packages() {
     case $DISTRO in
     ubuntu)
-        COMMAND="apt install"
+        install_core_dependencies "apt install"
         ;;
 
     arch | artix)
-        COMMAND="pacman -S"
+        install_core_dependencies "pacman -S"
         ;;
 
     *)
@@ -39,47 +100,10 @@ install_package() {
         return 1
         ;;
     esac
-    echo "> $COMMAND $1"
-    echo "Enter root password:"
-    su -c "$COMMAND $1"
+    install_extra_dependencies
 }
 
-check_dependencies() {
-    uninstalled=()
-    for dependency in "${dependencies[@]}"; do
-        command -v $dependency >/dev/null
-        if [[ $? -eq 0 ]]; then
-            echo -e "$dependency\tinstalled"
-        else
-            uninstalled+=($dependency)
-        fi
-    done
-    if [[ ${#uninstalled[@]} -ne 0 ]]; then
-        for package in "${uninstalled[@]}"; do
-            echo -e "$package\tnot installed"
-        done
-        yes_or_no "Would you like to install the missing packages now?"
-        if [[ $? -eq 1 ]]; then
-            echo -e "Install the missing packages and run the script again."
-            exit 1
-        fi
-        to_install=()
-        case $package in
-        nvim)
-            to_install+=(neovim)
-            ;;
-        node)
-            to_install+=(nodejs)
-            ;;
-        *)
-            to_install+=($package)
-            ;;
-        esac
-        install_package "${to_install[@]}"
-    fi
-}
-
-install() {
+clone() {
     git clone https://github.com/grvxs/NVelox "$HOME/.config/nvim"
     mkdir "$HOME/.config/nvlx"
     touch "$HOME/.config/nvlx/init.lua"
@@ -94,11 +118,11 @@ backup() {
         echo "Backing up to the default backup directory (~/.config/nvim.bak)"
         mv -v $HOME/.config/nvim $HOME/.config/nvim.bak && mkdir $HOME/.config/nvim
     fi
-    install
+    clone
 }
 
 main() {
-    check_dependencies
+    install_packages
 }
 
 main
