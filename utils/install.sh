@@ -124,6 +124,7 @@ clone() {
     if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
         git clone https://github.com/wbthomason/packer.nvim "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
     fi
+    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 }
 
 main() {
