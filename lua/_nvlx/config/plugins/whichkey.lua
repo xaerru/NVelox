@@ -12,16 +12,6 @@ local default_wk = {
     normal = {
         t = {
             {
-                name = "terminal",
-                g = { "<CMD>lua require('_nvlx.config.plugins.terminal').lazygit()<CR>", "lazygit" },
-                --v = { "<CMD>FloatermNew --height=40 --width=0.5 --position=right<CR>", "Vertical" },
-                --h = { "<CMD>FloatermNew --height=0.5 --width=0.99 --position=top<CR>", "Horizontal" },
-                --f = { "<CMD>FloatermNew --height=40 --width=0.99<CR>", "Full" },
-            },
-        },
-
-        p = {
-            {
                 name = "telescope",
                 f = { "<CMD>Telescope find_files<CR>", "Find Files" },
                 g = { "<CMD>Telescope git_files<CR>", "Git Files" },
@@ -39,6 +29,7 @@ local default_wk = {
         g = {
             {
                 name = "git",
+                l = { "<CMD>lua require('_nvlx.config.plugins.terminal').lazygit()<CR>", "lazygit" },
                 R = "Reset Buffer",
                 b = "Blame Line",
                 p = "Preview Hunk",
