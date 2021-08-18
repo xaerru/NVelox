@@ -81,7 +81,7 @@ install_core_dependencies() {
 install_extra_dependencies() {
     echo "Extra dependencies:"
     (pip3 list | grep neovim >/dev/null && echo -e "\tpynvim installed") || (echo "Installing pynvim" && pip3 install pynvim)
-    (npm list --depth 1 --global neovim > /dev/null && echo -e "\tnode-client installed") || (echo "Installing node-client" && su -c "npm install --global neovim")
+    (npm list --depth 1 --global neovim >/dev/null && echo -e "\tnode-client installed") || (echo "Installing node-client" && su -c "npm install --global neovim")
 }
 
 # TODO: Support more distributions
@@ -103,12 +103,6 @@ install_packages() {
     install_extra_dependencies
 }
 
-clone() {
-    git clone https://github.com/grvxs/NVelox "$HOME/.config/nvim"
-    mkdir "$HOME/.config/nvlx"
-    touch "$HOME/.config/nvlx/init.lua"
-}
-
 backup() {
     yes_or_no "Do you want to backup to a custom directory?"
     if [[ $? -eq 0 ]]; then
@@ -118,11 +112,23 @@ backup() {
         echo "Backing up to the default backup directory (~/.config/nvim.bak)"
         mv -v $HOME/.config/nvim $HOME/.config/nvim.bak && mkdir $HOME/.config/nvim
     fi
-    clone
+}
+
+clone() {
+    backup
+    git clone https://github.com/grvxs/NVelox "$HOME/.config/nvim"
+    if [ ! -d "$HOME/.config/nvlx/" ]; then
+        mkdir "$HOME/.config/nvlx"
+        touch "$HOME/.config/nvlx/init.lua"
+    fi
+    if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
+        git clone https://github.com/wbthomason/packer.nvim "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    fi
 }
 
 main() {
     install_packages
+    clone
 }
 
 main
