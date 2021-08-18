@@ -4,7 +4,7 @@ dependencies=(git nvim node npm)
 
 yes_or_no() {
     while true; do
-        read -n 1 -p "$* [Y/n]: " yn
+        read -n 1 -p "$* [Y/n] " yn
         if [[ -z $yn ]]; then
             yn="y"
         else
@@ -16,7 +16,7 @@ yes_or_no() {
             ;;
         [Nn]*)
             echo "Aborted"
-            exit 1
+            return 1
             ;;
         esac
     done
@@ -39,35 +39,66 @@ install_package() {
         return 1
         ;;
     esac
+    echo "> $COMMAND $1"
     echo "Enter root password:"
     su -c "$COMMAND $1"
 }
 
-check_command() {
-    command -v $1 >/dev/null
-    if [[ $? -eq 0 ]]; then
-        echo -e "$1\tinstalled"
-    else
-        echo -e "$1\tnot installed"
-        yes_or_no "Would you like to install $1 now?"
-        case $1 in
+check_dependencies() {
+    uninstalled=()
+    for dependency in "${dependencies[@]}"; do
+        command -v $dependency >/dev/null
+        if [[ $? -eq 0 ]]; then
+            echo -e "$dependency\tinstalled"
+        else
+            uninstalled+=($dependency)
+        fi
+    done
+    if [[ ${#uninstalled[@]} -ne 0 ]]; then
+        for package in "${uninstalled[@]}"; do
+            echo -e "$package\tnot installed"
+        done
+        yes_or_no "Would you like to install the missing packages now?"
+        if [[ $? -eq 1 ]]; then
+            echo -e "Install the missing packages and run the script again."
+            exit 1
+        fi
+        to_install=()
+        case $package in
         nvim)
-            install_package neovim
+            to_install+=(neovim)
             ;;
         node)
-            install_package nodejs
+            to_install+=(nodejs)
             ;;
         *)
-            install_package $1
+            to_install+=($package)
             ;;
         esac
+        install_package "${to_install[@]}"
     fi
 }
 
-check_dependencies() {
-    for dependency in "${dependencies[@]}"; do
-        check_command $dependency
-    done
+install() {
+    git clone https://github.com/grvxs/NVelox "$HOME/.config/nvim"
+    mkdir "$HOME/.config/nvlx"
+    touch "$HOME/.config/nvlx/init.lua"
 }
 
-check_dependencies
+backup() {
+    yes_or_no "Do you want to backup to a custom directory?"
+    if [[ $? -eq 0 ]]; then
+        read -p "Enter a valid path: " DESTBAK
+        eval mv -v $HOME/.config/nvim $DESTBAK
+    elif [[ $? -eq 1 ]]; then
+        echo "Backing up to the default backup directory (~/.config/nvim.bak)"
+        mv -v $HOME/.config/nvim $HOME/.config/nvim.bak && mkdir $HOME/.config/nvim
+    fi
+    install
+}
+
+main() {
+    check_dependencies
+}
+
+main
