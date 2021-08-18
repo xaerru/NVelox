@@ -101,11 +101,16 @@ require("feline").setup({
 
                 { provider = "  ", hl = { fg = "bg" } },
             },
+            inactive = {
+                { provider = "file_info", left_sep = " " },
+
+                { provider = "  ", hl = { fg = "bg" } },
+            },
         },
         right = {
             active = {
                 { provider = "  ", hl = { fg = "bg", bg = "bg" } },
-                { provider = "file_encoding" },
+                { provider = "lsp_client_names" },
                 { provider = "  ", hl = { fg = "skyblue", bg = "bg" } },
                 { provider = "position", hl = { bg = "skyblue", fg = "bg" } },
                 {
@@ -119,11 +124,29 @@ require("feline").setup({
                     end,
                 },
                 {
-                    provider = require("feline.providers.cursor").line_percentage() .. " ",
+                    provider = function()
+                        return require("feline.providers.cursor").line_percentage() .. " "
+                    end,
                     hl = vi_mode_hl,
                     style = "bold",
                 },
             },
+            inactive = {
+                { provider = "  ", hl = { fg = "bg", bg = "bg" } },
+                { provider = "lsp_client_names" },
+                { provider = "  ", hl = { fg = "skyblue", bg = "bg" } },
+                { provider = "position", hl = { bg = "skyblue", fg = "bg" } },
+            },
+        },
+    },
+    properties = {
+        force_inactive = {
+            filetypes = {
+                "NvimTree",
+                "packer",
+            },
+            buftypes = { "terminal" },
+            bufnames = {},
         },
     },
 })
