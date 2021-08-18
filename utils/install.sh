@@ -1,86 +1,73 @@
 #!/usr/bin/env bash
 
-BOLD='\033[1m'
-NORD='\033[1;34m'
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-END='\033[0m'
-DEST="$HOME/.config/nvim"
-URL="https://github.com/grvxs/NVelox"
-set -e
+dependencies=(git nvim node npm)
 
-clear
-echo -e "${BOLD}${NORD}        _   ___    __     __          \n       / | / / |  / /__  / /___  _  __\n      /  |/ /| | / / _ \/ / __ \| |/_/\n     / /|  / | |/ /  __/ / /_/ />  <  \n    /_/ |_/  |___/\___/_/\____/_/|_| ${END}\n\n\n"
-
-checknvim(){
-    if command -v nvim >/dev/null; then
-        echo -e "${BOLD}${RED} neovim is not installed please install it according to your distribution${END}"
-        exit 1
-    fi
-}
-
-function install(){
-    if command -v git >/dev/null; then
-        echo -e "\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} Installing\n"
-        git clone $URL $DEST
-        if [ ! -d "$HOME/.config/nvlx" ]; then
-            mkdir ~/.config/nvlx && touch .config/nvlx/init.lua
-        fi
-    else
-        echo -e "${BOLD}${RED}Command git not found${END}\n${RED}exiting!...${END}"
-        exit 1
-    fi
-}
-
-backup(){
-    echo -e "\n\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} backing up"
-    echo -e "\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} info"
-    read -p "do you want to backup to a custom directory?[y/n]: " RESPONSE
-    if [ "$RESPONSE" == "y" ]; then
-        echo -e "\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} info"
-        read -p "enter a valid path: " DESTBAK
-        eval mv -v $HOME/.config/nvim $DESTBAK
-    elif [ "$RESPONSE" == "n" ]; then
-        echo -e "\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} info"
-        echo "backing up to a default directory (~/.config/nvim.bak)"
-        mv -v $HOME/.config/nvim $HOME/.config/nvim.bak && mkdir $HOME/.config/nvim
-        install
-    else
-        echo "invalid argument specified! "
-    fi
-
-}
-
-
-function checks(){
-     if [ -d "$HOME/.config/nvim" ]
-    then
-        echo -e "\n${GREEN}[${END}${RED}*${RED}${GREEN}]${END} info\n"
-        read -p "a previous neovim configuration was detected, do you want to backup your previous neovim configuration?[y/n]: " yn
-        if [ "$yn" == "y" ]; then
-            backup
-        elif [ "$yn" == "n" ]; then
-            exit 0
+yes_or_no() {
+    while true; do
+        read -n 1 -p "$* [Y/n]: " yn
+        if [[ -z $yn ]]; then
+            yn="y"
         else
-            echo "invalid argument specified!"
+            echo
         fi
+        case $yn in
+        [Yy]*)
+            return 0
+            ;;
+        [Nn]*)
+            echo "Aborted"
+            exit 1
+            ;;
+        esac
+    done
+}
+
+# TODO: Support more distributions
+install_package() {
+    DISTRO=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
+    case $DISTRO in
+    ubuntu)
+        COMMAND="apt install"
+        ;;
+
+    arch | artix)
+        COMMAND="pacman -S"
+        ;;
+
+    *)
+        echo -n "unknown"
+        return 1
+        ;;
+    esac
+    echo "Enter root password:"
+    su -c "$COMMAND $1"
+}
+
+check_command() {
+    command -v $1 >/dev/null
+    if [[ $? -eq 0 ]]; then
+        echo -e "$1\tinstalled"
     else
-        install
+        echo -e "$1\tnot installed"
+        yes_or_no "Would you like to install $1 now?"
+        case $1 in
+        nvim)
+            install_package neovim
+            ;;
+        node)
+            install_package nodejs
+            ;;
+        *)
+            install_package $1
+            ;;
+        esac
     fi
 }
 
-function wrapper(){
-    checknvim
-    checks
-    install
+check_dependencies() {
+    for dependency in "${dependencies[@]}"; do
+        check_command $dependency
+    done
 }
 
-while true; do
-    read -p "Do you want to install NVelox[y/n]: " yn
-    case $yn in
-        [y]* ) wrapper; break;;
-        [n]* ) echo "OK! exiting..." && exit 0;;
-        * ) echo "Invalid argument specified!" && exit 1;;
-    esac
-done
-
+check_dependencies
