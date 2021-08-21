@@ -4,10 +4,6 @@ g.dashboard_disable_at_vimenter = 0
 g.dashboard_disable_statusline = 0
 g.dashboard_default_executive = "telescope"
 
-local plugins_count = vim.fn.len(
-    vim.fn.globpath("~/.local/share/nvim/site/pack/packer/start", "*", 0, 1)
-)
-
 g.dashboard_custom_header = {
     [[    _   ___    __     __          ]],
     [[   / | / / |  / /__  / /___  _  __]],
@@ -52,7 +48,4 @@ require("_nvlx.autocmds").define({
     },
 })
 
-g.dashboard_custom_footer = {
-    "   ",
-    plugins_count .. " plugins loaded",
-}
+g.dashboard_custom_footer = {}
