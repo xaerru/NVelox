@@ -120,11 +120,6 @@ return {
     },
 
     {
-        "nvim-lua/popup.nvim",
-        after = "plenary.nvim",
-    },
-
-    {
         "nvim-telescope/telescope.nvim",
         cmd = "Telescope",
         config = function()
