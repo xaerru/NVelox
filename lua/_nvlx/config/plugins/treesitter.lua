@@ -9,6 +9,4 @@ require("nvim-treesitter.configs").setup({
         enable = true,
     },
     indent = { enable = true },
-    -- TODO seems to be broken
-    autotag = { enable = true },
 })
