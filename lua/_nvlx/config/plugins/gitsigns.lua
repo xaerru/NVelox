@@ -31,12 +31,10 @@ require("gitsigns").setup({
             linehl = "GitSignsChangeLn",
         },
     },
-    numhl = false,
-    linehl = false,
-    watch_index = { interval = 200 },
-    sign_priority = 6,
-    update_debounce = 200,
-    status_formatter = nil, -- Use default
+    watch_index = {
+        interval = 1000,
+        follow_files = true,
+    },
     keymaps = {
         noremap = true,
 
