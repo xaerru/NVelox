@@ -29,7 +29,7 @@ local function vi_mode_hl()
     }
 end
 
-require("feline").setup({
+require("feline").setup(require("_nvlx.utils").merge({
     preset = "noicon",
     default_fg = "#8FBCBB",
     default_bg = "#2E3440",
@@ -149,4 +149,4 @@ require("feline").setup({
             bufnames = {},
         },
     },
-})
+}, nvlx.config.plugins.feline))
