@@ -1,4 +1,4 @@
-require("bufferline").setup({
+require("bufferline").setup(require("_nvlx.utils").merge({
     options = {
         numbers = "ordinal",
         number_style = "superscript",
@@ -75,4 +75,4 @@ require("bufferline").setup({
             guifg = "#5E687B",
         },
     },
-})
+}, nvlx.config.plugins.bufferline))
