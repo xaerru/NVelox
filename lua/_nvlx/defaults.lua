@@ -27,7 +27,6 @@ nvlx = {
     plugins = {},
     config = {
         plugins = {
-            whichkey = {},
             autopairs = {},
             autosave = {},
             bufferline = {},
@@ -39,6 +38,7 @@ nvlx = {
             telescope = {},
             toggleterm = {},
             treesitter = {},
+            whichkey = {},
         },
     },
 }
