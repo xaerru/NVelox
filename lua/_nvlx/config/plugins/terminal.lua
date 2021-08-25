@@ -1,6 +1,6 @@
 local M = {}
 
-require("toggleterm").setup({
+require("toggleterm").setup(require("_nvlx.utils").merge({
     size = 5,
     open_mapping = [[<F1>]],
     hide_numbers = true,
@@ -23,7 +23,7 @@ require("toggleterm").setup({
             background = "Normal",
         },
     },
-})
+}, nvlx.config.plugins.toggleterm))
 
 local Terminal = require("toggleterm.terminal").Terminal
 
