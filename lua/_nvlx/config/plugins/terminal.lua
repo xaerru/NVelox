@@ -23,7 +23,7 @@ require("toggleterm").setup(require("_nvlx.utils").merge({
             background = "Normal",
         },
     },
-}, nvlx.config.plugins.toggleterm))
+}, nvlx.config.plugins.toggleterm, nvlx.config.plugins_override.toggleterm))
 
 local Terminal = require("toggleterm.terminal").Terminal
 

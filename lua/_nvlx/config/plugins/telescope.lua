@@ -43,4 +43,4 @@ require("telescope").setup(require("_nvlx.utils").merge({
             },
         },
     },
-}, nvlx.config.plugins.telescope))
+}, nvlx.config.plugins.telescope, nvlx.config.plugins_override.telescope))
