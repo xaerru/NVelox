@@ -36,7 +36,9 @@ function plugin_loader:load(configurations)
     return self.packer.startup(function(use)
         for _, plugins in ipairs(configurations) do
             for _, plugin in ipairs(plugins) do
-                use(plugin)
+                if vim.tbl_contains(nvlx.disabled.plugins, plugin[1]) == false then
+                    use(plugin)
+                end
             end
         end
     end)

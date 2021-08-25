@@ -8,6 +8,7 @@ nvlx = {
     },
     disabled = {
         builtin_plugins = {},
+        plugins = {},
     },
     settings = {},
     keybinds = {
