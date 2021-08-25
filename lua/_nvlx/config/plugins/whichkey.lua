@@ -1,12 +1,6 @@
 local M = {}
 
-require("which-key").setup({
-    plugins = {
-        presets = {
-            nav = false,
-        },
-    },
-})
+require("which-key").setup(nvlx.config.plugins.whichkey)
 
 local default_wk = {
     normal = {
@@ -211,7 +205,7 @@ end
 
 function M.load()
     M.loader(default_wk)
-    M.loader(nvlx.config.plugins.whichkey)
+    M.loader(nvlx.keybinds.leader)
 end
 
 return M
