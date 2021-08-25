@@ -35,6 +35,7 @@ nvlx = {
             compe = {},
             feline = {},
             gitsigns = {},
+            persistence = {},
         },
     },
 }
