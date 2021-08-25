@@ -32,6 +32,7 @@ nvlx = {
             autosave = {},
             bufferline = {},
             colorizer = {},
+            compe = {},
         },
     },
 }
