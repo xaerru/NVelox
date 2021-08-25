@@ -1,4 +1,4 @@
-require("gitsigns").setup({
+require("gitsigns").setup(require("_nvlx.utils").merge({
     signs = {
         add = {
             hl = "GitSignsAdd",
@@ -60,4 +60,4 @@ require("gitsigns").setup({
         ["o ih"] = { silent = true, ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>' },
         ["x ih"] = { silent = true, ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>' },
     },
-})
+}, nvlx.config.plugins.gitsigns))
