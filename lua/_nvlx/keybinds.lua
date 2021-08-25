@@ -59,7 +59,7 @@ end
 
 function M.load()
     M.loader(default_keybinds)
-    M.loader(nvlx.keybinds)
+    M.loader(nvlx.keybinds.general)
 end
 
 return M
