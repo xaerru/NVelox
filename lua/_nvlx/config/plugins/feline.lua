@@ -149,4 +149,4 @@ require("feline").setup(require("_nvlx.utils").merge({
             bufnames = {},
         },
     },
-}, nvlx.config.plugins.feline))
+}, nvlx.config.plugins.feline, nvlx.config.plugins_override.feline))
