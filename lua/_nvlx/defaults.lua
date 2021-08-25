@@ -30,6 +30,7 @@ nvlx = {
             whichkey = {},
             autopairs = {},
             autosave = {},
+            bufferline = {}
         },
     },
 }
