@@ -37,6 +37,7 @@ nvlx = {
             gitsigns = {},
             persistence = {},
             telescope = {},
+            toggleterm = {},
         },
     },
 }
