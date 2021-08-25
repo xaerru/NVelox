@@ -46,4 +46,9 @@ function M.hot_reload()
     vim.cmd(":PackerInstall")
 end
 
+function M.merge(default, user)
+    local config = vim.tbl_deep_extend("force", default, user)
+    return config
+end
+
 return M
