@@ -1,4 +1,4 @@
-require("nvim-treesitter.configs").setup({
+require("nvim-treesitter.configs").setup(require("_nvlx.utils").merge({
     ensure_installed = "maintained",
     -- Haskell is too slow
     ignore_installed = { "haskell" },
@@ -9,4 +9,4 @@ require("nvim-treesitter.configs").setup({
         enable = true,
     },
     indent = { enable = true },
-})
+}, nvlx.config.plugins.treesitter))
