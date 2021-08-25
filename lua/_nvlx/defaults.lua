@@ -33,6 +33,7 @@ nvlx = {
             bufferline = {},
             colorizer = {},
             compe = {},
+            feline = {},
         },
     },
 }
