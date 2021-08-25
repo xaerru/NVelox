@@ -34,6 +34,7 @@ nvlx = {
             colorizer = {},
             compe = {},
             feline = {},
+            gitsigns = {},
         },
     },
 }
