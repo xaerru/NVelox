@@ -28,6 +28,7 @@ nvlx = {
     config = {
         plugins = {
             whichkey = {},
+            autopairs = {}
         },
     },
 }
