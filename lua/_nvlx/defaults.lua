@@ -36,6 +36,7 @@ nvlx = {
             feline = {},
             gitsigns = {},
             persistence = {},
+            telescope = {},
         },
     },
 }
