@@ -38,6 +38,7 @@ nvlx = {
             persistence = {},
             telescope = {},
             toggleterm = {},
+            treesitter = {},
         },
     },
 }
