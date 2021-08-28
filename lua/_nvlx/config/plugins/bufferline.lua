@@ -1,8 +1,8 @@
 require("bufferline").setup(require("_nvlx.utils").merge({
     options = {
-        numbers = "ordinal",
-        number_style = "superscript",
-        mappings = false,
+        numbers = function(a)
+            return a.raise(a.ordinal)
+        end,
         modified_icon = "●",
         left_trunc_marker = "",
         right_trunc_marker = "",
