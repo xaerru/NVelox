@@ -10,3 +10,7 @@ jobs:
         run: sudo add-apt-repository ppa:neovim-ppa/unstable && sudo apt-get update
       - name: Run install script
         run: ./utils/install.sh --ci
+      - name: Check for errors
+        run: if nvim --headless -c ':qall' | grep 'Error'; then false; fi
+        run: if nvim --headless +PackerCompile -c ':qall' | grep 'Error'; then false; fi
+        run: if nvim --headless +checkhealth -c ':qall' | grep 'Error'; then false; fi
