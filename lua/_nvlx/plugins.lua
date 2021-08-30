@@ -4,6 +4,15 @@ return {
     },
 
     {
+        "lewis6991/impatient.nvim",
+        after = "packer.nvim",
+        config = function()
+            require("impatient")
+        end,
+        rocks = "mpack",
+    },
+
+    {
         "neovim/nvim-lspconfig",
         after = "nvim-lspinstall",
         config = function()
