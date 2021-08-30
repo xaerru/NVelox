@@ -2,6 +2,7 @@
 
 core_dependencies=(git nvim node npm pip3 rg)
 DISTRO=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
+CI=$1
 
 yes_or_no() {
     while true; do
@@ -115,7 +116,11 @@ backup() {
 }
 
 clone() {
-    backup
+    if [[ $CI == "--ci"]]; then
+        true
+    else
+        backup
+    fi
     git clone https://github.com/grvxs/NVelox "$HOME/.config/nvim"
     if [ ! -d "$HOME/.config/nvlx/" ]; then
         mkdir "$HOME/.config/nvlx"
