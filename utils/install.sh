@@ -75,7 +75,7 @@ install_core_dependencies() {
             exit 1
         fi
         echo -e "\tEnter root password:"
-        "$COMMAND"
+        eval "$COMMAND"
     fi
 }
 
