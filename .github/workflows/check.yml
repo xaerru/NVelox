@@ -8,4 +8,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Add neovim-ppa
         run: sudo add-apt-repository ppa:neovim-ppa/unstable && sudo apt-get update
-      - run: ./utils/install.sh --ci
+      - name: Run install script
+        run: ./utils/install.sh --ci
