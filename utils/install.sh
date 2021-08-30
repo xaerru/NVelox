@@ -24,7 +24,7 @@ yes_or_no() {
 }
 
 install_core_dependencies() {
-    COMMAND="$1 "
+    COMMAND="sudo $1 "
     uninstalled=()
     echo "Core dependencies:"
     for dependency in "${core_dependencies[@]}"; do
