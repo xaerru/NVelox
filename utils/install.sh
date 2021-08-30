@@ -74,14 +74,14 @@ install_core_dependencies() {
             exit 1
         fi
         echo -e "\tEnter root password:"
-        su -c "$COMMAND"
+        "$COMMAND"
     fi
 }
 
 install_extra_dependencies() {
     echo "Extra dependencies:"
     (pip3 list | grep neovim >/dev/null && echo -e "\tpynvim installed") || (echo "Installing pynvim" && pip3 install pynvim)
-    (npm list --depth 1 --global neovim >/dev/null && echo -e "\tnode-client installed") || (echo "Installing node-client" && su -c "npm install --global neovim")
+    (npm list --depth 1 --global neovim >/dev/null && echo -e "\tnode-client installed") || (echo "Installing node-client" && sudo npm install --global neovim)
 }
 
 # TODO: Support more distributions
