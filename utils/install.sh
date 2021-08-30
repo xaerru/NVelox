@@ -116,7 +116,7 @@ backup() {
 }
 
 clone() {
-    if [[ $CI == "--ci"]]; then
+    if [[ $CI == "--ci" ]]; then
         true
     else
         backup
