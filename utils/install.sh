@@ -7,7 +7,7 @@ yes_or_no() {
     while true; do
         read -n 1 -p "$* [Y/n] " yn
         if [[ -z $yn ]]; then
-            yn=$1
+            yn="y"
         else
             echo
         fi
@@ -69,12 +69,12 @@ install_core_dependencies() {
         echo
         echo -e "\tThe following command is going to be executed as root:"
         echo -e "\t$ $COMMAND"
-        yes_or_no "Continue with install?" "y"
+        yes_or_no "Continue with install?"
         if [ $? -eq 1 ]; then
             exit 1
         fi
         echo -e "\tEnter root password:"
-        $COMMAND
+        "$COMMAND"
     fi
 }
 
@@ -104,7 +104,7 @@ install_packages() {
 }
 
 backup() {
-    yes_or_no "Do you want to backup to a custom directory?" "n"
+    yes_or_no "Do you want to backup to a custom directory?"
     if [[ $? -eq 0 ]]; then
         read -p "Enter a valid path: " DESTBAK
         eval mv -v $HOME/.config/nvim $DESTBAK
