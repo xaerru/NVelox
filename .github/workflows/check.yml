@@ -11,8 +11,8 @@ jobs:
       - name: Run install script
         run: ./utils/install.sh --ci
       - name: Check for errors
-        run: if nvim --headless -c ':qall' | grep 'Error'; then false; fi
+        run: if nvim --headless -c ':qall' 2>&1| grep 'Error'; then false; fi
       - name: Check PackerCompile
-        run: if nvim --headless +PackerCompile -c ':qall' | grep 'Error'; then false; fi
+        run: if nvim --headless +PackerCompile -c ':qall' 2>&1| grep 'Error'; then false; fi
       - name: Check checkhealth
-        run: if nvim --headless +checkhealth -c ':qall' | grep 'Error'; then false; fi
+        run: if nvim --headless +checkhealth -c ':qall' 2>&1| grep 'Error'; then false; fi
