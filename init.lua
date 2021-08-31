@@ -35,4 +35,3 @@ loader:load({ plugins, nvlx.plugins })
 require("_nvlx.settings").load()
 require("_nvlx.keybinds").load()
 require("_nvlx.autocmds").load()
-&
