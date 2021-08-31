@@ -8,12 +8,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: add-ci
-      - name: Install neovim
+      - name: Add neovim ppa
         timeout-minutes: 10
         run: |
-          curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
-          chmod u+x nvim.appimage
-          sudo mv nvim.appimage /usr/bin/nvim
+          sudo add-apt-repository ppa:neovim-ppa/stable
+          sudo apt-get update
       - name: Run install script
         run: ./utils/install.sh --ci
       - name: Check for errors
