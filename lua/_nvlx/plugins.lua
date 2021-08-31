@@ -162,7 +162,7 @@ return {
 
     {
         "lukas-reineke/indent-blankline.nvim",
-        setup = function()
+        config = function()
             require("_nvlx.config.plugins.indentline")
         end,
         after = "nordbuddy",
