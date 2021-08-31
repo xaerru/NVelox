@@ -5,6 +5,7 @@ nvlx = {
         colorscheme = "nordbuddy",
         transparent = false,
         highlights = {},
+        winblend = 0,
     },
     disabled = {
         builtin_plugins = {},

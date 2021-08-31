@@ -17,7 +17,7 @@ require("toggleterm").setup(require("_nvlx.utils").merge({
         border = "single",
         width = 150,
         height = 35,
-        winblend = 25,
+        winblend = nvlx.general.winblend,
         highlights = {
             border = "FloatBorder",
             background = "Normal",
@@ -45,7 +45,7 @@ function M.run_file()
             height = 35,
             row = (vim.fn.eval("&lines") - 35) / 2,
             col = vim.fn.eval("&columns"),
-            winblend = 25,
+            winblend = nvlx.general.winblend,
         },
         close_on_exit = false,
     })
@@ -61,7 +61,7 @@ function M.run_project()
             height = 35,
             row = (vim.fn.eval("&lines") - 35) / 2,
             col = vim.fn.eval("&columns"),
-            winblend = 25,
+            winblend = nvlx.general.winblend,
         },
         close_on_exit = false,
     })
@@ -77,7 +77,7 @@ function M.run_repl()
             height = 35,
             row = (vim.fn.eval("&lines") - 35) / 2,
             col = vim.fn.eval("&columns"),
-            winblend = 25,
+            winblend = nvlx.general.winblend,
         },
         close_on_exit = true,
     })
