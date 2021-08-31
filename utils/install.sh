@@ -2,6 +2,7 @@
 
 core_dependencies=(git nvim node npm pip3 rg)
 DISTRO=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
+CI=$1
 
 yes_or_no() {
     while true; do
@@ -24,7 +25,7 @@ yes_or_no() {
 }
 
 install_core_dependencies() {
-    COMMAND="$1 "
+    COMMAND="sudo $1 "
     uninstalled=()
     echo "Core dependencies:"
     for dependency in "${core_dependencies[@]}"; do
@@ -74,14 +75,14 @@ install_core_dependencies() {
             exit 1
         fi
         echo -e "\tEnter root password:"
-        su -c "$COMMAND"
+        eval "$COMMAND"
     fi
 }
 
 install_extra_dependencies() {
     echo "Extra dependencies:"
     (pip3 list | grep neovim >/dev/null && echo -e "\tpynvim installed") || (echo "Installing pynvim" && pip3 install pynvim)
-    (npm list --depth 1 --global neovim >/dev/null && echo -e "\tnode-client installed") || (echo "Installing node-client" && su -c "npm install --global neovim")
+    (npm list --depth 1 --global neovim >/dev/null && echo -e "\tnode-client installed") || (echo "Installing node-client" && sudo npm install --global neovim)
 }
 
 # TODO: Support more distributions
@@ -115,7 +116,11 @@ backup() {
 }
 
 clone() {
-    backup
+    if [[ $CI == "--ci" ]]; then
+        true
+    else
+        backup
+    fi
     git clone https://github.com/grvxs/NVelox "$HOME/.config/nvim"
     if [ ! -d "$HOME/.config/nvlx/" ]; then
         mkdir "$HOME/.config/nvlx"
