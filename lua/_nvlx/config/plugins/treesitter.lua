@@ -8,4 +8,4 @@ require("nvim-treesitter.configs").setup(require("_nvlx.utils").merge({
     autopairs = {
         enable = true,
     },
-}, nvlx.config.plugins.treesitter , nvlx.config.plugins_override.treesitter))
+}, nvlx.config.plugins.treesitter, nvlx.config.plugins_override.treesitter))
