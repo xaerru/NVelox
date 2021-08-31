@@ -14,7 +14,7 @@ jobs:
           curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim-linux64.tar.gz
           tar -xvf nvim-linux64.tar.gz
           cd nvim-linux64
-          sudo make install
+          sudo mv bin/nvim /usr/bin/nvim
       - name: Run install script
         run: ./utils/install.sh --ci
       - name: Check for errors
