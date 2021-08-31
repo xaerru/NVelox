@@ -10,7 +10,7 @@ jobs:
         run: |
           curl -LO https://github.com/neovim/neovim/releases/download/v0.5.0/nvim.appimage
           chmod u+x nvim.appimage
-          sudo ln -s nvim.appimage /usr/bin/nvim
+          sudo mv nvim.appimage /usr/bin/nvim
       - name: Run install script
         run: ./utils/install.sh --ci
       - name: Check for errors
