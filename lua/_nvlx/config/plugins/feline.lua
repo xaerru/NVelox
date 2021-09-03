@@ -132,10 +132,13 @@ require("feline").setup(require("_nvlx.utils").merge({
                 },
             },
             inactive = {
-                { provider = "  ", hl = { fg = "bg", bg = "bg" } },
-                { provider = "lsp_client_names" },
                 { provider = "  ", hl = { fg = "skyblue", bg = "bg" } },
-                { provider = "position", hl = { bg = "skyblue", fg = "bg" } },
+                {
+                    provider = function()
+                        return require("feline.providers.cursor").position() .. " "
+                    end,
+                    hl = { bg = "skyblue", fg = "bg" },
+                },
             },
         },
     },
