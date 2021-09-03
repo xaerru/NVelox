@@ -16,6 +16,7 @@ local default_settings = {
     ignorecase = true,
     inccommand = "nosplit",
     iskeyword = vim.opt.iskeyword + { "-" },
+    lazyredraw = true,
     linebreak = true,
     mouse = "a",
     number = true,
@@ -43,7 +44,6 @@ local default_settings = {
     undoreload = 10000,
     updatetime = 300,
     wrap = false,
-    lazyredraw = true,
 }
 
 function M.define(settings)
