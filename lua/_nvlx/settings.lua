@@ -42,7 +42,7 @@ local default_settings = {
     undofile = true,
     undolevels = 1000,
     undoreload = 10000,
-    updatetime = 300,
+    updatetime = 0,
     wrap = false,
 }
 
