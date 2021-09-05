@@ -29,6 +29,7 @@ function M.run_file_cmd()
             .. ".hi "
             .. name
             .. ".o",
+        java = "java " .. file,
         javascript = "node " .. file,
         lua = "lua " .. file,
         perl = "perl " .. file,
@@ -51,6 +52,7 @@ end
 function M.repl_cmd()
     local cmd_table = {
         haskell = "ghci " .. file,
+        java = "jshell",
         javascript = "node",
         lua = "lua",
         python = "python3",
