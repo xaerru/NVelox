@@ -22,7 +22,7 @@ return {
 
     {
         "kabouzeid/nvim-lspinstall",
-        event = "BufRead",
+        event = "CursorHold",
     },
 
     {
