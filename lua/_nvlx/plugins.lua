@@ -81,7 +81,7 @@ return {
     },
 
     {
-        "akinsho/nvim-bufferline.lua",
+        "akinsho/bufferline.nvim",
         config = function()
             require("_nvlx.config.plugins.bufferline")
         end,
@@ -171,7 +171,7 @@ return {
     },
 
     {
-        "akinsho/nvim-toggleterm.lua",
+        "akinsho/toggleterm.nvim",
         config = function()
             require("_nvlx.config.plugins.terminal")
         end,
