@@ -6,6 +6,11 @@ local utils = require("_nvlx.utils")
 -- Load global nvlx
 require("_nvlx.defaults")
 
+-- Load default config
+require("_nvlx.settings").load()
+require("_nvlx.keybinds").load()
+require("_nvlx.autocmds").load()
+
 -- Load user config
 local default_package_path = package.path
 local default_nvlx = utils.copy(nvlx)
@@ -30,8 +35,3 @@ package.path = default_package_path
 local plugins = require("_nvlx.plugins")
 local loader = require("_nvlx.loader").init()
 loader:load({ plugins, nvlx.plugins })
-
--- Load default config
-require("_nvlx.settings").load()
-require("_nvlx.keybinds").load()
-require("_nvlx.autocmds").load()
