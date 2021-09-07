@@ -63,9 +63,12 @@ require("feline").setup(require("_nvlx.utils").merge({
         NONE = "orange",
     },
     components = {
-        left = {
-            active = {
-                { provider = vi_mode_provider, hl = vi_mode_hl },
+        active = {
+            {
+                {
+                    provider = vi_mode_provider,
+                    hl = vi_mode_hl,
+                },
 
                 {
                     provider = "  ",
@@ -97,22 +100,31 @@ require("feline").setup(require("_nvlx.utils").merge({
                     end,
                 },
 
-                { provider = "file_info" },
+                {
+                    provider = "file_info",
+                },
 
-                { provider = "  ", hl = { fg = "bg" } },
+                {
+                    provider = "  ",
+                    hl = { fg = "bg" },
+                },
             },
-            inactive = {
-                { provider = "file_info", left_sep = " " },
-
-                { provider = "  ", hl = { fg = "bg" } },
-            },
-        },
-        right = {
-            active = {
-                { provider = "  ", hl = { fg = "bg", bg = "bg" } },
-                { provider = "lsp_client_names" },
-                { provider = "  ", hl = { fg = "skyblue", bg = "bg" } },
-                { provider = "position", hl = { bg = "skyblue", fg = "bg" } },
+            {
+                {
+                    provider = "  ",
+                    hl = { fg = "bg", bg = "bg" },
+                },
+                {
+                    provider = "lsp_client_names",
+                },
+                {
+                    provider = "  ",
+                    hl = { fg = "skyblue", bg = "bg" },
+                },
+                {
+                    provider = "position",
+                    hl = { bg = "skyblue", fg = "bg" },
+                },
                 {
                     provider = "  ",
                     hl = function()
@@ -131,8 +143,24 @@ require("feline").setup(require("_nvlx.utils").merge({
                     style = "bold",
                 },
             },
-            inactive = {
-                { provider = "  ", hl = { fg = "skyblue", bg = "bg" } },
+        },
+        inactive = {
+            {
+                {
+                    provider = "file_info",
+                    left_sep = " ",
+                },
+
+                {
+                    provider = "  ",
+                    hl = { fg = "bg" },
+                },
+            },
+            {
+                {
+                    provider = "  ",
+                    hl = { fg = "skyblue", bg = "bg" },
+                },
                 {
                     provider = function()
                         return require("feline.providers.cursor").position() .. " "
