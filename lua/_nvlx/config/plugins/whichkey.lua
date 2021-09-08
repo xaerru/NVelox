@@ -20,7 +20,7 @@ local default_wk = {
                     "Find Files Home",
                 },
                 o = { "<CMD>Telescope oldfiles<CR>", "Old files" },
-                p = { "<CMD>Telescope<CR>", "Telescope" },
+                t = { "<CMD>Telescope<CR>", "Telescope" },
                 r = { "<CMD>Telescope live_grep<CR>", "Search string" },
                 w = { "<CMD>Telescope grep_string<CR>", "Search string under cursor" },
             },
