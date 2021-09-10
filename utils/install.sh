@@ -69,9 +69,36 @@ install_core_dependencies() {
 }
 
 install_extra_dependencies() {
-    echo "Extra dependencies:"
-    (pip3 list | grep neovim >/dev/null && echo -e "\tpynvim installed") || (echo "Installing pynvim" && pip3 install pynvim)
-    (npm list --depth 1 --global neovim >/dev/null && echo -e "\tnode-client installed") || (echo "Installing node-client" && sudo npm install --global neovim)
+    separator
+    info "Extra dependencies:"
+    uninstalled=()
+
+    pip3 list | grep pynvim >/dev/null
+    if [[ $? -eq 0 ]]; then
+        success "pynvim" "\t"
+    else
+        error "pynvim" "\t"
+        uninstalled+=("pip3 install pynvim")
+    fi
+
+    npm list --depth 1 --global neovim >/dev/null
+    if [[ $? -eq 0 ]]; then
+        success "neovim" "\t"
+    else
+        error "neovim" "\t"
+        cmd+=("sudo npm install --global neovim")
+    fi
+    for cmd in "${uninstalled[@]}"; do
+        separator
+        info "Executing the command"
+        echo -e "\e[1;34m\t❯ $cmd"
+        separator
+        yes_or_no "$(info "Continue with install?")"
+        if [ $? -eq 1 ]; then
+            exit 1
+        fi
+        eval "$cmd"
+    done
 }
 
 # TODO: Support more distributions
