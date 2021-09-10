@@ -6,7 +6,7 @@ CI=$1
 
 yes_or_no() {
     while true; do
-        read -n 1 -p "$* [Y/n] " yn
+        read -p "$* [Y/n] " yn
         if [[ -z $yn ]]; then
             yn="y"
         else
@@ -25,57 +25,28 @@ yes_or_no() {
 }
 
 install_core_dependencies() {
-    COMMAND="sudo $1 "
+    local -n deps=$1
+    cmd=$2
     uninstalled=()
-    echo "Core dependencies:"
-    for dependency in "${core_dependencies[@]}"; do
+    echo "Core Dependencies:"
+    for dependency in "${!deps[@]}"; do
         command -v $dependency >/dev/null
         if [[ $? -eq 0 ]]; then
             echo -e "\t$dependency\tinstalled"
         else
             echo -e "\t$dependency\tnot installed"
-            case $dependency in
-            nvim)
-                dependency="neovim"
-                ;;
-            node)
-                dependency="nodejs"
-                ;;
-            pip3)
-                case $DISTRO in
-                ubuntu)
-                    dependency="python3-pip"
-                    ;;
-                arch | artix)
-                    dependency="python-pip"
-                    ;;
-                *)
-                    echo -n "TODO"
-                    exit 1
-                    ;;
-                esac
-                ;;
-            rg)
-                dependency="ripgrep"
-                ;;
-            *)
-                dependency=($dependency)
-                ;;
-            esac
-            uninstalled+=($dependency)
+            uninstalled+=(${deps[$dependency]})
         fi
     done
     if [[ ${#uninstalled[@]} -ne 0 ]]; then
-        COMMAND+="${uninstalled[@]}"
-        echo
-        echo -e "\tThe following command is going to be executed as root:"
-        echo -e "\t$ $COMMAND"
+        cmd+=" ${uninstalled[@]}"
+        echo -e "\tThe following command is going to be executed:"
+        echo -e "\t$ $cmd"
         yes_or_no "Continue with install?"
         if [ $? -eq 1 ]; then
             exit 1
         fi
-        echo -e "\tEnter root password:"
-        eval "$COMMAND"
+        eval "$cmd"
     fi
 }
 
@@ -88,12 +59,14 @@ install_extra_dependencies() {
 # TODO: Support more distributions
 install_packages() {
     case $DISTRO in
-    ubuntu)
-        install_core_dependencies "apt install"
+    ubuntu | debian)
+        declare -A map=( ["git"]="git" ["nvim"]="neovim" ["node"]="nodejs" ["npm"]="npm" ["pip3"]="python3-pip" ["rg"]="ripgrep" )
+        install_core_dependencies map "sudo apt upgrade && sudo apt update && sudo apt install"
         ;;
 
     arch | artix)
-        install_core_dependencies "pacman -S"
+        declare -A map=( ["git"]="git" ["nvim"]="neovim" ["node"]="nodejs" ["npm"]="npm" ["pip3"]="python-pip" ["rg"]="ripgrep" )
+        install_core_dependencies map "sudo pacman -Syu"
         ;;
 
     *)
@@ -119,7 +92,9 @@ clone() {
     if [[ $CI == "--ci" ]]; then
         true
     else
-        backup
+        if [ -d "$HOME/.config/nvim" ]; then
+            backup
+        fi
     fi
     git clone https://github.com/grvxs/NVelox "$HOME/.config/nvim"
     if [ ! -d "$HOME/.config/nvlx/" ]; then
