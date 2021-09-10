@@ -15,6 +15,14 @@ error() {
     echo -e "$2\e[1;31m $1${reset}"
 }
 
+prompt() {
+    echo -e "$2\e[1;34m❯ $1${reset}"
+}
+
+yellow() {
+    echo -e "$2\e[1;33m❯ $1${reset}"
+}
+
 separator() {
     echo ""
 }
@@ -57,9 +65,9 @@ install_core_dependencies() {
         cmd+=" ${uninstalled[@]}"
         separator
         info "Executing the command"
-        echo -e "\e[1;34m\t❯ $cmd"
+        yellow "$cmd" "\t"
         separator
-        yes_or_no "$(info "Continue with install?")"
+        yes_or_no "$(prompt "Continue with install?")"
         if [ $? -eq 1 ]; then
             exit 1
         fi
@@ -90,9 +98,9 @@ install_extra_dependencies() {
     for cmd in "${uninstalled[@]}"; do
         separator
         info "Executing the command"
-        echo -e "\e[1;34m\t❯ $cmd"
+        yellow "$cmd" "\t"
         separator
-        yes_or_no "$(info "Continue with install?")"
+        yes_or_no "$(prompt "Continue with install?")"
         if [ $? -eq 1 ]; then
             exit 1
         fi
@@ -124,9 +132,12 @@ install_packages() {
 }
 
 backup() {
-    yes_or_no "Do you want to backup to a custom directory?"
+    separator
+    error "Existing neovim configuration found."
+    separator
+    yes_or_no "$(info "Do you want to back it up to a custom directory?")"
     if [[ $? -eq 0 ]]; then
-        read -p "Enter a valid path: " DESTBAK
+        read -p "$(prompt "Enter a valid path: ")" DESTBAK
         eval mv -v $HOME/.config/nvim $DESTBAK
     elif [[ $? -eq 1 ]]; then
         echo "Backing up to the default backup directory (~/.config/nvim.bak)"
@@ -138,15 +149,20 @@ clone() {
     if [ -d "$HOME/.config/nvim" ]; then
         backup
     fi
+    separator
+    info "Cloning the repository"
     git clone https://github.com/grvxs/NVelox "$HOME/.config/nvim"
     if [ ! -d "$HOME/.config/nvlx/" ]; then
         mkdir "$HOME/.config/nvlx"
         touch "$HOME/.config/nvlx/init.lua"
     fi
     if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim" ]; then
+        separator
+        info "Installing packer.nvim"
         git clone https://github.com/wbthomason/packer.nvim "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
     fi
-    echo "Installing Plugins(This might take a while)"
+    separator
+    info "Installing Plugins(This might take a while)"
     nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 }
 
