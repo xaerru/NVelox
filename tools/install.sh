@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eo pipefail
+
 distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
 reset="\e[0m"
 
