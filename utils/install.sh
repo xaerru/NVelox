@@ -1,8 +1,24 @@
 #!/usr/bin/env bash
 
-core_dependencies=(git nvim node npm pip3 rg)
 DISTRO=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
 CI=$1
+reset="\e[0m"
+
+info() {
+    echo -e "$2\e[1;35m $1${reset}"
+}
+
+success() {
+    echo -e "$2\e[1;32m $1${reset}"
+}
+
+error() {
+    echo -e "$2\e[1;31m $1${reset}"
+}
+
+separator() {
+    echo ""
+}
 
 yes_or_no() {
     while true; do
