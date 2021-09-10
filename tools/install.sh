@@ -175,11 +175,16 @@ clone() {
     separator
     info "Installing Plugins(This might take a while)"
     nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+    separator
+    info "Installing Language Parsers(This might take a while)"
+    nvim --headless -c 'packadd nvim-treesitter' -c 'TSUpdateSync maintained' -c 'q'
 }
 
 main() {
     install_packages
     clone
+    separator
+    success "NVelox successfully installed!"
 }
 
 main
