@@ -83,7 +83,6 @@ require("gitsigns").setup(require("_nvlx.utils").merge({
     update_debounce = 100,
     status_formatter = nil, -- Use default
     max_file_length = 40000,
-    use_internal_diff = true, -- If vim.diff or luajit is present
     yadm = {
         enable = false,
     },
