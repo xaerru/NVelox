@@ -63,12 +63,14 @@ install_packages() {
         declare -A map=( ["git"]="git" ["nvim"]="neovim" ["node"]="nodejs" ["npm"]="npm" ["pip3"]="python3-pip" ["rg"]="ripgrep" )
         install_core_dependencies map "sudo apt upgrade && sudo apt update && sudo apt install"
         ;;
-
     arch | artix)
         declare -A map=( ["git"]="git" ["nvim"]="neovim" ["node"]="nodejs" ["npm"]="npm" ["pip3"]="python-pip" ["rg"]="ripgrep" )
         install_core_dependencies map "sudo pacman -Syu"
         ;;
-
+    gentoo)
+        declare -A map=( ["git"]="git" ["nvim"]="neovim" ["node"]="nodejs" ["npm"]="npm" ["pip3"]="pip" ["rg"]="ripgrep" )
+        install_core_dependencies map "sudo emerge -av"
+        ;;
     *)
         echo -n "unknown"
         return 1
