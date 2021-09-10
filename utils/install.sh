@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DISTRO=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
+distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
 reset="\e[0m"
 
 info() {
@@ -102,7 +102,7 @@ install_extra_dependencies() {
 
 # TODO: Support more distributions
 install_packages() {
-    case $DISTRO in
+    case $distro in
     ubuntu | debian)
         declare -A map=(["git"]="git" ["nvim"]="neovim" ["node"]="nodejs" ["npm"]="npm" ["pip3"]="python3-pip" ["rg"]="ripgrep")
         install_core_dependencies map "sudo apt upgrade && sudo apt update && sudo apt install"
