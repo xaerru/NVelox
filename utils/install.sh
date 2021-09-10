@@ -147,7 +147,16 @@ backup() {
 
 clone() {
     if [ -d "$HOME/.config/nvim" ]; then
-        backup
+        if [ -d "$HOME/.config/nvim/lua/_nvlx" ]; then
+            separator
+            info "Existing NVelox install found. Updating"
+            cd .config/nvim
+            separator
+            git pull
+            exit
+        else
+            backup
+        fi
     fi
     separator
     info "Cloning the repository"
