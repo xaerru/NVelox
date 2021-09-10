@@ -44,21 +44,23 @@ install_core_dependencies() {
     local -n deps=$1
     cmd=$2
     uninstalled=()
-    echo "Core Dependencies:"
+    info "Checking Core Dependencies:"
     for dependency in "${!deps[@]}"; do
         command -v $dependency >/dev/null
         if [[ $? -eq 0 ]]; then
-            echo -e "\t$dependency\tinstalled"
+            success "${deps[$dependency]}" "\t"
         else
-            echo -e "\t$dependency\tnot installed"
+            error "${deps[$dependency]}" "\t"
             uninstalled+=(${deps[$dependency]})
         fi
     done
     if [[ ${#uninstalled[@]} -ne 0 ]]; then
         cmd+=" ${uninstalled[@]}"
-        echo -e "\tThe following command is going to be executed:"
-        echo -e "\t$ $cmd"
-        yes_or_no "Continue with install?"
+        separator
+        info "Executing the command"
+        echo -e "\e[1;34m\t❯ $cmd"
+        separator
+        yes_or_no "$(info "Continue with install?")"
         if [ $? -eq 1 ]; then
             exit 1
         fi
@@ -76,15 +78,15 @@ install_extra_dependencies() {
 install_packages() {
     case $DISTRO in
     ubuntu | debian)
-        declare -A map=( ["git"]="git" ["nvim"]="neovim" ["node"]="nodejs" ["npm"]="npm" ["pip3"]="python3-pip" ["rg"]="ripgrep" )
+        declare -A map=(["git"]="git" ["nvim"]="neovim" ["node"]="nodejs" ["npm"]="npm" ["pip3"]="python3-pip" ["rg"]="ripgrep")
         install_core_dependencies map "sudo apt upgrade && sudo apt update && sudo apt install"
         ;;
     arch | artix)
-        declare -A map=( ["git"]="git" ["nvim"]="neovim" ["node"]="nodejs" ["npm"]="npm" ["pip3"]="python-pip" ["rg"]="ripgrep" )
+        declare -A map=(["git"]="git" ["nvim"]="neovim" ["node"]="nodejs" ["npm"]="npm" ["pip3"]="python-pip" ["rg"]="ripgrep")
         install_core_dependencies map "sudo pacman -Syu"
         ;;
     gentoo)
-        declare -A map=( ["git"]="git" ["nvim"]="neovim" ["node"]="nodejs" ["npm"]="npm" ["pip3"]="pip" ["rg"]="ripgrep" )
+        declare -A map=(["git"]="git" ["nvim"]="neovim" ["node"]="nodejs" ["npm"]="npm" ["pip3"]="pip" ["rg"]="ripgrep")
         install_core_dependencies map "sudo emerge -av"
         ;;
     *)
