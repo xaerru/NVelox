@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 DISTRO=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
-CI=$1
 reset="\e[0m"
 
 info() {
@@ -136,12 +135,8 @@ backup() {
 }
 
 clone() {
-    if [[ $CI == "--ci" ]]; then
-        true
-    else
-        if [ -d "$HOME/.config/nvim" ]; then
-            backup
-        fi
+    if [ -d "$HOME/.config/nvim" ]; then
+        backup
     fi
     git clone https://github.com/grvxs/NVelox "$HOME/.config/nvim"
     if [ ! -d "$HOME/.config/nvlx/" ]; then
