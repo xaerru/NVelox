@@ -26,7 +26,7 @@ yes_or_no() {
         if [[ -z $yn ]]; then
             yn="y"
         else
-            echo
+            true
         fi
         case $yn in
         [Yy]*)
