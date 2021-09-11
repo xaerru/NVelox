@@ -31,9 +31,9 @@ end
 
 require("feline").setup(require("_nvlx.utils").merge({
     preset = "noicon",
-    default_fg = "#8FBCBB",
-    default_bg = "#2E3440",
     colors = {
+        fg = "#8FBCBB",
+        bg = "#2E3440",
         black = "#434C5E",
         skyblue = "#81A1C1",
         cyan = "#88C0D0",
