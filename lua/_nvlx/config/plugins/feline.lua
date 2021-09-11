@@ -170,14 +170,12 @@ require("feline").setup(require("_nvlx.utils").merge({
             },
         },
     },
-    properties = {
-        force_inactive = {
-            filetypes = {
-                "NvimTree",
-                "packer",
-            },
-            buftypes = { "terminal" },
-            bufnames = {},
+    force_inactive = {
+        filetypes = {
+            "NvimTree",
+            "packer",
         },
+        buftypes = { "terminal" },
+        bufnames = {},
     },
 }, nvlx.config.plugins.feline, nvlx.config.plugins_override.feline))
