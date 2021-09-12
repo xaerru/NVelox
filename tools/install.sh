@@ -126,7 +126,7 @@ install_packages() {
         install_core_dependencies map "sudo emerge -av"
         ;;
     *)
-        echo -n "unknown"
+        echo -n "Unknown distribution"
         return 1
         ;;
     esac
