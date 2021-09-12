@@ -113,7 +113,7 @@ install_extra_dependencies() {
 # TODO: Support more distributions
 install_packages() {
     case $distro in
-    ubuntu | debian)
+    ubuntu | debian | zorin)
         declare -A map=(["git"]="git" ["nvim"]="neovim" ["node"]="nodejs" ["npm"]="npm" ["pip3"]="python3-pip" ["rg"]="ripgrep")
         install_core_dependencies map "sudo apt upgrade && sudo apt update && sudo apt install"
         ;;
