@@ -75,7 +75,7 @@ require("feline").setup(require("_nvlx.utils").merge({
                     hl = function()
                         local vi_mode = require("feline.providers.vi_mode")
                         local t = {}
-                        if vim.fn.isdirectory(".git") == nil then
+                        if vim.fn.isdirectory(".git") ~= nil then
                             t.bg = "skyblue"
                             t.fg = vi_mode.get_mode_color()
                         else
@@ -96,7 +96,7 @@ require("feline").setup(require("_nvlx.utils").merge({
                     provider = "  ",
                     hl = { fg = "skyblue", bg = "bg" },
                     enabled = function()
-                        return vim.fn.isdirectory(".git") == nil
+                        return vim.fn.isdirectory(".git") ~= nil
                     end,
                 },
 
