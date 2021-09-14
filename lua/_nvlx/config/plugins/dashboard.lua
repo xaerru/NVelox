@@ -16,7 +16,7 @@ g.dashboard_custom_header = {
 g.dashboard_custom_section = {
     a = {
         description = { "  Sessions                             " },
-        command = "lua require('sessions').sload()",
+        command = "lua require('_nvlx.sessions').sload()",
     },
     b = {
         description = { "  Restore Session for current directory" },
