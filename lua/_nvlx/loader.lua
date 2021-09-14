@@ -26,6 +26,9 @@ function plugin_loader:init()
                 return util.float({ border = "single" })
             end,
         },
+        luarocks = {
+            python_cmd = "python3",
+        },
     })
 
     self.packer = packer
