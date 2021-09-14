@@ -5,11 +5,9 @@ return {
 
     {
         "lewis6991/impatient.nvim",
-        after = "packer.nvim",
         config = function()
-            require("impatient")
+            require("impatient").enable_profile()
         end,
-        rocks = "mpack",
     },
 
     {
