@@ -131,6 +131,7 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         cmd = "Telescope",
+        module = "telescope.finders",
         config = function()
             require("_nvlx.config.plugins.telescope")
         end,
