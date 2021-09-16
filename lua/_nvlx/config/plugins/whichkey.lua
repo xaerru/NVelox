@@ -1,12 +1,6 @@
 local M = {}
 
-require("which-key").setup(
-    require("_nvlx.utils").merge(
-        {},
-        nvlx.config.plugins.whichkey,
-        nvlx.config.plugins_override.whichkey
-    )
-)
+require("which-key").setup()
 
 local default_wk = {
     normal = {

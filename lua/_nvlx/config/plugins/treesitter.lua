@@ -1,4 +1,4 @@
-require("nvim-treesitter.configs").setup(require("_nvlx.utils").merge({
+require("nvim-treesitter.configs").setup({
     ensure_installed = "maintained",
     -- Haskell is too slow
     ignore_installed = { "haskell" },
@@ -8,4 +8,4 @@ require("nvim-treesitter.configs").setup(require("_nvlx.utils").merge({
     autopairs = {
         enable = true,
     },
-}, nvlx.config.plugins.treesitter, nvlx.config.plugins_override.treesitter))
+})

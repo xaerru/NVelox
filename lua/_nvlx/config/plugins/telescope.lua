@@ -1,4 +1,4 @@
-require("telescope").setup(require("_nvlx.utils").merge({
+require("telescope").setup({
     defaults = {
         vimgrep_arguments = {
             "rg",
@@ -43,4 +43,4 @@ require("telescope").setup(require("_nvlx.utils").merge({
             },
         },
     },
-}, nvlx.config.plugins.telescope, nvlx.config.plugins_override.telescope))
+})
