@@ -115,7 +115,10 @@ require("feline").setup(require("_nvlx.utils").merge({
                     hl = { fg = "bg", bg = "bg" },
                 },
                 {
-                    provider = "lsp_client_names",
+                    provider = function()
+                        local name, symbol = require("feline.providers.lsp").lsp_client_names()
+                        return symbol .. name .. " "
+                    end,
                 },
                 {
                     provider = " ",
