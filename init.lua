@@ -28,8 +28,8 @@ package.path = default_package_path
 
 -- Load plugins
 local plugins = require("_nvlx.plugins")
-local loader = require("_nvlx.loader").init()
-loader:load({ plugins, nvlx.plugins })
+local loader = require("_nvlx.loader")
+loader.load({ plugins, nvlx.plugins })
 
 -- Load default config
 require("_nvlx.settings").load()

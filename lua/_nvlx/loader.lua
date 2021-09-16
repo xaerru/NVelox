@@ -1,26 +1,30 @@
-local plugin_loader = {}
+local M = {}
 
-function plugin_loader:init()
-    local execute = vim.api.nvim_command
+function M.load(configurations)
     local fn = vim.fn
 
     local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
     if fn.empty(fn.glob(install_path)) > 0 then
-        execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-        execute("packadd packer.nvim")
+        fn.system({
+            "git",
+            "clone",
+            "--depth",
+            "1",
+            "https://github.com/wbthomason/packer.nvim",
+            install_path,
+        })
+        vim.cmd("packadd packer.nvim")
     end
 
-    local packer_ok, packer = pcall(require, "packer")
-    if not packer_ok then
-        return
-    end
-
+    local packer = require("packer")
     local util = require("packer.util")
 
     packer.init({
         package_root = util.join_paths(fn.stdpath("data") .. "/site/pack/"),
         compile_path = util.join_paths("~/.config/nvim", "plugin", "packer_compiled.lua"),
-        git = { clone_timeout = 300 },
+        git = {
+            clone_timeout = 300,
+        },
         display = {
             open_fn = function()
                 return util.float({ border = "single" })
@@ -31,12 +35,7 @@ function plugin_loader:init()
         },
     })
 
-    self.packer = packer
-    return self
-end
-
-function plugin_loader:load(configurations)
-    return self.packer.startup(function(use)
+    packer.startup(function(use)
         for _, plugins in ipairs(configurations) do
             for _, plugin in ipairs(plugins) do
                 if vim.tbl_contains(nvlx.disabled.plugins, plugin[1]) == false then
@@ -47,8 +46,4 @@ function plugin_loader:load(configurations)
     end)
 end
 
-return {
-    init = function()
-        return plugin_loader:init()
-    end,
-}
+return M
