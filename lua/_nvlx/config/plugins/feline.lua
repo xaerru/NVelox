@@ -118,20 +118,20 @@ require("feline").setup(require("_nvlx.utils").merge({
                     provider = "lsp_client_names",
                 },
                 {
-                    provider = "  ",
-                    hl = { fg = "skyblue", bg = "bg" },
+                    provider = " ",
+                    hl = { bg = "skyblue", fg = "bg" },
                 },
                 {
                     provider = "position",
                     hl = { bg = "skyblue", fg = "bg" },
                 },
                 {
-                    provider = "  ",
+                    provider = " ",
                     hl = function()
                         local vi_mode = require("feline.providers.vi_mode")
                         local t = {}
-                        t.bg = "skyblue"
-                        t.fg = vi_mode.get_mode_color()
+                        t.fg = "skyblue"
+                        t.bg = vi_mode.get_mode_color()
                         return t
                     end,
                 },
@@ -152,7 +152,7 @@ require("feline").setup(require("_nvlx.utils").merge({
                 },
 
                 {
-                    provider = "  ",
+                    provider = " ",
                     hl = { fg = "bg" },
                 },
             },
