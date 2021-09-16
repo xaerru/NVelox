@@ -1,4 +1,4 @@
-require("compe").setup(require("_nvlx.utils").merge({
+require("compe").setup({
     enabled = true,
     autocomplete = true,
     debug = false,
@@ -26,7 +26,7 @@ require("compe").setup(require("_nvlx.utils").merge({
         treesitter = false,
         emoji = { kind = " ﲃ  (Emoji)", filetypes = { "markdown", "text" } },
     },
-}, nvlx.config.plugins.compe, nvlx.config.plugins_override.compe))
+})
 
 local map = vim.api.nvim_set_keymap
 

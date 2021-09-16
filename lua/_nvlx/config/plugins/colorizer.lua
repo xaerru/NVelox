@@ -1,2 +1,2 @@
-require("colorizer").setup(nvlx.config.plugins.colorizer)
+require("colorizer").setup()
 vim.cmd("ColorizerToggle")

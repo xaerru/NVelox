@@ -1,4 +1,4 @@
-require("bufferline").setup(require("_nvlx.utils").merge({
+require("bufferline").setup({
     options = {
         numbers = function(a)
             return a.raise(a.ordinal)
@@ -75,4 +75,4 @@ require("bufferline").setup(require("_nvlx.utils").merge({
             guifg = "#5E687B",
         },
     },
-}, nvlx.config.plugins.bufferline, nvlx.config.plugins_override.bufferline))
+})

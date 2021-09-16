@@ -1,4 +1,4 @@
-require("gitsigns").setup(require("_nvlx.utils").merge({
+require("gitsigns").setup({
     signs = {
         add = {
             hl = "GitSignsAdd",
@@ -86,4 +86,4 @@ require("gitsigns").setup(require("_nvlx.utils").merge({
     yadm = {
         enable = false,
     },
-}, nvlx.config.plugins.gitsigns, nvlx.config.plugins_override.gitsigns))
+})

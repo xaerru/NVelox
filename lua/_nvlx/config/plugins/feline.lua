@@ -29,7 +29,7 @@ local function vi_mode_hl()
     }
 end
 
-require("feline").setup(require("_nvlx.utils").merge({
+require("feline").setup({
     preset = "noicon",
     colors = {
         fg = "#8FBCBB",
@@ -178,4 +178,4 @@ require("feline").setup(require("_nvlx.utils").merge({
         buftypes = { "terminal" },
         bufnames = {},
     },
-}, nvlx.config.plugins.feline, nvlx.config.plugins_override.feline))
+})
