@@ -122,7 +122,9 @@ require("feline").setup(require("_nvlx.utils").merge({
                     hl = { bg = "skyblue", fg = "bg" },
                 },
                 {
-                    provider = "position",
+                    provider = function ()
+                        return require("feline.providers.cursor").position() .. " "
+                    end,
                     hl = { bg = "skyblue", fg = "bg" },
                 },
                 {
