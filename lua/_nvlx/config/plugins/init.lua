@@ -294,12 +294,12 @@ M["telescope.nvim"] = {
         winblend = nvlx.general.winblend,
         borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
         --mappings = {
-            --n = {
-                --["q"] = require("telescope.actions").close,
-            --},
-            --i = {
-                --["<C-e>"] = require("telescope.actions").close,
-            --},
+        --n = {
+        --["q"] = require("telescope.actions").close,
+        --},
+        --i = {
+        --["<C-e>"] = require("telescope.actions").close,
+        --},
         --},
     },
 }
