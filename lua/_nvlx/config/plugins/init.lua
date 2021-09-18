@@ -333,4 +333,6 @@ M["toggleterm.nvim"] = {
     },
 }
 
+M["which-key.nvim"] = {}
+
 return M
