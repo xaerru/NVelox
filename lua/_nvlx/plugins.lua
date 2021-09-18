@@ -101,7 +101,9 @@ return {
         "nvim-treesitter/nvim-treesitter",
         event = "BufRead,BufNewFile,InsertEnter",
         config = function()
-            require("nvim-treesitter.configs").setup(require("_nvlx.config.plugins")["nvim-treesitter"])
+            require("nvim-treesitter.configs").setup(
+                require("_nvlx.config.plugins")["nvim-treesitter"]
+            )
         end,
     },
 
@@ -277,7 +279,7 @@ return {
     {
         "akinsho/toggleterm.nvim",
         config = function()
-            require("_nvlx.config.plugins.terminal")
+            require("toggleterm").setup(require("_nvlx.config.plugins")["toggleterm.nvim"])
         end,
         after = "which-key.nvim",
     },

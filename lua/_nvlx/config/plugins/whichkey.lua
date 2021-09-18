@@ -23,7 +23,7 @@ local default_wk = {
         g = {
             {
                 name = "git",
-                l = { "<CMD>lua require('_nvlx.config.plugins.terminal').lazygit()<CR>", "lazygit" },
+                l = { "<CMD>lua require('_nvlx.terminal').lazygit()<CR>", "lazygit" },
                 R = "Reset Buffer",
                 b = "Blame Line",
                 p = "Preview Hunk",
@@ -108,10 +108,10 @@ local default_wk = {
         r = {
             {
                 name = "run",
-                f = { "<CMD>lua require('_nvlx.config.plugins.terminal').run_file()<CR>", "File" },
-                r = { "<CMD>lua require('_nvlx.config.plugins.terminal').run_repl()<CR>", "REPL" },
+                f = { "<CMD>lua require('_nvlx.terminal').run_file()<CR>", "File" },
+                r = { "<CMD>lua require('_nvlx.terminal').run_repl()<CR>", "REPL" },
                 p = {
-                    "<CMD>lua require('_nvlx.config.plugins.terminal').run_project()<CR>",
+                    "<CMD>lua require('_nvlx.terminal').run_project()<CR>",
                     "Project",
                 },
             },
