@@ -13,7 +13,7 @@ M["nvim-autopairs"] = {
     },
 }
 
-M["Autosave.nvim"] = {
+M["AutoSave.nvim"] = {
     execution_message = "",
 }
 
