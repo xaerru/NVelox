@@ -1,5 +1,3 @@
-local p = require("_nvlx.config.plugins")
-
 return {
     {
         "wbthomason/packer.nvim",
