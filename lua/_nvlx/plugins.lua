@@ -14,9 +14,7 @@ return {
         "neovim/nvim-lspconfig",
         after = "nvim-lspinstall",
         config = function()
-            if vim.fn.eval("&filetype") ~= "man" then
-                require("_nvlx.config.lsp")
-            end
+            require("_nvlx.config.lsp")
         end,
     },
 
@@ -28,7 +26,7 @@ return {
     {
         "Pocco81/AutoSave.nvim",
         config = function()
-            require("_nvlx.config.plugins.autosave")
+            require("autosave").setup(require("_nvlx.config.plugins")["AutoSave.nvim"])
         end,
         disable = not nvlx.general.autosave,
         after = "nordbuddy",
@@ -37,7 +35,7 @@ return {
     {
         "grvxs/persistence.nvim",
         config = function()
-            require("_nvlx.config.plugins.persistence")
+            require("persistence").setup(require("_nvlx.config.plugins")["persistence.nvim"])
         end,
         after = "nordbuddy",
     },
@@ -56,7 +54,8 @@ return {
         "norcalli/nvim-colorizer.lua",
         event = "BufReadPost",
         config = function()
-            require("_nvlx.config.plugins.colorizer")
+            require("colorizer").setup()
+            vim.cmd("ColorizerToggle")
         end,
     },
 
@@ -64,7 +63,7 @@ return {
         "hrsh7th/nvim-compe",
         event = "InsertEnter",
         config = function()
-            require("_nvlx.config.plugins.compe")
+            require("compe").setup(require("_nvlx.config.plugins")["nvim-compe"])
         end,
     },
 
@@ -81,7 +80,7 @@ return {
     {
         "akinsho/bufferline.nvim",
         config = function()
-            require("_nvlx.config.plugins.bufferline")
+            require("bufferline").setup(require("_nvlx.config.plugins")["bufferline.nvim"])
         end,
         after = "nordbuddy",
     },
@@ -89,7 +88,7 @@ return {
     {
         "famiu/feline.nvim",
         config = function()
-            require("_nvlx.config.plugins.feline")
+            require("feline").setup(require("_nvlx.config.plugins")["feline.nvim"])
         end,
         after = "nordbuddy",
     },
@@ -98,7 +97,9 @@ return {
         "nvim-treesitter/nvim-treesitter",
         event = "BufRead,BufNewFile,InsertEnter",
         config = function()
-            require("_nvlx.config.plugins.treesitter")
+            require("nvim-treesitter.configs").setup(
+                require("_nvlx.config.plugins")["nvim-treesitter"]
+            )
         end,
     },
 
@@ -106,7 +107,31 @@ return {
         "sbdchd/neoformat",
         cmd = "Neoformat",
         config = function()
-            require("_nvlx.config.plugins.neoformat")
+            local g = vim.g
+            g.neoformat_c_clangformat = { exe = "clang-format", stdin = true }
+            g.neoformat_cpp_clangformat = {
+                exe = "clang-format",
+                args = { "--style='{BasedOnStyle: chromium, IndentWidth: 4}'" },
+                stdin = true,
+            }
+            g.neoformat_enabled_c = { "clangformat" }
+            g.neoformat_enabled_cpp = { "clangformat" }
+            g.neoformat_enabled_css = { "prettier" }
+            g.neoformat_enabled_haskell = { "brittany" }
+            g.neoformat_enabled_html = { "prettier" }
+            g.neoformat_enabled_java = { "prettier" }
+            g.neoformat_enabled_javascript = { "prettier" }
+            g.neoformat_enabled_json = { "prettier" }
+            g.neoformat_enabled_lua = { "stylua" }
+            g.neoformat_enabled_python = {}
+            g.neoformat_enabled_rust = { "rustfmt" }
+            g.neoformat_enabled_typescript = { "prettier" }
+            g.neoformat_enabled_yaml = { "prettier" }
+            g.neoformat_rust_rustfmt = {
+                exe = "rustfmt",
+                args = { "--edition 2018" },
+                stdin = true,
+            }
         end,
     },
 
@@ -119,7 +144,54 @@ return {
         "kyazdani42/nvim-tree.lua",
         cmd = "NvimTreeToggle",
         config = function()
-            require("_nvlx.config.plugins.tree")
+            local g = vim.g
+            g.nvim_tree_width = 25
+            g.nvim_tree_ignore = { ".git", "node_modules", ".cache", "target" }
+            g.nvim_tree_gitignore = 1
+            g.nvim_tree_auto_ignore_ft = { "dashboard" }
+            g.nvim_tree_auto_close = 1
+            g.nvim_tree_quit_on_open = 1
+            g.nvim_tree_follow = 1
+            g.nvim_tree_indent_markers = 1
+            g.nvim_tree_hide_dotfiles = 1
+            g.nvim_tree_git_hl = 1
+            g.nvim_tree_highlight_opened_files = 0
+            g.nvim_tree_root_folder_modifier = ":t"
+            g.nvim_tree_tab_open = 0
+            g.nvim_tree_allow_resize = 1
+            g.nvim_tree_add_trailing = 0
+            g.nvim_tree_disable_netrw = 1
+            g.nvim_tree_hijack_netrw = 1
+            g.nvim_tree_update_cwd = 1
+            g.nvim_tree_lsp_diagnostics = 1
+            g.nvim_tree_show_icons = { git = 1, folders = 1, files = 1 }
+            g.nvim_tree_icons = {
+                default = "",
+                symlink = "",
+                git = {
+                    unstaged = "✗",
+                    staged = "✓",
+                    unmerged = "",
+                    renamed = "➜",
+                    untracked = "★",
+                    deleted = "",
+                    ignored = "◌",
+                },
+                folder = {
+                    default = "",
+                    open = "",
+                    empty = "", -- 
+                    empty_open = "",
+                    symlink = "",
+                    symlink_open = "",
+                },
+                lsp = {
+                    hint = "",
+                    info = "",
+                    warning = "",
+                    error = "",
+                },
+            }
         end,
     },
 
@@ -133,14 +205,14 @@ return {
         cmd = "Telescope",
         module = "telescope.finders",
         config = function()
-            require("_nvlx.config.plugins.telescope")
+            require("telescope").setup(require("_nvlx.config.plugins")["telescope.nvim"])
         end,
     },
 
     {
         "lewis6991/gitsigns.nvim",
         config = function()
-            require("_nvlx.config.plugins.gitsigns")
+            require("gitsigns").setup(require("_nvlx.config.plugins")["gitsigns.nvim"])
         end,
         after = "plenary.nvim",
     },
@@ -148,7 +220,35 @@ return {
     {
         "glepnir/dashboard-nvim",
         setup = function()
-            require("_nvlx.config.plugins.dashboard")
+            local g = vim.g
+            g.dashboard_custom_header = {
+                [[    _   ___    __     __          ]],
+                [[   / | / / |  / /__  / /___  _  __]],
+                [[  /  |/ /| | / / _ \/ / __ \| |/_/]],
+                [[ / /|  / | |/ /  __/ / /_/ />  <  ]],
+                [[/_/ |_/  |___/\___/_/\____/_/|_|  ]],
+                [[                                  ]],
+            }
+
+            g.dashboard_custom_section = {
+                a = {
+                    description = { "  Sessions                             " },
+                    command = "lua require('_nvlx.sessions').sload()",
+                },
+                b = {
+                    description = { "  Restore Session for current directory" },
+                    command = "lua require('persistence').load_current()",
+                },
+                c = {
+                    description = { "  Config                               " },
+                    command = ":e ~/.config/nvlx/init.lua",
+                },
+                d = {
+                    description = { "  Find Files                           " },
+                    command = "Telescope find_files",
+                },
+            }
+            g.dashboard_custom_footer = {}
         end,
         after = "nordbuddy",
     },
@@ -156,7 +256,8 @@ return {
     {
         "windwp/nvim-autopairs",
         config = function()
-            require("_nvlx.config.plugins.autopairs")
+            require("nvim-autopairs").setup(require("_nvlx.config.plugins")["nvim-autopairs"])
+            require("nvim-autopairs.completion.compe").setup()
         end,
         after = "nvim-compe",
     },
@@ -164,7 +265,9 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         config = function()
-            require("_nvlx.config.plugins.indentline")
+            require("indent_blankline").setup(
+                require("_nvlx.config.plugins")["indent-blankline.nvim"]
+            )
         end,
         after = "nordbuddy",
     },
@@ -172,7 +275,7 @@ return {
     {
         "akinsho/toggleterm.nvim",
         config = function()
-            require("_nvlx.config.plugins.terminal")
+            require("toggleterm").setup(require("_nvlx.config.plugins")["toggleterm.nvim"])
         end,
         after = "which-key.nvim",
     },
@@ -180,15 +283,23 @@ return {
     {
         "folke/which-key.nvim",
         config = function()
-            require("_nvlx.config.plugins.whichkey").load()
+            require("which-key").setup(require("_nvlx.config.plugins")["which-key.nvim"])
+            require("_nvlx.leader").load()
         end,
         after = "nordbuddy",
     },
 
     {
         "ygm2/rooter.nvim",
-        config = function()
-            require("_nvlx.config.plugins.rooter")
+        setup = function()
+            vim.g.rooter_pattern = {
+                ".git",
+                "Makefile",
+                "build/env.sh",
+                "Cargo.toml",
+                "input1",
+                "output1",
+            }
         end,
         after = "nordbuddy",
     },
