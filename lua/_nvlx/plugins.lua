@@ -203,6 +203,7 @@ return {
                     command = "Telescope find_files",
                 },
             }
+            g.dashboard_custom_footer = {}
         end,
         after = "nordbuddy",
     },
