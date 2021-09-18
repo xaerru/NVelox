@@ -244,8 +244,15 @@ return {
 
     {
         "ygm2/rooter.nvim",
-        config = function()
-            require("_nvlx.config.plugins.rooter")
+        setup = function()
+            vim.g.rooter_pattern = {
+                ".git",
+                "Makefile",
+                "build/env.sh",
+                "Cargo.toml",
+                "input1",
+                "output1",
+            }
         end,
         after = "nordbuddy",
     },
