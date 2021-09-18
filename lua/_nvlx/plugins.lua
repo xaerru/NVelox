@@ -14,7 +14,9 @@ return {
         "neovim/nvim-lspconfig",
         after = "nvim-lspinstall",
         config = function()
-            require("_nvlx.config.lsp")
+            if vim.fn.eval("&filetype") ~= "man" then
+                require("_nvlx.config.lsp")
+            end
         end,
     },
 
