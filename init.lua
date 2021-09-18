@@ -27,9 +27,7 @@ nvlx = vim.tbl_deep_extend("force", default_nvlx, nvlx)
 package.path = default_package_path
 
 -- Load plugins
-local plugins = require("_nvlx.plugins")
-local loader = require("_nvlx.loader")
-loader.load({ plugins, nvlx.plugins })
+require("_nvlx.loader").load({ require("_nvlx.plugins"), nvlx.plugins })
 
 -- Load default config
 require("_nvlx.settings").load()
