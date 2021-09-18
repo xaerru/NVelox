@@ -1,3 +1,1 @@
-require("autosave").setup({
-    execution_message = "",
-})
+require("autosave").setup()

@@ -1,3 +1,5 @@
+local p = require("_nvlx.config.plugins")
+
 return {
     {
         "wbthomason/packer.nvim",
@@ -28,7 +30,7 @@ return {
     {
         "Pocco81/AutoSave.nvim",
         config = function()
-            require("_nvlx.config.plugins.autosave")
+            require("autosave").setup(require("_nvlx.config.plugins")["AutoSave.nvim"])
         end,
         disable = not nvlx.general.autosave,
         after = "nordbuddy",
@@ -37,7 +39,7 @@ return {
     {
         "grvxs/persistence.nvim",
         config = function()
-            require("_nvlx.config.plugins.persistence")
+            require("persistence").setup(require("_nvlx.config.plugins")["persistence"])
         end,
         after = "nordbuddy",
     },
@@ -56,7 +58,8 @@ return {
         "norcalli/nvim-colorizer.lua",
         event = "BufReadPost",
         config = function()
-            require("_nvlx.config.plugins.colorizer")
+            require("colorizer").setup()
+            vim.cmd("ColorizerToggle")
         end,
     },
 
@@ -64,7 +67,7 @@ return {
         "hrsh7th/nvim-compe",
         event = "InsertEnter",
         config = function()
-            require("_nvlx.config.plugins.compe")
+            require("compe").setup(require("_nvlx.config.plugins")["nvim-compe"])
         end,
     },
 
@@ -81,7 +84,7 @@ return {
     {
         "akinsho/bufferline.nvim",
         config = function()
-            require("_nvlx.config.plugins.bufferline")
+            require("bufferline").setup(require("_nvlx.config.plugins")["bufferline.nvim"])
         end,
         after = "nordbuddy",
     },
@@ -89,7 +92,7 @@ return {
     {
         "famiu/feline.nvim",
         config = function()
-            require("_nvlx.config.plugins.feline")
+            require("feline").setup(require("_nvlx.config.plugins")["feline.nvim"])
         end,
         after = "nordbuddy",
     },
@@ -133,14 +136,14 @@ return {
         cmd = "Telescope",
         module = "telescope.finders",
         config = function()
-            require("_nvlx.config.plugins.telescope")
+            require("telescope").setup(require("_nvlx.config.plugins")["telescope.nvim"])
         end,
     },
 
     {
         "lewis6991/gitsigns.nvim",
         config = function()
-            require("_nvlx.config.plugins.gitsigns")
+            require("gitsigns").setup(require("_nvlx.config.plugins")["gitsigns.nvim"])
         end,
         after = "plenary.nvim",
     },
@@ -156,7 +159,8 @@ return {
     {
         "windwp/nvim-autopairs",
         config = function()
-            require("_nvlx.config.plugins.autopairs")
+            require("nvim-autopairs").setup(require("_nvlx.config.plugins")["nvim-autopairs"])
+            require("nvim-autopairs.completion.compe").setup()
         end,
         after = "nvim-compe",
     },
@@ -164,7 +168,7 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         config = function()
-            require("_nvlx.config.plugins.indentline")
+            require("indent_blankline").setup(require("_nvlx.config.plugins")["indent-blankline.nvim"])
         end,
         after = "nordbuddy",
     },
