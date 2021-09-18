@@ -27,6 +27,19 @@ local default_autocmds = {
             "silent! wa!",
         },
     },
+    __dashboard = {
+        {
+            "FileType",
+            "dashboard",
+            [[setlocal fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾]],
+        },
+
+        {
+            "FileType",
+            "dashboard",
+            [[nnoremap <silent> <buffer> q :q<CR>]],
+        },
+    },
 }
 
 function M.define(autocmds)
