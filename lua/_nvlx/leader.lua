@@ -1,7 +1,5 @@
 local M = {}
 
-require("which-key").setup()
-
 local default_wk = {
     normal = {
         t = {
