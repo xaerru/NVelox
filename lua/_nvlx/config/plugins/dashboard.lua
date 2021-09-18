@@ -32,20 +32,4 @@ g.dashboard_custom_section = {
     },
 }
 
-require("_nvlx.autocmds").define({
-    __dashboard = {
-        {
-            "FileType",
-            "dashboard",
-            [[setlocal fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾]],
-        },
-
-        {
-            "FileType",
-            "dashboard",
-            [[nnoremap <silent> <buffer> q :q<CR>]],
-        },
-    },
-})
-
 g.dashboard_custom_footer = {}
