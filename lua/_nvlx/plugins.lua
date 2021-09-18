@@ -39,7 +39,7 @@ return {
     {
         "grvxs/persistence.nvim",
         config = function()
-            require("persistence").setup(require("_nvlx.config.plugins")["persistence"])
+            require("persistence").setup(require("_nvlx.config.plugins")["persistence.nvim"])
         end,
         after = "nordbuddy",
     },
