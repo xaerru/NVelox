@@ -151,7 +151,34 @@ return {
     {
         "glepnir/dashboard-nvim",
         setup = function()
-            require("_nvlx.config.plugins.dashboard")
+            local g = vim.g
+            g.dashboard_custom_header = {
+                [[    _   ___    __     __          ]],
+                [[   / | / / |  / /__  / /___  _  __]],
+                [[  /  |/ /| | / / _ \/ / __ \| |/_/]],
+                [[ / /|  / | |/ /  __/ / /_/ />  <  ]],
+                [[/_/ |_/  |___/\___/_/\____/_/|_|  ]],
+                [[                                  ]],
+            }
+
+            g.dashboard_custom_section = {
+                a = {
+                    description = { "  Sessions                             " },
+                    command = "lua require('_nvlx.sessions').sload()",
+                },
+                b = {
+                    description = { "  Restore Session for current directory" },
+                    command = "lua require('persistence').load_current()",
+                },
+                c = {
+                    description = { "  Config                               " },
+                    command = ":e ~/.config/nvlx/init.lua",
+                },
+                d = {
+                    description = { "  Find Files                           " },
+                    command = "Telescope find_files",
+                },
+            }
         end,
         after = "nordbuddy",
     },
