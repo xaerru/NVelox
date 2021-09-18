@@ -101,7 +101,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         event = "BufRead,BufNewFile,InsertEnter",
         config = function()
-            require("_nvlx.config.plugins.treesitter")
+            require("nvim-treesitter.configs").setup(require("_nvlx.config.plugins")["nvim-treesitter"])
         end,
     },
 

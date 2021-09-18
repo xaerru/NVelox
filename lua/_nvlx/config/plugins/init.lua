@@ -304,4 +304,16 @@ M["telescope.nvim"] = {
     },
 }
 
+M["nvim-treesitter"] = {
+    ensure_installed = "maintained",
+    -- Haskell is too slow
+    ignore_installed = { "haskell" },
+    highlight = {
+        enable = true, -- false will disable the whole extension
+    },
+    autopairs = {
+        enable = true,
+    },
+}
+
 return M
