@@ -63,7 +63,7 @@ local default_keybinds = {
         ["N"] = "Nzzzv",
         ["J"] = "mzJ`z",
         ["<TAB>"] = ":BufferLineCycleNext<CR>",
-        ["C-<TAB>"] = ":BufferLineCyclePrev<CR>",
+        ["<S-TAB>"] = ":BufferLineCyclePrev<CR>",
         ["<CR>"] = ":noh<CR>",
     },
 
