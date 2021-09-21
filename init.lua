@@ -31,6 +31,6 @@ require("_nvlx.loader").load({ require("_nvlx.plugins"), nvlx.plugins })
 
 -- Load default config
 -- Options
-require("build.init")
+require("_nvlx.build.init")
 require("_nvlx.keybinds").load()
 require("_nvlx.autocmds").load()
