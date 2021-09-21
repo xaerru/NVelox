@@ -12,6 +12,5 @@ set_options (const Option options[], int size)
 void
 options_load ()
 {
-    int size = sizeof (options) / sizeof (Option);
-    set_options (options, size);
+    set_options (options, sizeof (options) / sizeof (Option));
 }
