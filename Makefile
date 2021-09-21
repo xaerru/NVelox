@@ -1,11 +1,12 @@
 CC=gcc
 CFLAGS=-Wall -Werror -fpic -std=gnu99 -Ofast -Isrc/include
 CFILES=$(shell find src/ -type f -name '*.c')
+HFILES=$(shell find src/ -type f -name '*.h')
 TARGET=build/init.so
 
 all: build
 
-build: $(CFILES)
+build: $(CFILES) $(HFILES)
 	mkdir -p build/
 	$(CC) $(CFLAGS) -shared $(CFILES) -o $(TARGET)
 
