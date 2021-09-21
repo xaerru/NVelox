@@ -1,4 +1,4 @@
-#include <nvelox/options.h>
+#include <nvelox/config.def.h>
 
 static void
 set_options (const Option options[], int size)
