@@ -1,12 +1,11 @@
 CC=gcc
 CFLAGS=-Wall -Werror -fpic -std=gnu99 -Ofast -Isrc/include
-CFILES=$(shell find src/ -type f -name '*.c')
-HFILES=$(shell find src/ -type f -name '*.h')
+CFILES=$(shell find src/ -name '*.c' -o -name '*.h')
 TARGET=lua/_nvlx/build/init.so
 
 all: build
 
-build: $(CFILES) $(HFILES)
+build: $(CFILES)
 	mkdir -p lua/_nvlx/build
 	$(CC) $(CFLAGS) -shared $(CFILES) -o $(TARGET)
 
