@@ -1,6 +1,5 @@
-#include <stddef.h>
-#include <stdio.h>
-#include <stdbool.h>
+#ifndef OPTION_H
+#define OPTION_H
 
 typedef unsigned char char_u;
 
@@ -17,3 +16,5 @@ typedef struct {
     const char* const string;
     const int opt_flags;
 } Option;
+
+#endif // OPTION_H

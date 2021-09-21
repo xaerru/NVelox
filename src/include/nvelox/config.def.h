@@ -1,4 +1,7 @@
 #include <nvelox/options.h>
+#include <stddef.h>
+#include <stdio.h>
+#include <stdbool.h>
 
 static const Option options[] = {
     {"autoindent", 1, NULL, 0},
