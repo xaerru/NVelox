@@ -1,5 +1,7 @@
 local M = {}
 
+local nvlx = require("_nvlx.user"):get_nvlx()
+
 M["nvim-autopairs"] = {
     check_ts = true,
     fast_wrap = {
