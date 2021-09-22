@@ -1,6 +1,6 @@
 local M = {}
 
-function M.load(configurations)
+function M.load(configurations, disabled)
     local fn = vim.fn
 
     local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -38,7 +38,7 @@ function M.load(configurations)
     packer.startup(function(use)
         for _, plugins in ipairs(configurations) do
             for _, plugin in ipairs(plugins) do
-                if vim.tbl_contains(nvlx.disabled.plugins, plugin[1]) == false then
+                if vim.tbl_contains(disabled, plugin[1]) == false then
                     use(plugin)
                 end
             end

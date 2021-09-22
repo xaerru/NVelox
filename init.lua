@@ -24,7 +24,7 @@ nvlx = vim.tbl_deep_extend("force", default_nvlx, nvlx)
 package.path = default_package_path
 
 -- Load plugins
-require("_nvlx.loader").load({ require("_nvlx.plugins"), nvlx.plugins })
+require("_nvlx.loader").load({ require("_nvlx.plugins"), nvlx.plugins }, nvlx.disabled.plugins)
 
 -- Load default options, kebinds, autocmds
 require("_nvlx.settings").load()
