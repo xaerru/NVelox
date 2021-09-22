@@ -38,7 +38,7 @@ function M.load(configurations, disabled)
     packer.startup(function(use)
         for _, plugins in ipairs(configurations) do
             for _, plugin in ipairs(plugins) do
-                if vim.tbl_contains(disabled, plugin[1]) == false then
+                if vim.tbl_contains(disabled or {}, plugin[1]) == false then
                     use(plugin)
                 end
             end
