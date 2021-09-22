@@ -15,7 +15,7 @@ local nvlx = {
     },
     options = core.options,
     maps = core.maps,
-    autocmds = {},
+    autocmds = core.autocmds,
     plugins = {},
     config = {
         plugins = {
