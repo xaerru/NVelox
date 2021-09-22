@@ -2,8 +2,6 @@ local M = {}
 
 local map = vim.api.nvim_set_keymap
 
-vim.g.mapleader = nvlx.general.leader
-
 local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -49,32 +47,6 @@ local modes = {
     visual_block = "x",
 }
 
-local default_keybinds = {
-    command = {},
-
-    insert = {
-        ["jk"] = "<ESC>",
-        ["kj"] = "<ESC>",
-    },
-
-    normal = {
-        ["Y"] = "y$",
-        ["n"] = "nzzzv",
-        ["N"] = "Nzzzv",
-        ["J"] = "mzJ`z",
-        ["<TAB>"] = ":BufferLineCycleNext<CR>",
-        ["<S-TAB>"] = ":BufferLineCyclePrev<CR>",
-        ["<CR>"] = ":noh<CR>",
-    },
-
-    object = {},
-
-    visual = {
-        ["<"] = "<gv",
-        [">"] = ">gv",
-    },
-}
-
 function M.load_mode(mode, maps)
     mode = modes[mode]
     for key, mapping in pairs(maps) do
@@ -92,9 +64,8 @@ function M.loader(keybinds)
     end
 end
 
-function M.load()
-    M.loader(default_keybinds)
-    M.loader(nvlx.keybinds.general)
+function M.load(maps)
+    M.loader(maps)
     map("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
     map("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
     map("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })

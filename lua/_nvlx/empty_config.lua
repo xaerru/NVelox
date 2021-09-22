@@ -7,7 +7,7 @@ local nvlx = {
         plugins = {},
     },
     options = {},
-    keybinds = {
+    maps = {
         general = {
             command = {},
             insert = {},

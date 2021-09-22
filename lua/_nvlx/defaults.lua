@@ -14,18 +14,7 @@ local nvlx = {
         plugins = {},
     },
     options = core.options,
-    keybinds = {
-        general = {
-            command = {},
-            insert = {},
-            normal = {},
-            object = {},
-            terminal = {},
-            visual = {},
-            visual_block = {},
-        },
-        leader = {},
-    },
+    maps = core.maps,
     autocmds = {},
     plugins = {},
     config = {

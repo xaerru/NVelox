@@ -12,10 +12,15 @@ local nvlx = require("nvlx")
 nvlx = vim.tbl_deep_extend("force", nvlx, defaults)
 package.path = default_package_path
 
+-- Set leader
+vim.g.mapleader = nvlx.general.leader
+
 -- Load plugins
 require("_nvlx.loader").load({ require("_nvlx.plugins"), nvlx.plugins }, nvlx.disabled.plugins)
+print(vim.inspect(nvlx.maps))
 
 -- Load default options, kebinds, autocmds
 require("_nvlx.options").load(nvlx.options)
-require("_nvlx.keybinds").load()
+require("_nvlx.keybinds").load(nvlx.maps.general)
+require("_nvlx.leader").load(nvlx.maps.leader)
 require("_nvlx.autocmds").load()
