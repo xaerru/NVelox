@@ -287,9 +287,7 @@ return {
         "folke/which-key.nvim",
         config = function()
             require("which-key").setup(require("_nvlx.config.plugins")["which-key.nvim"])
-            require("_nvlx.leader").load()
         end,
-        after = "nordbuddy",
     },
 
     {
