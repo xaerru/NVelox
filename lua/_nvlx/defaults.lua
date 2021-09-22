@@ -1,3 +1,5 @@
+local core = require("_nvlx.config.core")
+
 local nvlx = {
     general = {
         leader = " ",
@@ -11,7 +13,7 @@ local nvlx = {
         builtin_plugins = {},
         plugins = {},
     },
-    settings = {},
+    options = core.options,
     keybinds = {
         general = {
             command = {},
