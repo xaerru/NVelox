@@ -30,6 +30,6 @@ package.path = default_package_path
 require("_nvlx.loader").load({ require("_nvlx.plugins"), nvlx.plugins })
 
 -- Load default options, kebinds, autocmds
-require("_nvlx.build.init")
+require("_nvlx.settings").load()
 require("_nvlx.keybinds").load()
 require("_nvlx.autocmds").load()
