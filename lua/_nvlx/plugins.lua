@@ -30,7 +30,7 @@ return {
         config = function()
             require("autosave").setup(require("_nvlx.config.plugins")["AutoSave.nvim"])
         end,
-        disable = not nvlx.general.autosave,
+        --disable = not nvlx.general.autosave,
         after = "nordbuddy",
     },
 
@@ -46,9 +46,10 @@ return {
         "maaslalani/nordbuddy",
         event = "VimEnter",
         config = function()
-            if require("_nvlx.colors") == false then
-                vim.cmd("colorscheme " .. nvlx.general.colorscheme)
-            end
+            require("_nvlx.colors")
+            --if require("_nvlx.colors") == false then
+                --vim.cmd("colorscheme " .. nvlx.general.colorscheme)
+            --end
         end,
     },
 
