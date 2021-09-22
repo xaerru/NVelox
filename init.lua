@@ -4,22 +4,18 @@ HOME = os.getenv("HOME")
 local utils = require("_nvlx.utils")
 
 -- Load global nvlx
-local nvlx = require("_nvlx.defaults")
+local defaults = require("_nvlx.defaults")
 
 -- Load user config
 local default_package_path = package.path
-local default_nvlx = utils.copy(nvlx)
 
-package.path = string.format(
-    "%s/.config/?/init.lua",
-    HOME,
-    HOME,
-    HOME
-)
+package.path = string.format("%s/.config/?/init.lua", HOME, HOME, HOME)
 
 local nvlx = require("nvlx")
 
-nvlx = vim.tbl_deep_extend("force", default_nvlx, nvlx)
+nvlx = vim.tbl_deep_extend("force", nvlx, defaults)
+print(vim.inspect(defaults.options))
+print(vim.inspect(nvlx.options))
 
 package.path = default_package_path
 
@@ -27,6 +23,6 @@ package.path = default_package_path
 require("_nvlx.loader").load({ require("_nvlx.plugins"), nvlx.plugins }, nvlx.disabled.plugins)
 
 -- Load default options, kebinds, autocmds
-require("_nvlx.settings").load()
+require("_nvlx.settings").load(nvlx.options)
 require("_nvlx.keybinds").load()
 require("_nvlx.autocmds").load()
