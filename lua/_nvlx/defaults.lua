@@ -1,4 +1,4 @@
-nvlx = {
+local nvlx = {
     general = {
         leader = " ",
         autosave = false,
@@ -59,3 +59,4 @@ nvlx = {
         },
     },
 }
+return nvlx
