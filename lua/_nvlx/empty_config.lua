@@ -1,21 +1,25 @@
-local core = require("_nvlx.config.core")
-
 local nvlx = {
     general = {
-        leader = " ",
-        autosave = false,
-        colorscheme = "nordbuddy",
-        transparent = false,
-        winblend = 0,
     },
     disabled = {
         builtin_plugins = {},
         plugins = {},
     },
-    autocmds = core.autocmds,
-    highlights = core.highlights,
-    maps = core.maps,
-    options = core.options,
+    options = {},
+    highlights = {},
+    maps = {
+        general = {
+            command = {},
+            insert = {},
+            normal = {},
+            object = {},
+            terminal = {},
+            visual = {},
+            visual_block = {},
+        },
+        leader = {},
+    },
+    autocmds = {},
     plugins = {},
     config = {
         plugins = {
