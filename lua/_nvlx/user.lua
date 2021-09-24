@@ -8,8 +8,11 @@ function M:init()
 
     -- Load user config
     local default_package_path = package.path
-    package.path = string.format("%s/.config/?/init.lua", HOME, HOME, HOME)
-    local nvlx = require("nvlx")
+    package.path = string.format("%s/.config/?/init.lua", HOME) .. package.path
+    local ok, nvlx = pcall(require, "nvlx")
+    if not ok then
+        nvlx = {}
+    end
 
     -- Merge default and user config
     nvlx = vim.tbl_deep_extend("force", defaults, nvlx)
