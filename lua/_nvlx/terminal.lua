@@ -1,5 +1,7 @@
 local M = {}
 
+local nvlx = require("_nvlx.user"):get_nvlx()
+
 local Terminal = require("toggleterm.terminal").Terminal
 
 function M.lazygit()
