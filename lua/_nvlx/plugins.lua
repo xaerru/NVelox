@@ -30,7 +30,7 @@ return {
         config = function()
             require("autosave").setup(require("_nvlx.config.plugins")["AutoSave.nvim"])
         end,
-        disable = not nvlx.general.autosave,
+        --disable = not nvlx.general.autosave,
         after = "nordbuddy",
     },
 
@@ -46,9 +46,10 @@ return {
         "maaslalani/nordbuddy",
         event = "VimEnter",
         config = function()
-            if require("_nvlx.colors") == false then
-                vim.cmd("colorscheme " .. nvlx.general.colorscheme)
-            end
+            require("_nvlx.colors")
+            --if require("_nvlx.colors") == false then
+            --vim.cmd("colorscheme " .. nvlx.general.colorscheme)
+            --end
         end,
     },
 
@@ -285,10 +286,10 @@ return {
     {
         "folke/which-key.nvim",
         config = function()
+            local nvlx = require("_nvlx.user"):get_nvlx()
+            require("_nvlx.leader").load(nvlx.maps.leader)
             require("which-key").setup(require("_nvlx.config.plugins")["which-key.nvim"])
-            require("_nvlx.leader").load()
         end,
-        after = "nordbuddy",
     },
 
     {

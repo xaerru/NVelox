@@ -1,11 +1,5 @@
 local M = {}
 
-local default_highlights = {
-    Visual = {
-        gui = "reverse",
-    },
-}
-
 function M.define(highlights)
     for group, highlight in pairs(highlights) do
         local cmd = string.format("highlight %s ", group)
@@ -16,9 +10,8 @@ function M.define(highlights)
     end
 end
 
-function M.load()
-    M.define(default_highlights)
-    M.define(nvlx.general.highlights)
+function M.load(highlights)
+    M.define(highlights)
 end
 
 return M
