@@ -1,6 +1,5 @@
 local nvlx = {
-    general = {
-    },
+    general = {},
     disabled = {
         builtin_plugins = {},
         plugins = {},
