@@ -15,7 +15,7 @@ function M:init()
     end
 
     -- Merge default and user config
-    nvlx = vim.tbl_deep_extend("force", defaults, nvlx)
+    nvlx = vim.tbl_deep_extend("keep", nvlx, defaults)
     package.path = default_package_path
     self.nvlx = nvlx
     return self
