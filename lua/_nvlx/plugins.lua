@@ -48,7 +48,7 @@ return {
         config = function()
             require("_nvlx.colors")
             --if require("_nvlx.colors") == false then
-                --vim.cmd("colorscheme " .. nvlx.general.colorscheme)
+            --vim.cmd("colorscheme " .. nvlx.general.colorscheme)
             --end
         end,
     },
@@ -286,6 +286,8 @@ return {
     {
         "folke/which-key.nvim",
         config = function()
+            local nvlx = require("_nvlx.user"):get_nvlx()
+            require("_nvlx.leader").load(nvlx.maps.leader)
             require("which-key").setup(require("_nvlx.config.plugins")["which-key.nvim"])
         end,
     },
