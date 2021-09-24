@@ -1,12 +1,12 @@
 local nvlx = {
     general = {
-        highlights = {},
     },
     disabled = {
         builtin_plugins = {},
         plugins = {},
     },
     options = {},
+    highlights = {},
     maps = {
         general = {
             command = {},

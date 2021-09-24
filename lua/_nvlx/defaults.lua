@@ -6,16 +6,16 @@ local nvlx = {
         autosave = false,
         colorscheme = "nordbuddy",
         transparent = false,
-        highlights = {},
         winblend = 0,
     },
     disabled = {
         builtin_plugins = {},
         plugins = {},
     },
-    options = core.options,
-    maps = core.maps,
     autocmds = core.autocmds,
+    highlights = core.highlights,
+    maps = core.maps,
+    options = core.options,
     plugins = {},
     config = {
         plugins = {
