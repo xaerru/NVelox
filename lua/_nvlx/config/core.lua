@@ -282,4 +282,10 @@ M.autocmds = {
     },
 }
 
+M.highlights = {
+    Visual = {
+        gui = "reverse",
+    },
+}
+
 return M
