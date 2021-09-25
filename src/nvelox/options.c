@@ -19,9 +19,9 @@ set_options (lua_State *L, int t)
 void
 options_load (lua_State *L)
 {
-    if (luaL_dofile (L, "lua/_nvlx/config/core.lua")) {
-        printf ("Could not load file: %sn", lua_tostring (L, -1));
-    }
+    lua_getglobal(L, "require");
+    lua_pushstring(L, "_nvlx.config.core");
+    lua_call(L, 1, 1);
     lua_getfield (L, 2, "options");
     set_options(L, 3);
 }
