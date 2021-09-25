@@ -1,6 +1,7 @@
 #include "luajit/lauxlib.h"
 #include "luajit/lua.h"
 #include "luajit/luaconf.h"
+#include "nvim.h"
 #include <nvelox/core/options.h>
 
 void
@@ -12,7 +13,7 @@ set_options (lua_State *L, int t)
             set_option_value (lua_tostring (L, -2), lua_tonumber (L, -1), NULL, 0);
         } else if (lua_type (L, -1) == LUA_TSTRING) {
             set_option_value (lua_tostring (L, -2), 0, lua_tostring (L, -1), 0);
-        } else if(lua_type (L, -1) == LUA_TBOOLEAN) {
+        } else if (lua_type (L, -1) == LUA_TBOOLEAN) {
             set_option_value (lua_tostring (L, -2), lua_toboolean (L, -1), NULL, 0);
         }
         lua_pop (L, 1);
