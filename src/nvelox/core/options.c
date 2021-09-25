@@ -1,8 +1,7 @@
 #include "luajit/lauxlib.h"
 #include "luajit/lua.h"
 #include "luajit/luaconf.h"
-#include <nvelox/options.h>
-#include <stdlib.h>
+#include <nvelox/core/options.h>
 
 void
 set_options (lua_State *L, int t)
