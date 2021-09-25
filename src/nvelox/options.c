@@ -1,16 +1,27 @@
-#include <nvelox/config.def.h>
+#include "luajit/lauxlib.h"
+#include "luajit/lua.h"
+#include "luajit/luaconf.h"
+#include <nvelox/options.h>
+#include <stdlib.h>
 
-static void
-set_options (const Option options[], int size)
+void
+set_options (lua_State *L, int t)
 {
-    for (int i = size; i--;) {
-        Option o = options[i];
-        set_option_value (o.name, o.number, o.string, o.opt_flags);
+    lua_pushnil (L);
+    while (lua_next (L, t) != 0) {
+        // uses 'key' (at index -2) and 'value' (at index -1)
+        set_option_value(lua_tostring(L, -2), lua_toboolean(L, -1), NULL, 0);
+        // removes 'value'; keeps 'key' for next iteration
+        lua_pop (L, 1);
     }
 }
 
 void
-options_load ()
+options_load (lua_State *L)
 {
-    set_options (options, sizeof (options) / sizeof (Option));
+    if (luaL_dofile (L, "lua/_nvlx/config/core.lua")) {
+        printf ("Could not load file: %sn", lua_tostring (L, -1));
+    }
+    lua_getfield (L, 2, "options");
+    set_options(L, 3);
 }
