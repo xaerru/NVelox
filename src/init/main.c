@@ -1,6 +1,4 @@
-#include "luajit/lauxlib.h"
 #include "luajit/lua.h"
-#include "luajit/luaconf.h"
 #include "nvelox/core/options.h"
 
 LUA_API int
