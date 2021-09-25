@@ -9,7 +9,7 @@
 ///                        #OPT_GLOBAL.
 ///
 /// @return NULL on success, error message on error.
-char* set_option_value(const char* const name,
+extern char* set_option_value(const char* const name,
                        const long number,
                        const char* const string,
                        const int opt_flags);
