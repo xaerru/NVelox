@@ -1,6 +1,7 @@
 #include "luajit/lua.h"
 #include "nvelox/core/options.h"
 #include "nvim.h"
+#include "nvelox/utils/printstack.h"
 
 void
 set_options (lua_State *L, int t)
@@ -28,10 +29,7 @@ set_options (lua_State *L, int t)
 void
 options_load (lua_State *L)
 {
-    lua_getglobal (L, "require");
-    lua_pushstring (L, "_nvlx.config.core");
-    lua_call (L, 1, 1);
-    lua_getfield (L, 2, "options");
-    set_options (L, 3);
-    lua_pop(L, 3);
+    lua_getfield (L, 1, "options");
+    set_options (L, 2);
+    lua_pop(L, 2);
 }
