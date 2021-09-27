@@ -28,7 +28,6 @@ set_options (lua_State *L, int t)
         lua_pop (L, 1);
         // stack = [nvlx, nvlx.options, key]
     }
-    print_stack (L);
 }
 
 void
