@@ -31,5 +31,5 @@ options_load (lua_State *L)
 {
     lua_getfield (L, 1, "options");
     set_options (L, 2);
-    lua_pop(L, 2);
+    lua_pop(L, 1);
 }
