@@ -199,7 +199,7 @@ print_stack (lua_State *L)
     printf ("stack:");
     int i;
     for (i = 1; i <= n; ++i) {
-        printf (" ");
+        printf ("\n\n");
         print_item (L, i, 0);  // 0 --> as_key
     }
     if (n == 0)
