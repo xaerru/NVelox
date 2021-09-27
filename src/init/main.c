@@ -6,6 +6,7 @@
 int
 setup (lua_State *L)
 {
+    // stack = [nvlx]
     options_load (L);
     return 0;
 }
