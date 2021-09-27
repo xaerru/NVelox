@@ -147,7 +147,6 @@ return {
         cmd = "NvimTreeToggle",
         config = function()
             local g = vim.g
-            g.nvim_tree_width = 25
             g.nvim_tree_gitignore = 1
             g.nvim_tree_auto_ignore_ft = { "dashboard" }
             g.nvim_tree_quit_on_open = 1
@@ -156,7 +155,6 @@ return {
             g.nvim_tree_git_hl = 1
             g.nvim_tree_highlight_opened_files = 0
             g.nvim_tree_root_folder_modifier = ":t"
-            g.nvim_tree_allow_resize = 1
             g.nvim_tree_add_trailing = 0
             g.nvim_tree_show_icons = { git = 1, folders = 1, files = 1 }
             g.nvim_tree_icons = {
@@ -194,6 +192,9 @@ return {
                     enable = false,
                     update_cwd = false,
                     ignore_list = { ".git", "node_modules", ".cache", "target" },
+                },
+                view = {
+                    width = 25,
                 },
             })
         end,
