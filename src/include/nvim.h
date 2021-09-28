@@ -7,12 +7,12 @@
 // already defined, so we use char_u to avoid trouble.
 typedef unsigned char char_u;
 
-/// Set a string option to a new value, handling the effects
+/// Set the value of an option
 ///
-/// @param[in]  opt_idx  Option to set.
-/// @param[in]  value  New value.
-/// @param[in]  opt_flags  Option flags: expected to contain #OPT_LOCAL and/or
-///                        #OPT_GLOBAL.
+/// @param[in]  name  Option name.
+/// @param[in]  number  New value for the number or boolean option.
+/// @param[in]  string  New value for string option.
+/// @param[in]  opt_flags  Flags: OPT_LOCAL, OPT_GLOBAL, or 0 (both).
 ///
 /// @return NULL on success, error message on error.
 extern char* set_option_value(const char* const name,
