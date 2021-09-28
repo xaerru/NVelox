@@ -2,10 +2,22 @@
 #define NVIM_H
 
 #include <stdbool.h>
+#include <stdlib.h>
 
 // Shorthand for unsigned variables. Many systems, but not all, have u_char
 // already defined, so we use char_u to avoid trouble.
 typedef unsigned char char_u;
+
+typedef struct {
+  char *data;
+  size_t size;
+} String;
+
+/// Writes a message to the Vim error buffer. Does not append "\n", the
+/// message is buffered (won't display) until a linefeed is written.
+///
+/// @param str Message
+void nvim_err_write(String str);
 
 /// Set the value of an option
 ///
