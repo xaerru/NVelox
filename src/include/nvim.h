@@ -4,13 +4,23 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+// Flags for modes
+#define NORMAL 0x01
+#define SELECTMODE 0x1000
+#define TERM_FOCUS 0x2000
+#define VISUAL 0x02
+#define OP_PENDING 0x04
+#define CMDLINE 0x08
+#define INSERT 0x10
+#define LANGMAP 0x20
+
 // Shorthand for unsigned variables. Many systems, but not all, have u_char
 // already defined, so we use char_u to avoid trouble.
 typedef unsigned char char_u;
 
 typedef struct {
-  char *data;
-  size_t size;
+    char* data;
+    size_t size;
 } String;
 
 /// Writes a message to the Vim error buffer. Does not append "\n", the
@@ -28,9 +38,9 @@ void nvim_err_write(String str);
 ///
 /// @return NULL on success, error message on error.
 extern char* set_option_value(const char* const name,
-                       const long number,
-                       const char* const string,
-                       const int opt_flags);
+                              const long number,
+                              const char* const string,
+                              const int opt_flags);
 
 /// Set or remove a mapping or an abbreviation in the current buffer, OR
 /// display (matching) mappings/abbreviations.
@@ -78,6 +88,6 @@ extern char* set_option_value(const char* const name,
 ///         - 4 for out of mem (deprecated, WON'T HAPPEN)
 ///         - 5 for entry not unique
 ///
-extern int do_map(int maptype, char_u *arg, int mode, bool is_abbrev);
+extern int do_map(int maptype, char_u* arg, int mode, bool is_abbrev);
 
 #endif  // NVIM_H
