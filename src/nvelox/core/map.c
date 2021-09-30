@@ -20,6 +20,15 @@ set_maps (lua_State *L, int t)
                 lua_rawgeti (L, -1, 1);
                 lua_rawgeti (L, -2, 2);
                 print_stack (L);
+                const char *action = lua_tostring (L, -1);
+                const char *key = lua_tostring (L, -2);
+
+                char map[sizeof (key) + sizeof (action)];
+                strcpy (map, key);
+                strcat (map, " ");
+                strcat (map, action);
+
+                printf ("%s\n", map);
                 lua_pop (L, 3);
             }
             break;
