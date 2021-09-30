@@ -12,5 +12,8 @@ build: $(CFILES)
 test: build
 	nvim -u init.lua
 
+debug: 
+	nvim -u init.lua --headless +q
+
 clean:
 	rm -rf lua/_nvlx/build
