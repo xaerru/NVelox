@@ -51,8 +51,8 @@ M.maps = {
         command = {},
 
         insert = {
-            ["jk"] = "<ESC>",
-            ["kj"] = "<ESC>",
+            { "jk", "<ESC>" },
+            { "kj", "<ESC>" },
         },
 
         normal = {
