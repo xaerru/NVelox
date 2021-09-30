@@ -15,11 +15,12 @@ set_maps (lua_State *L, int t)
         // stack = [nvlx, nvlx.options, key, value]
         const char *mode = lua_tolstring (L, -2, 0);
         if (strcmp (mode, "insert") == 0) {
-            lua_pushnil(L);
+            lua_pushnil (L);
             while (lua_next (L, 5) != 0) {
-                /*print_stack(L);*/
-                printf("%s = %s\n", lua_tolstring(L, -2, 0), lua_tolstring(L, -1, 0));
-                break;
+                lua_rawgeti(L, -1, 1);
+                lua_rawgeti(L, -2, 2);
+                print_stack(L);
+                lua_pop (L, 3);
             }
             break;
         }
