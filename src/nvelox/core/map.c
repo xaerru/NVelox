@@ -8,21 +8,21 @@
 void
 set_maps (lua_State *L, int t)
 {
-    // stack = [nvlx, nvlx.maps, nvlx.maps.general]
+    // stack = [nvlx, nvlx.maps]
     lua_pushnil (L);
-    // stack = [nvlx, nvlx.maps, nvlx.maps.general, nil]
+    // stack = [nvlx, nvlx.maps, nil]
     while (lua_next (L, t) != 0) {
-        // stack = [nvlx, nvlx.maps, nvlx.maps.general, mode, table of maps]
+        // stack = [nvlx, nvlx.maps, mode, table of maps]
         const char *mode = lua_tolstring (L, -2, 0);
         if (strcmp (mode, "insert") == 0) {
             lua_pushnil (L);
             // Iterating through table of maps
-            while (lua_next (L, 5) != 0) {
+            while (lua_next (L, 4) != 0) {
                 // Push key and action to the stack
-                // stack = [nvlx, nvlx.maps, nvlx.maps.general, mode, table of maps, index, single map table]
+                // stack = [nvlx, nvlx.maps, mode, table of maps, index, single map table]
                 lua_rawgeti (L, -1, 1);
                 lua_rawgeti (L, -2, 2);
-                // stack = [nvlx, nvlx.maps, nvlx.maps.general, mode, table of maps, index, single map table, key, action]
+                // stack = [nvlx, nvlx.maps, mode, table of maps, index, single map table, key, action]
 
                 const char *action = lua_tostring (L, -1);
                 const char *key = lua_tostring (L, -2);
@@ -34,13 +34,13 @@ set_maps (lua_State *L, int t)
 
                 printf ("%s\n", map);
                 lua_pop (L, 3);
-                // stack = [nvlx, nvlx.maps, nvlx.maps.general, mode, table of maps, index]
+                // stack = [nvlx, nvlx.maps, mode, table of maps, index]
             }
             // TODO: add support for more modes
             break;
         }
         lua_pop (L, 1);
-        // stack = [nvlx, nvlx.maps, nvlx.maps.general, key]
+        // stack = [nvlx, nvlx.maps, key]
     }
 }
 
@@ -50,9 +50,7 @@ maps_load (lua_State *L)
     // stack = [nvlx]
     lua_getfield (L, 1, "maps");
     // stack = [nvlx, nvlx.maps]
-    lua_getfield (L, 2, "general");
-    // stack = [nvlx, nvlx.maps, nvlx.maps.general]
-    set_maps (L, 3);
-    lua_pop (L, 2);
+    set_maps (L, 2);
+    lua_pop (L, 1);
     // stack = [nvlx]
 }
