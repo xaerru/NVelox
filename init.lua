@@ -1,14 +1,11 @@
-require("_nvlx.user"):init()
-local nvlx = require("_nvlx.user"):get_nvlx()
+HOME = os.getenv("HOME")
 
--- Set leader
-vim.g.mapleader = nvlx.general.leader
+vim.opt.rtp:remove(vim.fn.stdpath "config")
 
--- Load plugins
-require("_nvlx.loader").load({ require("_nvlx.plugins"), nvlx.plugins }, nvlx.disabled.plugins)
+local ok, config = pcall(require, "nvlx")
 
--- Load default options, kebinds, autocmds
-require("_nvlx.build.init").setup(nvlx)
--- require("_nvlx.options").load(nvlx.options)
---require("_nvlx.maps").load(nvlx.maps.general)
-require("_nvlx.autocmds").load(nvlx.autocmds)
+if not ok then
+    print(config)
+end
+
+require("nvelox.init").setup(config)
