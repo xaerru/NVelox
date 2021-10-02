@@ -1,0 +1,5 @@
+return {
+    Visual = {
+        gui = "reverse",
+    },
+}
