@@ -1,5 +1,11 @@
--- Load default options, kebinds, autocmds
-require("_nvlx.build.init").setup(nvlx)
--- require("_nvlx.options").load(nvlx.options)
---require("_nvlx.maps").load(nvlx.maps.general)
-require("_nvlx.autocmds").load(nvlx.autocmds)
+HOME = os.getenv("HOME")
+
+vim.opt.rtp:remove(vim.fn.stdpath "config")
+
+local ok, config = pcall(require, "nvlx")
+
+if not ok then
+    print(config)
+end
+
+print(vim.inspect(config))

@@ -3,6 +3,8 @@ CFLAGS=-Wall -Werror -fpic -std=gnu99 -Ofast -Isrc/include
 CFILES=$(shell find src/ -name '*.c' -o -name '*.h')
 TARGET=lua/_nvlx/build/init.so
 
+ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+
 all: build
 
 build: $(CFILES)
@@ -10,7 +12,7 @@ build: $(CFILES)
 	$(CC) $(CFLAGS) -shared $(CFILES) -o $(TARGET)
 
 test: build
-	nvim -u init.lua
+	LUA_PATH="$(ROOT_DIR)/examples/?/init.lua;$(ROOT_DIR)/examples/nvlx/?.lua" nvim -u init.lua
 
 debug: 
 	nvim -u init.lua --headless +q
