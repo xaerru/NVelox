@@ -1,4 +1,3 @@
-print(vim.inspect(package.path))
 return {
     maps = require("maps"),
     options = require("options"),
