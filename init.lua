@@ -8,4 +8,4 @@ if not ok then
     print(config)
 end
 
-print(vim.inspect(config))
+require("nvelox.init")
