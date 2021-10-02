@@ -12,7 +12,7 @@ build: $(CFILES)
 	$(CC) $(CFLAGS) -shared $(CFILES) -o $(TARGET)
 
 test: build
-	LUA_PATH="$(ROOT_DIR)/examples/?/init.lua;$(ROOT_DIR)/examples/nvlx/?.lua" nvim -u init.lua
+	LUA_PATH="$(ROOT_DIR)/examples/?/init.lua;$(ROOT_DIR)/examples/nvlx/?.lua;;" nvim -u init.lua
 
 debug: 
 	nvim -u init.lua --headless +q
