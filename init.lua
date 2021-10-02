@@ -8,4 +8,4 @@ if not ok then
     print(config)
 end
 
-require("nvelox.init")
+require("nvelox.init").setup(config)
