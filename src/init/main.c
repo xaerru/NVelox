@@ -1,6 +1,6 @@
 #include "luajit/lauxlib.h"
 #include "luajit/lua.h"
-#include "nvelox/core/map.h"
+#include "nvelox/core/maps.h"
 #include "nvelox/core/options.h"
 #include "nvelox/utils/printstack.h"
 
