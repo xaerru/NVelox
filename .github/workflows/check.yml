@@ -19,7 +19,3 @@ jobs:
           ln -s "$PWD" "$HOME/.config/nvim"
           mkdir "$HOME/.config/nvlx"
           touch "$HOME/.config/nvlx/init.lua"
-          git clone https://github.com/wbthomason/packer.nvim "$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
-          nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-      - name: Check for errors in PackerCompile and checkhealth
-        run: ./tools/check.sh
