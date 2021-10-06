@@ -1,5 +1,3 @@
 return {
-    Visual = {
-        gui = "reverse",
-    },
+    "Visual gui=reverse"
 }
