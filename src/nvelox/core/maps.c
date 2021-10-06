@@ -10,12 +10,15 @@ set_mode_maps (lua_State *L)
 {
     /*const char* mode = lua_tostring(L, 3);*/
     /*const char modec = mode[0];*/
-    lua_pushnil(L);
-    while(lua_next(L, 4) != 0) {
-        const char* key = lua_tostring(L, -2);
-        const char* value = lua_tostring(L, -1);
-        printf("%s = %s\n", key, value);
-        lua_pop(L, 1);
+    lua_pushnil (L);
+    /*const char *mode = lua_tostring (L, 3);*/
+    while (lua_next (L, 4) != 0) {
+        const char *key = lua_tostring (L, -2);
+        const char *value = lua_tostring (L, -1);
+        char_u keymap[strlen (key) + strlen (value) + 2];
+        snprintf ((char *)keymap, sizeof (keymap), "%s %s", key, value);
+        do_map (2, (char_u *)keymap, NORMAL, false);
+        lua_pop (L, 1);
     }
 }
 
@@ -27,7 +30,7 @@ set_maps (lua_State *L, int t)
     // stack = [nvlx, nvlx.maps, nil]
     while (lua_next (L, t) != 0) {
         // stack = [nvlx, nvlx.maps, mode, table of maps]
-        set_mode_maps(L);
+        set_mode_maps (L);
         lua_pop (L, 1);
         // stack = [nvlx, nvlx.maps, key]
     }
