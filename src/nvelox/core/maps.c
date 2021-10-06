@@ -32,6 +32,7 @@ get_mode_flag (const char modec)
     }
 }
 
+// TODO: Add more options(noremap, buffer, silent)
 void
 set_mode_maps (lua_State *L)
 {
@@ -43,7 +44,7 @@ set_mode_maps (lua_State *L)
         const char *key = lua_tostring (L, -2);
         const char *value = lua_tostring (L, -1);
         char_u keymap[strlen (key) + strlen (value) + 2];
-        snprintf ((char *)keymap, sizeof(keymap), "%s %s", key, value);
+        snprintf ((char *)keymap, sizeof (keymap), "%s %s", key, value);
         do_map (2, (char_u *)keymap, mode_flag, false);
         lua_pop (L, 1);
     }

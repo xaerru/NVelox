@@ -7,13 +7,13 @@ return {
     },
 
     normal = {
-        Y = "y$",
-        n = "nzzzv",
-        N = "Nzzzv",
-        J = "mzJ`z",
-        ["<TAB>"] = ":BufferLineCycleNext<CR>",
-        ["<S-TAB>"] = ":BufferLineCyclePrev<CR>",
-        ["<CR>"] = ":noh<CR>",
+        ["<silent> Y"] = "y$",
+        ["<silent> n"] = "nzzzv",
+        ["<silent> N"] = "Nzzzv",
+        ["<silent> J"] = "mzJ`z",
+        ["<silent> <TAB>"] = ":BufferLineCycleNext<CR>",
+        ["<silent> <S-TAB>"] = ":BufferLineCyclePrev<CR>",
+        ["<silent> <CR>"] = ":noh<CR>",
     },
 
     object = {},
