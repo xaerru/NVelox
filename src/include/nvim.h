@@ -90,4 +90,9 @@ extern char* set_option_value(const char* const name,
 ///
 extern int do_map(int maptype, char_u* arg, int mode, bool is_abbrev);
 
+/*
+ * Get the mapping mode from the command name.
+ */
+extern int get_map_mode(char_u **cmdp, bool forceit);
+
 #endif  // NVIM_H
