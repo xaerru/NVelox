@@ -10,7 +10,6 @@ set_highlights (lua_State *L)
 {
     lua_pushnil (L);
     while (lua_next (L, 2)) {
-        print_stack(L);
         do_highlight (lua_tostring (L, -1), false, false);
         lua_pop(L, 1);
     }
