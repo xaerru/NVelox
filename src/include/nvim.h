@@ -27,7 +27,7 @@ typedef struct {
 /// message is buffered (won't display) until a linefeed is written.
 ///
 /// @param str Message
-void nvim_err_write(String str);
+extern void nvim_err_write(String str);
 
 /// Set the value of an option
 ///
