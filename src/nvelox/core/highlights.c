@@ -11,7 +11,7 @@ set_highlights (lua_State *L)
     lua_pushnil (L);
     while (lua_next (L, 2)) {
         do_highlight (lua_tostring (L, -1), false, false);
-        lua_pop(L, 1);
+        lua_pop (L, 1);
     }
 }
 
