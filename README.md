@@ -5,7 +5,7 @@
 ### Install
 
 ```bash
-bash -c "bash <(curl -fsSL https://git.io/JurzK)"
+bash -c "bash <(curl -fsSL https://git.io/JoduL)"
 ```
 
 ---
