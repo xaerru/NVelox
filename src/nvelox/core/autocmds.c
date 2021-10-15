@@ -5,15 +5,11 @@
 #include <stdio.h>
 #include <string.h>
 
-event_T
+int
 get_event (const char *name)
 {
-    int i;
-
-    for (i = 0; event_names[i].name != NULL; i++) {
-        /*printf ("%s: %s\n", event_names[i].name, name);*/
-        if (strncmp (event_names[i].name, name, event_names[i].len)) {
-            printf ("%d\n", event_names[i].event);
+    for (int i = 0; event_names[i].len != 0; ++i) {
+        if (strncmp (event_names[i].name, name, event_names[i].len) == 0) {
             return event_names[i].event;
         }
     }
@@ -29,23 +25,19 @@ set_autocmds (lua_State *L, int t)
     while (lua_next (L, t) != 0) {
         // stack = [nvlx, nvlx.options, key, value]
         const char *augroup = lua_tolstring (L, -2, 0);
-        do_augroup((char_u*)augroup, 0);
-        printf ("%s\n", augroup);
+        do_augroup ((char_u *)augroup, 0);
 
         /*lua_pushnil(L);*/
         lua_pushnil (L);
         /*print_stack (L);*/
         while (lua_next (L, 4) != 0) {
             lua_pushnil (L);
-            while (lua_next (L, 6) != 0) {
-                lua_rawgeti (L, 6, 1);
-                lua_rawgeti (L, 6, 2);
-                lua_rawgeti (L, 6, 3);
-                event_T event = get_event (lua_tostring (L, -3));
-                printf ("%d\n", event);
-                lua_pop (L, 4);
-            }
-            lua_pop (L, 1);
+            lua_rawgeti (L, 6, 1);
+            lua_rawgeti (L, 6, 2);
+            lua_rawgeti (L, 6, 3);
+            do_autocmd_event (get_event (lua_tostring (L, -3)), (char_u *)lua_tostring (L, -1),
+                              false, 0, (char_u *)lua_tostring (L, -2), 0, -3);
+            lua_pop (L, 5);
         }
         lua_pop (L, 1);
         do_augroup ((char_u *)"end", 0);
