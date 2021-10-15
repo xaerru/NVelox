@@ -38,15 +38,17 @@ set_autocmds (lua_State *L, int t)
         while (lua_next (L, 4) != 0) {
             lua_pushnil (L);
             while (lua_next (L, 6) != 0) {
+                lua_rawgeti (L, 6, 1);
                 lua_rawgeti (L, 6, 2);
                 lua_rawgeti (L, 6, 3);
-                print_stack (L);
-                lua_pop (L, 3);
+                event_T event = get_event (lua_tostring (L, -3));
+                printf ("%d\n", event);
+                lua_pop (L, 4);
             }
             lua_pop (L, 1);
         }
         lua_pop (L, 1);
-        do_augroup((char_u*)"end", 0);
+        do_augroup ((char_u *)"end", 0);
         // stack = [nvlx, nvlx.options, key]
     }
 }
