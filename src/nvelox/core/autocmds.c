@@ -3,14 +3,22 @@
 #include "nvelox/utils/printstack.h"
 #include "nvim.h"
 #include <stdio.h>
+#include <string.h>
 
-/*
- *
- *do_augroup((char_u*)"bruh", 0);
- *do_autocmd_event(EVENT_BUFENTER, (char_u*)"*", false, false, (char_u*)"set cmdheight=5", false,
- *-3); do_augroup((char_u*)"end", 0);
- *
- */
+event_T
+get_event (const char *name)
+{
+    int i;
+
+    for (i = 0; event_names[i].name != NULL; i++) {
+        /*printf ("%s: %s\n", event_names[i].name, name);*/
+        if (strncmp (event_names[i].name, name, event_names[i].len)) {
+            printf ("%d\n", event_names[i].event);
+            return event_names[i].event;
+        }
+    }
+    return NUM_EVENTS;
+}
 
 void
 set_autocmds (lua_State *L, int t)
