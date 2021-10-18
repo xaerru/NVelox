@@ -3,7 +3,6 @@
 #include "nvelox/core/autocmds.h"
 #include "nvelox/core/highlights.h"
 #include "nvelox/core/maps.h"
-#include "nvelox/core/autocmds.h"
 #include "nvelox/core/options.h"
 #include "nvelox/utils/printstack.h"
 #include "nvim.h"
@@ -15,7 +14,9 @@ setup (lua_State *L)
     options_load (L);
     maps_load (L);
     highlights_load (L);
-    autocmds_load(L);
+    autocmds_load (L);
+    uc_add_command ((char_u *)"Hello", 5, (char_u *)"echo 'helo'", EX_BANG | EX_EXTRA, -1, 0, 0,
+                    (char_u *)"", ADDR_LINES, false);
     return 0;
 }
 
