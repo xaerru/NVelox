@@ -1,6 +1,7 @@
 #include "luajit/lauxlib.h"
 #include "luajit/lua.h"
 #include "nvelox/core/autocmds.h"
+#include "nvelox/core/commands.h"
 #include "nvelox/core/highlights.h"
 #include "nvelox/core/maps.h"
 #include "nvelox/core/options.h"
@@ -15,8 +16,7 @@ setup (lua_State *L)
     maps_load (L);
     highlights_load (L);
     autocmds_load (L);
-    uc_add_command ((char_u *)"Hello", 5, (char_u *)"echo 'helo'", EX_BANG | EX_EXTRA, -1, 0, 0,
-                    (char_u *)"", ADDR_LINES, false);
+    commands_load(L);
     return 0;
 }
 
