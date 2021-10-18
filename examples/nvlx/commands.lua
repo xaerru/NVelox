@@ -1,0 +1,3 @@
+return {
+    Test = ":echo 'test'"
+}
