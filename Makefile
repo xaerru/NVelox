@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-Wall -Werror -fpic -std=gnu99 -Ofast -Isrc/include
 CFILES=$(shell find src/ -name '*.c' -o -name '*.h')
 TARGET=lua/nvelox/init.so
-nvim=nvim
+nvim=~/oss/neovim/build/bin/nvim
 
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
