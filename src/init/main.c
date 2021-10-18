@@ -1,5 +1,6 @@
 #include "luajit/lauxlib.h"
 #include "luajit/lua.h"
+#include "nvelox/core/autocmds.h"
 #include "nvelox/core/highlights.h"
 #include "nvelox/core/maps.h"
 #include "nvelox/core/autocmds.h"
