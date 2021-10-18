@@ -1,9 +1,12 @@
 #include "luajit/lauxlib.h"
 #include "luajit/lua.h"
+#include "nvelox/core/autocmds.h"
 #include "nvelox/core/highlights.h"
 #include "nvelox/core/maps.h"
+#include "nvelox/core/autocmds.h"
 #include "nvelox/core/options.h"
 #include "nvelox/utils/printstack.h"
+#include "nvim.h"
 
 int
 setup (lua_State *L)
@@ -12,6 +15,7 @@ setup (lua_State *L)
     options_load (L);
     maps_load (L);
     highlights_load (L);
+    autocmds_load(L);
     return 0;
 }
 
