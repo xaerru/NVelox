@@ -19,29 +19,25 @@ get_event (const char *name)
 void
 set_autocmds (lua_State *L, int t)
 {
-    // stack = [nvlx, nvlx.options]
     lua_pushnil (L);
-    // stack = [nvlx, nvlx.options, nil]
     while (lua_next (L, t) != 0) {
-        // stack = [nvlx, nvlx.options, key, value]
         const char *augroup = lua_tolstring (L, -2, 0);
         do_augroup ((char_u *)augroup, 0);
-
-        /*lua_pushnil(L);*/
         lua_pushnil (L);
-        /*print_stack (L);*/
         while (lua_next (L, 4) != 0) {
-            lua_pushnil (L);
             lua_rawgeti (L, 6, 1);
             lua_rawgeti (L, 6, 2);
             lua_rawgeti (L, 6, 3);
-            do_autocmd_event (get_event (lua_tostring (L, -3)), (char_u *)lua_tostring (L, -1),
-                              false, 0, (char_u *)lua_tostring (L, -2), 0, -3);
-            lua_pop (L, 5);
+            print_stack (L);
+            const char *event = lua_tostring (L, 7);
+            char_u *pat = (char_u *)lua_tostring (L, 8);
+            char_u *cmd = (char_u *)lua_tostring (L, 9);
+            do_autocmd_event (get_event (event), pat, false, false, cmd, false,
+                              -3);
+            lua_pop (L, 4);
         }
-        lua_pop (L, 1);
         do_augroup ((char_u *)"end", 0);
-        // stack = [nvlx, nvlx.options, key]
+        lua_pop (L, 1);
     }
 }
 
