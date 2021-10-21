@@ -9,13 +9,14 @@ jobs:
       - name: Install neovim
         timeout-minutes: 10
         run: |
-          curl -LO https://github.com/Xaerru/neovim/releases/download/v0.5.0/nvim-linux64.tar.gz
-          tar -xvf nvim-linux64.tar.gz
-          cp -r nvim-linux64 ~/.local
-      - name: Install NVelox
-        run: |
-          ln -s "$PWD" "$HOME/.config/nvim"
-          cd "$HOME/.config/nvim"
-          make
-      - name: Check for errors in PackerCompile and checkhealth
-        run: ./tools/check.sh
+          sudo apt-get update
+          sudo apt-get install -y autoconf automake build-essential cmake gcc-11 gettext gperf libtool-bin locales ninja-build pkg-config unzip
+          git clone https://github.com/Xaerru/neovim
+          CC=gcc-11 make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX:PATH="
+      #- name: Install NVelox
+        #run: |
+          #ln -s "$PWD" "$HOME/.config/nvim"
+          #cd "$HOME/.config/nvim"
+          #make
+      #- name: Check for errors in PackerCompile and checkhealth
+        #run: ./tools/check.sh
