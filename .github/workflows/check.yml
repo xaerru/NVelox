@@ -20,5 +20,5 @@ jobs:
           make
       - name: Check for errors in checkhealth
         run: |
-          make debug
+          make NVIM_PATH=~/neovim/bin/nvim debug
           ./tools/check.sh
