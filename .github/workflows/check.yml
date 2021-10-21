@@ -1,0 +1,21 @@
+name: Install on ubuntu-latest
+on: [push]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Install neovim
+        timeout-minutes: 10
+        run: |
+          curl -LO https://github.com/Xaerru/neovim/releases/download/v0.5.0/nvim-linux64.tar.gz
+          tar -xvf nvim-linux64.tar.gz
+          cp -r nvim-linux64 ~/.local
+      - name: Install NVelox
+        run: |
+          ln -s "$PWD" "$HOME/.config/nvim"
+          cd "$HOME/.config/nvim"
+          make
+      - name: Check for errors in PackerCompile and checkhealth
+        run: ./tools/check.sh
