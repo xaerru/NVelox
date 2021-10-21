@@ -19,4 +19,6 @@ jobs:
           cd "$HOME/.config/nvim"
           make
       - name: Check for errors in checkhealth
-        run: ./tools/check.sh
+        run: |
+          make debug
+          ./tools/check.sh
