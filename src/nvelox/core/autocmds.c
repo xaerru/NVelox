@@ -34,7 +34,7 @@ nv_do_autocmd (const char *event,
 };
 
 void
-set_autocmds (lua_State *L, int t)
+l_set_autocmds (lua_State *L, int t)
 {
     // stack = [nvlx, nvlx.autocmds]
     lua_pushnil (L);
@@ -66,12 +66,12 @@ set_autocmds (lua_State *L, int t)
 }
 
 void
-autocmds_load (lua_State *L)
+l_autocmds_load (lua_State *L)
 {
     // stack = [nvlx]
     lua_getfield (L, 1, "autocmds");
     // stack = [nvlx, nvlx.autocmds]
-    set_autocmds (L, 2);
+    l_set_autocmds (L, 2);
     lua_pop (L, 1);
     // stack = [nvlx]
 }
