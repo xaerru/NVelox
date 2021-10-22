@@ -43,7 +43,7 @@ nv_set_keymap (const char *mode, const char *key, const char *value, bool norema
 };
 
 void
-set_maps (lua_State *L, int t)
+l_set_maps (lua_State *L, int t)
 {
     // stack = [nvlx, nvlx.maps]
     lua_pushnil (L);
@@ -62,12 +62,12 @@ set_maps (lua_State *L, int t)
 }
 
 void
-maps_load (lua_State *L)
+l_maps_load (lua_State *L)
 {
     // stack = [nvlx]
     lua_getfield (L, 1, "maps");
     // stack = [nvlx, nvlx.maps]
-    set_maps (L, 2);
+    l_set_maps (L, 2);
     lua_pop (L, 1);
     // stack = [nvlx]
 }

@@ -3,8 +3,8 @@
 
 #include "luajit/lua.h"
 
-void set_maps(lua_State* L, int t);
+void l_set_maps(lua_State* L, int t);
 
-void maps_load(lua_State* L);
+void l_maps_load(lua_State* L);
 
 #endif  // MAPS_H
