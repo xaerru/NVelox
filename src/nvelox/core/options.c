@@ -4,12 +4,12 @@
 #include "nvim.h"
 
 void
-set_options (lua_State *L, int t)
+set_options (lua_State *L)
 {
     // stack = [nvlx, nvlx.options]
     lua_pushnil (L);
     // stack = [nvlx, nvlx.options, nil]
-    while (lua_next (L, t) != 0) {
+    while (lua_next (L, 2) != 0) {
         // stack = [nvlx, nvlx.options, key, value]
         const char *key = lua_tolstring (L, -2, 0);
         switch (lua_type (L, -1)) {
@@ -36,7 +36,7 @@ options_load (lua_State *L)
     // stack = [nvlx]
     lua_getfield (L, 1, "options");
     // stack = [nvlx, nvlx.options]
-    set_options (L, 2);
+    set_options (L);
     lua_pop (L, 1);
     // stack = [nvlx]
 }
