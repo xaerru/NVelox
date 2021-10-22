@@ -3,7 +3,7 @@ return {
         {
             "BufWinEnter",
             "*",
-            ":set formatoptions-=cro",
+            ":set cmdheight=5",
         },
         {
             "TextYankPost",
