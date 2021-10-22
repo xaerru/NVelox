@@ -32,20 +32,32 @@ get_mode_flag (const char modec)
     }
 }
 
+void
+nv_set_keymap (const char *mode, const char *key, const char *value)
+{
+    // Add key and value with a space between
+    char_u keymap[strlen (key) + strlen (value) + 2];
+    snprintf ((char *)keymap, sizeof (keymap), "%s %s", key, value);
+
+    int mode_flag = get_mode_flag (mode[0]);
+    do_map (2, (char_u *)keymap, mode_flag, false);
+};
+
 // TODO: Add more options(noremap, buffer, silent)
 void
 set_mode_maps (lua_State *L)
 {
     const char *mode = lua_tostring (L, 3);
-    const char modec = mode[0];
-    int mode_flag = get_mode_flag (modec);
+    /*const char modec = mode[0];*/
+    /*int mode_flag = get_mode_flag (modec);*/
     lua_pushnil (L);
     while (lua_next (L, 4) != 0) {
         const char *key = lua_tostring (L, -2);
         const char *value = lua_tostring (L, -1);
-        char_u keymap[strlen (key) + strlen (value) + 2];
-        snprintf ((char *)keymap, sizeof (keymap), "%s %s", key, value);
-        do_map (2, (char_u *)keymap, mode_flag, false);
+        /*char_u keymap[strlen (key) + strlen (value) + 2];*/
+        /*snprintf ((char *)keymap, sizeof (keymap), "%s %s", key, value);*/
+        /*do_map (2, (char_u *)keymap, mode_flag, false);*/
+        nv_set_keymap (mode, key, value);
         lua_pop (L, 1);
     }
 }
