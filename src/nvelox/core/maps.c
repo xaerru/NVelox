@@ -33,34 +33,14 @@ get_mode_flag (const char modec)
 }
 
 void
-nv_set_keymap (const char *mode, const char *key, const char *value)
+nv_set_keymap (const char *mode, const char *key, const char *value, bool noremap, bool forceit)
 {
-    // Add key and value with a space between
+    int maptype = noremap == true ? 2 : 0;
+    int mode_flag = get_mode_flag (mode[0]);
     char_u keymap[strlen (key) + strlen (value) + 2];
     snprintf ((char *)keymap, sizeof (keymap), "%s %s", key, value);
-
-    int mode_flag = get_mode_flag (mode[0]);
-    do_map (2, (char_u *)keymap, mode_flag, false);
+    do_map (maptype, (char_u *)keymap, mode_flag, forceit);
 };
-
-// TODO: Add more options(noremap, buffer, silent)
-void
-set_mode_maps (lua_State *L)
-{
-    const char *mode = lua_tostring (L, 3);
-    /*const char modec = mode[0];*/
-    /*int mode_flag = get_mode_flag (modec);*/
-    lua_pushnil (L);
-    while (lua_next (L, 4) != 0) {
-        const char *key = lua_tostring (L, -2);
-        const char *value = lua_tostring (L, -1);
-        /*char_u keymap[strlen (key) + strlen (value) + 2];*/
-        /*snprintf ((char *)keymap, sizeof (keymap), "%s %s", key, value);*/
-        /*do_map (2, (char_u *)keymap, mode_flag, false);*/
-        nv_set_keymap (mode, key, value);
-        lua_pop (L, 1);
-    }
-}
 
 void
 set_maps (lua_State *L, int t)
@@ -70,7 +50,12 @@ set_maps (lua_State *L, int t)
     // stack = [nvlx, nvlx.maps, nil]
     while (lua_next (L, t) != 0) {
         // stack = [nvlx, nvlx.maps, mode, table of maps]
-        set_mode_maps (L);
+        const char *mode = lua_tostring (L, 3);
+        lua_pushnil (L);
+        while (lua_next (L, 4) != 0) {
+            nv_set_keymap (mode, lua_tostring (L, -2), lua_tostring (L, -1), true, false);
+            lua_pop (L, 1);
+        }
         lua_pop (L, 1);
         // stack = [nvlx, nvlx.maps, key]
     }

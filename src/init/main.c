@@ -16,7 +16,8 @@ lua_setup (lua_State *L)
     maps_load (L);
     highlights_load (L);
     autocmds_load (L);
-    commands_load(L);
+    commands_load (L);
+    /*do_map (2, (char_u *)"", NORMAL, false);*/
     return 0;
 }
 
