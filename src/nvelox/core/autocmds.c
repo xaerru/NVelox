@@ -16,6 +16,10 @@ get_event (const char *name)
     return NUM_EVENTS;
 }
 
+void nv_do_augroup(const char* name, int forceit){
+    do_augroup((char_u*)name, forceit);
+}
+
 void
 nv_do_autocmd (const char *event,
                const char *pattern,
@@ -37,7 +41,7 @@ set_autocmds (lua_State *L, int t)
     // stack = [nvlx, nvlx.autocmds, nil]
     while (lua_next (L, t) != 0) {
         // stack = [nvlx, nvlx.autocmds, augroup, autocmds]
-        do_augroup ((char_u *)lua_tostring (L, -2), 0);
+        nv_do_augroup(lua_tostring(L, -2), 0);
         lua_pushnil (L);
 
         // stack = [nvlx, nvlx.autocmds, augroup, autocmds, nil]
@@ -54,7 +58,7 @@ set_autocmds (lua_State *L, int t)
             lua_pop (L, 4);
             // stack = [nvlx, nvlx.autocmds, augroup, autocmds, idx]
         }
-        do_augroup ((char_u *)"end", 0);
+        nv_do_augroup("end", 0);
 
         lua_pop (L, 1);
         // stack = [nvlx, nvlx.autocmds, augroup]
