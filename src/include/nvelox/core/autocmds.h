@@ -3,6 +3,6 @@
 
 #include "luajit/lua.h"
 
-void autocmds_load(lua_State* L);
+void l_autocmds_load(lua_State* L);
 
 #endif  // AUTOCMDS_H

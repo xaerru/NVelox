@@ -6,7 +6,7 @@
 #include <string.h>
 
 int
-get_event (char *name)
+get_event (const char *name)
 {
     for (int i = 0; event_names[i].len != 0; ++i) {
         if (strncmp (event_names[i].name, name, event_names[i].len) == 0) {
@@ -16,15 +16,32 @@ get_event (char *name)
     return NUM_EVENTS;
 }
 
+void nv_do_augroup(const char* name, int forceit){
+    do_augroup((char_u*)name, forceit);
+}
+
 void
-set_autocmds (lua_State *L, int t)
+nv_do_autocmd (const char *event,
+               const char *pattern,
+               const char *command,
+               bool once,
+               int nested,
+               int forceit,
+               int group)
+{
+    do_autocmd_event (get_event (event), (char_u *)pattern, once, nested, (char_u *)command,
+                      forceit, group);
+};
+
+void
+l_set_autocmds (lua_State *L, int t)
 {
     // stack = [nvlx, nvlx.autocmds]
     lua_pushnil (L);
     // stack = [nvlx, nvlx.autocmds, nil]
     while (lua_next (L, t) != 0) {
         // stack = [nvlx, nvlx.autocmds, augroup, autocmds]
-        do_augroup ((char_u *)lua_tostring(L, -2), 0);
+        nv_do_augroup(lua_tostring(L, -2), 0);
         lua_pushnil (L);
 
         // stack = [nvlx, nvlx.autocmds, augroup, autocmds, nil]
@@ -36,16 +53,12 @@ set_autocmds (lua_State *L, int t)
 
             // stack = [nvlx, nvlx.autocmds, augroup, autocmds, idx, autocmd table, event(s),
             // pattern, cmd]
-            char *event = (char*)lua_tostring (L, 7);
-            char_u *pat = (char_u *)lua_tostring (L, 8);
-            char_u *cmd = (char_u *)lua_tostring (L, 9);
-
-            do_autocmd_event (get_event (event), pat, false, false, cmd, false, -3);
+            nv_do_autocmd(lua_tostring(L, 7), lua_tostring(L, 8), lua_tostring(L, 9), false, false, false, -3);
 
             lua_pop (L, 4);
             // stack = [nvlx, nvlx.autocmds, augroup, autocmds, idx]
         }
-        do_augroup ((char_u *)"end", 0);
+        nv_do_augroup("end", 0);
 
         lua_pop (L, 1);
         // stack = [nvlx, nvlx.autocmds, augroup]
@@ -53,12 +66,12 @@ set_autocmds (lua_State *L, int t)
 }
 
 void
-autocmds_load (lua_State *L)
+l_autocmds_load (lua_State *L)
 {
     // stack = [nvlx]
     lua_getfield (L, 1, "autocmds");
     // stack = [nvlx, nvlx.autocmds]
-    set_autocmds (L, 2);
+    l_set_autocmds (L, 2);
     lua_pop (L, 1);
     // stack = [nvlx]
 }
