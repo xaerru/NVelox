@@ -12,11 +12,12 @@ int
 lua_setup (lua_State *L)
 {
     // stack = [nvlx]
-    lua_options_load (L);
-    maps_load (L);
+    l_options_load (L);
+    l_maps_load (L);
     highlights_load (L);
     autocmds_load (L);
-    commands_load(L);
+    commands_load (L);
+    /*do_map (2, (char_u *)"", NORMAL, false);*/
     return 0;
 }
 
