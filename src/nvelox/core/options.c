@@ -4,6 +4,12 @@
 #include "nvim.h"
 
 void
+nv_set_option (const char *name, const char *string, long num, int optflags)
+{
+    set_option_value (name, num, string, optflags);
+}
+
+void
 set_options (lua_State *L)
 {
     // stack = [nvlx, nvlx.options]
@@ -14,13 +20,13 @@ set_options (lua_State *L)
         const char *key = lua_tolstring (L, -2, 0);
         switch (lua_type (L, -1)) {
             case LUA_TNUMBER:
-                set_option_value (key, lua_tonumber (L, -1), NULL, 0);
+                nv_set_option (key, NULL, lua_tonumber (L, -1), OPT_BOTH);
                 break;
             case LUA_TSTRING:
-                set_option_value (key, 0, lua_tostring (L, -1), 0);
+                nv_set_option (key, lua_tostring (L, -1), 0, OPT_BOTH);
                 break;
             case LUA_TBOOLEAN:
-                set_option_value (key, lua_toboolean (L, -1), NULL, 0);
+                nv_set_option (key, NULL, lua_toboolean (L, -1), OPT_BOTH);
                 break;
             default:
                 break;

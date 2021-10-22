@@ -30,6 +30,10 @@ typedef struct {
 /// @param str Message
 extern void nvim_err_write(String str);
 
+#define OPT_BOTH 0
+#define OPT_GLOBAL 2
+#define OPT_LOCAL 4
+
 /// Set the value of an option
 ///
 /// @param[in]  name  Option name.
