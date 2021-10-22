@@ -3,8 +3,8 @@
 
 #include "luajit/lua.h"
 
-void set_highlights(lua_State* L);
+void l_do_highlights(lua_State* L);
 
-void highlights_load(lua_State* L);
+void l_highlights_load(lua_State* L);
 
 #endif  // HIGHLIGHTS_H
