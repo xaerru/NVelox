@@ -10,7 +10,7 @@ nv_set_option (const char *name, const char *string, long num, int optflags)
 }
 
 void
-set_options (lua_State *L)
+lua_set_options (lua_State *L)
 {
     // stack = [nvlx, nvlx.options]
     lua_pushnil (L);
@@ -37,12 +37,12 @@ set_options (lua_State *L)
 }
 
 void
-options_load (lua_State *L)
+lua_options_load (lua_State *L)
 {
     // stack = [nvlx]
     lua_getfield (L, 1, "options");
     // stack = [nvlx, nvlx.options]
-    set_options (L);
+    lua_set_options (L);
     lua_pop (L, 1);
     // stack = [nvlx]
 }
