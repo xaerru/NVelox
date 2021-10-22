@@ -16,7 +16,7 @@ lua_setup (lua_State *L)
     l_maps_load (L);
     l_highlights_load (L);
     l_autocmds_load (L);
-    commands_load (L);
+    l_commands_load (L);
     return 0;
 }
 
