@@ -9,21 +9,22 @@
 #include "nvim.h"
 
 int
-setup (lua_State *L)
+lua_setup (lua_State *L)
 {
     // stack = [nvlx]
-    options_load (L);
-    maps_load (L);
-    highlights_load (L);
+    l_options_load (L);
+    l_maps_load (L);
+    l_highlights_load (L);
     autocmds_load (L);
-    commands_load(L);
+    commands_load (L);
+    /*do_map (2, (char_u *)"", NORMAL, false);*/
     return 0;
 }
 
 LUA_API int
 luaopen_nvelox_init (lua_State *L)
 {
-    luaL_Reg fns[] = { { "setup", setup }, { NULL, NULL } };
+    luaL_Reg fns[] = { { "setup", lua_setup }, { NULL, NULL } };
     luaL_newlib (L, fns);
     return 1;
 }
