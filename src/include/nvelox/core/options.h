@@ -4,7 +4,7 @@
 #include "luajit/lua.h"
 
 void
-set_options (lua_State *L, int t);
+set_options (lua_State *L);
 
 void
 options_load (lua_State *L);
