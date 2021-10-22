@@ -3,6 +3,6 @@
 
 #include "luajit/lua.h"
 
-void commands_load(lua_State* L);
+void l_commands_load(lua_State* L);
 
 #endif  // COMMANDS_H
