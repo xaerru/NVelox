@@ -6,7 +6,7 @@
 #include <string.h>
 
 int
-get_event (char *name)
+get_event (const char *name)
 {
     for (int i = 0; event_names[i].len != 0; ++i) {
         if (strncmp (event_names[i].name, name, event_names[i].len) == 0) {
@@ -17,6 +17,19 @@ get_event (char *name)
 }
 
 void
+nv_do_autocmd (const char *event,
+               const char *pattern,
+               const char *command,
+               bool once,
+               int nested,
+               int forceit,
+               int group)
+{
+    do_autocmd_event (get_event (event), (char_u *)pattern, once, nested, (char_u *)command,
+                      forceit, group);
+};
+
+void
 set_autocmds (lua_State *L, int t)
 {
     // stack = [nvlx, nvlx.autocmds]
@@ -24,7 +37,7 @@ set_autocmds (lua_State *L, int t)
     // stack = [nvlx, nvlx.autocmds, nil]
     while (lua_next (L, t) != 0) {
         // stack = [nvlx, nvlx.autocmds, augroup, autocmds]
-        do_augroup ((char_u *)lua_tostring(L, -2), 0);
+        do_augroup ((char_u *)lua_tostring (L, -2), 0);
         lua_pushnil (L);
 
         // stack = [nvlx, nvlx.autocmds, augroup, autocmds, nil]
@@ -36,11 +49,7 @@ set_autocmds (lua_State *L, int t)
 
             // stack = [nvlx, nvlx.autocmds, augroup, autocmds, idx, autocmd table, event(s),
             // pattern, cmd]
-            char *event = (char*)lua_tostring (L, 7);
-            char_u *pat = (char_u *)lua_tostring (L, 8);
-            char_u *cmd = (char_u *)lua_tostring (L, 9);
-
-            do_autocmd_event (get_event (event), pat, false, false, cmd, false, -3);
+            nv_do_autocmd(lua_tostring(L, 7), lua_tostring(L, 8), lua_tostring(L, 9), false, false, false, -3);
 
             lua_pop (L, 4);
             // stack = [nvlx, nvlx.autocmds, augroup, autocmds, idx]
