@@ -1,4 +1,5 @@
 session
 plugin
 *.so
+*.o
 .env
