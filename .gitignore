@@ -1,5 +1,3 @@
-session
-plugin
-*.so
+lua/
 *.o
 .env
