@@ -160,7 +160,7 @@ clone() {
     fi
     separator
     info "Cloning the repository"
-    git clone https://github.com/grvxs/NVelox "$HOME/.config/nvim"
+    git clone https://github.com/Xaerru/NVelox/tree/lua "$HOME/.config/nvim"
     if [ ! -d "$HOME/.config/nvlx/" ]; then
         mkdir "$HOME/.config/nvlx"
         touch "$HOME/.config/nvlx/init.lua"
