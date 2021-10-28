@@ -4,4 +4,5 @@ gcc
 -fpic
 -std=gnu99
 -Ofast
+-Isrc
 -Isrc/include
