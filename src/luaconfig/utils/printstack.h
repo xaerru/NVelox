@@ -1,3 +1,3 @@
-#include "luajit/lua.h"
+#include "lua.h"
 
 void print_stack(lua_State *L);

@@ -1,4 +1,4 @@
-#include "luajit/lua.h"
+#include "lua.h"
 #include "options.h"
 #include "luaconfig/utils/printstack.h"
 #include "nvim.h"
