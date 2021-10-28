@@ -1,6 +1,6 @@
 #include "luajit/lua.h"
-#include "nvelox/core/options.h"
-#include "nvelox/utils/printstack.h"
+#include "options.h"
+#include "luaconfig/utils/printstack.h"
 #include "nvim.h"
 
 void
