@@ -2,7 +2,7 @@
 export
 
 CC:=gcc
-CFLAGS:=-Wall -Werror -fpic -std=gnu99 -Ofast -Isrc -Isrc/include
+CFLAGS:=-Wall -Werror -fpic -std=gnu99 -Ofast -Isrc -Isrc/luaconfig/luajit -Isrc/include
 
 TARGET:=lua/nvelox/init.so
 NVIM_PATH?=nvim

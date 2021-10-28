@@ -5,4 +5,5 @@ gcc
 -std=gnu99
 -Ofast
 -Isrc
+-Isrc/luaconfig/luajit
 -Isrc/include
