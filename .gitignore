@@ -1,3 +1,4 @@
 lua/
-*.o
+build/
+lib/
 .env
