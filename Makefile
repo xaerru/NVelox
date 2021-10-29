@@ -2,12 +2,18 @@
 export
 
 CC:=gcc
-CFLAGS:=-Wall -Werror -fpic -std=gnu99 -Ofast -Isrc -Isrc/luaconfig/luajit -Isrc/include
 
 LUACONFIG:=lua/nvelox/init.so
+NVELOX:=lib/libnvelox.a
 NVIM_PATH?=nvim
 
+CFLAGS:=-Wall -Werror -std=gnu99 -Ofast
+$(LUACONFIG): EXTRA_FLAGS:=-fPIC -Isrc -Isrc/luaconfig/luajit -Isrc/include
+$(NVELOX): EXTRA_FLAGS:=-Isrc
+
 LUACONFIG_DIR:=lua/nvelox
+NVELOX_DIR:=lib
+
 BUILD_DIR:=build
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
@@ -17,18 +23,32 @@ ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 default: luaconfig
 all: default
 
-SOURCES:=$(shell find src/luaconfig -type f -name '*.c')
-OBJECTS:= $(patsubst %.c,build/%.o, $(SOURCES))
-HEADERS:= $(shell find src/luaconfig -type f -name '*.h')
-$(BUILD_DIR)/%.o: %.c $(HEADERS)
+LUACONFIG_SOURCES:=$(shell find src/luaconfig -type f -name '*.c')
+LUACONFIG_OBJECTS:= $(patsubst %.c,build/%.o, $(LUACONFIG_SOURCES))
+LUACONFIG_HEADERS:= $(shell find src/luaconfig -type f -name '*.h')
+$(BUILD_DIR)/%.o: %.c $(LUACONFIG_HEADERS)
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(LUACONFIG_CFLAGS) $(EXTRA_FLAGS) -c $< -o $@
 
-$(LUACONFIG): $(OBJECTS)
+$(LUACONFIG): $(LUACONFIG_OBJECTS)
 	@mkdir -p $(LUACONFIG_DIR)
-	$(CC) $(OBJECTS) -shared -o $@
+	$(CC) $(LUACONFIG_OBJECTS) -L$(ROOT_DIR)/lib/ -lnvelox -shared -o $@
+
+NVELOX_SOURCES:=$(shell find src/nvelox -type f -name '*.c')
+NVELOX_OBJECTS:= $(patsubst %.c,build/%.o, $(NVELOX_SOURCES))
+NVELOX_HEADERS:= $(shell find src/nvelox -type f -name '*.h')
+$(BUILD_DIR)/%.o: %.c $(NVELOX_HEADERS)
+	@mkdir -p $(@D)
+	$(CC) $(NVELOX_CFLAGS) $(EXTRA_FLAGS) -c $< -o $@
+
+$(NVELOX): $(NVELOX_OBJECTS)
+	@mkdir -p $(NVELOX_DIR)
+	ar rcs $@ $(NVELOX_OBJECTS)
+	#$(CC) $(NVELOX_OBJECTS) -shared -o $@
 
 luaconfig: $(LUACONFIG)
+
+nvelox: $(NVELOX)
 
 remake: clean all
 
