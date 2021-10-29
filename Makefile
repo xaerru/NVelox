@@ -20,7 +20,7 @@ ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 .PHONY: default all clean remake clean test debug
 .PRECIOUS: $(LUACONFIG) $(OBJECTS)
 
-default: luaconfig
+default: nvelox luaconfig
 all: default
 
 LUACONFIG_SOURCES:=$(shell find src/luaconfig -type f -name '*.c')
@@ -54,6 +54,7 @@ remake: clean all
 
 clean:
 	rm -rf $(LUACONFIG_DIR)
+	rm -rf $(NVELOX_DIR)
 	rm -rf $(BUILD_DIR)
 
 test: $(LUACONFIG)
