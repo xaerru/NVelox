@@ -11,7 +11,7 @@ SOURCES:=$(shell cd ../../ && find src/nvelox -type f -name '*.c')
 OBJECTS:= $(patsubst %.c,../../build/%.o, $(SOURCES))
 HEADERS:= $(shell find . -type f -name '*.h')
 
-.PHONY: default all clean remake clean test debug
+.PHONY: default all
 .PRECIOUS: $(TARGET) $(OBJECTS)
 
 default: $(TARGET)
