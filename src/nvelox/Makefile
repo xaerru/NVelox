@@ -3,7 +3,7 @@ CFLAGS:=-Wall -Werror -std=gnu99 -Ofast -I../../src
 
 TARGET:=~/.local/lib/libnvelox.so
 
-TARGET_DIR:=../../lib
+TARGET_DIR:=~/.local/lib
 BUILD_DIR:=../../build/src/nvelox
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
