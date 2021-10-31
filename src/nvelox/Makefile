@@ -4,14 +4,13 @@ CFLAGS:=-Wall -Werror -std=gnu99 -Ofast -I../../src
 TARGET:=~/.local/lib/libnvelox.so
 
 TARGET_DIR:=$${HOME}/.local/lib
-INCLUDE_DIR:=$${HOME}/.local/include/nvelox
+INCLUDE_DIR:=$${HOME}/.local/include
 BUILD_DIR:=../../build/src/nvelox
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 SOURCES:=$(shell cd ../../ && find src/nvelox -type f -name '*.c')
 OBJECTS:= $(patsubst %.c,../../build/%.o, $(SOURCES))
 HEADERS:= $(shell find . -type f -name '*.h')
-PUBLIC_HEADERS:= $(shell find include/ -type f -name '*.h')
 
 .PHONY: default all
 .PRECIOUS: $(TARGET) $(OBJECTS)
@@ -26,9 +25,9 @@ $(BUILD_DIR)/%.o: %.c $(HEADERS)
 $(TARGET): $(OBJECTS)
 	@mkdir -p $(TARGET_DIR)
 	@mkdir -p $(INCLUDE_DIR)
-	cp $(PUBLIC_HEADERS) $(INCLUDE_DIR)
+	cp -r include/nvelox $(INCLUDE_DIR)
 	$(CC) -shared -fPIC -o $@ $(OBJECTS)
 
 clean:
 	rm $(TARGET)
-	rm -rf $(INCLUDE_DIR)
+	rm -rf $(INCLUDE_DIR)/nvelox
