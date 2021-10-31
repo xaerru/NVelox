@@ -1,5 +1,5 @@
 CC:=gcc
-CFLAGS:=-Wall -Werror -fPIC -std=gnu99 -Ofast -I../../src -Iluajit -I../include
+CFLAGS:=-Wall -Werror -fPIC -std=gnu99 -Ofast -I../../src -Iluajit -I$${HOME}/.local/include
 
 TARGET:=../../lua/nvelox.so
 LIB_PATH:=$${HOME}/.local/lib

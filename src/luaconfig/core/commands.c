@@ -1,7 +1,7 @@
 #include "lua.h"
 #include "options.h"
 #include "luaconfig/utils/printstack.h"
-#include "nvim.h"
+#include "nvelox/nvelox.h"
 #include <stdio.h>
 #include <string.h>
 

@@ -6,7 +6,7 @@
 #include "luaconfig/core/maps.h"
 #include "luaconfig/core/options.h"
 #include "luaconfig/utils/printstack.h"
-#include "nvim.h"
+#include "nvelox/nvelox.h"
 #include <stdio.h>
 
 int add (int a, int b);
