@@ -1,7 +1,7 @@
 CC:=gcc
-CFLAGS:=-Wall -Werror -fpic -std=gnu99 -Ofast -I../../src
+CFLAGS:=-Wall -Werror -std=gnu99 -Ofast -I../../src
 
-TARGET:=../../lib/libnvelox.a
+TARGET:=~/.local/lib/libnvelox.so
 
 TARGET_DIR:=../../lib
 BUILD_DIR:=../../build/src/nvelox
@@ -23,4 +23,7 @@ $(BUILD_DIR)/%.o: %.c $(HEADERS)
 
 $(TARGET): $(OBJECTS)
 	@mkdir -p $(TARGET_DIR)
-	ar rcs $@ $(OBJECTS)
+	$(CC) -shared -fPIC -o $@ $(OBJECTS)
+
+clean:
+	rm $(TARGET)
