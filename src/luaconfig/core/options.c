@@ -1,7 +1,7 @@
 #include "lua.h"
 #include "options.h"
 #include "luaconfig/utils/printstack.h"
-#include "nvim.h"
+#include "nvelox/nvelox.h"
 
 void
 nv_set_option (const char *name, const char *string, long num, int optflags)
