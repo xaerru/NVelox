@@ -2,6 +2,7 @@ CC:=gcc
 CFLAGS:=-Wall -Werror -fpic -std=gnu99 -Ofast -I../../src -Iluajit -I../include
 
 TARGET:=../../lua/nvelox.so
+LIB_PATH:=$${HOME}/.local/lib
 
 TARGET_DIR:=../../lua
 BUILD_DIR:=../../build/src/luaconfig
@@ -11,7 +12,7 @@ SOURCES:=$(shell cd ../../ && find src/luaconfig -type f -name '*.c')
 OBJECTS:= $(patsubst %.c,../../build/%.o, $(SOURCES))
 HEADERS:= $(shell find . -type f -name '*.h')
 
-.PHONY: default all
+.PHONY: default all clean
 .PRECIOUS: $(TARGET) $(OBJECTS)
 
 default: $(TARGET)
@@ -23,4 +24,7 @@ $(BUILD_DIR)/%.o: %.c $(HEADERS)
 
 $(TARGET): $(OBJECTS)
 	@mkdir -p $(TARGET_DIR)
-	$(CC) $(OBJECTS) $(CFLAGS) -L../../lib/ -lnvelox -shared -o $@
+	$(CC) $(OBJECTS) $(CFLAGS) -Wl,-rpath=$(LIB_PATH) -L$(LIB_PATH) -lnvelox -shared -o $@
+
+clean:
+	rm -rf $(TARGET)
