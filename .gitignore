@@ -1,5 +1,5 @@
-session
-plugin
-*.so
-*.o
+lua/
+build/
+.cache/
+compile_commands.json
 .env
