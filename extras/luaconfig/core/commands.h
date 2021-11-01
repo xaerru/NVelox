@@ -1,7 +1,7 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
 
-#include "luajit/lua.h"
+#include "lua.h"
 
 void l_commands_load(lua_State* L);
 

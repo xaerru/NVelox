@@ -6,4 +6,4 @@ if not ok then
     print(config)
 end
 
-require("nvelox.init").setup(config)
+require("nvelox").setup(config)

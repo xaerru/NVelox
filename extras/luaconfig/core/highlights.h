@@ -1,7 +1,7 @@
 #ifndef HIGHLIGHTS_H
 #define HIGHLIGHTS_H
 
-#include "luajit/lua.h"
+#include "lua.h"
 
 void l_do_highlights(lua_State* L);
 

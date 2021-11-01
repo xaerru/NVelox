@@ -1,7 +1,7 @@
 #ifndef OPTION_H
 #define OPTION_H
 
-#include "luajit/lua.h"
+#include "lua.h"
 
 void
 l_set_options (lua_State *L);

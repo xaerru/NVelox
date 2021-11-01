@@ -1,7 +1,0 @@
-gcc
--Wall
--Werror
--fpic
--std=gnu99
--Ofast
--Isrc/include

@@ -1,7 +1,7 @@
 #ifndef AUTOCMDS_H
 #define AUTOCMDS_H
 
-#include "luajit/lua.h"
+#include "lua.h"
 
 void l_autocmds_load(lua_State* L);
 
