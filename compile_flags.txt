@@ -1,9 +1,0 @@
-gcc
--Wall
--Werror
--fpic
--std=gnu99
--Ofast
--Isrc
--Isrc/luaconfig/luajit
--Isrc/include
