@@ -1,4 +1,5 @@
 lua/
 build/
-lib/
+.cache/
+compile_commands.json
 .env
