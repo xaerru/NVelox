@@ -13,15 +13,15 @@ default: nvelox luaconfig
 all: default
 
 nvelox: 
-	@$(MAKE) --directory=src/nvelox
+	@$(MAKE) --directory=libs/nvelox
 
 luaconfig: 
-	@$(MAKE) --directory=src/luaconfig
+	@$(MAKE) --directory=libs/luaconfig
 
 clean:
 	rm -rf build/
-	@$(MAKE) --directory=src/nvelox clean
-	@$(MAKE) --directory=src/luaconfig clean
+	@$(MAKE) --directory=libs/nvelox clean
+	@$(MAKE) --directory=libs/luaconfig clean
 
 remake: clean nvelox luaconfig
 

@@ -1,14 +1,14 @@
 CC:=gcc
-CFLAGS:=-Wall -Werror -fPIC -std=gnu99 -Ofast -I../../src -Iluajit -I$${HOME}/.local/include
+CFLAGS:=-Wall -Werror -fPIC -std=gnu99 -Ofast -I../../libs -Iluajit -I$${HOME}/.local/include
 
 TARGET:=../../lua/nvelox.so
 LIB_PATH:=$${HOME}/.local/lib
 
 TARGET_DIR:=../../lua
-BUILD_DIR:=../../build/src/luaconfig
+BUILD_DIR:=../../build/libs/luaconfig
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
-SOURCES:=$(shell cd ../../ && find src/luaconfig -type f -name '*.c')
+SOURCES:=$(shell cd ../../ && find libs/luaconfig -type f -name '*.c')
 OBJECTS:= $(patsubst %.c,../../build/%.o, $(SOURCES))
 HEADERS:= $(shell find . -type f -name '*.h')
 
