@@ -1,14 +1,14 @@
 CC:=gcc
-CFLAGS:=-Wall -Werror -std=gnu99 -Ofast -I../../src
+CFLAGS:=-Wall -Werror -std=gnu99 -Ofast -I../../libs
 
 TARGET:=~/.local/lib/libnvelox.so
 
 TARGET_DIR:=$${HOME}/.local/lib
 INCLUDE_DIR:=$${HOME}/.local/include
-BUILD_DIR:=../../build/src/nvelox
+BUILD_DIR:=../../build/libs/nvelox
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
-SOURCES:=$(shell cd ../../ && find src/nvelox -type f -name '*.c')
+SOURCES:=$(shell cd ../../ && find libs/nvelox -type f -name '*.c')
 OBJECTS:= $(patsubst %.c,../../build/%.o, $(SOURCES))
 HEADERS:= $(shell find . -type f -name '*.h')
 
