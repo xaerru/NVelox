@@ -1,5 +1,5 @@
-#ifndef NVIM_H
-#define NVIM_H
+#ifndef NVELOX_H
+#define NVELOX_H
 
 #include <stdbool.h>
 #include <stdlib.h>
@@ -411,4 +411,4 @@ typedef enum {
 int uc_add_command(char_u *name, size_t name_len, char_u *rep, uint32_t argt, long def,
                           int flags, int compl, char_u *compl_arg, cmd_addr_T addr_type, bool force);
 
-#endif  // NVIM_H
+#endif  // NVELOX_H
