@@ -5,6 +5,7 @@ CC:=gcc
 
 all: default
 default: nvelox luaconfig
+remake: clean nvelox luaconfig
 
 ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
