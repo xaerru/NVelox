@@ -6,4 +6,4 @@
 
 NVelox is under development.
 
-The old configuration has moved to the [lua](https://github.com/Xaerru/NVelox/tree/lua) branch.
+The Neovim configuration has moved to the [lua](https://github.com/Xaerru/NVelox/tree/lua) branch.
