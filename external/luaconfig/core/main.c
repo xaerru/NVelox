@@ -9,8 +9,6 @@
 #include "nvelox/nvelox.h"
 #include <stdio.h>
 
-int add (int a, int b);
-
 int
 lua_setup (lua_State *L)
 {
@@ -26,7 +24,6 @@ lua_setup (lua_State *L)
 LUA_API int
 luaopen_nvelox (lua_State *L)
 {
-    printf ("%d\n", add (5, 10));
     luaL_Reg fns[] = { { "setup", lua_setup }, { NULL, NULL } };
     luaL_newlib (L, fns);
     return 1;
