@@ -4,12 +4,6 @@
 #include "nvelox/nvelox.h"
 
 void
-nv_set_option (const char *name, const char *string, long num, int optflags)
-{
-    set_option_value (name, num, string, optflags);
-}
-
-void
 l_set_options (lua_State *L)
 {
     // stack = [nvlx, nvlx.options]
