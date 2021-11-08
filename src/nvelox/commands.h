@@ -1,5 +1,6 @@
 #include "autocmds.h"
 #include <stdint.h>
+
 // values for cmd_addr_type
 typedef enum {
     ADDR_LINES,           // buffer line numbers
