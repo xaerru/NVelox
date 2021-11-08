@@ -10,6 +10,10 @@ void nv_set_option(const char* name,
                    long num,
                    int optflags);
 
+#define OPT_BOTH 0
+#define OPT_GLOBAL 2
+#define OPT_LOCAL 4
+
 void nv_do_autocmd(const char* event,
                    const char* pattern,
                    const char* command,
