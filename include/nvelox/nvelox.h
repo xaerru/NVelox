@@ -23,6 +23,9 @@ void nv_do_augroup(const char* name, int forceit);
 void
 nv_set_keymap (const char *mode, const char *key, const char *value, bool noremap, bool forceit);
 
+void
+nv_do_highlight (const char *cmd, bool forceit);
+
 // Shorthand for unsigned variables. Many systems, but not all, have u_char
 // already defined, so we use char_u to avoid trouble.
 typedef unsigned char char_u;
@@ -41,17 +44,6 @@ extern void nvim_err_write(String str);
 #define OPT_BOTH 0
 #define OPT_GLOBAL 2
 #define OPT_LOCAL 4
-
-/// Handle ":highlight" command
-///
-/// When using ":highlight clear" this is called recursively for each group with
-/// forceit and init being both true.
-///
-/// @param[in]  line  Command arguments.
-/// @param[in]  forceit  True when bang is given, allows to link group even if
-///                      it has its own settings.
-/// @param[in]  init  True when initializing.
-extern void do_highlight(const char* line, const bool forceit, const bool init);
 
 // values for cmd_addr_type
 typedef enum {
