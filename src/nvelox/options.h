@@ -11,3 +11,6 @@ extern char* set_option_value(const char* const name,
                               const char* const string,
                               const int opt_flags);
 
+#define OPT_BOTH 0
+#define OPT_GLOBAL 2
+#define OPT_LOCAL 4

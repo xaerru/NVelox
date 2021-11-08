@@ -29,8 +29,4 @@ nv_do_highlight (const char *cmd, bool forceit);
 void
 nv_def_command (const char *name, const char *cmd, int forceit);
 
-#define OPT_BOTH 0
-#define OPT_GLOBAL 2
-#define OPT_LOCAL 4
-
 #endif  // NVELOX_H
