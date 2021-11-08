@@ -6,12 +6,6 @@
 #include <string.h>
 
 void
-nv_do_highlight (const char *cmd, bool forceit)
-{
-    do_highlight (cmd, forceit, false);
-}
-
-void
 l_do_highlights (lua_State *L)
 {
     lua_pushnil (L);
