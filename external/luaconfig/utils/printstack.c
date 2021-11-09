@@ -1,6 +1,6 @@
 // From https://gist.github.com/tylerneylon/5b9ab5ffcc616cd2a337
 
-#include "lauxlib.h"
+#include <luajit-2.1/lauxlib.h>
 #include "printstack.h"
 #include <assert.h>
 #include <ctype.h>
