@@ -39,7 +39,7 @@ LIB_PATH:=$${HOME}/.local/lib
 
 $(LUACONFIG_BUILD_DIR)/%.o: %.c $(LUACONFIG_HEADERS)
 	@mkdir -p $(@D)
-	$(CC) -Wall -Werror -std=gnu99 -Ofast -fPIC -Iexternal -I$${HOME}/.local/include -Iexternal/luaconfig/luajit -c $< -o $@
+	$(CC) -Wall -Werror -std=gnu99 -Ofast -fPIC -Iexternal -I$${HOME}/.local/include -c $< -o $@
 
 $(LUACONFIG): $(LUACONFIG_OBJECTS)
 	@mkdir -p $(LUACONFIG_DIR)
