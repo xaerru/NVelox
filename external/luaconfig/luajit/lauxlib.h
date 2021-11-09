@@ -12,7 +12,7 @@
 #include <stddef.h>
 #include <stdio.h>
 
-#include "lua.h"
+#include <luajit-2.1/lua.h>
 
 
 /* extra error code for `luaL_load' */

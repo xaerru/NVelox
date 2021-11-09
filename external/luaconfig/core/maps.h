@@ -1,7 +1,7 @@
 #ifndef MAPS_H
 #define MAPS_H
 
-#include "lua.h"
+#include <luajit-2.1/lua.h>
 
 void l_set_maps(lua_State* L, int t);
 
