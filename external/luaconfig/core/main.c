@@ -1,5 +1,5 @@
-#include "lauxlib.h"
-#include "lua.h"
+#include <luajit-2.1/lauxlib.h>
+#include <luajit-2.1/lua.h>
 #include "luaconfig/core/autocmds.h"
 #include "luaconfig/core/commands.h"
 #include "luaconfig/core/highlights.h"

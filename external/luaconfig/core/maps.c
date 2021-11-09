@@ -1,4 +1,4 @@
-#include "lua.h"
+#include <luajit-2.1/lua.h>
 #include "options.h"
 #include "luaconfig/utils/printstack.h"
 #include "nvelox/nvelox.h"
