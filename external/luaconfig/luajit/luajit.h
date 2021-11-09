@@ -28,7 +28,7 @@
 #ifndef _LUAJIT_H
 #define _LUAJIT_H
 
-#include "lua.h"
+#include <luajit-2.1/lua.h>
 
 #define LUAJIT_VERSION		"LuaJIT 2.1.0-beta3"
 #define LUAJIT_VERSION_NUM	20100  /* Version 2.1.0 = 02.01.00. */

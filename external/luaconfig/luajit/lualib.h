@@ -6,7 +6,7 @@
 #ifndef _LUALIB_H
 #define _LUALIB_H
 
-#include "lua.h"
+#include <luajit-2.1/lua.h>
 
 #define LUA_FILEHANDLE	"FILE*"
 
