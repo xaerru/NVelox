@@ -14,7 +14,6 @@ include(GNUInstallDirs)
 ExternalProject_Add(
     nvim
     SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim
-    PREFIX nvim
 )
 
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/nvelox/*.c)
