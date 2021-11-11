@@ -1,11 +1,11 @@
 #include <luajit-2.1/lauxlib.h>
 #include <luajit-2.1/lua.h>
-#include "luaconfig/core/autocmds.h"
-#include "luaconfig/core/commands.h"
-#include "luaconfig/core/highlights.h"
-#include "luaconfig/core/maps.h"
-#include "luaconfig/core/options.h"
-#include "luaconfig/utils/printstack.h"
+#include "autocmds.h"
+#include "commands.h"
+#include "highlights.h"
+#include "maps.h"
+#include "options.h"
+#include "printstack.h"
 #include "nvelox/nvelox.h"
 #include <stdio.h>
 
