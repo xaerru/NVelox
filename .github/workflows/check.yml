@@ -16,4 +16,4 @@ jobs:
           mkdir build
           cd build
           cmake ..
-          sudo make
+          sudo make CMAKE_BUILD_TYPE=Release
