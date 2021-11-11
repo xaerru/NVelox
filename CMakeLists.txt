@@ -8,8 +8,14 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS true)
 project(NVelox VERSION 0.0
                DESCRIPTION "Neovim library"
                LANGUAGES C)
-
+include(ExternalProject)
 include(GNUInstallDirs)
+
+ExternalProject_Add(
+    nvim
+    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim
+    PREFIX nvim
+)
 
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/nvelox/*.c)
 file(GLOB_RECURSE HEADER_FILES CONFIGURE_DEPENDS include/nvelox/*.h)
