@@ -8,13 +8,17 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS true)
 project(NVelox VERSION 0.0
                DESCRIPTION "Neovim library"
                LANGUAGES C)
+
 include(GNUInstallDirs)
 
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/nvelox/*.c)
 file(GLOB_RECURSE HEADER_FILES CONFIGURE_DEPENDS include/nvelox/*.h)
+
 add_library(nvelox SHARED ${SRC_FILES})
 set_target_properties(nvelox PROPERTIES PUBLIC_HEADER ${HEADER_FILES})
 
 install(TARGETS nvelox
         PUBLIC_HEADER
             DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox)
+
+add_subdirectory(external/luaconfig)
