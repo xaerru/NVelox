@@ -12,7 +12,7 @@ jobs:
         timeout-minutes: 10
         run: |
           sudo apt-get update
-          sudo apt-get install -y autoconf automake build-essential cmake gcc-11 gettext gperf libtool-bin locales ninja-build pkg-config unzip libluajit-5.1-dev libacl1-dev libmsgpack-dev libnss-wrapper libtermkey-dev lib-tree-sitter-dev libunibilium-dev libuv1-dev
+          sudo apt-get install -y autoconf automake build-essential cmake gcc-11 gettext gperf libtool-bin locales ninja-build pkg-config unzip libluajit-5.1-dev libacl1-dev libmsgpack-dev libnss-wrapper libtermkey-dev libtree-sitter-dev libunibilium-dev libuv1-dev
           mkdir build
           cd build
           cmake -Gninja ..
