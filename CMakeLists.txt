@@ -15,14 +15,12 @@ include(GNUInstallDirs)
 ExternalProject_Add(
     NVIM_DEPS
     SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim/third-party
-    CMAKE_GENERATOR Ninja
     INSTALL_COMMAND ""
 )
 
 ExternalProject_Add(
     nvim
     SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim
-    CMAKE_GENERATOR Ninja
     CMAKE_ARGS -D CMAKE_BUILD_TYPE=RelWithDebInfo
 )
 
