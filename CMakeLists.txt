@@ -35,8 +35,5 @@ install(TARGETS nvelox
         PUBLIC_HEADER
             DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox)
 
-add_subdirectory(external/luaconfig)
-
 add_dependencies(nvim NVIM_DEPS)
 add_dependencies(nvelox nvim)
-add_dependencies(nvelox-lua nvelox)
