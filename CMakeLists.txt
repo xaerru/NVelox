@@ -8,6 +8,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS true)
 project(NVelox VERSION 0.0
                DESCRIPTION "Neovim library"
                LANGUAGES C)
+
 include(ExternalProject)
 include(GNUInstallDirs)
 
@@ -36,3 +37,7 @@ install(TARGETS nvelox
             DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox)
 
 add_subdirectory(external/luaconfig)
+
+add_dependencies(nvim NVIM_DEPS)
+add_dependencies(nvelox nvim)
+add_dependencies(nvelox-lua nvelox)
