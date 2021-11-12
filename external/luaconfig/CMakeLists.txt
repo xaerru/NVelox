@@ -12,7 +12,6 @@ project(NVelox-lua VERSION 0.0
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/*.c)
 
 add_library(nvelox-lua SHARED ${SRC_FILES})
-target_include_directories(nvelox-lua PUBLIC /usr/local/include)
 
 find_library(NVELOX nvelox)
 if(NVELOX)
