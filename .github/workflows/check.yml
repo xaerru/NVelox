@@ -16,4 +16,5 @@ jobs:
           mkdir build
           cd build
           cmake ..
-          sudo make
+          make
+          sudo make install
