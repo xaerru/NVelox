@@ -12,11 +12,17 @@ include(ExternalProject)
 include(GNUInstallDirs)
 
 ExternalProject_Add(
+    NVIM_DEPS
+    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim/third-party
+    CMAKE_GENERATOR Ninja
+    INSTALL_COMMAND ""
+)
+
+ExternalProject_Add(
     nvim
     SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim
-    CONFIGURE_COMMAND ""
-    BUILD_COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim && make CMAKE_BUILD_TYPE=Release -j 4
-    INSTALL_COMMAND sudo make install
+    CMAKE_GENERATOR Ninja
+    CMAKE_ARGS -D CMAKE_BUILD_TYPE=RelWithDebInfo
 )
 
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/nvelox/*.c)
