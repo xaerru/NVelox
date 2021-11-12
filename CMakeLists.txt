@@ -21,7 +21,8 @@ ExternalProject_Add(
 ExternalProject_Add(
     nvim
     SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim
-    CMAKE_ARGS -D CMAKE_BUILD_TYPE=RelWithDebInfo
+    CMAKE_ARGS -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_PREFIX_PATH=${CMAKE_CURRENT_BINARY_DIR}/NVIM_DEPS-prefix/src/NVIM_DEPS-build/usr/
+    INSTALL_COMMAND ""
 )
 
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/nvelox/*.c)
