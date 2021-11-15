@@ -13,16 +13,18 @@ include(ExternalProject)
 include(GNUInstallDirs)
 
 ExternalProject_Add(
-    NVIM_DEPS
+    nvim-deps
     SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim/third-party
     INSTALL_COMMAND ""
+    PREFIX nvim-deps
 )
 
 ExternalProject_Add(
-    nvim
+    nvelox-neovim
     SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim
     CMAKE_ARGS -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_PREFIX_PATH=${CMAKE_CURRENT_BINARY_DIR}/NVIM_DEPS-prefix/src/NVIM_DEPS-build/usr/
     INSTALL_COMMAND ""
+    PREFIX nvelox-neovim
 )
 
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/nvelox/*.c)
@@ -35,5 +37,5 @@ install(TARGETS nvelox
         PUBLIC_HEADER
             DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox)
 
-add_dependencies(nvim NVIM_DEPS)
-add_dependencies(nvelox nvim)
+add_dependencies(nvelox-neovim nvim-deps)
+add_dependencies(nvelox nvelox-neovim)
