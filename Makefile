@@ -41,7 +41,7 @@ build/.ran-cmake:
 nvelox: build/.ran-cmake
 	$(BUILD_TOOL) -C build
 
-install:
+install: nvelox
 	$(BUILD_TOOL) -C build install
 
 clean:
