@@ -8,18 +8,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: recursive
-      - name: Install neovim
+      - name: Install NVelox
         timeout-minutes: 10
         run: |
           sudo apt-get update
-          sudo apt-get install -y autoconf automake build-essential cmake gcc-11 gettext gperf libtool-bin locales ninja-build pkg-config unzip libluajit-5.1-dev
-          cd external/nvelox-neovim && CC=gcc-11 make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX:PATH="
-      - name: Install NVelox
-        run: |
-          ln -s "$PWD" "$HOME/.config/nvim"
-          cd "$HOME/.config/nvim"
+          sudo apt-get install -y autoconf automake build-essential cmake gcc-11 gettext gperf libtool-bin locales ninja-build pkg-config unzip libluajit-5.1-dev libuv1-dev
           make
-      - name: Check for errors in checkhealth
-        run: |
-          make NVIM_PATH=external/nvelox-neovim/build/bin/nvim debug
-          ./tools/check.sh
+          sudo make install

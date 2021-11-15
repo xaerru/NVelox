@@ -1,64 +1,52 @@
--include .env
-export
+MAKEFILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
+MAKEFILE_DIR  := $(dir $(MAKEFILE_PATH))
 
-CC:=gcc
+all: nvelox
 
-all: default
-default: nvelox luaconfig
-remake: clean nvelox luaconfig
+CMAKE_PRG ?= $(shell (command -v cmake3 || echo cmake))
+CMAKE_BUILD_TYPE ?= Release
+CMAKE_FLAGS := -DCMAKE_BUILD_TYPE=$(CMAKE_BUILD_TYPE)
+CMAKE_EXTRA_FLAGS ?=
+CMAKE_GENERATOR ?= $(shell (command -v ninja > /dev/null 3>&1 && echo "Ninja") || \
+    echo "Unix Makefiles")
 
-ROOT_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+ifeq (,$(BUILD_TOOL))
+  ifeq (Ninja,$(CMAKE_GENERATOR))
+    ifneq ($(shell $(CMAKE_PRG) --help 2>/dev/null | grep Ninja),)
+      BUILD_TOOL = ninja
+    else
+      BUILD_TOOL = $(MAKE)
+      CMAKE_GENERATOR := Unix Makefiles
+    endif
+  else
+    BUILD_TOOL = $(MAKE)
+  endif
+endif
 
-NVELOX:=~/.local/lib/libnvelox.so
-LUACONFIG:=lua/nvelox.so
-NVELOX_BUILD_DIR:=build/src/nvelox
-LUACONFIG_BUILD_DIR:=build/external/luaconfig
+ifeq ($(CMAKE_GENERATOR),Ninja)
+  ifneq ($(VERBOSE),)
+    BUILD_TOOL += -v
+  endif
+  BUILD_TOOL += $(shell printf '%s' '$(MAKEFLAGS)' | grep -o -- ' *-[jl][0-9]\+ *')
+  ifeq (n,$(findstring n,$(firstword -$(MAKEFLAGS))))
+    BUILD_TOOL += -n
+  endif
+endif
 
-NVELOX_DIR:=$${HOME}/.local/lib
-NVELOX_INCLUDE_DIR:=$${HOME}/.local/include
+build/.ran-cmake:
+	@mkdir build
+	cd build && $(CMAKE_PRG) -G '$(CMAKE_GENERATOR)' $(CMAKE_FLAGS) $(CMAKE_EXTRA_FLAGS) $(MAKEFILE_DIR)
+	touch $@
 
-NVELOX_SOURCES:=$(shell find src/nvelox -type f -name '*.c')
-NVELOX_OBJECTS:=$(patsubst %.c,build/src/nvelox/%.o, $(NVELOX_SOURCES))
-NVELOX_HEADERS:=$(shell find src/nvelox -type f -name '*.h')
+nvelox: build/.ran-cmake
+	$(BUILD_TOOL) -C build
 
-$(NVELOX_BUILD_DIR)/%.o: %.c $(NVELOX_HEADERS)
-	@mkdir -p $(@D)
-	$(CC) -Wall -Werror -std=gnu99 -Ofast -Isrc/ -c $< -o $@
-
-$(NVELOX): $(NVELOX_OBJECTS)
-	@mkdir -p $(NVELOX_DIR)
-	@mkdir -p $(NVELOX_INCLUDE_DIR)
-	cp -r include/nvelox $(NVELOX_INCLUDE_DIR)
-	$(CC) -shared -fPIC -o $@ $(NVELOX_OBJECTS)
-
-LUACONFIG_DIR:=lua
-LUACONFIG_SOURCES:=$(shell find external/luaconfig -type f -name '*.c')
-LUACONFIG_OBJECTS:= $(patsubst %.c,build/external/luaconfig/%.o, $(LUACONFIG_SOURCES))
-LUACONFIG_HEADERS:= $(shell find external/luaconfig -type f -name '*.h')
-LIB_PATH:=$${HOME}/.local/lib
-
-$(LUACONFIG_BUILD_DIR)/%.o: %.c $(LUACONFIG_HEADERS)
-	@mkdir -p $(@D)
-	$(CC) -Wall -Werror -std=gnu99 -Ofast -fPIC -Iexternal -I$${HOME}/.local/include -c $< -o $@
-
-$(LUACONFIG): $(LUACONFIG_OBJECTS)
-	@mkdir -p $(LUACONFIG_DIR)
-	$(CC) $(LUACONFIG_OBJECTS) -Wall -Werror -std=gnu99 -Ofast -Wl,-rpath=$(LIB_PATH) -L$(LIB_PATH) -lnvelox -shared -o $@
+install: nvelox
+	$(BUILD_TOOL) -C build install
 
 clean:
-	rm $(NVELOX)
-	rm -rf $(NVELOX_INCLUDE_DIR)/nvelox
-	rm $(LUACONFIG)
-	rm -rf build/
+	+test -d build && $(BUILD_TOOL) -C build clean || true
 
-nvelox: $(NVELOX)
-
-luaconfig: $(LUACONFIG)
-
-NVIM_PATH?=nvim
-
-test: $(LUACONFIG)
-	@LUA_CPATH="$(ROOT_DIR)/lua/?/init.so;$(ROOT_DIR)/lua/?.so" LUA_PATH="./lua/?.lua;$(ROOT_DIR)/examples/?/init.lua;$(ROOT_DIR)/examples/nvlx/?.lua;;" $(NVIM_PATH) -u init.lua
-
-debug: $(LUACONFIG)
-	@LUA_CPATH="$(ROOT_DIR)/lua/?/init.so;$(ROOT_DIR)/lua/?.so" LUA_PATH="./lua/?.lua;$(ROOT_DIR)/examples/?/init.lua;$(ROOT_DIR)/examples/nvlx/?.lua;;" $(NVIM_PATH) -u init.lua --headless +q
+distclean:
+	rm -rf $(DEPS_BUILD_DIR) build
+	$(MAKE) clean
