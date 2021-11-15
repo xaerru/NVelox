@@ -13,8 +13,5 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y autoconf automake build-essential cmake gcc-11 gettext gperf libtool-bin locales ninja-build pkg-config unzip libluajit-5.1-dev libuv1-dev
-          mkdir build
-          cd build
-          cmake -GNinja ..
-          ninja
-          sudo ninja install
+          make
+          sudo make install
