@@ -5,7 +5,7 @@ if(${CMAKE_VERSION} VERSION_LESS 3.12)
 endif()
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS true)
-project(NVelox-lua VERSION 0.0
+project(nvelox-lua VERSION 0.0
                DESCRIPTION "Lua wrapper for NVelox"
                LANGUAGES C)
 
