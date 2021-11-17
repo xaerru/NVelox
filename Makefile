@@ -6,7 +6,7 @@ all: nvelox
 CMAKE_PRG ?= $(shell (command -v cmake3 || echo cmake))
 CMAKE_BUILD_TYPE ?= Release
 CMAKE_FLAGS := -DCMAKE_BUILD_TYPE=$(CMAKE_BUILD_TYPE)
-CMAKE_EXTRA_FLAGS ?=
+CMAKE_EXTRA_FLAGS ?= -Wno-dev
 CMAKE_GENERATOR ?= $(shell (command -v ninja > /dev/null 3>&1 && echo "Ninja") || \
     echo "Unix Makefiles")
 
@@ -42,6 +42,7 @@ nvelox: build/.ran-cmake
 	$(BUILD_TOOL) -C build
 
 install: nvelox
+	$(BUILD_TOOL) -C build/nvelox-neovim/src/nvelox-neovim-build/ install
 	$(BUILD_TOOL) -C build install
 
 clean:
