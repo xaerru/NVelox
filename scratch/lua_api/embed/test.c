@@ -15,7 +15,7 @@ int add1_lua(lua_State *L)
 
 int luaopen_app(lua_State *L)
 {
-    static luaL_Reg fns[] = {{"multiply", add1_lua}, {NULL, NULL}};
+    static luaL_Reg fns[] = {{"add1", add1_lua}, {NULL, NULL}};
     luaL_newlib(L, fns);
     return 1;
 }
@@ -27,15 +27,10 @@ void start_point()
     luaL_openlibs(L);
     lua_pushcfunction(L, add1_lua);
     lua_setglobal(L, "add1");
-    if (luaL_dofile(L, "applib/test.lua"))
+    if (luaL_dofile(L, "embed/test.lua"))
     {
         printf("Could not load file: %sn", lua_tostring(L, -1));
         lua_close(L);
     }
-    /*lua_pushnumber(L, 68);*/
-    /*lua_call(L, 1, 1);*/
-    /*lua_Number a = luaL_checknumber(L, -1);*/
-    /*printf("%f\n", a);*/
-
     lua_close(L);
 }
