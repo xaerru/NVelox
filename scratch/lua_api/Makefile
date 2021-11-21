@@ -1,5 +1,10 @@
 all: main
 
 main:
-	gcc applib/lib.c -fPIC -shared -o applib/app.so -llua
-	gcc app/main.c -g -Wl,-E -ldl -o app/main
+	@mkdir build
+	@mkdir lib
+	gcc embed/test.c -fPIC -shared -llua -o lib/app.so
+	gcc app/main.c -g -Wl,-E -ldl -o ./main
+
+clean:
+	@rm -rf build lib main
