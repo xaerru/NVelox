@@ -14,6 +14,4 @@ file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/*.c)
 add_library(nvelox-lua SHARED ${SRC_FILES})
 
 find_library(NVELOX nvelox)
-if(NVELOX)
-    target_link_libraries(nvelox-lua PUBLIC ${NVELOX})
-endif()
+target_link_libraries(nvelox-lua PUBLIC ${NVELOX})
