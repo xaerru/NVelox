@@ -6,7 +6,7 @@ int add1(int a) { return a + 1; }
 
 int main()
 {
-    void *handle = dlopen("lib/app.so", RTLD_LAZY);
+    void *handle = dlopen("lib/lua.so", RTLD_LAZY);
     if (!handle)
     {
         fprintf(stderr, "%s\n", dlerror());
