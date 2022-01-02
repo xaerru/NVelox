@@ -4,6 +4,7 @@ MAKEFILE_DIR  := $(dir $(MAKEFILE_PATH))
 all: nvelox
 
 CMAKE_PRG ?= $(shell (command -v cmake3 || echo cmake))
+CMAKE_BUILD_DIR ?= build
 CMAKE_BUILD_TYPE ?= Release
 CMAKE_FLAGS := -DCMAKE_BUILD_TYPE=$(CMAKE_BUILD_TYPE)
 CMAKE_EXTRA_FLAGS ?= -Wno-dev
@@ -33,21 +34,21 @@ ifeq ($(CMAKE_GENERATOR),Ninja)
   endif
 endif
 
-build/.ran-cmake:
-	@mkdir build
-	cd build && $(CMAKE_PRG) -G '$(CMAKE_GENERATOR)' $(CMAKE_FLAGS) $(CMAKE_EXTRA_FLAGS) $(MAKEFILE_DIR)
+$(CMAKE_BUILD_DIR)/.ran-cmake:
+	@mkdir $(CMAKE_BUILD_DIR)
+	cd $(CMAKE_BUILD_DIR) && $(CMAKE_PRG) -G '$(CMAKE_GENERATOR)' $(CMAKE_FLAGS) $(CMAKE_EXTRA_FLAGS) $(MAKEFILE_DIR)
 	touch $@
 
-nvelox: build/.ran-cmake
-	$(BUILD_TOOL) -C build
+nvelox: $(CMAKE_BUILD_DIR)/.ran-cmake
+	$(BUILD_TOOL) -C $(CMAKE_BUILD_DIR)
 
 install: nvelox
-	$(BUILD_TOOL) -C build/nvelox-neovim/src/nvelox-neovim-build/ install
-	$(BUILD_TOOL) -C build install
+	$(BUILD_TOOL) -C $(CMAKE_BUILD_DIR)/nvelox-neovim/src/nvelox-neovim-build/ install
+	$(BUILD_TOOL) -C $(CMAKE_BUILD_DIR) install
 
 clean:
-	+test -d build && $(BUILD_TOOL) -C build clean || true
+	+test -d $(CMAKE_BUILD_DIR) && $(BUILD_TOOL) -C $(CMAKE_BUILD_DIR) clean || true
 
 distclean:
-	rm -rf $(DEPS_BUILD_DIR) build
+	rm -rf $(DEPS_BUILD_DIR) $(CMAKE_BUILD_DIR)
 	$(MAKE) clean
