@@ -4,3 +4,4 @@ lib/
 .cache/
 compile_commands.json
 .env
+result
