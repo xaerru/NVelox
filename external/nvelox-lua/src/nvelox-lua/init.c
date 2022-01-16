@@ -9,7 +9,7 @@ int
 set_option (lua_State *L)
 {
     const char* key = luaL_checkstring(L, 1);
-    const char* value = luaL_checkstring(L, 1);
+    int value = luaL_checknumber(L, 1);
     nv_set_option(key, value, 0, OPT_BOTH);
     return 0;
 }
