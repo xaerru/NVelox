@@ -1,5 +1,5 @@
 with (import <nixpkgs> {});
 
 mkShell {
-  nativeBuildInputs = [(import ./default.nix) (import ./nvelox-neovim.nix)];
+  nativeBuildInputs = [(import ./nix/default.nix) (import ./nix/nvelox-neovim.nix)];
 }
