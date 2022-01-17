@@ -2,7 +2,7 @@ with (import <nixpkgs> {});
 
 stdenv.mkDerivation {
   name = "nvelox";
-  src = ./.;
+  src = ../.;
   buildInputs = [ cmake ];
   makeTarget = "nvelox";
   enableParallelBuilding = true;
