@@ -5,8 +5,8 @@ pkgs.neovim-unwrapped.overrideAttrs (oa: {
   src = fetchFromSourcehut {
     owner = "~xaerru";
     repo = "nvelox-neovim";
-    rev = "ceedb0bd5e79edb358ea22a5115e05d57f28d7ed";
-    sha256 = "J/9/rde1o3Rz0k5xaSjcjI2jaPaUoYXRAxFlB4OtwFs=";
+    rev = "129bbcde047ed1ec1eb111ac1298280f7fc2a944";
+    sha256 = "3VExRq/fFGWB1ljcqDDUMhJLldJQDXgMuMVvZNc1TB0=";
   };
   postFixup = let
     libPath = lib.makeLibraryPath [ (import ./default.nix) ];
