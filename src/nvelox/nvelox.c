@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <regex.h>
+#include <string.h>
 #include "message.h"
 
 static int parse_ext(const struct dirent *dir)
@@ -21,13 +22,20 @@ static int parse_ext(const struct dirent *dir)
      return 0;
 }
 
+static void get_realpath(const char *filename, const char *dir, char* buf) {
+    snprintf(buf, strlen(dir)+strlen(filename)+2, "%s/%s", dir, filename);
+    realpath(buf, buf);
+}
+
 void load_c_plugins(const char* dir) {
    struct dirent **namelist;
    int n = scandir(dir, &namelist, parse_ext, NULL);
    if (n < 0) nv_err_msg("nvelox: Couldn't scan plugin directory.");
    else {
       while(n--) {
-         nv_out_msg(namelist[n]->d_name);      
+         char plugin_path[PATH_MAX+1];
+	 get_realpath(namelist[n]->d_name, dir, plugin_path);
+         nv_out_msg(plugin_path);
 	 free(namelist[n]);
       }
       free(namelist);
