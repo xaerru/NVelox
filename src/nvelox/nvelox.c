@@ -37,7 +37,6 @@ void load_c_plugins(const char* dir) {
          char plugin_path[PATH_MAX+1];
 	 get_realpath(namelist[n]->d_name, dir, plugin_path);
 	 free(namelist[n]);
-         nv_out_msg(plugin_path);
 	 void *handle = dlopen(plugin_path, RTLD_LAZY);
          void (*func)() = dlsym(handle, "nvelox_plugin_init");
 	 func();
