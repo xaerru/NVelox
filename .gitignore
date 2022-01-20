@@ -5,3 +5,4 @@ lib/
 compile_commands.json
 .env
 result
+tags
