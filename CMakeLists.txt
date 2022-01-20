@@ -19,6 +19,7 @@ file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/nvelox/*.c)
 file(GLOB_RECURSE HEADER_FILES CONFIGURE_DEPENDS include/nvelox/*.h)
 add_library(nvelox SHARED ${SRC_FILES})
 set_target_properties(nvelox PROPERTIES PUBLIC_HEADER ${HEADER_FILES})
+target_link_libraries(nvelox dl)
 
 include(GNUInstallDirs)
 install(TARGETS nvelox
