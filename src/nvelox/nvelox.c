@@ -16,6 +16,8 @@ void load_c_plugins(const char* dir) {
 }
 
 void start_point(){
-   load_c_plugins(getenv("NVELOX_PLUGIN_DIR"));
+   const char* plugin_dir = getenv("NVELOX_PLUGIN_DIR");
+   if(!plugin_dir) load_c_plugins("/some/path");
+   else load_c_plugins(getenv("NVELOX_PLUGIN_DIR"));
    nv_out_msg("nvelox is loaded");
 }
