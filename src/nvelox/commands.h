@@ -23,7 +23,7 @@ typedef enum {
 #define EX_XFILE 0x008   // expand wildcards in extra part
 #define EX_NOSPC 0x010   // no spaces allowed in the extra part
 #define EX_DFLALL 0x020  // default file range is 1,$
-#define EX_WHOLEFOLD \
+#define EX_WHOLEFOLD                                                                               \
     0x040                  // extend range to include whole fold also
                            // when less than two numbers given
 #define EX_NEEDARG 0x080   // argument required
@@ -38,23 +38,23 @@ typedef enum {
 #define EX_BUFUNL 0x10000  // accepts unlisted buffer too
 #define EX_ARGOPT 0x20000  // allow "++opt=val" argument
 #define EX_SBOXOK 0x40000  // allowed in the sandbox
-#define EX_CMDWIN \
-    0x80000                 // allowed in cmdline window; when missing
-                            // disallows editing another buffer when
-                            // current buffer is locked
-#define EX_MODIFY 0x100000  // forbidden in non-'modifiable' buffer
-#define EX_FLAGS 0x200000   // allow flags after count in argument
+#define EX_CMDWIN                                                                                  \
+    0x80000                             // allowed in cmdline window; when missing
+                                        // disallows editing another buffer when
+                                        // current buffer is locked
+#define EX_MODIFY 0x100000              // forbidden in non-'modifiable' buffer
+#define EX_FLAGS 0x200000               // allow flags after count in argument
 #define EX_FILES (EX_XFILE | EX_EXTRA)  // multiple extra files allowed
 #define EX_FILE1 (EX_FILES | EX_NOSPC)  // 1 file, defaults to current file
 #define EX_WORD1 (EX_EXTRA | EX_NOSPC)  // one extra word allowed
 
-int uc_add_command(char_u* name,
-                   size_t name_len,
-                   char_u* rep,
-                   uint32_t argt,
-                   long def,
-                   int flags,
-                   int compl,
-                   char_u* compl_arg,
-                   cmd_addr_T addr_type,
-                   bool force);
+int uc_add_command (char_u *name,
+                    size_t name_len,
+                    char_u *rep,
+                    uint32_t argt,
+                    long def,
+                    int flags,
+                    int compl,
+                    char_u *compl_arg,
+                    cmd_addr_T addr_type,
+                    bool force);

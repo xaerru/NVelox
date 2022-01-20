@@ -12,8 +12,10 @@ get_event (const char *name)
     return NUM_EVENTS;
 }
 
-void nv_do_augroup(const char* name, int forceit){
-    do_augroup((char_u*)name, forceit);
+void
+nv_do_augroup (const char *name, int forceit)
+{
+    do_augroup ((char_u *)name, forceit);
 }
 
 void

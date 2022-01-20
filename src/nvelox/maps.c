@@ -1,6 +1,6 @@
 #include "maps.h"
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
 
 int
 get_mode_flag (const char modec)

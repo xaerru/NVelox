@@ -6,10 +6,10 @@
 /// @param[in]  opt_flags  Flags: OPT_LOCAL, OPT_GLOBAL, or 0 (both).
 ///
 /// @return NULL on success, error message on error.
-extern char* set_option_value(const char* const name,
-                              const long number,
-                              const char* const string,
-                              const int opt_flags);
+extern char *set_option_value (const char *const name,
+                               const long number,
+                               const char *const string,
+                               const int opt_flags);
 
 #define OPT_BOTH 0
 #define OPT_GLOBAL 2
