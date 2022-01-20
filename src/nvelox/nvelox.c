@@ -6,28 +6,18 @@
 
 static int parse_ext(const struct dirent *dir)
    {
-     regex_t regex;
-     int reti = regcomp(&regex, "^.*\\.so((\\.)([0-9+]))?$", REG_EXTENDED);
-     if(reti) {
-        fprintf(stderr, "Could not compile regex\n");
-        exit(1);
-     };
      if(!dir)
        return 0;
-
      if(dir->d_type == DT_REG || dir->d_type == DT_LNK) {
+         regex_t regex;
+         regcomp(&regex, "^.*\\.so((\\.)([0-9+]))?$", REG_EXTENDED);
          int ext = regexec(&regex, dir->d_name, 0, NULL, 0);
+         regfree(&regex);
          if(!ext)
            return 1;
-         else if (ext == REG_NOMATCH) {
-           return 0;
-	 } else {
-            regerror(ext, &regex, (char*)dir->d_name, sizeof(dir->d_name));
-            fprintf(stderr, "Regex match failed: %s\n", dir->d_name);
-            exit(1);
-	 }
+         else 
+           return 0;    
      }
-     regfree(&regex);
      return 0;
 }
 
