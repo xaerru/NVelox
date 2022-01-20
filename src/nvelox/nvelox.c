@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <regex.h>
 #include <string.h>
+#include <dlfcn.h>
 #include "message.h"
 
 static int parse_ext(const struct dirent *dir)
@@ -35,8 +36,11 @@ void load_c_plugins(const char* dir) {
       while(n--) {
          char plugin_path[PATH_MAX+1];
 	 get_realpath(namelist[n]->d_name, dir, plugin_path);
-         nv_out_msg(plugin_path);
 	 free(namelist[n]);
+         nv_out_msg(plugin_path);
+	 void *handle = dlopen(plugin_path, RTLD_LAZY);
+         void (*func)() = dlsym(handle, "nvelox_plugin_init");
+	 func();
       }
       free(namelist);
    }
