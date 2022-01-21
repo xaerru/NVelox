@@ -1,0 +1,9 @@
+image: nixos/unstable
+
+packages:
+  - nixos.nixUnstable
+
+tasks:
+  - build: |
+      cd NVelox
+      nix-build nix/default.nix
