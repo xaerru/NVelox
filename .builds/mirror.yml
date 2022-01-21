@@ -1,0 +1,11 @@
+image: alpine/3.14
+secrets:
+  - 759dbfed-bbc1-4926-8ce5-5f4aeeaffeac
+tasks:
+  - clone: |
+      git clone --mirror https://git.sr.ht/~xaerru/NVelox
+  - add-host: |
+      ssh-keyscan -t rsa -H github.com >> ~/.ssh/known_hosts
+  - push: |
+      cd NVelox.git
+      git push --mirror git@github.com:xaerru/NVelox.git
