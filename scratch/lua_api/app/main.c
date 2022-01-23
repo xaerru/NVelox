@@ -2,25 +2,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int add1(int a) { return a + 1; }
-
-int main()
+int
+add1 (int a)
 {
-    void *handle = dlopen("lib/lua.so", RTLD_LAZY);
-    if (!handle)
-    {
-        fprintf(stderr, "%s\n", dlerror());
-        exit(EXIT_FAILURE);
-    }
-    dlerror();
-    void (*func)() = dlsym(handle, "start_point");
+    return a + 1;
+}
 
-    char *error = dlerror();
-    if (error != NULL)
-    {
-        fprintf(stderr, "%s\n", error);
-        exit(EXIT_FAILURE);
+int
+main ()
+{
+    void *handle = dlopen ("lib/lua.so", RTLD_LAZY);
+    if (!handle) {
+        fprintf (stderr, "%s\n", dlerror ());
+        exit (EXIT_FAILURE);
     }
-    func();
+    dlerror ();
+    void (*func) () = dlsym (handle, "start_point");
+
+    char *error = dlerror ();
+    if (error != NULL) {
+        fprintf (stderr, "%s\n", error);
+        exit (EXIT_FAILURE);
+    }
+    func ();
     return 0;
 }
