@@ -1,7 +1,6 @@
 #include "message.h"
 #include <dirent.h>
 #include <dlfcn.h>
-#include <regex.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,14 +11,7 @@ parse_ext (const struct dirent *dir)
     if (!dir)
         return 0;
     if (dir->d_type == DT_REG || dir->d_type == DT_LNK) {
-        regex_t regex;
-        regcomp (&regex, "^.*\\.so((\\.)([0-9+]))?$", REG_EXTENDED);
-        int ext = regexec (&regex, dir->d_name, 0, NULL, 0);
-        regfree (&regex);
-        if (!ext)
-            return 1;
-        else
-            return 0;
+        return 1;
     }
     return 0;
 }
