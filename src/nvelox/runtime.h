@@ -1,1 +1,1 @@
-void load_plugins_from_dir(const char *dir);
+void nv_load_plugins ();

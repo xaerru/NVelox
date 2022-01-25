@@ -24,7 +24,7 @@ parse_ext (const struct dirent *dir)
     return 0;
 }
 
-void
+static void
 load_plugins_from_dir (const char *dir)
 {
     struct dirent **namelist;
@@ -34,7 +34,7 @@ load_plugins_from_dir (const char *dir)
     else {
         while (n--) {
             char path_buf[PATH_MAX + 1];
-            char* filename = namelist[n]->d_name;
+            char *filename = namelist[n]->d_name;
             free (namelist[n]);
             snprintf (path_buf, strlen (dir) + strlen (filename) + 2, "%s/%s", dir, filename);
             char *realpath_buf = realpath (path_buf, NULL);
@@ -43,5 +43,18 @@ load_plugins_from_dir (const char *dir)
             func ();
         }
         free (namelist);
+    }
+}
+
+void
+nv_load_plugins ()
+{
+    char *plugin_path = getenv ("NVELOX_PLUGIN_PATH");
+    if (!plugin_path)
+        load_plugins_from_dir ("/some/path");
+    else {
+        char *dir;
+        while ((dir = strsep (&plugin_path, ":")))
+            load_plugins_from_dir (dir);
     }
 }
