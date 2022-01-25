@@ -24,13 +24,6 @@ parse_ext (const struct dirent *dir)
     return 0;
 }
 
-static void
-get_realpath (const char *filename, const char *dir, char *buf)
-{
-    snprintf (buf, strlen (dir) + strlen (filename) + 2, "%s/%s", dir, filename);
-    realpath (buf, buf);
-}
-
 void
 load_plugins_from_dir (const char *dir)
 {
@@ -40,10 +33,12 @@ load_plugins_from_dir (const char *dir)
         nv_err_msg ("nvelox: Couldn't scan plugin directory.");
     else {
         while (n--) {
-            char plugin_path[PATH_MAX + 1];
-            get_realpath (namelist[n]->d_name, dir, plugin_path);
+            char path_buf[PATH_MAX + 1];
+            char* filename = namelist[n]->d_name;
             free (namelist[n]);
-            void *handle = dlopen (plugin_path, RTLD_LAZY);
+            snprintf (path_buf, strlen (dir) + strlen (filename) + 2, "%s/%s", dir, filename);
+            char *realpath_buf = realpath (path_buf, NULL);
+            void *handle = dlopen (realpath_buf, RTLD_LAZY);
             void (*func) () = dlsym (handle, "nvelox_plugin_init");
             func ();
         }
