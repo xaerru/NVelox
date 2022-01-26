@@ -5,12 +5,7 @@ pkgs.neovim-unwrapped.overrideAttrs (oa: {
   src = fetchFromSourcehut {
     owner = "~xaerru";
     repo = "nvelox-neovim";
-    rev = "c82da06c0c63ae9b84ba1394addf077f9d29ce27";
-    sha256 = "ega9SfdKvei+2dp9cgmWrsxqSmwuOKlhUXF2UpWYKic=";
+    rev = "51c55c6a488c5fe76b49e594594bd4e0a509a1a1";
+    sha256 = "VPN5/igooEuQDRiSWR7qzBZTK+nBecJss5EXxxsVYyc=";
   };
-  postFixup = let
-    libPath = lib.makeLibraryPath [ (import ./default.nix) ];
-  in ''
-    patchelf --add-rpath ${libPath} $out/bin/nvim
-    '';
 })
