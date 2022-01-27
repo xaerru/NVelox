@@ -1,8 +1,7 @@
-lua/
 build/
-lib/
 .cache/
+.direnv/
 compile_commands.json
 .env
+.envrc
 result
-tags
