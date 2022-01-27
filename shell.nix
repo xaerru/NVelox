@@ -1,9 +1,14 @@
 with (import <nixpkgs> {});
 
+let
+nvelox-neovim = import ./nix/nvelox-neovim.nix;
+in
 mkShell {
   nativeBuildInputs = [
     cmake
-    (import ./nix/nvelox-neovim.nix)
+  ];
+  buildInputs = [
+    nvelox-neovim
   ];
   shellHook = ''
     export NVELOX_PATH=build/

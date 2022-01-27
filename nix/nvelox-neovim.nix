@@ -8,4 +8,7 @@ pkgs.neovim-unwrapped.overrideAttrs (oa: {
     rev = "51c55c6a488c5fe76b49e594594bd4e0a509a1a1";
     sha256 = "VPN5/igooEuQDRiSWR7qzBZTK+nBecJss5EXxxsVYyc=";
   };
+  postInstall = ''
+    mv $out/bin/nvim $out/bin/nvlx
+  '';
 })
