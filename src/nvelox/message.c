@@ -4,7 +4,8 @@
 void
 nv_out_msg (char *msg)
 {
-    msg_attr_keep(msg, 0, true, false);
+    // Keep only works if multiline is false
+    msg_attr_keep(msg, 0, false, true);
 }
 
 void
