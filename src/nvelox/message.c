@@ -11,6 +11,5 @@ nv_out_msg (char *msg)
 void
 nv_err_msg (char *msg)
 {
-    nvim_err_write ((String){ .data = msg, .size = strlen (msg) });
-    nvim_err_write ((String){ .data = "\n", .size = 1 });
+    emsg_multiline(msg, true);
 }
