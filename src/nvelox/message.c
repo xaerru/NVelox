@@ -2,14 +2,13 @@
 #include <string.h>
 
 void
-nv_out_msg (char *msg)
+nv_out_msg (char *_msg)
 {
-    // Keep only works if multiline is false
-    msg_attr_keep(msg, 0, false, true);
+    msg(_msg);
 }
 
 void
-nv_err_msg (char *msg)
+nv_err_msg (char *_msg)
 {
-    emsg_multiline(msg, true);
+    emsg(_msg);
 }
