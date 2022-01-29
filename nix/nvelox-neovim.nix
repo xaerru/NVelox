@@ -5,8 +5,8 @@ pkgs.neovim-unwrapped.overrideAttrs (oa: {
   src = fetchFromSourcehut {
     owner = "~xaerru";
     repo = "nvelox-neovim";
-    rev = "c409532744e5753b5a885de4670cc7a89a8e61f0";
-    sha256 = "sha256-eUlh5TjuJW8XdyDawqZPCsCjTY63WhfycLvVMzhNm2U";
+    rev = "a283565ca8d0ec4d848222c17b38239d0096c978";
+    sha256 = "sha256-R88oi6U2L74FjCycmf9CdUUYtwW7tGCOgS2cteVZJ88";
   };
   postInstall = ''
     mv $out/bin/nvim $out/bin/nvlx
