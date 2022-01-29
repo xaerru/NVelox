@@ -4,8 +4,7 @@
 void
 nv_out_msg (char *msg)
 {
-    nvim_out_write ((String){ .data = msg, .size = strlen (msg) });
-    nvim_out_write ((String){ .data = "\n", .size = 1 });
+    msg_attr_keep(msg, 0, true, false);
 }
 
 void
