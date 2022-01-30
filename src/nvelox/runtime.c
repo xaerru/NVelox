@@ -43,8 +43,12 @@ void
 nv_load_plugins ()
 {
     char *plugin_path = getenv ("NVELOX_PLUGIN_PATH");
-    if (!plugin_path)
-        load_plugins_from_dir ("~/.local/share/nvelox/plugins");
+    if (!plugin_path) {
+        char path_buf[PATH_MAX];
+        char *home = getenv("HOME");
+        snprintf(path_buf, strlen(home)+29, "%s/.local/share/nvelox/plugins", home);
+        load_plugins_from_dir (path_buf);
+    }
     else {
         char *dir;
         while ((dir = strsep (&plugin_path, ":")))
