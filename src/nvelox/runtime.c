@@ -25,10 +25,10 @@ load_plugins_from_dir (const char *dir)
         nv_err_msg ("nvelox: Couldn't scan plugin directory.");
     else {
         while (n--) {
-            char path_buf[PATH_MAX + 1];
+            char path_buf[PATH_MAX];
             char *filename = namelist[n]->d_name;
             free (namelist[n]);
-            snprintf (path_buf, strlen (dir) + strlen (filename) + 2, "%s/%s", dir, filename);
+            snprintf (path_buf, sizeof(path_buf), "%s/%s", dir, filename);
             char *realpath_buf = realpath (path_buf, NULL);
             void *handle = dlopen (realpath_buf, RTLD_LAZY);
             void (*func) () = dlsym (handle, "nvelox_plugin_init");
@@ -46,7 +46,7 @@ nv_load_plugins ()
     if (!plugin_path) {
         char path_buf[PATH_MAX];
         char *home = getenv("HOME");
-        snprintf(path_buf, strlen(home)+29, "%s/.local/share/nvelox/plugins", home);
+        snprintf(path_buf, sizeof(path_buf), "%s/.local/share/nvelox/plugins", home);
         load_plugins_from_dir (path_buf);
     }
     else {
