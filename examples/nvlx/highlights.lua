@@ -1,3 +1,0 @@
-return {
-    "Visual gui=reverse"
-}

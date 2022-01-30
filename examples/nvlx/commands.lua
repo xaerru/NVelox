@@ -1,3 +1,0 @@
-return {
-    Test = ":echo 'test'"
-}
