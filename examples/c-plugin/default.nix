@@ -3,7 +3,8 @@ let nvelox = import ../../nix/default.nix;
 in stdenv.mkDerivation {
   name = "nvelox-c";
   src = ./.;
-  buildInputs = [ cmake nvelox ];
+  nativeBuildInputs = [ cmake ];
+  buildInputs = [ nvelox ];
   makeTarget = "c-plugin";
   enableParallelBuilding = true;
 }
