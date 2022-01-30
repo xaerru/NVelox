@@ -33,6 +33,7 @@ load_plugins_from_dir (const char *dir)
             void *handle = dlopen (realpath_buf, RTLD_LAZY);
             void (*func) () = dlsym (handle, "nvelox_plugin_init");
             func ();
+            dlclose(handle);
         }
         free (namelist);
     }
