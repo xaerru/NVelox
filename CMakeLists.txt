@@ -5,6 +5,7 @@ if(${CMAKE_VERSION} VERSION_LESS 3.12)
 endif()
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS true)
+set(CMAKE_INSTALL_PREFIX /usr)
 project(NVelox VERSION 0.0
                DESCRIPTION "Neovim library"
                LANGUAGES C)
