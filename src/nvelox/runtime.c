@@ -46,7 +46,7 @@ nv_load_plugins ()
     if (!plugin_path) {
         char path_buf[PATH_MAX];
         char *home = getenv("HOME");
-        snprintf(path_buf, sizeof(path_buf), "%s/.local/share/nvelox/plugins", home);
+        snprintf(path_buf, sizeof(path_buf), "%s/.local/share/nvelox/plugins/c/lib", home);
         load_plugins_from_dir (path_buf);
     }
     else {
