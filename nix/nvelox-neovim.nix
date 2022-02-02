@@ -8,6 +8,7 @@ pkgs.neovim-unwrapped.overrideAttrs (oa: {
     rev = "a283565ca8d0ec4d848222c17b38239d0096c978";
     sha256 = "sha256-R88oi6U2L74FjCycmf9CdUUYtwW7tGCOgS2cteVZJ88";
   };
+  cmakeFlags = oa.cmakeFlags ++ ["-DCMAKE_BUILD_TYPE=Debug"];
   postInstall = ''
     mv $out/bin/nvim $out/bin/nvlx
   '';
