@@ -6,5 +6,6 @@ in stdenv.mkDerivation {
   nativeBuildInputs = [ cmake ];
   buildInputs = [ nvelox ];
   makeTarget = "c-plugin";
+  cmakeFlags = ["-DCMAKE_INSTALL_PREFIX=/usr"];
   enableParallelBuilding = true;
 }

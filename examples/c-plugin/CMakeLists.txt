@@ -5,6 +5,7 @@ if(${CMAKE_VERSION} VERSION_LESS 3.12)
 endif()
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS true)
+set(CMAKE_INSTALL_PREFIX $ENV{HOME}/.local/share/nvelox/plugins/c)
 project(nvelox-c VERSION 0.1
                DESCRIPTION "Example nvelox C plugin"
                LANGUAGES C)
