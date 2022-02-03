@@ -1,0 +1,3 @@
+[submodule "external/nvelox-neovim"]
+	path = external/nvelox-neovim
+	url = https://git.sr.ht/~xaerru/nvelox-neovim
