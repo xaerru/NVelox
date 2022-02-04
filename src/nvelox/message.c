@@ -1,5 +1,4 @@
-#include "message.h"
-#include <string.h>
+#include <nvim/message.h>
 
 void
 nv_out_msg (char *_msg)
