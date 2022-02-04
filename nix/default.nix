@@ -10,6 +10,7 @@ in pkgs.stdenv.mkDerivation {
     submodules = true;
   };
   buildInputs = neovim.buildInputs ++ [ nvelox-neovim ];
+  dontFixCmake = true;
   nativeBuildInputs = neovim.nativeBuildInputs;
   NVELOX_NEOVIM_CMAKE_FLAGS = builtins.concatStringsSep ";" neovim.cmakeFlags;
   makeTarget = "nvelox";
