@@ -28,6 +28,7 @@ ExternalProject_Add(
     nvelox-neovim
     SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim
     CMAKE_ARGS $ENV{NVELOX_NEOVIM_CMAKE_FLAGS}
+    BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> -t generated-sources
     INSTALL_COMMAND ""
     PREFIX nvelox-neovim
 )
