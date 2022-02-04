@@ -7,7 +7,7 @@ stdenv.mkDerivation {
     url = ../.;
     submodules = true;
   };
-  inherit lua buildInputs nativeBuildInputs dontFixCmake;
+  inherit buildInputs nativeBuildInputs;
   NVELOX_NEOVIM_CMAKE_FLAGS = builtins.concatStringsSep ";" cmakeFlags;
   makeTarget = "nvelox";
   enableParallelBuilding = true;
