@@ -23,15 +23,33 @@ set_target_properties(nvelox PROPERTIES PUBLIC_HEADER ${HEADER_FILES})
 target_link_libraries(nvelox dl)
 
 include(ExternalProject)
-message("$ENV{NVELOX_NEOVIM_CMAKE_FLAGS}")
-ExternalProject_Add(
-    nvelox-neovim
-    SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim
-    CMAKE_ARGS $ENV{NVELOX_NEOVIM_CMAKE_FLAGS}
-    BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> -t generated-sources
-    INSTALL_COMMAND ""
-    PREFIX nvelox-neovim
-)
+
+if(DEFINED ENV{NVELOX_NEOVIM_CMAKE_FLAGS})
+    ExternalProject_Add(
+        nvelox-neovim
+        SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim
+        CMAKE_ARGS $ENV{NVELOX_NEOVIM_CMAKE_FLAGS}
+        BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> -t generated-sources
+        INSTALL_COMMAND ""
+        PREFIX nvelox-neovim
+    )
+else()
+    ExternalProject_Add(
+        nvim-deps
+        SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim/third-party
+        INSTALL_COMMAND ""
+        PREFIX nvim-deps
+    )
+    ExternalProject_Add(
+        nvelox-neovim
+        SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim
+        CMAKE_ARGS -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_PREFIX_PATH=${CMAKE_CURRENT_BINARY_DIR}/nvim-deps/src/nvim-deps-build/usr
+        BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> -t generated-sources
+        INSTALL_COMMAND ""
+        PREFIX nvelox-neovim
+    )
+    add_dependencies(nvelox-neovim nvim-deps)
+endif()
 
 ExternalProject_Get_property(nvelox-neovim BINARY_DIR)
 include_directories(${BINARY_DIR}/include)
