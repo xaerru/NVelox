@@ -1,14 +1,17 @@
-with (import <nixpkgs> { });
-with (pkgs.neovim-unwrapped);
+{ pkgs ? import <nixpkgs> { } }:
 
-stdenv.mkDerivation {
+let
+  neovim = pkgs.neovim-unwrapped;
+  nvelox-neovim = import ./nvelox-neovim.nix { inherit pkgs; };
+in pkgs.stdenv.mkDerivation {
   name = "nvelox";
   src = builtins.fetchGit {
     url = ../.;
     submodules = true;
   };
-  inherit buildInputs nativeBuildInputs;
-  NVELOX_NEOVIM_CMAKE_FLAGS = builtins.concatStringsSep ";" cmakeFlags;
+  buildInputs = neovim.buildInputs ++ [ nvelox-neovim ];
+  nativeBuildInputs = neovim.nativeBuildInputs;
+  NVELOX_NEOVIM_CMAKE_FLAGS = builtins.concatStringsSep ";" neovim.cmakeFlags;
   makeTarget = "nvelox";
   enableParallelBuilding = true;
 }
