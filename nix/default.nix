@@ -5,10 +5,7 @@ let
   nvelox-neovim = import ./nvelox-neovim.nix { inherit pkgs; };
 in pkgs.stdenv.mkDerivation {
   name = "nvelox";
-  src = builtins.fetchGit {
-    url = ../.;
-    submodules = true;
-  };
+  src = ../.;
   buildInputs = neovim.buildInputs ++ [ nvelox-neovim ];
   dontFixCmake = true;
   nativeBuildInputs = neovim.nativeBuildInputs;
