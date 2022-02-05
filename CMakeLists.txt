@@ -51,9 +51,12 @@ else()
     add_dependencies(nvelox-neovim nvim-deps)
 endif()
 
+add_definitions(-DINCLUDE_GENERATED_DECLARATIONS)
+
 ExternalProject_Get_property(nvelox-neovim BINARY_DIR)
 include_directories(SYSTEM ${BINARY_DIR}/include)
 include_directories(SYSTEM ${BINARY_DIR}/config)
+include_directories(SYSTEM ${BINARY_DIR}/src/nvim/auto)
 
 ExternalProject_Get_property(nvelox-neovim SOURCE_DIR)
 include_directories(SYSTEM ${SOURCE_DIR}/src)
