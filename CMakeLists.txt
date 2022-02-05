@@ -52,11 +52,11 @@ else()
 endif()
 
 ExternalProject_Get_property(nvelox-neovim BINARY_DIR)
-include_directories(${BINARY_DIR}/include)
-include_directories(${BINARY_DIR}/config)
+include_directories(SYSTEM ${BINARY_DIR}/include)
+include_directories(SYSTEM ${BINARY_DIR}/config)
 
 ExternalProject_Get_property(nvelox-neovim SOURCE_DIR)
-include_directories(${SOURCE_DIR}/src)
+include_directories(SYSTEM ${SOURCE_DIR}/src)
 
 include(GNUInstallDirs)
 install(TARGETS nvelox
