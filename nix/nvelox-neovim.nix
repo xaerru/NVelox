@@ -7,4 +7,7 @@ pkgs.neovim-unwrapped.overrideAttrs (oa: {
   NIX_CFLAGS_COMPILE = " -ggdb3 -Og";
   cmakeFlags = oa.cmakeFlags ++ [ "-DCMAKE_BUILD_TYPE=Debug" ];
   disallowedReferences = [];
+  postInstall = ''
+    mv -v $out/bin/nvim $out/bin/nvlx
+  '';
 })
