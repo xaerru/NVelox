@@ -19,7 +19,6 @@ endif()
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/nvelox/*.c)
 file(GLOB_RECURSE HEADER_FILES CONFIGURE_DEPENDS include/nvelox/*.h)
 add_library(nvelox SHARED ${SRC_FILES})
-set_target_properties(nvelox PROPERTIES PUBLIC_HEADER ${HEADER_FILES})
 target_link_libraries(nvelox dl)
 
 include(ExternalProject)
@@ -62,8 +61,15 @@ ExternalProject_Get_property(nvelox-neovim SOURCE_DIR)
 include_directories(SYSTEM ${SOURCE_DIR}/src)
 
 include(GNUInstallDirs)
-install(TARGETS nvelox
-        PUBLIC_HEADER
-            DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox)
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/nvelox/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox)
+install(DIRECTORY ${SOURCE_DIR}/src/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox
+        FILES_MATCHING PATTERN "*.h")
+install(DIRECTORY ${BINARY_DIR}/include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox/nvim
+        FILES_MATCHING PATTERN "*.h")
+install(DIRECTORY ${BINARY_DIR}/config/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox/nvim
+        FILES_MATCHING PATTERN "*.h")
+install(DIRECTORY ${BINARY_DIR}/src/nvim/auto/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox/nvim
+        FILES_MATCHING PATTERN "*.h")
+install(TARGETS nvelox)
 
 add_dependencies(nvelox nvelox-neovim)
