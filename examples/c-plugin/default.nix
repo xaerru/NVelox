@@ -1,11 +1,13 @@
-with (import <nixpkgs> { });
-let nvelox = import ../../nix/default.nix;
-in stdenv.mkDerivation {
+{pkgs ? import <nixpkgs> {}}:
+
+let
+nvelox = import ../../nix/default.nix {inherit pkgs;};
+in pkgs.stdenv.mkDerivation {
   name = "nvelox-c";
   src = ./.;
-  nativeBuildInputs = [ cmake ];
-  buildInputs = [ nvelox ];
+  nativeBuildInputs = with pkgs; [ cmake nvelox ];
+  buildInputs = nvelox.buildInputs;
+  NIX_CFLAGS_COMPILE = "-isystem ${nvelox}/include/nvelox";
   makeTarget = "c-plugin";
-  cmakeFlags = ["-DCMAKE_INSTALL_PREFIX=/usr"];
   enableParallelBuilding = true;
 }
