@@ -5,7 +5,6 @@ if(${CMAKE_VERSION} VERSION_LESS 3.12)
 endif()
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS true)
-set(CMAKE_INSTALL_PREFIX /usr)
 project(NVelox VERSION 0.0
                DESCRIPTION "Neovim library"
                LANGUAGES C)
@@ -39,11 +38,16 @@ add_definitions(-DINCLUDE_GENERATED_DECLARATIONS)
 
 set(NVELOX_NEOVIM_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/nvelox-neovim/)
 set(NVELOX_NEOVIM_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim)
-include_directories(SYSTEM ${NVELOX_NEOVIM_BINARY_DIR}/include)
-include_directories(SYSTEM ${NVELOX_NEOVIM_BINARY_DIR}/config)
-include_directories(SYSTEM ${NVELOX_NEOVIM_BINARY_DIR}/src/nvim/auto)
 
-include_directories(SYSTEM ${NVELOX_NEOVIM_SOURCE_DIR}/src)
+target_include_directories(nvelox PUBLIC $<BUILD_INTERFACE:${NVELOX_NEOVIM_BINARY_DIR}/include>)
+target_include_directories(nvelox PUBLIC $<BUILD_INTERFACE:${NVELOX_NEOVIM_BINARY_DIR}/config>)
+target_include_directories(nvelox PUBLIC $<BUILD_INTERFACE:${NVELOX_NEOVIM_BINARY_DIR}/src/nvim/auto>)
+target_include_directories(nvelox PUBLIC $<BUILD_INTERFACE:${NVELOX_NEOVIM_SOURCE_DIR}/src>)
+
+target_include_directories(nvelox PUBLIC $<INSTALL_INTERFACE:include/nvelox/nvim-include>)
+target_include_directories(nvelox PUBLIC $<INSTALL_INTERFACE:include/nvelox/nvim-config>)
+target_include_directories(nvelox PUBLIC $<INSTALL_INTERFACE:include/nvelox/nvim-auto>)
+target_include_directories(nvelox PUBLIC $<INSTALL_INTERFACE:include/nvelox>)
 
 include(GNUInstallDirs)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/nvelox/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox)
@@ -55,4 +59,16 @@ install(DIRECTORY ${NVELOX_NEOVIM_BINARY_DIR}/config/ DESTINATION ${CMAKE_INSTAL
         FILES_MATCHING PATTERN "*.h")
 install(DIRECTORY ${NVELOX_NEOVIM_BINARY_DIR}/src/nvim/auto/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox/nvim-auto
         FILES_MATCHING PATTERN "*.h")
-install(TARGETS nvelox)
+
+install(TARGETS nvelox
+    EXPORT NVeloxConfig)
+
+export(TARGETS
+        nvelox
+        FILE "${CMAKE_CURRENT_BINARY_DIR}/NVeloxConfig.cmake"
+)
+
+install(EXPORT
+        NVeloxConfig
+        DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/NVelox/cmake"
+)
