@@ -21,55 +21,38 @@ file(GLOB_RECURSE HEADER_FILES CONFIGURE_DEPENDS include/nvelox/*.h)
 add_library(nvelox SHARED ${SRC_FILES})
 target_link_libraries(nvelox dl)
 
-include(ExternalProject)
+file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/nvelox-neovim)
+execute_process(
+    COMMAND
+        ${CMAKE_COMMAND} -E env CLICOLOR_FORCE=1
+        ${CMAKE_COMMAND} ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim $ENV{NVELOX_NEOVIM_CMAKE_FLAGS}
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/nvelox-neovim
+)
 
-if(DEFINED ENV{NVELOX_NEOVIM_CMAKE_FLAGS})
-    ExternalProject_Add(
-        nvelox-neovim
-        SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim
-        CMAKE_ARGS $ENV{NVELOX_NEOVIM_CMAKE_FLAGS}
-        BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> -t generated-sources
-        INSTALL_COMMAND ""
-        PREFIX nvelox-neovim
-    )
-else()
-    ExternalProject_Add(
-        nvim-deps
-        SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim/third-party
-        INSTALL_COMMAND ""
-        PREFIX nvim-deps
-    )
-    ExternalProject_Add(
-        nvelox-neovim
-        SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim
-        CMAKE_ARGS -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_PREFIX_PATH=${CMAKE_CURRENT_BINARY_DIR}/nvim-deps/src/nvim-deps-build/usr
-        BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> -t generated-sources
-        INSTALL_COMMAND ""
-        PREFIX nvelox-neovim
-    )
-    add_dependencies(nvelox-neovim nvim-deps)
-endif()
+execute_process(
+    COMMAND
+        ${CMAKE_COMMAND} -E env CLICOLOR_FORCE=1
+        ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/nvelox-neovim -t generated-sources
+)
 
 add_definitions(-DINCLUDE_GENERATED_DECLARATIONS)
 
-ExternalProject_Get_property(nvelox-neovim BINARY_DIR)
-include_directories(SYSTEM ${BINARY_DIR}/include)
-include_directories(SYSTEM ${BINARY_DIR}/config)
-include_directories(SYSTEM ${BINARY_DIR}/src/nvim/auto)
+set(NVELOX_NEOVIM_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/nvelox-neovim/)
+set(NVELOX_NEOVIM_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim)
+include_directories(SYSTEM ${NVELOX_NEOVIM_BINARY_DIR}/include)
+include_directories(SYSTEM ${NVELOX_NEOVIM_BINARY_DIR}/config)
+include_directories(SYSTEM ${NVELOX_NEOVIM_BINARY_DIR}/src/nvim/auto)
 
-ExternalProject_Get_property(nvelox-neovim SOURCE_DIR)
-include_directories(SYSTEM ${SOURCE_DIR}/src)
+include_directories(SYSTEM ${NVELOX_NEOVIM_SOURCE_DIR}/src)
 
 include(GNUInstallDirs)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/nvelox/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox)
-install(DIRECTORY ${SOURCE_DIR}/src/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox
+install(DIRECTORY ${NVELOX_NEOVIM_SOURCE_DIR}/src/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox
         FILES_MATCHING PATTERN "*.h")
-install(DIRECTORY ${BINARY_DIR}/include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox/nvim
+install(DIRECTORY ${NVELOX_NEOVIM_BINARY_DIR}/include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox/nvim
         FILES_MATCHING PATTERN "*.h")
-install(DIRECTORY ${BINARY_DIR}/config/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox/nvim
+install(DIRECTORY ${NVELOX_NEOVIM_BINARY_DIR}/config/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox/nvim
         FILES_MATCHING PATTERN "*.h")
-install(DIRECTORY ${BINARY_DIR}/src/nvim/auto/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox/nvim
+install(DIRECTORY ${NVELOX_NEOVIM_BINARY_DIR}/src/nvim/auto/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/nvelox/nvim
         FILES_MATCHING PATTERN "*.h")
 install(TARGETS nvelox)
-
-add_dependencies(nvelox nvelox-neovim)
