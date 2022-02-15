@@ -9,7 +9,4 @@ in pkgs.stdenv.mkDerivation {
   buildInputs = nvelox.buildInputs;
   makeTarget = "c-plugin";
   enableParallelBuilding = true;
-  shellHook = ''
-    export NIX_CFLAGS_COMPILE="$NIX_CFLAGS_COMPILE -isystem ${nvelox}/include/nvelox -isystem ${nvelox}/include/nvelox/nvim-include -isystem ${nvelox}/include/nvelox/nvim-config -isystem ${nvelox}/include/nvelox/nvim-auto"
-  '';
 }

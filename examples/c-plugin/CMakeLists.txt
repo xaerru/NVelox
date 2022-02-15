@@ -13,11 +13,15 @@ project(nvelox-c VERSION 0.1
 file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS src/*.c)
 
 add_definitions(-DINCLUDE_GENERATED_DECLARATIONS)
+
+find_package(NVelox REQUIRED)
+
 add_library(c-plugin SHARED ${SRC_FILES})
+
+target_link_libraries(c-plugin nvelox)
+target_include_directories(c-plugin PUBLIC ${NVelox_INCLUDE_DIRECTORIES})
+
 set_target_properties(c-plugin PROPERTIES LIBRARY_OUTPUT_NAME c-plugin
                                           PREFIX "")
-
-find_library(NVELOX nvelox)
-target_link_libraries(c-plugin PUBLIC ${NVELOX})
 
 install(TARGETS c-plugin)
