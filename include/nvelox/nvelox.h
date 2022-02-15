@@ -31,11 +31,6 @@ void nv_do_highlight (const char *cmd, bool forceit);
 
 void nv_def_command (const char *name, const char *cmd, int forceit);
 
-typedef struct {
-    char *data;
-    size_t size;
-} String;
-
 void nv_out_msg (char *msg);
 void nv_err_msg (char *msg);
 
