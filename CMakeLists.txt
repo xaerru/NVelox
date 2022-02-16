@@ -20,19 +20,48 @@ file(GLOB_RECURSE HEADER_FILES CONFIGURE_DEPENDS include/nvelox/*.h)
 add_library(nvelox SHARED ${SRC_FILES})
 target_link_libraries(nvelox dl)
 
-file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/nvelox-neovim)
-execute_process(
-    COMMAND
-        ${CMAKE_COMMAND} -E env CLICOLOR_FORCE=1
-        ${CMAKE_COMMAND} ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim $ENV{NVELOX_NEOVIM_CMAKE_FLAGS}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/nvelox-neovim
-)
+option(NVELOX_USE_BUNDLED "Use bundled dependencies" ON)
+if(NVELOX_USE_BUNDLED)
+    file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/nvim-deps)
+    file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/nvelox-neovim)
+    execute_process(
+        COMMAND
+            ${CMAKE_COMMAND} -E env CLICOLOR_FORCE=1
+            ${CMAKE_COMMAND} ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim/third-party
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/nvim-deps
+    )
+    execute_process(
+        COMMAND
+            ${CMAKE_COMMAND} -E env CLICOLOR_FORCE=1
+            ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/nvim-deps
+    )
 
-execute_process(
-    COMMAND
-        ${CMAKE_COMMAND} -E env CLICOLOR_FORCE=1
-        ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/nvelox-neovim -t generated-sources
-)
+    execute_process(
+        COMMAND
+            ${CMAKE_COMMAND} -E env CLICOLOR_FORCE=1
+            ${CMAKE_COMMAND} ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim -DCMAKE_PREFIX_PATH=${CMAKE_CURRENT_BINARY_DIR}/nvim-deps/usr
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/nvelox-neovim
+    )
+    execute_process(
+        COMMAND
+            ${CMAKE_COMMAND} -E env CLICOLOR_FORCE=1
+            ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/nvelox-neovim -t generated-sources
+    )
+else()
+    file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/nvelox-neovim)
+    execute_process(
+        COMMAND
+            ${CMAKE_COMMAND} -E env CLICOLOR_FORCE=1
+            ${CMAKE_COMMAND} ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim $ENV{NVELOX_NEOVIM_CMAKE_FLAGS}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/nvelox-neovim
+    )
+
+    execute_process(
+        COMMAND
+            ${CMAKE_COMMAND} -E env CLICOLOR_FORCE=1
+            ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/nvelox-neovim -t generated-sources
+    )
+endif()
 
 add_definitions(-DINCLUDE_GENERATED_DECLARATIONS)
 
