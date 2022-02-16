@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "runtime.h"
 
 static int
 parse_ext (const struct dirent *dir)
@@ -21,6 +22,8 @@ load_plugins_from_dir (const char *dir)
 {
     struct dirent **namelist;
     int n = scandir (dir, &namelist, parse_ext, NULL);
+    nvelox_plugin_handles = malloc(n*sizeof(void*));
+    nvelox_plugin_count = n;
     if (n < 0)
         nv_err_msg ("nvelox: Couldn't scan plugin directory.");
     else {
@@ -33,7 +36,7 @@ load_plugins_from_dir (const char *dir)
             void *handle = dlopen (realpath_buf, RTLD_LAZY);
             void (*func) () = dlsym (handle, "nvelox_plugin_init");
             func ();
-            dlclose(handle);
+            nvelox_plugin_handles[n] = handle;
         }
         free (namelist);
     }
