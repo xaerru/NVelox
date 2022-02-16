@@ -12,7 +12,7 @@ let
 in pkgs.stdenv.mkDerivation {
   name = "nvelox";
   src = gitignoreSource ../.;
-  buildInputs = nvelox-neovim.buildInputs ++ [ nvelox-neovim ];
+  buildInputs = nvelox-neovim.buildInputs ++ [ nvelox-neovim ] ++ (with pkgs; [cmake-format]);
   dontFixCmake = true;
   nativeBuildInputs = nvelox-neovim.nativeBuildInputs;
   configureScript = "cmakeConfigurePhase";
