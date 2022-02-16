@@ -15,7 +15,12 @@ in pkgs.stdenv.mkDerivation {
   buildInputs = nvelox-neovim.buildInputs ++ [ nvelox-neovim ];
   dontFixCmake = true;
   nativeBuildInputs = nvelox-neovim.nativeBuildInputs;
-  NVELOX_NEOVIM_CMAKE_FLAGS = builtins.concatStringsSep ";" nvelox-neovim.cmakeFlags;
+  configureScript = "cmakeConfigurePhase";
+  buildPhase = ''
+    ninjaBuildPhase
+  '';
+  NVELOX_NEOVIM_CMAKE_FLAGS =
+    builtins.concatStringsSep ";" nvelox-neovim.cmakeFlags;
   makeTarget = "nvelox";
   enableParallelBuilding = true;
 }
