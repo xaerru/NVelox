@@ -1,7 +1,6 @@
 { pkgs ? import <nixpkgs> { } }:
 
 let
-  neovim = pkgs.neovim-unwrapped;
   nvelox-neovim = import ./nvelox-neovim.nix { inherit pkgs; };
   gitignoreSrc = pkgs.fetchFromGitHub {
     owner = "hercules-ci";
@@ -13,10 +12,10 @@ let
 in pkgs.stdenv.mkDerivation {
   name = "nvelox";
   src = gitignoreSource ../.;
-  buildInputs = neovim.buildInputs ++ [ nvelox-neovim ];
+  buildInputs = nvelox-neovim.buildInputs ++ [ nvelox-neovim ];
   dontFixCmake = true;
-  nativeBuildInputs = neovim.nativeBuildInputs;
-  NVELOX_NEOVIM_CMAKE_FLAGS = builtins.concatStringsSep ";" neovim.cmakeFlags;
+  nativeBuildInputs = nvelox-neovim.nativeBuildInputs;
+  NVELOX_NEOVIM_CMAKE_FLAGS = builtins.concatStringsSep ";" nvelox-neovim.cmakeFlags;
   makeTarget = "nvelox";
   enableParallelBuilding = true;
 }
