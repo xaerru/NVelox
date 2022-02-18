@@ -34,6 +34,9 @@ load_plugins_from_dir (const char *dir)
             snprintf (path_buf, sizeof(path_buf), "%s/%s", dir, filename);
             char *realpath_buf = realpath (path_buf, NULL);
             void *handle = dlopen (realpath_buf, RTLD_LAZY);
+            if (!handle) {
+              nv_err_msg(dlerror());
+            }
             void (*func) () = dlsym (handle, "nvelox_plugin_init");
             func ();
             nvelox_plugin_handles[n] = handle;
