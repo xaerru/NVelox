@@ -21,16 +21,15 @@ static void
 load_plugins_from_dir (const char *dir)
 {
     struct dirent **namelist;
-    int n = scandir (dir, &namelist, parse_ext, NULL);
-    nvelox_plugin_handles = malloc(n*sizeof(void*));
-    nvelox_plugin_count = n;
-    if (n < 0)
+    plugin_count = scandir (dir, &namelist, parse_ext, NULL);
+    plugin_handles = malloc(plugin_count*sizeof(void*));
+    if (plugin_count < 0)
         nv_err_msg ("nvelox: Couldn't scan plugin directory.");
     else {
-        while (n--) {
+        for(int i = plugin_count; --i;) {
             char path_buf[PATH_MAX];
-            char *filename = namelist[n]->d_name;
-            free (namelist[n]);
+            char *filename = namelist[i]->d_name;
+            free (namelist[i]);
             snprintf (path_buf, sizeof(path_buf), "%s/%s", dir, filename);
             char *realpath_buf = realpath (path_buf, NULL);
             void *handle = dlopen (realpath_buf, RTLD_LAZY);
@@ -39,7 +38,7 @@ load_plugins_from_dir (const char *dir)
             }
             void (*func) () = dlsym (handle, "nvelox_plugin_init");
             func ();
-            nvelox_plugin_handles[n] = handle;
+            plugin_handles[i] = handle;
         }
         free (namelist);
     }

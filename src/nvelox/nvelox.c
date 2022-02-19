@@ -12,8 +12,10 @@ start_point ()
 }
 
 int nvelox_quit_hook() {
-    while(nvelox_plugin_count--) 
-        dlclose(nvelox_plugin_handles[nvelox_plugin_count]);
-    free(nvelox_plugin_handles);
+    if(plugin_count == 0)
+        return 0;
+    for(int i = plugin_count; --i;)
+        dlclose(plugin_handles[i]);
+    free(plugin_handles);
     return 0;
 }
