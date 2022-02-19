@@ -28,17 +28,16 @@ load_plugins_from_dir (const char *dir)
     else {
         for(int i = plugin_count; --i;) {
             char path_buf[PATH_MAX];
-            char *filename = namelist[i]->d_name;
+            snprintf (path_buf, sizeof(path_buf), "%s/%s", dir, namelist[i]->d_name);
             free (namelist[i]);
-            snprintf (path_buf, sizeof(path_buf), "%s/%s", dir, filename);
-            char *realpath_buf = realpath (path_buf, NULL);
-            void *handle = dlopen (realpath_buf, RTLD_LAZY);
+            void *handle = dlopen (realpath(path_buf, NULL), RTLD_LAZY);
             if (!handle) {
               nv_err_msg(dlerror());
+              continue;
             }
+            plugin_handles[i] = handle;
             void (*func) () = dlsym (handle, "nvelox_plugin_init");
             func ();
-            plugin_handles[i] = handle;
         }
         free (namelist);
     }
