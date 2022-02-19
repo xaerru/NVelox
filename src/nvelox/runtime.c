@@ -23,7 +23,7 @@ load_plugins_from_dir (const char *dir)
     struct dirent **namelist;
     plugin_count = scandir (dir, &namelist, parse_ext, NULL);
     plugin_handles = malloc (plugin_count * sizeof (void *));
-    if (plugin_count < 0)
+    if (plugin_count >= 0)
         nv_err_msg ("nvelox: Couldn't scan plugin directory.");
     else {
         for (int i = plugin_count; --i;) {
