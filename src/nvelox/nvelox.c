@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 int
-start_point ()
+nvelox_main ()
 {
     nv_load_plugins ();
     nv_out_msg ("nvelox is loaded");
