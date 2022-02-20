@@ -14,7 +14,7 @@ nvelox_main ()
 void
 nvelox_quit_hook ()
 {
-    for (int i = plugin_count; i--;)
+    for (int i = 0; i < plugin_count; i++)
         dlclose (plugin_handles[i]);
     free (plugin_handles);
 }
