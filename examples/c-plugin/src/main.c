@@ -10,6 +10,6 @@ void print_msg(void **argv) {
 
 int nvelox_plugin_init() {
     char *test_str = "multiqueue_put_event works";
-    multiqueue_put_event(main_loop.events, event_create(print_msg, 1, test_str));
+    nv_schedule(print_msg, 1, test_str);
     return 0;
 }

@@ -4,8 +4,11 @@
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <nvim/main.h>
 
 void nv_set_option (const char *name, const char *string, long num, int optflags);
+
+void nv_schedule (argv_callback cb, int argc, ...);
 
 #define OPT_BOTH 0
 #define OPT_GLOBAL 2
