@@ -26,7 +26,7 @@ load_plugins_from_dir (const char *dir)
     if (plugin_count <= 0)
         nv_err_msg ("nvelox: Couldn't scan plugin directory.");
     else {
-        for (int i = plugin_count; --i;) {
+        for (int i = 0; i < plugin_count; i++) {
             char path_buf[PATH_MAX];
             snprintf (path_buf, sizeof (path_buf), "%s/%s", dir, namelist[i]->d_name);
             free (namelist[i]);

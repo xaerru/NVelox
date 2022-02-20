@@ -11,11 +11,10 @@ nvelox_main ()
     return 0;
 }
 
-int
+void
 nvelox_quit_hook ()
 {
     for (int i = plugin_count; i--;)
         dlclose (plugin_handles[i]);
     free (plugin_handles);
-    return 0;
 }
