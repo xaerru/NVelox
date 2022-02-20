@@ -1,10 +1,10 @@
 #ifndef NVELOX_H
 #define NVELOX_H
 
+#include <nvim/main.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
-#include <nvim/main.h>
 
 void nv_set_option (const char *name, const char *string, long num, int optflags);
 

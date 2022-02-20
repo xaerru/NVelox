@@ -1,7 +1,7 @@
-#ifndef MESSAGE_H
-#define MESSAGE_H
+#ifndef NVELOX_MESSAGE_H
+#define NVELOX_MESSAGE_H
 
 void nv_out_msg (char *msg);
 void nv_err_msg (char *msg);
 
-#endif  // MESSAGE_H
+#endif  // NVELOX_MESSAGE_H
