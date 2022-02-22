@@ -1,4 +1,4 @@
-#include "options.h"
+#include "option.h"
 
 void
 nv_set_option (const char *name, const char *string, long num, int optflags)
