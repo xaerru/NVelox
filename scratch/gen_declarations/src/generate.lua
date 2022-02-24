@@ -239,6 +239,14 @@ local header = [[
 #undef DEFINE_FUNC_ATTRIBUTES
 ]]
 
+local nvelox = [[
+#ifdef NVELOX
+]]
+
+local nvelox_footer = [[
+#endif
+]]
+
 local footer = [[
 #include "nvim/func_attr.h"
 ]]
@@ -315,7 +323,11 @@ while init ~= nil do
         static = static .. declaration
       else
         declaration = 'DLLEXPORT ' .. declaration
-        non_static = non_static .. declaration
+        if typdef:match(text, init) then
+            nvelox = nvelox .. declaration
+        else
+            non_static = non_static .. declaration
+        end
       end
       declendpos = e
     end
@@ -333,6 +345,7 @@ end
 
 non_static = non_static .. footer
 static = static .. footer
+nvelox = nvelox .. nvelox_footer
 
 local F
 F = io.open(static_fname, 'w')
@@ -345,7 +358,7 @@ F:close()
 -- that depend on this one
 F = io.open(non_static_fname, 'r')
 if F ~= nil then
-  if F:read('*a') == non_static then
+  if F:read('*a') == (non_static .. nvelox) then
     os.exit(0)
   end
   io.close(F)
@@ -353,4 +366,5 @@ end
 
 F = io.open(non_static_fname, 'w')
 F:write(non_static)
+F:write(nvelox)
 F:close()
