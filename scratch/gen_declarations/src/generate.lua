@@ -163,7 +163,7 @@ local functions = concat(
     lit('{')
   ))
 )
-local typdef = concat(
+local typedef_struct = concat(
   any_amount(branch(set(' ', '\t'), inline_comment)),
   one_or_no(lit('typedef')),
   spaces,
@@ -186,7 +186,7 @@ local typdef = concat(
 )
 
 local pattern = branch(
-    typdef,
+    typedef_struct,
     functions
 )
 
@@ -323,7 +323,7 @@ while init ~= nil do
         static = static .. declaration
       else
         declaration = 'DLLEXPORT ' .. declaration
-        if typdef:match(text, init) then
+        if typedef_struct:match(text, init) then
             nvelox = nvelox .. declaration
         else
             non_static = non_static .. declaration
