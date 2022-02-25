@@ -1,11 +1,10 @@
+#include <stdio.h>
+#include <string.h>
 
 int add(int a, int b) {
     return a + b;
 }
 
-
-#include <stdio.h>
-#include <string.h>
 typedef struct {
     int num;
     int abc;
@@ -20,5 +19,6 @@ struct Person {
     int num;
 };
 
-#define ABC(a, b) ab
+#define ABC(a, b)\
+    ab
 #define A 1

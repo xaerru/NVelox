@@ -184,13 +184,22 @@ local typedef_struct = concat(
     any_character
   ))
 )
-local macros = concat(
-  lit('#include'),
-  spaces,
+local sysinclude = concat(
   any_amount(concat(
-    neg_look_ahead(lit('>')),
-    any_character
+      neg_look_ahead(lit('<')),
+      any_character
+  )),
+  any_amount(concat(
+      neg_look_ahead(lit('>')),
+      any_character
   ))
+)
+local macros = concat(
+  any_amount(branch(set(' ', '\t'), inline_comment)),
+  lit('#'),
+  word,
+  spaces,
+  sysinclude
 )
 
 local pattern = branch(
@@ -240,9 +249,9 @@ local preproc_f = io.open(preproc_fname)
 local text = preproc_f:read("*all")
 preproc_f:close()
 
-local cfile = io.open(fname)
-local ctext = cfile:read("*all")
-cfile:close()
+local c_f = io.open(fname)
+local ctext = c_f:read("*all")
+c_f:close()
 
 local header = [[
 #define DEFINE_FUNC_ATTRIBUTES
@@ -277,7 +286,6 @@ local static = header
 local filepattern = '^#%a* (%d+) "([^"]-)/?([^"/]+)"'
 
 local init = 1
-local cinit = 1
 local curfile = nil
 local neededfile = fname:match('[^/]+$')
 local declline = 0
@@ -285,8 +293,7 @@ local declendpos = 0
 local curdir = nil
 local is_needed_file = false
 local init_is_nl = true
-local cinit_is_nl = true
-while init ~= nil and cinit ~= nil do
+while init ~= nil do
   if init_is_nl and text:sub(init, init) == '#' then
     local line, dir, file = text:match(filepattern, init)
     if file ~= nil then
@@ -302,19 +309,10 @@ while init ~= nil and cinit ~= nil do
     else
       declline = declline - 1
     end
-  elseif cinit_is_nl and curfile == nil then
-      is_needed_file = true
   elseif init < declendpos then -- luacheck: ignore 542
     -- Skipping over declaration
   elseif is_needed_file then
     s = init
-    local c = cinit
-    local f = macros:match(ctext, cinit)
-    if f ~= nil then
-        local fd = ctext:sub(c, f)
-        print(fd)
-        declendpos = f
-    end
     local e = pattern:match(text, init)
     if e ~= nil then
       local declaration = text:sub(s, e - 1)
@@ -355,21 +353,28 @@ while init ~= nil and cinit ~= nil do
     end
   end
   init = text:find('[\n;}]', init)
-  cinit = ctext:find('[\n;}]', cinit)
-  if init ~= nil then
-      init_is_nl = text:sub(init, init) == '\n'
-      init = init + 1
-      if init_is_nl and is_needed_file then
-        declline = declline + 1
-      end
-    end
-  if cinit ~= nil then
-      cinit_is_nl = ctext:sub(cinit, cinit) == '\n'
-      cinit = cinit + 1
-      if cinit_is_nl and is_needed_file then
-        declline = declline + 1
-      end
+  if init == nil then
+    break
   end
+  init_is_nl = text:sub(init, init) == '\n'
+  init = init + 1
+  if init_is_nl and is_needed_file then
+    declline = declline + 1
+  end
+end
+
+init = 1
+while init ~= nil do
+    if text:find('[\n;}]', init) == nil then
+      break
+    end
+    local a = macros:match(ctext, init)
+    if a ~= nil then
+        local f = ctext:sub(init, a)
+        print(f)
+        nvelox = nvelox .. '\n' .. f
+    end
+    init = init + 1
 end
 
 non_static = non_static .. footer
