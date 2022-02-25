@@ -184,23 +184,13 @@ local typedef_struct = concat(
     any_character
   ))
 )
-local sysinclude = concat(
-  any_amount(concat(
-      neg_look_ahead(lit('<')),
-      any_character
-  )),
-  any_amount(concat(
-      neg_look_ahead(lit('>')),
-      any_character
-  ))
-)
-local macros = concat(
-  any_amount(branch(set(' ', '\t'), inline_comment)),
-  lit('#'),
-  word,
-  spaces,
-  sysinclude
-)
+--local macros = concat(
+--  any_amount(branch(set(' ', '\t'), inline_comment)),
+--  lit('#'),
+--  word,
+--  spaces,
+--  sysinclude
+--)
 
 local pattern = branch(
     typedef_struct,
@@ -249,9 +239,9 @@ local preproc_f = io.open(preproc_fname)
 local text = preproc_f:read("*all")
 preproc_f:close()
 
-local c_f = io.open(fname)
-local ctext = c_f:read("*all")
-c_f:close()
+--local c_f = io.open(fname)
+--local ctext = c_f:read("*all")
+--c_f:close()
 
 local header = [[
 #define DEFINE_FUNC_ATTRIBUTES
@@ -363,19 +353,19 @@ while init ~= nil do
   end
 end
 
-init = 1
-while init ~= nil do
-    if text:find('[\n;}]', init) == nil then
-      break
-    end
-    local a = macros:match(ctext, init)
-    if a ~= nil then
-        local f = ctext:sub(init, a)
-        print(f)
-        nvelox = nvelox .. '\n' .. f
-    end
-    init = init + 1
-end
+--init = 1
+--while init ~= nil do
+--    if text:find('[\n;}]', init) == nil then
+--      break
+--    end
+--    local a = macros:match(ctext, init)
+--    if a ~= nil then
+--        local f = ctext:sub(init, a)
+--        print(f)
+--        nvelox = nvelox .. '\n' .. f
+--    end
+--    init = init + 1
+--end
 
 non_static = non_static .. footer
 static = static .. footer

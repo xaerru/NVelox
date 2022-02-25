@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <string.h>
 
 int add(int a, int b) {
     return a + b;
@@ -19,6 +17,14 @@ struct Person {
     int num;
 };
 
+#define BC(a, b)\
+    a\
+    b
 #define ABC(a, b)\
     ab
-#define A 1
+#ifndef MIN
+# define MIN(X, Y) ((X) < (Y) ? (X) : (Y))
+#endif
+#ifndef MAX
+# define MAX(X, Y) ((X) > (Y) ? (X) : (Y))
+#endif
