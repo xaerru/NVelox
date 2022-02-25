@@ -1,7 +1,11 @@
+
 int add(int a, int b) {
     return a + b;
 }
 
+
+#include <stdio.h>
+#include <string.h>
 typedef struct {
     int num;
     int abc;
