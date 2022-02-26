@@ -184,6 +184,17 @@ local typedef_struct = concat(
     any_character
   ))
 )
+local typedef = concat(
+  any_amount(branch(set(' ', '\t'), inline_comment)),
+  lit('typedef'),
+    spaces,
+    typ_id,
+    spaces,
+  any_amount(concat(
+    neg_look_ahead(lit(';')),
+    any_character
+  ))
+)
 --local macros = concat(
 --  any_amount(branch(set(' ', '\t'), inline_comment)),
 --  lit('#'),
@@ -192,8 +203,13 @@ local typedef_struct = concat(
 --  sysinclude
 --)
 
-local pattern = branch(
+local typedefs = branch(
     typedef_struct,
+    typedef
+)
+
+local pattern = branch(
+    typedefs,
     functions
 )
 
@@ -333,7 +349,7 @@ while init ~= nil do
         static = static .. declaration
       else
         declaration = 'DLLEXPORT ' .. declaration
-        if typedef_struct:match(text, init) then
+        if typedefs:match(text, init) then
             nvelox = nvelox .. declaration
         else
             non_static = non_static .. declaration

@@ -8,6 +8,8 @@ typedef struct {
     int abc;
 } Name;
 
+typedef int A;
+
 typedef struct Something {
     int num;
     int abc;
