@@ -68,7 +68,7 @@ set(NVELOX_NEOVIM_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/external/nvelox-neovim)
 target_include_directories(
   nvelox
   PUBLIC $<BUILD_INTERFACE:${NVELOX_NEOVIM_BINARY_DIR}/include>
-         $<BUILD_INTERFACE:${NVELOX_NEOVIM_BINARY_DIR}/config>
+         $<BUILD_INTERFACE:${NVELOX_NEOVIM_BINARY_DIR}/cmake.config>
          $<BUILD_INTERFACE:${NVELOX_NEOVIM_BINARY_DIR}/src/nvim/auto>
          $<BUILD_INTERFACE:${NVELOX_NEOVIM_SOURCE_DIR}/src>
          $<INSTALL_INTERFACE:include/nvelox/nvim-include>
