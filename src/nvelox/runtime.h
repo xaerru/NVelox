@@ -3,7 +3,7 @@
 
 void nv_load_plugins ();
 
-void **plugin_handles;
-int plugin_count;
+static void **plugin_handles;
+static int plugin_count;
 
 #endif  // NVELOX_RUNTIME_H
