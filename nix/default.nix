@@ -16,7 +16,7 @@ in pkgs.stdenv.mkDerivation {
   dontFixCmake = true;
   nativeBuildInputs = nvelox-neovim.nativeBuildInputs;
   configureScript = "cmakeConfigurePhase";
-  cmakeFlags = [ "-DNVELOX_USE_BUNDLED=OFF" ];
+  cmakeFlags = [ "-DNVELOX_USE_BUNDLED=OFF" "-DCMAKE_BUILD_TYPE=Debug"];
   NVELOX_NEOVIM_CMAKE_FLAGS =
     builtins.concatStringsSep ";" nvelox-neovim.cmakeFlags;
   makeTarget = "nvelox";
