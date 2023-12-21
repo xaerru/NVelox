@@ -48,13 +48,13 @@ typedef enum {
 #define EX_FILE1 (EX_FILES | EX_NOSPC)  // 1 file, defaults to current file
 #define EX_WORD1 (EX_EXTRA | EX_NOSPC)  // one extra word allowed
 
-int uc_add_command (char_u *name,
+int uc_add_command (char *name,
                     size_t name_len,
-                    char_u *rep,
+                    char *rep,
                     uint32_t argt,
                     long def,
                     int flags,
                     int compl,
-                    char_u *compl_arg,
+                    char *compl_arg,
                     cmd_addr_T addr_type,
                     bool force);

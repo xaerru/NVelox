@@ -56,4 +56,4 @@
 ///         - 4 for out of mem (deprecated, WON'T HAPPEN)
 ///         - 5 for entry not unique
 ///
-extern int do_map (int maptype, char_u *arg, int mode, bool is_abbrev);
+extern int do_map (int maptype, char *arg, int mode, bool is_abbrev);

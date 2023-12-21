@@ -34,7 +34,7 @@ nv_set_keymap (const char *mode, const char *key, const char *value, bool norema
 {
     int maptype = noremap == true ? 2 : 0;
     int mode_flag = get_mode_flag (mode[0]);
-    char_u keymap[strlen (key) + strlen (value) + 2];
+    char keymap[strlen (key) + strlen (value) + 2];
     snprintf ((char *)keymap, sizeof (keymap), "%s %s", key, value);
-    do_map (maptype, (char_u *)keymap, mode_flag, forceit);
+    do_map (maptype, (char *)keymap, mode_flag, forceit);
 };

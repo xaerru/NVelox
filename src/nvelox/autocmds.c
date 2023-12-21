@@ -15,7 +15,7 @@ get_event (const char *name)
 void
 nv_do_augroup (const char *name, int forceit)
 {
-    do_augroup ((char_u *)name, forceit);
+    do_augroup ((char *)name, forceit);
 }
 
 void
@@ -27,6 +27,6 @@ nv_do_autocmd (const char *event,
                int forceit,
                int group)
 {
-    do_autocmd_event (get_event (event), (char_u *)pattern, once, nested, (char_u *)command,
+    do_autocmd_event (get_event (event), (char *)pattern, once, nested, (char *)command,
                       forceit, group);
 };

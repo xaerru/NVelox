@@ -2,9 +2,7 @@
 #include <stdlib.h>
 
 // Shorthand for unsigned variables. Many systems, but not all, have u_char
-// already defined, so we use char_u to avoid trouble.
-typedef unsigned char char_u;
-
+// already defined, so we use char to avoid trouble.
 typedef enum auto_event {
     EVENT_BUFADD = 0,
     EVENT_BUFDELETE = 1,
@@ -252,12 +250,12 @@ static const struct event_name {
 };
 
 extern int do_autocmd_event (event_T event,
-                             char_u *pat,
+                             char *pat,
                              bool once,
                              int nested,
-                             char_u *cmd,
+                             char *cmd,
                              int forceit,
                              int group);
 
 /// ":augroup {name}".
-extern void do_augroup (char_u *arg, int del_group);
+extern void do_augroup (char *arg, int del_group);
