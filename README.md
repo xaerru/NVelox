@@ -4,6 +4,7 @@
 
 **NOTE**
 
-NVelox is under development.
+NVelox was supposed to be a plugin system alternative to RPC. Providing bindings for Rust, Crystal, etc.
+The proof of concept works right now(you can set options, print messages, schedule tasks), but it's a lot of work to wrap the entire API.
 
-The Neovim configuration has moved to the [lua](https://github.com/Xaerru/NVelox/tree/lua) branch.
+I've decided to stall the development right now and focus on other things.
