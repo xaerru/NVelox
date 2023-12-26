@@ -2,17 +2,18 @@
 #define NVELOX_H
 
 #include <nvim/main.h>
+#include <nvim/api/private/defs.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
 
-void nv_set_option (const char *name, const char *string, long num, int optflags);
+#define NvStr(S) {.data=S, .size=sizeof(S)};
+#define NvObjInt(I) {.type=kObjectTypeInteger, .data.integer=I};
+#define NvObjStr(S) {.type=kObjectTypeString, .data.string=S};
+
+void nv_set_option (String name, Object value, Dict(option) options);
 
 void nv_schedule (argv_callback cb, int argc, ...);
-
-#define OPT_BOTH 0
-#define OPT_GLOBAL 2
-#define OPT_LOCAL 4
 
 void nv_do_autocmd (const char *event,
                     const char *pattern,

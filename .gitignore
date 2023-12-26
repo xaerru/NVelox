@@ -1,4 +1,5 @@
 build/
+scratch/plugin_binaries
 .cache/
 compile_commands.json
 .env
